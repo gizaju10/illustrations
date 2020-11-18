@@ -2,6 +2,7 @@
 <% if user_signed_in? %>
   <%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>
   <%= link_to "マイページへ", user_path(current_user.id) %>
+  <%= link_to "ユーザー一覧へ", users_path %>
   <h2>投稿する</h2>
   <%= form_for @post do |f| %>
     <%= f.text_field :content %>
@@ -11,7 +12,8 @@
   <h2>投稿一覧</h2>
   <% @posts.each do |post| %>
     <a href="/users/<%= post.user.id %>"><%= post.user.email %></a>
-    <p><a href="/posts/<%= post.id %>"><%= post.content %></a></p>
+    <a href="/posts/<%= post.id %>"><%= post.content %></a>
+    (<%= post.liked_users.count %>)
   <% end %>
 
 <% else %>

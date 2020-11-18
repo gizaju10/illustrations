@@ -5,5 +5,10 @@
   <a href="/posts/<%= post.id %>"><%= post.content %></a>
   <hr>
 <% end %>
+<h3>いいねしている投稿</h3>
+<% @user.liked_posts.each do |post| %>
+  <%= post.user.email %>
+  <%= post.content %>
+<% end %>
 <%= link_to "ユーザー一覧へ", users_path %>
 <%= link_to "ホームへ戻る", posts_path %>
