@@ -1,0 +1,20 @@
+<h1>いいねサンプル</h1>
+<% if user_signed_in? %>
+  <%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>
+  <%= link_to "マイページへ", user_path(current_user.id) %>
+  <h2>投稿する</h2>
+  <%= form_for @post do |f| %>
+    <%= f.text_field :content %>
+    <%= f.submit %>
+  <% end %>
+  <hr>
+  <h2>投稿一覧</h2>
+  <% @posts.each do |post| %>
+    <a href="/users/<%= post.user.id %>"><%= post.user.email %></a>
+    <p><a href="/posts/<%= post.id %>"><%= post.content %></a></p>
+  <% end %>
+
+<% else %>
+  <%= link_to "ユーザー登録", new_user_registration_path %>
+  <%= link_to "ログイン", new_user_session_path %>
+<% end %>
