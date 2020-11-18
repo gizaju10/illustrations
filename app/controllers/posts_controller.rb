@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :create]
+  before_action :authenticate_user!, only: [:show, :create] # ログインしていないユーザーはshow, createは実行できない
   def index
     @posts = Post.all
     @post = Post.new
@@ -7,6 +7,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comments = @post.comments # コメント機能
+    @comment = Comment.new # コメント機能
     @like = Like.new # いいね機能
   end
 

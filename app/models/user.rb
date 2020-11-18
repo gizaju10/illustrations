@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :posts, dependent: :destroy # 追加 もしユーザーがデータベースから削除されてしまった場合にユーザーがした投稿も全て消える
+  has_many :comments # 追加 コメント
   has_many :likes, dependent: :destroy # 追加
   has_many :liked_posts, through: :likes, source: :post # 追加 いいね機能の利用
 
