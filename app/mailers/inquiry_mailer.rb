@@ -12,7 +12,7 @@ class InquiryMailer < ApplicationMailer
 
   def received_email(inquiry)
     @inquiry = inquiry
-    mail(:to => inquiry.email, :subject => 'お問い合わせを承りました')
+    # mail(:to => inquiry.email, :subject => 'お問い合わせを承りました')
     mail(:to => ENV['GOOGLE_MAIL'], :subject => 'お問い合わせがあります')
   end
 end
