@@ -13,3 +13,5 @@
 ## ※困ったときに
 1. [NoMethodErrorの解決方法(備忘録) - Qiita](https://qiita.com/okamoto_ryo/items/843bb818f40ae0ad7400)
 2. [Railsでフォロー機能を作る方法 - Qiita](https://qiita.com/mitsumitsu1128/items/e41e2ff37f143db81897)
+3. [RailsのMailerでGmailを使う方法 - Qiita](https://qiita.com/YuruFuwaFox/items/b6817856ae4fa2e39f7a)
+4. [【Rails入門】Action Mailerのメール送信を初心者向けに基礎から解説 | 侍エンジニア塾ブログ（Samurai Blog） - プログラミング入門者向けサイト](https://www.sejuku.net/blog/48739)

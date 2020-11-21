@@ -53,4 +53,18 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# 追加 エラーメッセージの日本語化
+gem 'rails-i18n'
+
+# パスワード暗号化
+gem 'bcrypt'
+
+# .envの利用
+gem 'dotenv-rails'
+
+# ページネーション
+gem 'kaminari'
+
+gem 'google-api-client'
+
 gem 'devise', '~> 4.7', '>= 4.7.3'
