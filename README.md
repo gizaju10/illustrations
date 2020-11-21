@@ -8,6 +8,7 @@
 [railsでフォロー機能をつける。 - Qiita](https://qiita.com/kitaokeita/items/59b625e0c43a62f5fe6a)
 
 ### sub3から追加
+[Railsでお問合せ機能実装。 - Qiita](https://qiita.com/YJ2222/items/fcf21b6a33721ede13e5)
 [rails でお問合せフォームを作り、自分のメールアドレスに送信させる方法 - Qiita](https://qiita.com/george022497/items/30a360baca14b33b4602)
 
 ## ※困ったときに
