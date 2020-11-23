@@ -15,6 +15,10 @@
 * [f.hiddel_fieldを使ったテストユーザーログイン機能 - Qiita](https://qiita.com/V_PG_N/items/1f25efe3855881698eb6)
 * [既存のPJにdeviseのconfirmableを実装する(Ruby on Rails) - Qiita](https://qiita.com/akahirout2641/items/39333b5ca88be6ce81fa)
 
+### sub5から追加
+* [Rails 爆速でSNSシェアボタンを実装してみよう - Qiita](https://qiita.com/keitah/items/6bce3913c3f9f4415693)
+* [Facebook - Facebookのシェアボタンで、ページ毎に個別の内容を表示させるには？（Ruby on Rails)｜teratail](https://teratail.com/questions/103055)
+
 ## ※困ったときに
 1. [[*Rails*] deviseの使い方（rails6版） - Qiita](https://qiita.com/cigalecigales/items/16ce0a9a7e79b9c3974e)
 2. [NoMethodErrorの解決方法(備忘録) - Qiita](https://qiita.com/okamoto_ryo/items/843bb818f40ae0ad7400)
