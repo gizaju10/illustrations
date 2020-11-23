@@ -14,8 +14,6 @@
 ### sub4から追加
 * [f.hiddel_fieldを使ったテストユーザーログイン機能 - Qiita](https://qiita.com/V_PG_N/items/1f25efe3855881698eb6)
 * [既存のPJにdeviseのconfirmableを実装する(Ruby on Rails) - Qiita](https://qiita.com/akahirout2641/items/39333b5ca88be6ce81fa)
-
-### sub5から追加
 * [【Rails】Twitterシェアボタンの作成方法 - Qiita](https://qiita.com/matsubishi5/items/adfb4a617a9494612c6b)
 * [Rails 爆速でSNSシェアボタンを実装してみよう - Qiita](https://qiita.com/keitah/items/6bce3913c3f9f4415693)
 * [Facebook - Facebookのシェアボタンで、ページ毎に個別の内容を表示させるには？（Ruby on Rails)｜teratail](https://teratail.com/questions/103055)
