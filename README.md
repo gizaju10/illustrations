@@ -11,6 +11,9 @@
 * [Railsでお問合せ機能実装。 - Qiita](https://qiita.com/YJ2222/items/fcf21b6a33721ede13e5)
 * [rails でお問合せフォームを作り、自分のメールアドレスに送信させる方法 - Qiita](https://qiita.com/george022497/items/30a360baca14b33b4602)
 
+### sub4から追加
+* [f.hiddel_fieldを使ったテストユーザーログイン機能 - Qiita](https://qiita.com/V_PG_N/items/1f25efe3855881698eb6)
+
 ## ※困ったときに
 1. [NoMethodErrorの解決方法(備忘録) - Qiita](https://qiita.com/okamoto_ryo/items/843bb818f40ae0ad7400)
 2. [Railsでフォロー機能を作る方法 - Qiita](https://qiita.com/mitsumitsu1128/items/e41e2ff37f143db81897)
