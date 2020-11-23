@@ -23,4 +23,3 @@
 5. [【Rails入門】Action Mailerのメール送信を初心者向けに基礎から解説 | 侍エンジニア塾ブログ（Samurai Blog） - プログラミング入門者向けサイト](https://www.sejuku.net/blog/48739)
 6. [【Rails】メール送信設定 〜gmail利用〜 - Qiita](https://qiita.com/ozackiee/items/f260f34db4e5c887460d)
 7. [Ruby on Rails カラムの追加と削除 - Qiita](https://qiita.com/azusanakano/items/a2847e4e582b9a627e3a)
-8. [Ruby on Rails カラムの追加と削除 - Qiita](https://qiita.com/littlekbt/items/48fa2b428147921db5a5)
