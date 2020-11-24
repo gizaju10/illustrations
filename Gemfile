@@ -68,3 +68,8 @@ gem 'kaminari'
 gem 'google-api-client'
 
 gem 'devise', '~> 4.7', '>= 4.7.3'
+
+gem 'omniauth-facebook'                  # Facebook認証
+gem 'omniauth-twitter'                   # Twitter認証
+gem 'omniauth-google-oauth2'             # Google認証
+gem 'omniauth-line'                      # LINE認証

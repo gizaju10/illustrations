@@ -18,6 +18,10 @@
 * [Rails 爆速でSNSシェアボタンを実装してみよう - Qiita](https://qiita.com/keitah/items/6bce3913c3f9f4415693)
 * [Facebook - Facebookのシェアボタンで、ページ毎に個別の内容を表示させるには？（Ruby on Rails)｜teratail](https://teratail.com/questions/103055)
 
+### sub5から追加
+* [【Rails】SNS認証の登録手順(Twitter、Facebook、google) - Qiita](https://qiita.com/manbolila/items/8caa1f5d2b1fb96d2646)
+* [【Rails4, OmniAuth】世界一丁寧なLINE LOGIN導入講座 - Qiita](https://qiita.com/YuitoSato/items/a9e613370f418d5c322c)
+
 ## ※困ったときに
 1. [[*Rails*] deviseの使い方（rails6版） - Qiita](https://qiita.com/cigalecigales/items/16ce0a9a7e79b9c3974e)
 2. [NoMethodErrorの解決方法(備忘録) - Qiita](https://qiita.com/okamoto_ryo/items/843bb818f40ae0ad7400)
