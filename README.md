@@ -22,6 +22,10 @@
 * [【Rails】SNS認証の登録手順(Twitter、Facebook、google) - Qiita](https://qiita.com/manbolila/items/8caa1f5d2b1fb96d2646)
 * [【Rails4, OmniAuth】世界一丁寧なLINE LOGIN導入講座 - Qiita](https://qiita.com/YuitoSato/items/a9e613370f418d5c322c)
 
+### sub6_Physical_deletionから追加
+* [[Rails]paranoiaを使わずに退会機能を実装する(ユーザーを論理削除する) - Qiita](https://qiita.com/yuto_1014/items/358d0a425193b12c969a#userrb)
+* [退会時に投稿データを削除する [Rails] - Qiita](https://qiita.com/mailok1212/items/533bbf7d97a9d4bd4573)
+
 ## ※困ったときに
 1. [[*Rails*] deviseの使い方（rails6版） - Qiita](https://qiita.com/cigalecigales/items/16ce0a9a7e79b9c3974e)
 2. [NoMethodErrorの解決方法(備忘録) - Qiita](https://qiita.com/okamoto_ryo/items/843bb818f40ae0ad7400)
