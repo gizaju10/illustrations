@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
   has_many :posts, dependent: :destroy # 追加 もしユーザーがデータベースから削除されてしまった場合にユーザーがした投稿も全て消える
-  has_many :comments # 追加 コメント
+  has_many :comments, dependent: :destroy # 追加 コメント 削除も仮追加
   has_many :likes, dependent: :destroy # 追加
   has_many :liked_posts, through: :likes, source: :post # 追加 いいね機能の利用
 
@@ -33,5 +33,9 @@ class User < ApplicationRecord
   # フォローを外す関数
   def unfollow!(other_user)
     following_relationships.find_by(following_id: other_user.id).destroy
+  end
+
+  def active_for_authentication?
+    super && (self.is_deleted == false)
   end
 end
