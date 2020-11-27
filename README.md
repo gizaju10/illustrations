@@ -25,6 +25,7 @@
 ### sub6_Physical_deletionから追加
 * [[Rails]paranoiaを使わずに退会機能を実装する(ユーザーを論理削除する) - Qiita](https://qiita.com/yuto_1014/items/358d0a425193b12c969a#userrb)
 * [退会時に投稿データを削除する [Rails] - Qiita](https://qiita.com/mailok1212/items/533bbf7d97a9d4bd4573)
+* [フラッシュメッセージとdevise機能を拡張（Nameを入力できる）してユーザ管理画面を作る - Qiita](https://qiita.com/pieroplus/items/a2ca31ef06446fab0ee0)
 
 ## ※困ったときに
 1. [[*Rails*] deviseの使い方（rails6版） - Qiita](https://qiita.com/cigalecigales/items/16ce0a9a7e79b9c3974e)

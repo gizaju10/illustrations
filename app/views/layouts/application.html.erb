@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>TeApp</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title>TeApp</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <body>
-    <%= yield %>
-  </body>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+  <!-- ここからdeviseフラッシュメッセージ -->
+  <% flash.each do |key, value| %>
+  <%= content_tag(:div, value, class: "#{key}") %>
+  <% end %>
+  <!-- ここまでdeviseフラッシュメッセージ -->
+  <%= yield %>
+</body>
+
 </html>
