@@ -27,6 +27,11 @@
 * [退会時に投稿データを削除する [Rails] - Qiita](https://qiita.com/mailok1212/items/533bbf7d97a9d4bd4573)
 * [フラッシュメッセージとdevise機能を拡張（Nameを入力できる）してユーザ管理画面を作る - Qiita](https://qiita.com/pieroplus/items/a2ca31ef06446fab0ee0)
 
+### sub7
+* [【Rails5】devise を日本語化する - グロースエンジニアのブログ](http://31webcreation.hatenablog.com/entry/translate-devise-to-japanese)
+
+
+
 ## ※困ったときに
 1. [[*Rails*] deviseの使い方（rails6版） - Qiita](https://qiita.com/cigalecigales/items/16ce0a9a7e79b9c3974e)
 2. [NoMethodErrorの解決方法(備忘録) - Qiita](https://qiita.com/okamoto_ryo/items/843bb818f40ae0ad7400)
