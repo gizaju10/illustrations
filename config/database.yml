@@ -1,6 +1,6 @@
 default: &default
   adapter: postgresql
-  encoding: unicode
+  encoding: utf8
   host: db
   username: postgres
   password: ENV['POSTGRES_PASSWORD']
@@ -8,9 +8,9 @@ default: &default
 
 development:
   <<: *default
-  database: te_app_development
+  database: illustration_development
 
 
 test:
   <<: *default
-  database: te_app_test
+  database: illustration_test

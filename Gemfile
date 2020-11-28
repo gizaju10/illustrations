@@ -73,3 +73,5 @@ gem 'omniauth-facebook'                  # Facebook認証
 gem 'omniauth-twitter'                   # Twitter認証
 gem 'omniauth-google-oauth2'             # Google認証
 gem 'omniauth-line'                      # LINE認証
+
+gem 'rename'

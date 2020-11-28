@@ -11,14 +11,14 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash - && \
 apt-get install nodejs
 
-RUN mkdir /te_app
+RUN mkdir /illustration
 # [WORKDIR] 作業ディレクトリを設定
-WORKDIR /te_app
+WORKDIR /illustration
 # [COPY] ローカルのファイルをコンテナへコピー
-COPY Gemfile /te_app/Gemfile
-COPY Gemfile.lock /te_app/Gemfile.lock
+COPY Gemfile /illustration/Gemfile
+COPY Gemfile.lock /illustration/Gemfile.lock
 RUN bundle install
-COPY . /te_app
+COPY . /illustration
 
 # コンテナが起動するたびに実行されるスクリプトを追加します
 COPY entrypoint.sh /usr/bin/
