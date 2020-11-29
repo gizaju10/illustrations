@@ -30,6 +30,8 @@
 ### sub7
 * [【Rails5】devise を日本語化する - グロースエンジニアのブログ](http://31webcreation.hatenablog.com/entry/translate-devise-to-japanese)
 
+### sub8
+...
 
 
 ## ※困ったときに
