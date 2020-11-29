@@ -7,6 +7,11 @@
 
 <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fqiita.com%2F&layout=button&size=large&width=79&height=28&appId" width="79" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
 
+<%# <% if user_signed_in? && @user.id == current_user.id %>
+<% if user_signed_in? && current_user.id == @post.user_id %>
+  <%= link_to("編集", "/posts/#{@post.id}/edit") %>
+  <%= link_to("削除", "/posts/#{@post.id}/destroy", {method: "post"}) %>
+<% end %>
 
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v9.0" nonce="erZOo8Wx"></script>
@@ -33,11 +38,15 @@
 
 <h2>コメント一覧</h2>
 <% @comments.each do |c| %>
-  <div>
-    <a href="/users/<%= @post.user.id %>"><%= c.user.email %></a>
-    <%= c.content %>
-    <hr>
-  </div>
+<div>
+  <a href="/users/<%= @post.user.id %>"><%= c.user.email %></a>
+  <%= c.content %>
+  <% if user_signed_in? && current_user.id == c.user_id %>
+  <%= link_to("編集", "/comments/#{c.id}/edit") %>
+  <%= link_to("削除", "/comments/#{c.id}/destroy", {method: "post"}) %>
+  <% end %>
+  <hr>
+</div>
 <% end %>
 
 <%= form_for [@post, @comment] do |f| %>
