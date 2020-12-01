@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find_by(id: params[:id])
     @comment.content = params[:content]
     if @comment.save
-      flash[:notice] = "投稿を編集しました"
+      flash[:notice] = "コメントを編集しました"
       redirect_to("/")
     else
       render("/")
@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find_by(id: params[:id])
     @comment.destroy
-    flash[:notice] = "を削除しました"
+    flash[:notice] = "コメントを削除しました"
     redirect_to("/")
   end
   
