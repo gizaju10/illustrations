@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
   end
 
+  get "search" => "posts#search" # 記事検索機能
+
   post "posts/:id/update" => "posts#update" # 投稿編集→投稿更新
   post "posts/:id/destroy" => "posts#destroy" # 投稿編集→投稿削除
 

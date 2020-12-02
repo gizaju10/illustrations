@@ -5,6 +5,12 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  # 記事検索
+  def search
+    #Viewのformで取得したパラメータをモデルに渡す
+    @posts = Post.search(params[:search])
+  end
+
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments # コメント機能
