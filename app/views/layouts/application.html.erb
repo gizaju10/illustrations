@@ -5,10 +5,10 @@
   <title>Illustration</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
+  <%= favicon_link_tag 'favicon.ico' %>
   <meta name="viewport" content="width=device-width,initial-scale=1"> <!-- 画面サイズに表示を調整 -->
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <%= favicon_link_tag('favicon.ico') %>
   <%# 開発用Vue.js %>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <%# 本番用Vue.js %>
@@ -19,9 +19,43 @@
   <header id="grid-header">
     <nav class="navbar navbar-expand-lg">
       <%= link_to("イラストアプリ", "/", class: 'navbar-brand underscore') %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <% if user_signed_in? %>
+          <li class="nav-item underscore">
+            <!-- ログインしている場合 -->
+            <%= link_to("ログアウト", destroy_user_session_path, :method => :delete, class: 'nav-link') %>
+          </li>
+          <li class="nav-item underscore">
+            <%= link_to("マイページへ", user_path(current_user.id), class: 'nav-link') %>
+          </li>
+          <li class="nav-item underscore">
+            <%= link_to("ユーザー一覧へ", users_path, class: 'nav-link') %>
+          </li>
+          <% else %>
+          <!-- ログアウトしている場合 -->
+          <li class="nav-item underscore">
+            <%= link_to"ユーザー登録", new_user_registration_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item underscore">
+            <%= link_to"ログイン", new_user_session_path, class: 'nav-link' %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
     </nav>
   </header>
+  
   <aside>
+<h2>Example heading <span class="badge badge-secondary">New</span></h2>
+
+  <div class="alert alert-primary" role="alert">
+  A simple primary alert—check it out!
+</div>
     <p>記事検索</p>
     <%= form_tag(search_path,:method => 'get') do %>
     <%= text_field_tag :search %>

@@ -75,3 +75,9 @@ gem 'omniauth-google-oauth2'             # Google認証
 gem 'omniauth-line'                      # LINE認証
 
 gem 'rename'
+
+gem 'carrierwave' #画像アップロード
+
+gem 'rmagick' #画像の加工
+
+gem 'hirb', '~> 0.7.3'
