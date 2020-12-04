@@ -51,11 +51,6 @@
   </header>
   
   <aside>
-<h2>Example heading <span class="badge badge-secondary">New</span></h2>
-
-  <div class="alert alert-primary" role="alert">
-  A simple primary alert—check it out!
-</div>
     <p>記事検索</p>
     <%= form_tag(search_path,:method => 'get') do %>
     <%= text_field_tag :search %>
@@ -65,14 +60,9 @@
   <main>
   <!-- ここからdeviseフラッシュメッセージ -->
   <% flash.each do |key, value| %>
-  <%= content_tag(:div, value, class: "#{key}") %>
+  <%= content_tag(:div, value, class: "#{key} badge-pill") %>
   <% end %>
   <!-- ここまでdeviseフラッシュメッセージ -->
-    <% if flash[:notice] %>
-    <div>
-      <%= flash[:notice] %>
-    </div>
-    <% end %>
 
   <%= yield %>
     <div id="app">

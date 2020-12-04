@@ -16,14 +16,15 @@
 
 /* gem'devise' */
 .notice {
-  background-color: green;
-  color: #white;
+  background-color: #20c997;
+  color: #fff;
   text-align: center;
+  margin : 0px 30px 10px 30px ;
 }
   
 .alert {
-  background-color: red;
-  color: #white;
+  background-color: #dc3545;
+  color: #fff;
   text-align: center;
 }
 
@@ -90,8 +91,11 @@ main {
     body {
         grid-template:
         "header"
+        "..." 10px
         "right" 1fr
+        "..." 10px
         "left"
+        "..." 10px
         "footer";
     }
 }
@@ -102,6 +106,7 @@ main {
      position: relative;
      display: inline-block;
      text-decoration: none;
+     
  }
 
  .underscore::after {
