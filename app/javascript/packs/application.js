@@ -19,3 +19,5 @@ require("channels")
 // Bootstrapの導入
 import 'bootstrap';
 import '../stylesheets/application.scss';
+
+import '@fortawesome/fontawesome-free/js/all'

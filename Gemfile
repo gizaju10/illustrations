@@ -81,3 +81,6 @@ gem 'carrierwave' #画像アップロード
 gem 'rmagick' #画像の加工
 
 gem 'hirb', '~> 0.7.3'
+
+# gem 'font-awesome-rails'
+# gem 'font-awesome-sass'
