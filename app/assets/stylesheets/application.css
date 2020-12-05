@@ -46,6 +46,7 @@
 
 .navbar {
     background-color: #e62117;
+    border-radius: 10px; /* 角を丸くする */
     ;
 }
  
