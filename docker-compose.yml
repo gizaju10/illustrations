@@ -5,7 +5,7 @@ services: # 下のハッシュにサービスを作る。命名は自由だが�
     volumes: # ディレクトリのマウント設定（dbデータなどを残せる）
       - ./tmp/db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD # .envファイルで指定
   web:
     build: . # Dockerfileなどがあるパス（基本的にカレントディレクトリ）
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'" # コマンド（server.pidファイルを削除してからrailsサーバー起動)
