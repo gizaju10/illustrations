@@ -82,5 +82,7 @@ gem 'rmagick' #画像の加工
 
 gem 'hirb', '~> 0.7.3'
 
+gem 'acts-as-taggable-on', '~> 6.0'
+
 # gem 'font-awesome-rails'
 # gem 'font-awesome-sass'
