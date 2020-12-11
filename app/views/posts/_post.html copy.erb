@@ -1,0 +1,164 @@
+<% @post.errors.full_messages_for(:title).each do |message| %>
+<div>
+    <%= message %>
+</div>
+<% end %>
+<div>
+    <input type="text" required name="title" placeholder="タイトル" value=<%= @post.title %>>
+</div>
+
+<% @post.errors.full_messages_for(:url).each do |message| %>
+<div>
+    <%= message %>
+</div>
+<% end %>
+<div>
+    <input type="url" required name="url" placeholder="YouTubeのURLを入力して下さい" value=<%= @post.url %>>
+</div>
+
+<% @post.errors.full_messages_for(:or_categories).each do |message| %>
+<div>
+    <%= message %>
+</div>
+<% end %>
+<div>
+    カテゴリー：
+    <% if @post.category_1 %>
+    <input type="checkbox" id="category_a" name="category_1" value="知識" checked><label for="category_a">知識</label>
+    <% else %>
+    <input type="checkbox" id="category_a" name="category_1" value="知識"><label for="category_a">知識</label>
+    <% end %>
+
+    <% if @post.category_2 %>
+    <input type="checkbox" id="category_b" name="category_2" value="技術" checked><label for="category_b">技術</label>
+    <% else %>
+    <input type="checkbox" id="category_b" name="category_2" value="技術"><label for="category_b">技術</label>
+    <% end %>
+
+    <% if @post.category_3 %>
+    <input type="checkbox" id="category_c" name="category_3" value="メンタル" checked><label for="category_c">メンタル</label>
+    <% else %>
+    <input type="checkbox" id="category_c" name="category_3" value="メンタル"><label for="category_c">メンタル</label>
+    <% end %>
+
+    <% if @post.category_4 %>
+    <input type="checkbox" id="category_d" name="category_4" value="その他" checked><label for="category_d">その他</label>
+    <% else %>
+    <input type="checkbox" id="category_d" name="category_4" value="その他"><label for="category_d">その他</label>
+    <% end %>
+
+</div>
+<% @post.errors.full_messages_for(:or_jobs).each do |message| %>
+<div>
+    <%= message %>
+</div>
+<% end %>
+<div>
+    対象職種：
+    <% if @post.job_1 %>
+    <input type="checkbox" id="job_a" name="job_1" value="漫画家" checked><label for="job_a">漫画家</label>
+    <% else %>
+    <input type="checkbox" id="job_a" name="job_1" value="漫画家"><label for="job_a">漫画家</label>
+    <% end %>
+
+    <% if @post.job_2 %>
+    <input type="checkbox" id="job_b" name="job_2" value="イラストレーター" checked><<label for="job_b">イラストレーター</label>
+    <% else %>
+    <input type="checkbox" id="job_b" name="job_2" value="イラストレーター"><label for="job_b">イラストレーター</label>
+    <% end %>
+
+    <% if @post.job_3 %>
+    <input type="checkbox" id="job_c" name="job_3" value="キャラクターデザイナー" checked><label for="job_c">キャラクターデザイナー</label>
+    <% else %>
+    <input type="checkbox" id="job_c" name="job_3" value="キャラクターデザイナー"><label for="job_c">キャラクターデザイナー</label>
+    <% end %>
+
+    <% if @post.job_4 %>
+    <input type="checkbox" id="job_d" name="job_4" value="コンセプトアーティスト" checked><label for="job_d">コンセプトアーティスト</label>
+    <% else %>
+    <input type="checkbox" id="job_d" name="job_4" value="コンセプトアーティスト"><label for="job_d">コンセプトアーティスト</label>
+    <% end %>
+
+    <% if @post.job_5 %>
+    <input type="checkbox" id="job_e" name="job_5" value="アニメーター" checked><label for="job_e">アニメーター</label>
+    <% else %>
+    <input type="checkbox" id="job_e" name="job_5" value="アニメーター"><label for="job_e">アニメーター</label>
+    <% end %>
+
+    <% if @post.job_6 %>
+    <input type="checkbox" id="job_f" name="job_6" value="CGクリエイター" checked><label for="job_f">CGクリエイター</label>
+    <% else %>
+    <input type="checkbox" id="job_f" name="job_6" value="CGクリエイター"><label for="job_f">CGクリエイター</label>
+    <% end %>
+
+    <% if @post.job_7 %>
+    <input type="checkbox" id="job_g" name="job_7" value="絵本作家" checked><label for="job_g">絵本作家</label>
+    <% else %>
+    <input type="checkbox" id="job_g" name="job_7" value="絵本作家"><label for="job_g">絵本作家</label>
+    <% end %>
+
+    <% if @post.job_8 %>
+    <input type="checkbox" id="job_h" name="job_8" value="その他" checked><label for="job_h">その他</label>
+    <% else %>
+    <input type="checkbox" id="job_h" name="job_8" value="その他"><label for="job_h">その他</label>
+    <% end %>
+
+</div>
+<% @post.errors.full_messages_for(:or_targets).each do |message| %>
+<div>
+    <%= message %>
+</div>
+<% end %>
+<div>
+    対象者：
+    <% if @post.target_1 %>
+    <input type="checkbox" id="target_a" name="target_1" value="初心者" checked><label for="target_a">初心者</label>
+    <% else %>
+    <input type="checkbox" id="target_a" name="target_1" value="初心者"><label for="target_a">初心者</label>
+    <% end %>
+
+    <% if @post.target_2 %>
+    <input type="checkbox" id="target_b" name="target_2" value="中級者" checked><label for="target_b">中級者</label>
+    <% else %>
+    <input type="checkbox" id="target_b" name="target_2" value="中級者"><label for="target_b">中級者</label>
+    <% end %>
+
+    <% if @post.target_3 %>
+    <input type="checkbox" id="target_c" name="target_3" value="上級者" checked><label for="target_c">上級者</label>
+    <% else %>
+    <input type="checkbox" id="target_c" name="target_3" value="上級者"><label for="target_c">上級者</label>
+    <% end %>
+
+    <% if @post.target_4 %>
+    <input type="checkbox" id="target_d" name="target_4" value="小学生以下" checked><label for="target_d">小学生以下</label>
+    <% else %>
+    <input type="checkbox" id="target_d" name="target_4" value="小学生以下"><label for="target_d">小学生以下</label>
+    <% end %>
+
+    <% if @post.target_5 %>
+    <input type="checkbox" id="target_e" name="target_5" value="中学・高校生" checked><label for="target_e">中学・高校生</label>
+    <% else %>
+    <input type="checkbox" id="target_e" name="target_5" value="中学・高校生"><label for="target_e">中学・高校生</label>
+    <% end %>
+
+    <% if @post.target_6 %>
+    <input type="checkbox" id="target_f" name="target_6" value="専門・大学生" checked><label for="target_f">専門・大学生</label>
+    <% else %>
+    <input type="checkbox" id="target_f" name="target_6" value="専門・大学生"><label for="target_f">専門・大学生</label>
+    <% end %>
+
+    <% if @post.target_7 %>
+    <input type="checkbox" id="target_g" name="target_7" value="社会人" checked><label for="target_g">社会人</label>
+    <% else %>
+    <input type="checkbox" id="target_g" name="target_7" value="社会人"><label for="target_g">社会人</label>
+    <% end %>
+
+</div>
+<% @post.errors.full_messages_for(:content).each do |message| %>
+<div>
+    <%= message %>
+</div>
+<% end %>
+<div>
+    <textarea placeholder="紹介文" required name="content"><%= @post.content %></textarea>
+</div>

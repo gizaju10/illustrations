@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   # get 'posts/show'
   # get 'users/index'
   # get 'users/show'
-  # devise_for :users
 
   devise_for :users
 
@@ -14,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show]
   put "/users/:id/hide" => "users#hide", as: 'users_hide'
-  resources :posts, only: [:index, :show, :create, :edit] do
+  resources :posts, only: [:new, :index, :show, :create, :edit] do
     resources :comments, only: [:create]
     resources :likes, only: [:create, :destroy]
   end
