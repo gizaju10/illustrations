@@ -18,13 +18,21 @@ class PostsController < ApplicationController
     @like = Like.new # いいね機能
   end
 
+  # 新規投稿
+  def new
+    @post = Post.new
+  end
+
+  # 新規投稿→投稿送信
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_back(fallback_location: root_path)
+      flash[:notice] = "投稿を作成しました"
+      redirect_to(root_path)
     else
-      redirect_back(fallback_location: root_path)
+      flash.now[:alert] = "投稿に失敗しました"
+      render("/posts/new")
     end
   end
 

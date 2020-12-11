@@ -38,6 +38,9 @@
           <li class="nav-item underscore">
             <%= link_to("ユーザー一覧へ", users_path, class: 'nav-link') %>
           </li>
+          <li class="nav-item underscore">
+            <%= link_to("新規投稿", new_post_path, class: 'nav-link') %>
+          </li>
           <% else %>
           <!-- ログアウトしている場合 -->
           <li class="nav-item underscore">
@@ -61,11 +64,8 @@
     <% end %>
   </aside>
   <main>
-  <!-- ここからdeviseフラッシュメッセージ -->
-  <% flash.each do |key, value| %>
-  <%= content_tag(:div, value, class: "#{key} badge-pill") %>
-  <% end %>
-  <!-- ここまでdeviseフラッシュメッセージ -->
+
+<%= render 'layouts/alert' %>
 
 <input id="acd-check1" class="acd-check" type="checkbox">
 <label class="acd-label" for="acd-check1">クリックで開く1<i class="fas fa-angle-double-down fa-1x fa-pull-right"></i></span></label>
