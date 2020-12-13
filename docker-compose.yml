@@ -1,0 +1,17 @@
+version: '3.8'  # docker-composeのバージョン
+services: # 下のハッシュにサービスを作る。命名は自由だが、通常はwebとdbと名付ける。
+  db:
+    image: postgres # 使用するimage（dbでPostgreSQLを指定）
+    volumes: # ディレクトリのマウント設定（dbデータなどを残せる）
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD # .envファイルで指定
+  web:
+    build: . # Dockerfileなどがあるパス（基本的にカレントディレクトリ）
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'" # コマンド（server.pidファイルを削除してからrailsサーバー起動)
+    volumes:
+      - .:/illustrations
+    ports: # ポート番号。[ホスト：コンテナ]で設定。
+      - "3000:3000"
+    depends_on:
+      - db # 依存関係を示していて、起動順を指定できます。ここではdb→webへと起動します。

@@ -1,0 +1,9 @@
+</div>
+<% @post.errors.full_messages_for(:content).each do |message| %>
+<div>
+    <%= message %>
+</div>
+<% end %>
+<div>
+    <textarea placeholder="紹介文" required name="content"><%= @post.content %></textarea>
+</div>

@@ -1,0 +1,7 @@
+<h1>編集する</h1>
+<%= form_tag("/comments/#{@comment.id}/update") do %>
+
+<%= render "comments/comment" %>
+
+<input type="submit" value="保存">
+<% end %>

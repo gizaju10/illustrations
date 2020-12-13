@@ -1,0 +1,59 @@
+<h1>投稿詳細ページ</h1>
+<h3><%= @post.user.email %></h3>
+<h3><%= @post.content %></h3>
+
+<%= link_to 'Twitter', "https://twitter.com/share?url=#{request.url}/&text=イラストを学びたい全ての方に#{ @post.content }を!", title: 'Twitter', target: '_blank' %>
+
+
+<iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fqiita.com%2F&layout=button&size=large&width=79&height=28&appId" width="79" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+
+<%# <% if user_signed_in? && @user.id == current_user.id %>
+<% if user_signed_in? && current_user.id == @post.user_id %>
+  <%= link_to("編集", "/posts/#{@post.id}/edit") %>
+  <%= link_to("削除", "/posts/#{@post.id}/destroy", {method: "post"}) %>
+<% end %>
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v9.0" nonce="erZOo8Wx"></script>
+
+<div class="fb-share-button" data-href="https://qiita.com/" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fqiita.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">シェア</a></div>
+
+
+<div class="line-it-button" data-lang="ja" data-type="share-b" data-ver="3" data-url="https://qiita.com/" data-color="default" data-size="large" data-count="false" style="display: none;"></div>
+ <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+
+
+<h3>いいね件数: <%= @post.likes.count %></h3>
+
+<% if current_user.already_liked?(@post) %>
+  <%= button_to 'いいねを取り消す', post_like_path(@post), method: :delete %>
+<% else %>
+  <%= button_to 'いいね', post_likes_path(@post) %>
+<% end %>
+
+<h2>いいねしたユーザー</h2>
+<% @post.liked_users.each do |user| %>
+  <li><%= user.email %></li>
+<% end %>
+
+<h2>コメント一覧</h2>
+<% @comments.each do |c| %>
+<div>
+  <a href="/users/<%= @post.user.id %>"><%= c.user.email %></a>
+  <%= c.content %>
+  <% if user_signed_in? && current_user.id == c.user_id %>
+  <%= link_to("編集", "/comments/#{c.id}/edit") %>
+  <%= link_to("削除", "/comments/#{c.id}/destroy", {method: "post"}) %>
+  <% end %>
+  <hr>
+</div>
+<% end %>
+
+<%= form_for [@post, @comment] do |f| %>
+  <%= f.text_field :content %>
+  <%= f.hidden_field :post_id, value: @post.id %> <%# 追加 %>
+  <br>
+  <%= f.submit 'コメントする' %>
+<% end %>
+
+<%= link_to "ホームへ戻る", posts_path %>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Illustration</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <meta name="viewport" content="width=device-width,initial-scale=1"> <!-- 画面サイズに表示を調整 -->
+  <%# <script src="https://kit.fontawesome.com/5e4f54e2ab.js" crossorigin="anonymous"></script> %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%# 開発用Vue.js %>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <%# 本番用Vue.js %>
+  <%# <script src="https://cdn.jsdelivr.net/npm/vue"></script> %>
+</head>
+
+<body>
+  <header id="grid-header">
+  <div class="shadow p-3 mb-5 bg-white rounded">
+    <nav class="navbar navbar-expand-lg">
+      <%= link_to("イラストアプリ", "/", class: 'navbar-brand underscore') %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <% if user_signed_in? %>
+          <li class="nav-item underscore">
+            <!-- ログインしている場合 -->
+            <%= link_to("ログアウト", destroy_user_session_path, :method => :delete, class: 'nav-link') %>
+          </li>
+          <li class="nav-item underscore">
+            <%= link_to("マイページへ", user_path(current_user.id), class: 'nav-link') %>
+          </li>
+          <li class="nav-item underscore">
+            <%= link_to("ユーザー一覧へ", users_path, class: 'nav-link') %>
+          </li>
+          <li class="nav-item underscore">
+            <%= link_to("新規投稿", new_post_path, class: 'nav-link') %>
+          </li>
+          <% else %>
+          <!-- ログアウトしている場合 -->
+          <li class="nav-item underscore">
+            <%= link_to"ユーザー登録", new_user_registration_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item underscore">
+            <%= link_to"ログイン", new_user_session_path, class: 'nav-link' %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  </header>
+  
+  <aside>
+    <p>記事検索</p>
+    <%= form_tag(search_path,:method => 'get') do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag '検索する', :name => nil %>
+    <% end %>
+  </aside>
+  <main>
+
+<%= render 'layouts/alert' %>
+
+<input id="acd-check1" class="acd-check" type="checkbox">
+<label class="acd-label" for="acd-check1">クリックで開く1<i class="fas fa-angle-double-down fa-1x fa-pull-right"></i></span></label>
+<div class="acd-content">
+  <p>hello.world!</p>
+</div>
+<input id="acd-check2" class="acd-check" type="checkbox">
+<label class="acd-label" for="acd-check2">クリックで開く2<i class="fas fa-angle-double-down fa-1x fa-pull-right"></i></label>
+<div class="acd-content">
+  <p>hello.world2!</p>
+</div>
+<input id="acd-check3" class="acd-check" type="checkbox">
+<label class="acd-label" for="acd-check3">クリックで開く3<i class="fas fa-angle-double-down fa-1x fa-pull-right"></i></label>
+<div class="acd-content">
+  <p>hello.world3!</p>
+</div>
+<input id="acd-check4" class="acd-check" type="checkbox">
+<label class="acd-label" for="acd-check4">クリックで開く4<i class="fas fa-angle-double-down fa-1x fa-pull-right"></i></label>
+<div class="acd-content">
+  <p>hello.world4!</p>
+</div>
+
+  <%= yield %>
+    <div id="app">
+      {{ message }}
+    </div>
+  </main>
+
+
+
+  <footer>
+    &copy;Teppei Mimachi 2020
+  </footer>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Vue.jsで表示'
+      }
+    })
+  </script>
+</body>
+
+</html>

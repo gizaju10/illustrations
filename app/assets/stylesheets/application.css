@@ -1,0 +1,202 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+/* gem'devise' */
+.alert {
+	text-align: center;
+}
+.alert-info {
+    background-color: #bde9ff;
+    border-color: #bde9ff;
+    color: #4c6977;
+}
+ 
+.alert-danger {
+    background-color: #f3c0c0;
+    border-color: #f3c0c0;
+    color: #3e3a3a;
+}
+
+
+/* ヘッダー */
+.navbar-brand,
+.nav-link {
+    color: #d3d3d3;
+}
+
+.navbar-brand:hover,
+.nav-link:hover {
+    color: #fff;
+}
+
+.navbar-brand:hover,
+.nav-link:hover {
+    transition: 1s all;
+}
+
+.navbar {
+    background-color: #e62117;
+    border-radius: 10px; /* 角を丸くする */
+    ;
+}
+ 
+ .navbar-toggler .navbar-toggler-icon {
+     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+ }
+
+
+body {
+    min-height: 100vh;
+    margin: 0; /* ページ周りの余白をなくす */
+    display: grid;
+    grid-template:
+        "header header header" 
+        "...... ...... ......" 10px
+        "left   ...... right " 1fr
+        "...... ...... ......" 10px
+        "footer footer footer" 
+        / 400px 10px 1fr;
+}
+
+header {
+    grid-area: header;
+}
+
+aside {
+    grid-area: left;
+}
+
+main {
+    grid-area: right;
+}
+
+ /* フッター */
+ footer {
+     background-color: #e62117;
+     grid-area: footer;
+     text-align: center;
+     bottom: 0; /*下に固定*/
+ }
+
+@media screen and (max-width: 1000px) {
+    body {
+        grid-template:
+        "header"
+        "..." 10px
+        "right" 1fr
+        "..." 10px
+        "left"
+        "..." 10px
+        "footer";
+    }
+}
+
+
+
+ .underscore {
+     position: relative;
+     display: inline-block;
+     text-decoration: none;
+     
+ }
+
+ .underscore::after {
+     position: absolute;
+     bottom: -4px;
+     left: 0;
+     content: '';
+     width: 100%;
+     height: 2px;
+     background: #fff;
+     transform: scale(0, 1);
+     transform-origin: center top;
+     transition: transform .3s;
+ }
+
+ .underscore:hover::after {
+     transform: scale(1, 1);
+ }
+
+
+ /* アイコン画像 */
+ .rounded-circle {
+     width: 75px;
+     height: 75px;
+     object-fit: cover;
+ }
+
+
+/* YouTube */
+.max-youtube {
+    max-width: 560px;
+    max-height: 315px;
+}
+
+ .responsibe-youtube{
+    position:relative;
+
+    width:100%;
+    height:0;
+    padding-top:56.25%;
+}
+.responsibe-youtube iframe{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+
+
+.acd-check{
+    display: none;
+}
+.acd-label{
+    background: #0068b7;
+    color: #fff;
+    display: block;
+    margin-bottom: 1px;
+    padding: 10px;
+    position: relative;
+}
+.acd-label:after{
+    /* background: #00479d; */
+    box-sizing: border-box;
+    /* content: '\f067'; */
+    display: block;
+    /* font-family: "Font Awesome 5 Free"; */
+    height: 52px;
+    padding: 10px 20px;
+    position: absolute;
+    right: 0;
+    top: 0px;
+}
+.acd-content{
+    border: 1px solid #333;
+    display: block;
+    height: 0;
+    opacity: 0;
+    padding: 0 10px;
+    transition: .5s;
+    visibility: hidden;
+}
+/* .acd-check:checked + .acd-label:after{
+    content: '\f068';
+} */
+.acd-check:checked + .acd-label + .acd-content{
+    height: 50px;
+    opacity: 1;
+    padding: 10px;

@@ -1,0 +1,7 @@
+<h1>編集する</h1>
+<%= form_tag("/posts/#{@post.id}/update") do %>
+
+<%= render "posts/post" %>
+
+<input type="submit" value="保存">
+<% end %>
