@@ -1,5 +1,14 @@
 <h1>ユーザー詳細ページ</h1>
-<h3><%= @user.email %></h3>
+
+<h3>ユーザー名</h3>
+<%= @user.name %>
+<h3>メールアドレス</h3>
+<%= @user.email %>
+<h3>プロフィール</h3>
+<%= @user.profile%>
+
+<p><%= link_to "ユーザー情報を編集する", edit_user_registration_path %></p>
+
 <h2>投稿内容</h2>
 <% @user.posts.each do |post| %>
   <a href="/posts/<%= post.id %>"><%= post.content %></a>

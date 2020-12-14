@@ -3,6 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
+
+  validates :name, presence: true
+  validates :profile, length: { maximum: 200 }
+
   has_many :posts, dependent: :destroy # 追加 もしユーザーがデータベースから削除されてしまった場合にユーザーがした投稿も全て消える
   has_many :comments, dependent: :destroy # 追加 コメント 削除も仮追加
   has_many :likes, dependent: :destroy # 追加
