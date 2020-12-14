@@ -24,6 +24,12 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
+  <!--アカウント編集時に画像を入力できるようにフォームを追加-->
+  <div class="field">
+  <%= f.label :image %><br/>
+  <%= f.file_field :image %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>

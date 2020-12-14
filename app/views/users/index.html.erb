@@ -1,5 +1,7 @@
 <h1>ユーザー一覧</h1>
 <% @users.each do |user| %>
+<img src=<%= user.image %> class = "icon_image">
+  <a href="/users/<%= user.id %>"><%= user.name %></a>
   <a href="/users/<%= user.id %>"><%= user.email %></a>
   <hr>
 <% end %>

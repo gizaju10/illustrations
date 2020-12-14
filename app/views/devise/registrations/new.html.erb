@@ -27,6 +27,12 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <!--サインアップ時に画像を入力できるようにフォームを追加-->
+  <div class="field">
+  <%= f.label :image %><br/>
+  <%= f.file_field :image %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

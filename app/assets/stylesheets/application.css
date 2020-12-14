@@ -200,3 +200,15 @@ main {
     height: 50px;
     opacity: 1;
     padding: 10px;
+}
+
+ /* アイコン画像 */
+.icon_image {
+    width: 150px;
+    height: 150px;
+    /* サイズ指定 */
+    border-radius: 100px;
+    /* 画像を丸くする */
+    object-fit: cover;
+    /* タテヨコ比を変えないままトリミング */
+}
