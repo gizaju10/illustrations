@@ -7,9 +7,4 @@
 <%# <% end %>
 
 
-<h2>投稿する</h2>
-  <%= form_for @post do |f| %>
-    <%# <%= f.label :content %>
-    <%= f.text_field :content %>
-    <%= f.submit %>
-  <% end %>
+<%= render "posts/postcopy" %>

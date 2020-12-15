@@ -64,7 +64,7 @@ body {
     display: grid;
     grid-template:
         "header header header" 
-        "...... ...... ......" 10px
+        "...... ...... ......" 
         "left   ...... right " 1fr
         "...... ...... ......" 10px
         "footer footer footer" 
@@ -95,7 +95,7 @@ main {
     body {
         grid-template:
         "header"
-        "..." 10px
+        "..."
         "right" 1fr
         "..." 10px
         "left"

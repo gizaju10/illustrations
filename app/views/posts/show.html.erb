@@ -1,17 +1,32 @@
-<h1>投稿詳細ページ</h1>
-<h3><%= @post.user.email %></h3>
-<h3><%= @post.content %></h3>
+<%# 投稿詳細ページ %>
+<hr>
+<%#<%= @post.user.email %>
+<h3><%= @post.title %></h3>
+
+    <div class="max-youtube">
+        <div class="responsibe-youtube">
+            <iframe width="560" height="315" src="<%= "https://www.youtube.com/embed/#{@post.url[32..42]}" %>?rel=0"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+    </div>
+
+<p><%= @post.content %></p>
+
+<div>投稿者:<%= @post.user.name %></div>
+
+<% if user_signed_in? && current_user.id == @post.user_id %>
+<div>
+  <%= link_to("編集", "/posts/#{@post.id}/edit") %>
+  <%= link_to("削除", "/posts/#{@post.id}/destroy", {method: "post"}) %>
+</div>
+<% end %>
+
 
 <%= link_to 'Twitter', "https://twitter.com/share?url=#{request.url}/&text=イラストを学びたい全ての方に#{ @post.content }を!", title: 'Twitter', target: '_blank' %>
 
-
 <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fqiita.com%2F&layout=button&size=large&width=79&height=28&appId" width="79" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-
-<%# <% if user_signed_in? && @user.id == current_user.id %>
-<% if user_signed_in? && current_user.id == @post.user_id %>
-  <%= link_to("編集", "/posts/#{@post.id}/edit") %>
-  <%= link_to("削除", "/posts/#{@post.id}/destroy", {method: "post"}) %>
-<% end %>
 
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v9.0" nonce="erZOo8Wx"></script>
@@ -22,8 +37,9 @@
 <div class="line-it-button" data-lang="ja" data-type="share-b" data-ver="3" data-url="https://qiita.com/" data-color="default" data-size="large" data-count="false" style="display: none;"></div>
  <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
 
+<hr>
 
-<h3>いいね件数: <%= @post.likes.count %></h3>
+<div>いいね件数: <%= @post.likes.count %></div>
 
 <% if current_user.already_liked?(@post) %>
   <%= button_to 'いいねを取り消す', post_like_path(@post), method: :delete %>
@@ -33,8 +49,10 @@
 
 <h2>いいねしたユーザー</h2>
 <% @post.liked_users.each do |user| %>
-  <li><%= user.email %></li>
+  <li><%= user.name %></li>
 <% end %>
+
+<hr>
 
 <h2>コメント一覧</h2>
 <% @comments.each do |c| %>

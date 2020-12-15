@@ -1,4 +1,21 @@
+<% @post.errors.full_messages_for(:title).each do |message| %>
+<div>
+    <%= message %>
 </div>
+<% end %>
+<div>
+    <input type="text" required name="title" placeholder="タイトル" value=<%= @post.title %>>
+</div>
+
+<% @post.errors.full_messages_for(:url).each do |message| %>
+<div>
+    <%= message %>
+</div>
+<% end %>
+<div>
+    <input type="url" required name="url" placeholder="YouTubeのURLを入力して下さい" value=<%= @post.url %>>
+</div>
+
 <% @post.errors.full_messages_for(:content).each do |message| %>
 <div>
     <%= message %>

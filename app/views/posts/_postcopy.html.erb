@@ -1,0 +1,33 @@
+<h2>投稿する</h2>
+  <%= form_for @post do |f| %>
+    <%# <%= f.label :content %>
+    <% @post.errors.full_messages_for(:title).each do |message| %>
+    <div>
+      <%= message %>
+    </div>
+    <% end %>
+    <diV>
+    <%= f.text_field :title, placeholder: "タイトル" %>
+    </div>
+    <p>
+
+    <% @post.errors.full_messages_for(:url).each do |message| %>
+    <div>
+      <%= message %>
+    </div>
+    <% end %>
+    <diV>
+    <%= f.text_field :url, placeholder: "YouTubeのURLを入力して下さい" %>
+    </div>
+    <p>
+
+    <% @post.errors.full_messages_for(:content).each do |message| %>
+    <div>
+      <%= message %>
+    </div>
+    <% end %>
+    <diV>
+    <%= f.text_area :content, placeholder: "紹介文" %>
+    </div>
+    <%= f.submit %>
+  <% end %>
