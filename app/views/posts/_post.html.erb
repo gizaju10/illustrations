@@ -1,26 +1,33 @@
-<% @post.errors.full_messages_for(:title).each do |message| %>
-<div>
-    <%= message %>
-</div>
-<% end %>
-<div>
-    <input type="text" required name="title" placeholder="タイトル" value=<%= @post.title %>>
-</div>
+<h2>投稿する</h2>
+  <%= form_for @post do |f| %>
+    <%# <%= f.label :content %>
+    <% @post.errors.full_messages_for(:title).each do |message| %>
+    <div>
+      <%= message %>
+    </div>
+    <% end %>
+    <diV>
+    <%= f.text_field :title, placeholder: "タイトル" %>
+    </div>
+    <p>
 
-<% @post.errors.full_messages_for(:url).each do |message| %>
-<div>
-    <%= message %>
-</div>
-<% end %>
-<div>
-    <input type="url" required name="url" placeholder="YouTubeのURLを入力して下さい" value=<%= @post.url %>>
-</div>
+    <% @post.errors.full_messages_for(:url).each do |message| %>
+    <div>
+      <%= message %>
+    </div>
+    <% end %>
+    <diV>
+    <%= f.text_field :url, placeholder: "YouTubeのURLを入力して下さい", class: "url_text" %>
+    </div>
+    <p>
 
-<% @post.errors.full_messages_for(:content).each do |message| %>
-<div>
-    <%= message %>
-</div>
-<% end %>
-<div>
-    <textarea placeholder="紹介文" required name="content"><%= @post.content %></textarea>
-</div>
+    <% @post.errors.full_messages_for(:content).each do |message| %>
+    <div>
+      <%= message %>
+    </div>
+    <% end %>
+    <diV>
+    <%= f.text_area :content, placeholder: "紹介文" %>
+    </div>
+    <%= f.submit %>
+  <% end %>

@@ -1,0 +1,42 @@
+<% @youtube_data.items.each do |item| %>
+  <% snippet = item.snippet %>
+  <p><%= snippet.title %></p>
+  <p><%= snippet.published_at %><%= snippet.channel_title %></p>
+  <div><iframe width="560" height="315" src="https://www.youtube.com/embed/<%= item.id.video_id %>?rel=0"" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+<a onclick="this.style.backgroundColor='#990000'">Paint it red</a>
+<h1>投稿する</h1>
+  <%= form_for @post do |f| %>
+    <%# <%= f.label :content %>
+    <% @post.errors.full_messages_for(:title).each do |message| %>
+    <div>
+      <%= message %>
+    </div>
+    <% end %>
+    <diV>
+    <%= f.text_field :title, placeholder: "タイトル" %>
+    </div>
+    <p>
+
+    <% @post.errors.full_messages_for(:url).each do |message| %>
+    <div>
+      <%= message %>
+    </div>
+    <% end %>
+    <diV>
+    <%= f.text_field :url, placeholder: "YouTubeのURLを入力して下さい", value: "https://www.youtube.com/watch?v=#{item.id.video_id}", class: "url_text" %>
+    </div>
+    <p>
+
+    <% @post.errors.full_messages_for(:content).each do |message| %>
+    <div>
+      <%= message %>
+    </div>
+    <% end %>
+    <diV>
+    <%= f.text_area :content, placeholder: "紹介文" %>
+    </div>
+    <%= f.submit %>
+  <% end %>
+<% end %>
+<%= link_to("YouTubeで確認する", "https://www.youtube.com/", class: 'navbar-brand underscore') %>

@@ -1,4 +1,4 @@
-<h2>投稿する</h2>
+<h1>投稿する</h1>
   <%= form_for @post do |f| %>
     <%# <%= f.label :content %>
     <% @post.errors.full_messages_for(:title).each do |message| %>
@@ -17,7 +17,7 @@
     </div>
     <% end %>
     <diV>
-    <%= f.text_field :url, placeholder: "YouTubeのURLを入力して下さい" %>
+    <%= f.text_field :url, placeholder: "YouTubeのURLを入力して下さい", value: "https://www.youtube.com/watch?v=#{item.id.video_id}", class: "url_text" %>
     </div>
     <p>
 

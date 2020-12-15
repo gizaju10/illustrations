@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   # get 'users/index'
   # get 'users/show'
 
+  get "youtube/index"
+  get "youtube/indexx"
+
   devise_for :users, controllers: {
     registrations: "users/registrations",
   }
