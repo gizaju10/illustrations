@@ -212,3 +212,46 @@ main {
     object-fit: cover;
     /* タテヨコ比を変えないままトリミング */
 }
+
+
+
+
+/* jQuery(YouTube投稿欄) */
+.p-faq{
+  
+}
+
+.p-faq-title{
+  position: relative;
+  padding: 8px;
+  border-bottom: solid 1px #333;
+  cursor: pointer;
+}
+
+.p-faq-title::after{
+  position: absolute;
+  top: 50%;
+  right:10px;
+  display: block;
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-top: solid 1px #333;
+  border-right: solid 1px #333;
+  transform: translate(0, -50%) rotate(135deg);
+  transform-origin: center;
+}
+
+.p-faq-title.active::after{
+  transform:translate(0, -50%) rotate(-45deg);
+}
+
+.p-faq-description{
+  display: none;
+  margin: 0 0 24px;
+  padding: 8px;
+}
+
+.p-faq-description.active{
+  display: block;
+}

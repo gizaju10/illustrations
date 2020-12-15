@@ -5,8 +5,11 @@
   <div><iframe width="560" height="315" src="https://www.youtube.com/embed/<%= item.id.video_id %>?rel=0"" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 <a onclick="this.style.backgroundColor='#990000'">Paint it red</a>
-<h1>投稿する</h1>
-  <%= form_for @post do |f| %>
+
+<dl class="p-faq">
+  <dt class="p-faq-title"><h1>投稿する</h1></dt>
+
+  <dd class="p-faq-description"><%= form_for @post do |f| %>
     <%# <%= f.label :content %>
     <% @post.errors.full_messages_for(:title).each do |message| %>
     <div>
@@ -37,6 +40,11 @@
     <%= f.text_area :content, placeholder: "紹介文" %>
     </div>
     <%= f.submit %>
-  <% end %>
+  <% end %></dd>
 <% end %>
 <%= link_to("YouTubeで確認する", "https://www.youtube.com/", class: 'navbar-brand underscore') %>
+
+<script>$('.p-faq-title').on('click', function(){
+	$(this).toggleClass('active');
+	$(this).next().slideToggle();
+});</script>

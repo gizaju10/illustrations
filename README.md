@@ -22,3 +22,10 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+Sprockets::Rails::Helper::AssetNotPrecompiled in~
+↓
+config/initializers/assets.rb
+Rails.application.config.assets.precompile += %w( application.css )
+↓
+$rake assets:precompile
