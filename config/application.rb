@@ -13,6 +13,11 @@ module Illustration
 
     config.i18n.default_locale = :ja # エラーメッセージの日本語化
 
+    # config/locales以下のディレクトリ内にある全てのymlファイルを読み込む
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
+    config.active_model.i18n_customize_full_message = true # エラーメッセージのスコープを限定出来るようにする
+    config.time_zone = 'Tokyo' # 日本時間表示
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
