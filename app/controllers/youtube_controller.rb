@@ -4,7 +4,7 @@ class YoutubeController < ApplicationController
     def find_videos(keyword, after: 1.months.ago, before: Time.now)
     begin
      service = Google::Apis::YoutubeV3::YouTubeService.new
-     service.key = ENV['YOUTUBE_DATA_API_KEY']
+     service.key = ENV['YOUTUBE_2']
   
      next_page_token = nil
      opt = {
@@ -34,7 +34,7 @@ class YoutubeController < ApplicationController
       !params[:keyword].blank?
       require 'google/apis/youtube_v3'
       youtube = Google::Apis::YoutubeV3::YouTubeService.new
-      youtube.key = ENV['YOUTUBE_DATA_API_KEY']
+      youtube.key = ENV['YOUTUBE_1']
       youtube_search_list = youtube.list_searches("id,snippet", type: "video",
                                                               q: params[:keyword],
                                                               max_results: 5)
