@@ -1,4 +1,4 @@
-    <div class="col-md-3 col-md-offset-3 search-form">
+       <div class="col-md-3 col-md-offset-3 search-form">
         <%= form_tag( youtube_indexx_path,:method => 'get') do %>
             <label for="keyword">検索keyword</label>
             <%= text_field_tag :keyword %>
@@ -6,8 +6,7 @@
         <% end %>
     </div>
 
-
-        <% @movies.each do |movie| %>
+    <% @movies.each do |movie| %>
         <li class="movies-item">
             <ul>
                 <li>
@@ -18,4 +17,8 @@
                 </li>
             </ul>
         </li>
+    <% end %>
+
+    
+    表示されません。
     <% end %>
