@@ -7,7 +7,7 @@
 <a onclick="this.style.backgroundColor='#990000'">Paint it red</a>
 
 <dl class="p-faq">
-  <dt class="p-faq-title"><h1>投稿する</h1></dt>
+  <dt class="p-faq-title">投稿する</dt>
 
   <dd class="p-faq-description"><%= form_for @post do |f| %>
     <%# <%= f.label :content %>
@@ -41,6 +41,7 @@
     </div>
     <%= f.submit %>
   <% end %></dd>
+  <p>
 <% end %>
 <%= link_to("YouTubeで確認する", "https://www.youtube.com/", class: 'navbar-brand underscore') %>
 
