@@ -2,7 +2,10 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:show, :create] # ログインしていないユーザーはshow, createは実行できない
   def index
     @posts = Post.all
-    @post = Post.new
+    # @post = Post.new
+    if params[:tag_name]
+      @posts = Post.tagged_with("#{params[:tag_name]}")
+    end
   end
 
   # 記事検索
@@ -21,6 +24,10 @@ class PostsController < ApplicationController
   # 新規投稿
   def new
     @post = Post.new
+
+    # 追加
+    @tags = ActsAsTaggableOn::Tag.all
+
   end
 
   # 新規投稿→投稿送信
@@ -32,6 +39,10 @@ class PostsController < ApplicationController
       redirect_to(root_path)
     else
       flash.now[:alert] = "投稿に失敗しました"
+
+      # 追加
+      # @tags = ActsAsTaggableOn::Tag.all
+
       render("/posts/new")
     end
   end
@@ -63,6 +74,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :url, :content)
+    params.require(:post).permit(:title, :url, :content, tag_list: [])
   end
 end

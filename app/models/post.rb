@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
+
+  acts_as_taggable_on :tags
+
   validates:title, {presence: true, length: {maximum: 255}} # 未入力NG, 最大文字数を255文字
   VALID_YOUTUBE_URL = /(\Ahttps:\/\/www\.youtube\.com\/watch\?v=)+[\w]{11}/
   validates:url, {presence: true, format: {with: VALID_YOUTUBE_URL}, length: {maximum: 120}} # 未入力NG, YouTubeのURL以外NG, 最大文字数を120文字

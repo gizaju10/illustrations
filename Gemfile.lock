@@ -121,6 +121,9 @@ GEM
       signet (~> 0.14)
     hashie (4.1.0)
     hirb (0.7.3)
+    hirb-unicode (0.0.5)
+      hirb (~> 0.5)
+      unicode-display_width (~> 0.1.1)
     httpclient (2.8.3)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
@@ -300,6 +303,7 @@ GEM
     tzinfo (1.2.8)
       thread_safe (~> 0.1)
     uber (0.1.0)
+    unicode-display_width (0.1.1)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.1.0)
@@ -335,7 +339,8 @@ DEPENDENCIES
   devise (~> 4.7, >= 4.7.3)
   dotenv-rails
   google-api-client
-  hirb (~> 0.7.3)
+  hirb
+  hirb-unicode
   jbuilder (~> 2.7)
   jquery-rails
   kaminari

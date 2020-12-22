@@ -80,7 +80,8 @@ gem 'carrierwave' #画像アップロード
 
 gem 'rmagick' #画像の加工
 
-gem 'hirb', '~> 0.7.3'
+gem 'hirb'
+gem 'hirb-unicode'
 
 gem 'acts-as-taggable-on', '~> 6.0'
 
