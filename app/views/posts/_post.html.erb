@@ -24,15 +24,40 @@
 
 
 
-<%# <%= f.label :tag_list %> %>
-<%# <%= f.text_field :tag_list, value: @post.tag_list.join(','), class: "form-control" %> %>
+<%# <%= f.label :tag_list %>
+<%# <%= f.text_field :tag_list, value: @post.tag_list.join(','), class: "form-control" %>
 
 
 <%# 追加 %>
-    <label class="col-sm-12">タグ</label>
+    <%# <label class="col-sm-12">タグ</label> %>
+      <%# <div class="col-sm-12"> %>
+        <%# <% @tags.each do |tag| %>
+          <%# <%= f.check_box :tag_list, { multiple: true }, "#{tag.name}", nil %>
+          <%# <%= f.label " #{tag.name}(#{tag.taggings_count})", class: "label label-default" %>
+        <%# <% end %>
+      <%# </div> %>
+
+
+    <label class="col-sm-12">カテゴリー</label>
       <div class="col-sm-12">
-        <% @tags.each do |tag| %>
-          <%= f.check_box :tag_list, { multiple: true }, "#{tag.name}", nil %>
+        <% @a.each do |tag| %>
+          <%= f.check_box :category_list, { multiple: true }, "#{tag.name}", nil %>
+          <%= f.label " #{tag.name}(#{tag.taggings_count})", class: "label label-default" %>
+        <% end %>
+      </div>
+
+    <label class="col-sm-12">対象職種</label>
+      <div class="col-sm-12">
+        <% @b.each do |tag| %>
+          <%= f.check_box :occupation_list, { multiple: true }, "#{tag.name}", nil %>
+          <%= f.label " #{tag.name}(#{tag.taggings_count})", class: "label label-default" %>
+        <% end %>
+      </div>
+
+    <label class="col-sm-12">対象者</label>
+      <div class="col-sm-12">
+        <% @c.each do |tag| %>
+          <%= f.check_box :target_list, { multiple: true }, "#{tag.name}", nil %>
           <%= f.label " #{tag.name}(#{tag.taggings_count})", class: "label label-default" %>
         <% end %>
       </div>

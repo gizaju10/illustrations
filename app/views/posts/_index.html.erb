@@ -15,7 +15,29 @@
 
         <div></div>
 
-        <div><%= render 'posts/tag_list', tag_list: post.tag_list %></div>
+
+
+
+
+        <%# <div> %>
+        <%# <%= render 'posts/tag_list', tag_list: post.tag_list %>
+        <%# </div> %>
+
+        <div>
+        <%= render 'posts/category_list', category_list: post.category_list %>
+        </div>
+        <div>
+        <%= render 'posts/occupation_list', occupation_list: post.occupation_list %>
+        </div>
+        <div>
+        <%= render 'posts/target_list', target_list: post.target_list %>
+        </div>
+
+
+
+
+
+
 
         <div><%= link_to(post.title, "/posts/#{post.id}") %></div>
 

@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:show, :create] # ログインしていないユーザーはshow, createは実行できない
   def index
     @posts = Post.all
+    # Post.find_by(id: 1).occupation_list
     # @post = Post.new
     if params[:tag_name]
       @posts = Post.tagged_with("#{params[:tag_name]}")
@@ -26,7 +27,10 @@ class PostsController < ApplicationController
     @post = Post.new
 
     # 追加
-    @tags = ActsAsTaggableOn::Tag.all
+    # @tags = ActsAsTaggableOn::Tag.all
+    @categories = ActsAsTaggableOn::Tag.named_any(["知識", "技術", "メンタル"])
+    @occupations = ActsAsTaggableOn::Tag.named_any(["漫画家", "イラストレーター", "キャラクターデザイナー", "コンセプトアーティスト", "アニメーター", "CGクリエイター", "絵本作家"])
+    @targets = ActsAsTaggableOn::Tag.named_any(["初心者", "中級者", "上級者", "小学生以下", "中学・高校生", "専門・大学生", "社会人"])
 
   end
 
@@ -41,7 +45,7 @@ class PostsController < ApplicationController
       flash.now[:alert] = "投稿に失敗しました"
 
       # 追加
-      # @tags = ActsAsTaggableOn::Tag.all
+      @tags = ActsAsTaggableOn::Tag.all
 
       render("/posts/new")
     end
@@ -74,6 +78,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :url, :content, tag_list: [])
+    params.require(:post).permit(:title, :url, :content, category_list: [], occupation_list: [], target_list: [])
   end
 end

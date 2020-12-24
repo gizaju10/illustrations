@@ -1,0 +1,4 @@
+対象職種：
+<% occupation_list.each do |tag| %>
+<%= link_to tag, posts_path(tag_name: tag), class: "" %>
+<% end %>
