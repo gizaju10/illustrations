@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :tags
+
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id

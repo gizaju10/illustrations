@@ -1,9 +1,6 @@
 <% if user_signed_in? %>
-  <hr>
-  <h2>投稿一覧</h2>
-
+<div class="center-letter"><h4>投稿一覧</h4></div>
 <%= render "posts/index" %>
-
 <% else %>
   <%= link_to "ユーザー登録", new_user_registration_path %>
   <%= link_to "ログイン", new_user_session_path %>

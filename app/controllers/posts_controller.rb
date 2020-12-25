@@ -1,9 +1,12 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:show, :create] # ログインしていないユーザーはshow, createは実行できない
+  before_action :tags
+
   def index
     @posts = Post.all
     # Post.find_by(id: 1).occupation_list
     # @post = Post.new
+
     if params[:tag_name]
       @posts = Post.tagged_with("#{params[:tag_name]}")
     end
@@ -28,9 +31,9 @@ class PostsController < ApplicationController
 
     # 追加
     # @tags = ActsAsTaggableOn::Tag.all
-    @categories = ActsAsTaggableOn::Tag.named_any(["知識", "技術", "メンタル", "その他カテゴリー"])
-    @occupations = ActsAsTaggableOn::Tag.named_any(["漫画家", "イラストレーター", "キャラクターデザイナー", "コンセプトアーティスト", "アニメーター", "絵本作家", "その他職種"])
-    @targets = ActsAsTaggableOn::Tag.named_any(["初心者", "中級者", "上級者", "小学生以下", "中学・高校生", "専門・大学生", "社会人"])
+    # @categories = ActsAsTaggableOn::Tag.named_any(["知識", "技術", "メンタル", "その他カテゴリー"])
+    # @occupations = ActsAsTaggableOn::Tag.named_any(["漫画家", "イラストレーター", "キャラクターデザイナー", "コンセプトアーティスト", "アニメーター", "絵本作家", "その他職種"])
+    # @targets = ActsAsTaggableOn::Tag.named_any(["初心者", "中級者", "上級者", "小学生以下", "中学・高校生", "専門・大学生", "社会人"])
   end
 
   # 新規投稿→投稿送信

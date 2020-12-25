@@ -1,4 +1,6 @@
 class YoutubeController < ApplicationController
+  before_action :tags
+
   require 'google/apis/youtube_v3'
 
   def find_videos(keyword, after: 1.months.ago, before: Time.now)

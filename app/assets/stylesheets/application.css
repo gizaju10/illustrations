@@ -14,6 +14,8 @@
  *= require_self
  */
 
+
+
 /* gem'devise' */
 .alert {
 	text-align: center;
@@ -29,6 +31,7 @@
     border-color: #f3c0c0;
     color: #3e3a3a;
 }
+
 
 
 /* ヘッダー */
@@ -58,6 +61,7 @@
  }
 
 
+
 body {
     min-height: 100vh;
     margin: 0; /* ページ周りの余白をなくす */
@@ -82,6 +86,8 @@ aside {
 main {
     grid-area: right;
 }
+
+
 
  /* フッター */
  footer {
@@ -131,12 +137,14 @@ main {
  }
 
 
+
  /* アイコン画像 */
  .rounded-circle {
      width: 75px;
      height: 75px;
      object-fit: cover;
  }
+
 
 
 /* YouTube */
@@ -202,6 +210,8 @@ main {
     padding: 10px;
 }
 
+
+
  /* アイコン画像 */
 .icon_image {
     width: 150px;
@@ -212,7 +222,6 @@ main {
     object-fit: cover;
     /* タテヨコ比を変えないままトリミング */
 }
-
 
 
 
@@ -254,4 +263,56 @@ main {
 
 .p-faq-description.active{
   display: block;
+}
+
+
+
+.round {
+    border-radius: 10px; /* 角を丸くする */
+    ;
+}
+
+
+
+div.center-letter {
+    text-align:center;
+}
+
+h4 {
+    background: #c2edff;/*背景色*/
+    padding: 0.5em;/*文字まわり（上下左右）の余白*/
+    border-radius: 0.5em;
+    display: inline-block;
+  }
+
+/* h3 { */
+    /* color: #364e96; */
+    /*文字色*/
+    /* border: solid 3px #364e96; */
+    /*線色*/
+    /* padding: 0.2em; */
+    /*文字周りの余白*/
+    /* border-radius: 0.5em; */
+    /*角丸*/
+    /* display: inline-block; */
+  /* } */
+
+.line {
+    border: solid 1px #000;
+    padding: 0.5em;
+}
+
+
+
+.box {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+.box p {
+    margin: 0; 
+    padding: 0;
 }
