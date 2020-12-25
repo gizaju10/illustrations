@@ -1,6 +1,11 @@
 <h1>ユーザー詳細ページ</h1>
 
+<% if @user.image.blank? %>
+  <%= image_tag '/default.png', class: "icon_image" %>
+<% else %>
 <img src=<%= @user.image %> class = "icon_image">
+<% end %>
+
 <h3>ユーザー名</h3>
 <%= @user.name %>
 <h3>メールアドレス</h3>
