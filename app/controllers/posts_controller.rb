@@ -28,10 +28,9 @@ class PostsController < ApplicationController
 
     # 追加
     # @tags = ActsAsTaggableOn::Tag.all
-    @categories = ActsAsTaggableOn::Tag.named_any(["知識", "技術", "メンタル"])
-    @occupations = ActsAsTaggableOn::Tag.named_any(["漫画家", "イラストレーター", "キャラクターデザイナー", "コンセプトアーティスト", "アニメーター", "CGクリエイター", "絵本作家"])
+    @categories = ActsAsTaggableOn::Tag.named_any(["知識", "技術", "メンタル", "その他カテゴリー"])
+    @occupations = ActsAsTaggableOn::Tag.named_any(["漫画家", "イラストレーター", "キャラクターデザイナー", "コンセプトアーティスト", "アニメーター", "絵本作家", "その他職種"])
     @targets = ActsAsTaggableOn::Tag.named_any(["初心者", "中級者", "上級者", "小学生以下", "中学・高校生", "専門・大学生", "社会人"])
-
   end
 
   # 新規投稿→投稿送信
