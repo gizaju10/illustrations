@@ -12,17 +12,6 @@
         </div>
     </div>
     <div class="col-md-6 position-static p-4 pl-md-0">
-
-        <div></div>
-
-
-
-
-
-        <%# <div> %>
-        <%# <%= render 'posts/tag_list', tag_list: post.tag_list %>
-        <%# </div> %>
-
         <div>
         <%= render 'posts/category_list', category_list: post.category_list %>
         </div>
@@ -33,18 +22,11 @@
         <%= render 'posts/target_list', target_list: post.target_list %>
         </div>
 
-
-
-
-
-
-
         <div><%= link_to(post.title, "/posts/#{post.id}") %></div>
 
-        <p><%= link_to(post.content, "/posts/#{post.id}") %></p>
+        <div><%= link_to(post.content, "/posts/#{post.id}") %></div>
 
         <a href="/users/<%= post.user.id %>"><%= post.user.email %></a>
-        <p><a href="/posts/<%= post.id %>"><%= post.content %></a></p>
         (<%= post.liked_users.count %>)
     </div>
 </div>
