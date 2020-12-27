@@ -71,6 +71,11 @@
     <%= submit_tag '検索する', :name => nil %>
     <% end %>
 
+<i class="fas fa-tag"></i>
+<i class="far fa-heart"></i>
+<i class="fas fa-heart"></i>
+<i class="fas fa-cog fa-spin"></i>
+
     <% @categories.each do |tag| %>
       <%= link_to " #{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "label label-default" %>
     <% end %>
