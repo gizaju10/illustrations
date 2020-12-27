@@ -213,10 +213,10 @@ main {
 
  /* アイコン画像 */
 .icon_image {
-    width: 150px;
-    height: 150px;
+    width: 80px;
+    height: 80px;
     /* サイズ指定 */
-    border-radius: 100px;
+    /* border-radius: 100px; */
     /* 画像を丸くする */
     object-fit: cover;
     /* タテヨコ比を変えないままトリミング */
