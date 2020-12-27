@@ -24,10 +24,11 @@
 
         <div><%= link_to(post.title, "/posts/#{post.id}") %></div>
 
-        <div><%= link_to(post.content, "/posts/#{post.id}") %></div>
+        <div><%= link_to(post.content.truncate(40, omission: '...(続きを読む)'), "/posts/#{post.id}") %></div>
 
-        <a href="/users/<%= post.user.id %>"><%= post.user.email %></a>
-        (<%= post.liked_users.count %>)
+
+        <a href="/users/<%= post.user.id %>"><img src=<%= post.user.image %> class = "icon_image"><%= post.user.name %></a>
+        いいね!(<%= post.liked_users.count %>)
     </div>
 </div>
 <p>
