@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:show, :create] # ログインしていないユーザーはshow, createは実行できない
-  before_action :tags
 
   def index
     @posts = Post.all

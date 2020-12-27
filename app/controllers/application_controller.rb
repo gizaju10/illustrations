@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :tags
   protect_from_forgery with: :exception
 
   # ログイン済ユーザーのみにアクセスを許可する

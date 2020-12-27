@@ -31,15 +31,17 @@
       <div class="col-sm-12">
         <% @categories.each do |tag| %>
           <%= f.check_box :category_list, { multiple: true }, "#{tag.name}", nil %>
-          <%= f.label " #{tag.name}(#{tag.taggings_count})", class: "label label-default" %>
+          <%= f.label " #{tag.name}(#{tag.taggings_count})", class: "" %>
         <% end %>
       </div>
+
+
 
     <label class="col-sm-12">対象職種</label>
       <div class="col-sm-12">
         <% @occupations.each do |tag| %>
           <%= f.check_box :occupation_list, { multiple: true }, "#{tag.name}", nil %>
-          <%= f.label " #{tag.name}(#{tag.taggings_count})", class: "label label-default" %>
+          <%= f.label " #{tag.name}(#{tag.taggings_count})", class: "" %>
         <% end %>
       </div>
 

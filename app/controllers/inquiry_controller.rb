@@ -1,5 +1,4 @@
 class InquiryController < ApplicationController
-  before_action :tags
 
   def index
     # 入力画面を表示
