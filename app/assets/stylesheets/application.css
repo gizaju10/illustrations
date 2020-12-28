@@ -213,8 +213,18 @@ main {
 
  /* アイコン画像 */
 .icon_image {
-    width: 80px;
-    height: 80px;
+    width: 30px;
+    height: 30px;
+    /* サイズ指定 */
+    /* border-radius: 100px; */
+    /* 画像を丸くする */
+    object-fit: cover;
+    /* タテヨコ比を変えないままトリミング */
+}
+
+.icon_image_large {
+    width: 60px;
+    height: 60px;
     /* サイズ指定 */
     /* border-radius: 100px; */
     /* 画像を丸くする */

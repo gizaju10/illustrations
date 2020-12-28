@@ -1,9 +1,9 @@
 <h1>ユーザー詳細ページ</h1>
 
 <% if @user.image.blank? %>
-  <%= image_tag '/default.png', class: "icon_image" %>
+  <%= image_tag '/default.png', class: "icon_image_large" %>
 <% else %>
-<img src=<%= @user.image %> class = "icon_image">
+<img src=<%= @user.image %> class = "icon_image_large">
 <% end %>
 
 <h3>ユーザー名</h3>
