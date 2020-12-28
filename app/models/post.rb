@@ -13,11 +13,8 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy # 追加 もしpostがデータベースから削除されてしまった場合、likesも削除
   has_many :liked_users, through: :likes, source: :user # 追加 いいね機能の利用
 
-
-
-
   # 記事検索
   def self.search(search)
-    self.where(['content LIKE ?', "%#{search}%"])
+    self.where(['title LIKE ? OR content LIKE ?', "%#{search}%", "%#{search}%"])
   end
 end
