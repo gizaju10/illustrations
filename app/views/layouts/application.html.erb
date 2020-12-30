@@ -16,13 +16,15 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <%# 本番用Vue.js %>
   <%# <script src="https://cdn.jsdelivr.net/npm/vue"></script> %>
+  <%# <script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script> %>
+
 </head>
 
 <body>
   <header id="grid-header">
   <div class="shadow-sm p-3 mb-3 bg-white rounded">
     <nav class="navbar navbar-expand-lg">
-      <%= link_to("イラストアプリ", "/", class: 'navbar-brand underscore') %>
+      <%= link_to("イラストアプリ", root_path, class: 'navbar-brand underscore', data: {"turbolinks"=>false}) %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -49,6 +51,37 @@
           <li class="nav-item underscore">
             <%= link_to("YouTube2検索", youtube_indexx_path, class: 'nav-link') %>
           </li>
+          
+
+<div class = "spview">
+  <center>
+    <%= form_tag(search_path,:method => 'get') do %>
+    <%= text_field_tag :search, '', class: '', placeholder: "記事を探す" %>
+    <%= submit_tag '検索する', :name => nil %>
+    <% end %>
+  </center>
+<i class="fas fa-tag"></i>
+<i class="far fa-heart"></i>
+<i class="fas fa-heart"></i>
+<i class="fas fa-cog fa-spin"></i>
+<h5>カテゴリーから探す</h5>
+    <% @categories.each do |tag| %>
+      <%= link_to " #{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "label label-default" %>
+    <% end %>
+<h5>対象職種から探す</h5>
+    <% @occupations.each do |tag| %>
+      <%= link_to " #{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "label label-default" %>
+    <% end %>
+<h5>対象者から探す</h5>
+    <% @targets.each do |tag| %>
+      <%= link_to " #{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "label label-default" %>
+    <% end %>
+</div>
+
+
+
+
+
           <% else %>
           <!-- ログアウトしている場合 -->
           <li class="nav-item underscore">
@@ -64,31 +97,39 @@
   </div>
   </header>
   
-  <aside class="shadow-none p-3 mb-5 bg-white rounded">
-    <p>記事検索</p>
+  <aside class="px-3">
+  <%# <aside class="shadow-none p-3 mb-5 bg-white rounded"> %>
+  <div class = "fixed pcview">
+  <center>
     <%= form_tag(search_path,:method => 'get') do %>
-    <%= text_field_tag :search %>
+    <%= text_field_tag :search, '', class: '', placeholder: "記事を探す" %>
     <%= submit_tag '検索する', :name => nil %>
     <% end %>
-
+  </center>
+  
 <i class="fas fa-tag"></i>
 <i class="far fa-heart"></i>
 <i class="fas fa-heart"></i>
 <i class="fas fa-cog fa-spin"></i>
 
+<h5>カテゴリーから探す</h5>
     <% @categories.each do |tag| %>
       <%= link_to " #{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "label label-default" %>
     <% end %>
-
+<h5>対象職種から探す</h5>
     <% @occupations.each do |tag| %>
       <%= link_to " #{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "label label-default" %>
     <% end %>
-
+<h5>対象者から探す</h5>
     <% @targets.each do |tag| %>
       <%= link_to " #{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "label label-default" %>
     <% end %>
+  </div>
   </aside>
-  <main class="shadow-none p-3 mb-5 bg-white rounded">
+
+
+
+<main class="shadow-none p-3 mb-5 bg-white rounded">
 
 <%= render 'layouts/alert' %>
 
@@ -107,7 +148,7 @@
     <div id="app">
       {{ message }}
     </div>
-  </main>
+</main>
 
 
 

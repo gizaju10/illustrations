@@ -71,7 +71,7 @@ body {
         "left   ...... right " 1fr
         "...... ...... ......" 10px
         "footer footer footer" 
-        / 400px 10px 1fr;
+        / 0.3fr 5px 1fr;
 }
 
 header {
@@ -80,6 +80,19 @@ header {
 
 aside {
     grid-area: left;
+}
+
+.pcview {
+}
+.spview {
+	display: none;
+}
+
+.fixed {
+    position: -webkit-sticky; /* Safari用 */
+    position:sticky; /* 要素をスクロールに応じて固定 */
+    top:0; /* 縦スクロールに追従 */
+    z-index: 100; /* z-indexで最前面に持ってくる */
 }
 
 main {
@@ -96,17 +109,23 @@ main {
      bottom: 0; /*下に固定*/
  }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 481px) {
     body {
         grid-template:
         "header"
         "..."
-        "right" 1fr
-        "..." 10px
         "left"
+        "..." 10px
+        "right" 1fr
         "..." 10px
         "footer";
     }
+    .pcview {
+		display: none;
+	}
+	.spview {
+		display: block;
+	}
 }
 
 
@@ -324,4 +343,14 @@ h4 {
 .box p {
     margin: 0; 
     padding: 0;
+}
+
+
+
+ul.skill-list {
+    padding: 0;
+  }
+
+nav.pagination {
+  display: none;
 }
