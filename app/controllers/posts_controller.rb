@@ -8,7 +8,8 @@ class PostsController < ApplicationController
     # Post.find_by(id: 1).occupation_list
     # @post = Post.new
     if params[:tag_name]
-      @posts = Post.tagged_with("#{params[:tag_name]}")
+      # @path = request.fullpath.include?("tag_name")
+      @posts = Post.tagged_with("#{params[:tag_name]}").page(params[:page]).per(1).order(created_at: :desc)
     end
   end
 
@@ -34,7 +35,7 @@ class PostsController < ApplicationController
     @post = Post.new
 
     # 追加
-    # @tags = ActsAsTaggableOn::Tag.all
+    @tags = ActsAsTaggableOn::Tag.all
     # @categories = ActsAsTaggableOn::Tag.named_any(["知識", "技術", "メンタル", "その他カテゴリー"])
     # @occupations = ActsAsTaggableOn::Tag.named_any(["漫画家", "イラストレーター", "キャラクターデザイナー", "コンセプトアーティスト", "アニメーター", "絵本作家", "その他職種"])
     # @targets = ActsAsTaggableOn::Tag.named_any(["初心者", "中級者", "上級者", "小学生以下", "中学・高校生", "専門・大学生", "社会人"])

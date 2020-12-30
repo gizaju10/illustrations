@@ -3,10 +3,13 @@
 
 <div  class="skill-list jscroll">
 <%= render "posts/index" %>
+
+<%# <% if current_page?(root_path) %>
 <%= paginate @posts %>
+<%# <% else %>
+<%# <% end %>
+
 </div>
 
 <% else %>
-  <%= link_to "ユーザー登録", new_user_registration_path %>
-  <%= link_to "ログイン", new_user_session_path %>
 <% end %>

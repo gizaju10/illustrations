@@ -11,6 +11,7 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <script src="https://kit.fontawesome.com/5e4f54e2ab.js" crossorigin="anonymous"></script>
   <%# <script src="https://code.jquery.com/jquery-3.3.1.js"></script> %>
   <%# 開発用Vue.js %>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -34,22 +35,22 @@
           <% if user_signed_in? %>
           <li class="nav-item underscore">
             <!-- ログインしている場合 -->
-            <%= link_to("ログアウト", destroy_user_session_path, :method => :delete, class: 'nav-link') %>
+            <%= link_to("ログアウト", destroy_user_session_path, :method => :delete, class: 'nav-link', data: {"turbolinks"=>false}) %>
           </li>
           <li class="nav-item underscore">
-            <%= link_to("マイページへ", user_path(current_user.id), class: 'nav-link') %>
+            <%= link_to("マイページへ", user_path(current_user.id), class: 'nav-link', data: {"turbolinks"=>false}) %>
           </li>
           <li class="nav-item underscore">
-            <%= link_to("ユーザー一覧へ", users_path, class: 'nav-link') %>
+            <%= link_to("ユーザー一覧へ", users_path, class: 'nav-link', data: {"turbolinks"=>false}) %>
           </li>
           <li class="nav-item underscore">
-            <%= link_to("新規投稿", new_post_path, class: 'nav-link') %>
+            <%= link_to("新規投稿", new_post_path, class: 'nav-link', data: {"turbolinks"=>false}) %>
           </li>
           <li class="nav-item underscore">
-            <%= link_to("YouTube1", youtube_index_path, class: 'nav-link') %>
+            <%= link_to("YouTube1", youtube_index_path, class: 'nav-link', data: {"turbolinks"=>false}) %>
           </li>
           <li class="nav-item underscore">
-            <%= link_to("YouTube2検索", youtube_indexx_path, class: 'nav-link') %>
+            <%= link_to("YouTube2検索", youtube_indexx_path, class: 'nav-link', data: {"turbolinks"=>false}) %>
           </li>
           
 
@@ -66,15 +67,15 @@
 <i class="fas fa-cog fa-spin"></i>
 <h5>カテゴリーから探す</h5>
     <% @categories.each do |tag| %>
-      <%= link_to " #{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "label label-default" %>
+      <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "label label-default", data: {"turbolinks"=>false}) %>
     <% end %>
 <h5>対象職種から探す</h5>
     <% @occupations.each do |tag| %>
-      <%= link_to " #{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "label label-default" %>
+      <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "nav-link") %>
     <% end %>
 <h5>対象者から探す</h5>
     <% @targets.each do |tag| %>
-      <%= link_to " #{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "label label-default" %>
+      <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), data: { confirm: 'Are you sure?' }) %>
     <% end %>
 </div>
 
@@ -114,15 +115,15 @@
 
 <h5>カテゴリーから探す</h5>
     <% @categories.each do |tag| %>
-      <%= link_to " #{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "label label-default" %>
+      <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "nav-link", data: {"turbolinks"=>false}) %>
     <% end %>
 <h5>対象職種から探す</h5>
     <% @occupations.each do |tag| %>
-      <%= link_to " #{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "label label-default" %>
+      <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "label label-default", data: {"turbolinks"=>false}) %>
     <% end %>
 <h5>対象者から探す</h5>
     <% @targets.each do |tag| %>
-      <%= link_to " #{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "label label-default" %>
+      <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "label label-default", data: {"turbolinks"=>false}) %>
     <% end %>
   </div>
   </aside>
@@ -148,6 +149,11 @@
     <div id="app">
       {{ message }}
     </div>
+
+
+
+<%# <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css"> %>
+<div id="page_top"><a href="#"></a></div>
 </main>
 
 
@@ -156,6 +162,7 @@
     &copy;Teppei Mimachi 2020
   </footer>
 
+<%# <% if @path %>
   <script>
     var app = new Vue({
       el: '#app',
@@ -164,6 +171,8 @@
       }
     })
   </script>
+<%# <% else %>
+<%# <% end %>
 </body>
 
 </html>
