@@ -45,7 +45,15 @@
 <% end %>
 <%= link_to("YouTubeで確認する", "https://www.youtube.com/", class: 'navbar-brand underscore') %>
 
-<script>$('.p-faq-title').on('click', function(){
+<script>
+$('.p-faq-title').on('click', function(){
 	$(this).toggleClass('active');
 	$(this).next().slideToggle();
-});</script>
+});
+
+// $(function() {
+//   $('.p-faq-title').on('click')({
+// 	$(this).toggleClass('active');
+//   $(this).next().slideToggle();
+//   });
+</script>

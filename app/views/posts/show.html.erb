@@ -1,8 +1,21 @@
 <%# 投稿詳細ページ %>
 <hr>
-<%#<%= @post.user.email %>
-<h3><%= @post.title %></h3>
+<h4><%= @post.title %></h4>
+<div><%= @post.created_at.strftime("%Y-%m-%d %H:%M:%S") %></div>
+<% if not @post.created_at <= (@new_posts) %>
+<div class="badge badge-secondary">New</div>
+<% else %>
+<% end %>
 
+    <div>
+      <%= render 'posts/category_list', category_list: @post.category_list %>
+    </div>
+    <div>
+      <%= render 'posts/occupation_list', occupation_list: @post.occupation_list %>
+    </div>
+    <div>
+      <%= render 'posts/target_list', target_list: @post.target_list %>
+    </div>
     <div class="max-youtube">
         <div class="responsibe-youtube">
             <iframe width="560" height="315" src="<%= "https://www.youtube.com/embed/#{@post.url[32..42]}" %>?rel=0"
@@ -11,10 +24,13 @@
                 allowfullscreen></iframe>
         </div>
     </div>
-
 <p><%= @post.content %></p>
 
-<div>投稿者:<%= @post.user.name %></div>
+<% if @post.user.image.blank? %>
+  <div>投稿者:<%= image_tag '/default.png', class: "icon_image" %><%= @post.user.name %></div>
+<% else %>
+  <div>投稿者:<img src=<%= @post.user.image %> class = "icon_image"><%= @post.user.name %></div>
+<% end %>
 
 <% if user_signed_in? && current_user.id == @post.user_id %>
 <div>
@@ -22,7 +38,6 @@
   <%= link_to("削除", "/posts/#{@post.id}/destroy", {method: "post"}) %>
 </div>
 <% end %>
-
 
 <%= link_to 'Twitter', "https://twitter.com/share?url=#{request.url}/&text=イラストを学びたい全ての方に#{ @post.content }を!", title: 'Twitter', target: '_blank' %>
 
@@ -47,14 +62,14 @@
   <%= button_to 'いいね', post_likes_path(@post) %>
 <% end %>
 
-<h2>いいねしたユーザー</h2>
+<h4>いいねしたユーザー</h4>
 <% @post.liked_users.each do |user| %>
   <li><%= user.name %></li>
 <% end %>
 
 <hr>
 
-<h2>コメント一覧</h2>
+<h4>コメント一覧</h4>
 <% @comments.each do |c| %>
 <div>
   <a href="/users/<%= @post.user.id %>"><%= c.user.email %></a>
@@ -73,5 +88,25 @@
   <br>
   <%= f.submit 'コメントする' %>
 <% end %>
+
+
+
+<div class="row">
+    <ul>
+        <li class="comment-create">
+            <h3 class="text-left title">レビュー</h3>
+        </li>
+        <li id="comments_area">
+            <%= render partial: 'comments/index', locals: { comments: @comments } %>
+        </li>
+    </ul>
+    <hr>
+    <% if user_signed_in? %>
+        <div class="comment-create">
+            <h3 class="text-left">レビューを投稿する</h3>
+            <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
+        </div>
+    <% end %>
+</div>
 
 <%= link_to "ホームへ戻る", posts_path %>
