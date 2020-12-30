@@ -1,6 +1,11 @@
 <% if user_signed_in? %>
 <div class="center-letter"><h4>投稿一覧</h4></div>
+
+<div  class="skill-list jscroll">
 <%= render "posts/index" %>
+<%= paginate @posts %>
+</div>
+
 <% else %>
   <%= link_to "ユーザー登録", new_user_registration_path %>
   <%= link_to "ログイン", new_user_session_path %>
