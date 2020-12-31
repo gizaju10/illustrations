@@ -1,8 +1,9 @@
 <h1>ユーザー一覧</h1>
 <% @users.each do |user| %>
   <img src=<%= user.image %> class = "icon_image">
-  <a href="/users/<%= user.id %>"><%= user.name %></a>
-  <a href="/users/<%= user.id %>"><%= user.email %></a>
+  <%# <a href="/users/<%= user.id"> %>
+  <%# <%= user.name</a> %>
+  <%= link_to "#{user.name}", "/users/#{user.id}", data: {"turbolinks"=>false} %>
   <hr>
 <% end %>
-<%= link_to "ホームへ戻る", posts_path %>
+<%= render "shared/link_home" %>

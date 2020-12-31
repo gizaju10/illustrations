@@ -19,16 +19,57 @@
 
 <h2>投稿内容</h2>
 <% @user.posts.each do |post| %>
-  <a href="/posts/<%= post.id %>"><%= post.content %></a>
-  <hr>
+<%# <%= render partial: "shared/posts_index", collection: @user.posts, as: 'post' %>
+<div class="row no-gutters bg-white position-relative box">
+    <div class="col-md-6 mb-md-0 p-md-4">
+        <div class="max-youtube">
+            <div class="responsibe-youtube">
+                <iframe width="560" height="315" src="<%= "https://www.youtube.com/embed/#{post.url[32..42]}" %>?rel=0"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 position-static p-4 pl-md-0">
+    <div><%= link_to(post.created_at.strftime("%Y-%m-%d %H:%M:%S"), "/posts/#{post.id}") %></div>
+    <% if not post.created_at <= (Time.now.at_beginning_of_day - 72.hour) %>
+    <div class="badge badge-secondary">New</div>
+    <% else %>
+    <% end %>
+        <div>
+        <%= render 'posts/category_list', category_list: post.category_list %>
+        </div>
+        <div>
+        <%= render 'posts/occupation_list', occupation_list: post.occupation_list %>
+        </div>
+        <div>
+        <%= render 'posts/target_list', target_list: post.target_list %>
+        </div>
+
+        <div><%= link_to(post.title, "/posts/#{post.id}") %></div>
+
+        <div><%= link_to(post.content.truncate(40, omission: '...(続きを読む)'), "/posts/#{post.id}") %></div>
+
+
+        <a href="/users/<%= post.user.id %>">
+        <% if @user.image.blank? %>
+          <%= image_tag '/default.png', class: "icon_image" %>
+        <% else %>
+          <img src=<%= @user.image %> class = "icon_image">
+        <% end %>
+        <%= post.user.name %></a>
+        いいね!(<%= post.liked_users.count %>)
+    </div>
+</div>
+<p>
 <% end %>
 <h3>いいねしている投稿</h3>
 <% @user.liked_posts.each do |post| %>
-  <%= post.user.email %>
-  <%= post.content %>
+  <div><%= link_to "#{post.user.name}", "/users/#{post.user.id}", data: {"turbolinks"=>false} %><%= link_to(post.title, "/posts/#{post.id}") %></div>
 <% end %>
-<%= link_to "ユーザー一覧へ", users_path %>
-<%= link_to "ホームへ戻る", posts_path %>
+<%= link_to "ユーザー一覧へ", users_path, data: {"turbolinks"=>false} %>
+<%= render "shared/link_home" %>
 
 <%# フォロー関連 %>
 <%= render 'follow_form' %>

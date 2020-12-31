@@ -6,7 +6,7 @@
 <div class="badge badge-secondary">New</div>
 <% else %>
 <% end %>
-
+<%# <h2 id="example">これは見出しです。</h2> %>
     <div>
       <%= render 'posts/category_list', category_list: @post.category_list %>
     </div>
@@ -109,4 +109,6 @@
     <% end %>
 </div>
 
-<%= link_to "ホームへ戻る", posts_path %>
+<%= link_to("ホームへ戻る", root_path, data: {"turbolinks"=>false}) %>
+
+<%# <a href="#example">ここをクリック！</a> %>

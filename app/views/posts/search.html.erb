@@ -1,6 +1,6 @@
 <p>検索</p>
 <% if request.fullpath =~ /\?search\=(.+)/ %>
-<%= render "posts/index" %>
+<%= render partial: "index", collection: @posts, as: 'post' %>
 この検索は、「<%= params[:search] %>」のキーワードで検索しました。
 もし、ご希望のYouTube動画が見つからなかった場合、あなたが投稿者になって皆様の学習をサポートしてみませんか？
 <% elsif request.fullpath =~ /\?search\=/ %>
@@ -8,5 +8,9 @@
 検索結果が０件です。
 もし、ご希望のYouTube動画が見つからなかった場合、あなたが投稿者になって皆様の学習をサポートしてみませんか？
 <% else %>
+<%= form_tag(search_path,:method => 'get') do %>
+<%= text_field_tag :search, '', class: '', placeholder: "記事を探す" %>
+<%= submit_tag '検索する', :name => nil %>
+<% end %>
 キーワードを入力して検索して下さい。
 <% end %>

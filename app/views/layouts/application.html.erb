@@ -18,9 +18,7 @@
   <%# 本番用Vue.js %>
   <%# <script src="https://cdn.jsdelivr.net/npm/vue"></script> %>
   <%# <script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script> %>
-
 </head>
-
 <body>
   <header id="grid-header">
   <div class="shadow-sm p-3 mb-3 bg-white rounded">
@@ -67,22 +65,18 @@
 <i class="fas fa-cog fa-spin"></i>
 <h5>カテゴリーから探す</h5>
     <% @categories.each do |tag| %>
-      <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "label label-default", data: {"turbolinks"=>false}) %>
+      <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "nav-link", data: {"turbolinks"=>false}) %>
     <% end %>
 <h5>対象職種から探す</h5>
     <% @occupations.each do |tag| %>
-      <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "nav-link") %>
+      <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "nav-link", data: {"turbolinks"=>false}) %>
     <% end %>
 <h5>対象者から探す</h5>
     <% @targets.each do |tag| %>
-      <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), data: { confirm: 'Are you sure?' }) %>
+      <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "nav-link", data: {"turbolinks"=>false}) %>
+      <%# data: { confirm: 'Are you sure?' } %>
     <% end %>
 </div>
-
-
-
-
-
           <% else %>
           <!-- ログアウトしている場合 -->
           <li class="nav-item underscore">
@@ -115,11 +109,11 @@
 
 <h5>カテゴリーから探す</h5>
     <% @categories.each do |tag| %>
-      <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "nav-link", data: {"turbolinks"=>false}) %>
+      <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "", data: {"turbolinks"=>false}) %>
     <% end %>
 <h5>対象職種から探す</h5>
     <% @occupations.each do |tag| %>
-      <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "label label-default", data: {"turbolinks"=>false}) %>
+      <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "", data: {"turbolinks"=>false}) %>
     <% end %>
 <h5>対象者から探す</h5>
     <% @targets.each do |tag| %>
@@ -134,29 +128,14 @@
 
 <%= render 'layouts/alert' %>
 
-<%# <input id="acd-check1" class="acd-check" type="checkbox">
-<label class="acd-label" for="acd-check1">クリックで開く1<i class="fas fa-angle-double-down fa-1x fa-pull-right"></i></span></label>
-<div class="acd-content">
-  <p>hello.world!</p>
-</div> %>
-<%# <input id="acd-check2" class="acd-check" type="checkbox">
-<label class="acd-label" for="acd-check2">クリックで開く2<i class="fas fa-angle-double-down fa-1x fa-pull-right"></i></label>
-<div class="acd-content">
-  <p>hello.world2!</p>
-</div> %>
-
   <%= yield %>
     <div id="app">
       {{ message }}
     </div>
 
-
-
 <%# <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css"> %>
 <div id="page_top"><a href="#"></a></div>
 </main>
-
-
 
   <footer>
     &copy;Teppei Mimachi 2020
@@ -176,3 +155,14 @@
 </body>
 
 </html>
+
+<%# <input id="acd-check1" class="acd-check" type="checkbox">
+<label class="acd-label" for="acd-check1">クリックで開く1<i class="fas fa-angle-double-down fa-1x fa-pull-right"></i></span></label>
+<div class="acd-content">
+  <p>hello.world!</p>
+</div> %>
+<%# <input id="acd-check2" class="acd-check" type="checkbox">
+<label class="acd-label" for="acd-check2">クリックで開く2<i class="fas fa-angle-double-down fa-1x fa-pull-right"></i></label>
+<div class="acd-content">
+  <p>hello.world2!</p>
+</div> %>
