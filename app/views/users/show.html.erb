@@ -32,24 +32,24 @@
         </div>
     </div>
     <div class="col-md-6 position-static p-4 pl-md-0">
-    <div><%= link_to(post.created_at.strftime("%Y-%m-%d %H:%M:%S"), "/posts/#{post.id}") %></div>
+    <div><%= link_to(post.created_at.strftime("%Y-%m-%d %H:%M:%S"), "/posts/#{post.id}", data: {"turbolinks"=>false}) %></div>
     <% if not post.created_at <= (Time.now.at_beginning_of_day - 72.hour) %>
     <div class="badge badge-secondary">New</div>
     <% else %>
     <% end %>
         <div>
-        <%= render 'posts/category_list', category_list: post.category_list %>
+        <%= render 'posts/category_list', category_list: post.category_list, data: {"turbolinks"=>false} %>
         </div>
         <div>
-        <%= render 'posts/occupation_list', occupation_list: post.occupation_list %>
+        <%= render 'posts/occupation_list', occupation_list: post.occupation_list, data: {"turbolinks"=>false} %>
         </div>
         <div>
-        <%= render 'posts/target_list', target_list: post.target_list %>
+        <%= render 'posts/target_list', target_list: post.target_list, data: {"turbolinks"=>false} %>
         </div>
 
-        <div><%= link_to(post.title, "/posts/#{post.id}") %></div>
+        <div><%= link_to(post.title, "/posts/#{post.id}", data: {"turbolinks"=>false}) %></div>
 
-        <div><%= link_to(post.content.truncate(40, omission: '...(続きを読む)'), "/posts/#{post.id}") %></div>
+        <div><%= link_to(post.content.truncate(40, omission: '...(続きを読む)'), "/posts/#{post.id}", data: {"turbolinks"=>false}) %></div>
 
 
         <a href="/users/<%= post.user.id %>">

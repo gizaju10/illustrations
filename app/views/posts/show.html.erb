@@ -27,9 +27,9 @@
 <p><%= @post.content %></p>
 
 <% if @post.user.image.blank? %>
-  <div>投稿者:<%= image_tag '/default.png', class: "icon_image" %><%= @post.user.name %></div>
+  <div>投稿者:<%= image_tag '/default.png', class: "icon_image" %><%= link_to "#{@post.user.name}", "/users/#{@post.user.id}", data: {"turbolinks"=>false} %></div>
 <% else %>
-  <div>投稿者:<img src=<%= @post.user.image %> class = "icon_image"><%= @post.user.name %></div>
+  <div>投稿者:<img src=<%= @post.user.image %> class = "icon_image"><%= link_to "#{@post.user.name}", "/users/#{@post.user.id}", data: {"turbolinks"=>false} %></div>
 <% end %>
 
 <% if user_signed_in? && current_user.id == @post.user_id %>
@@ -89,8 +89,6 @@
   <%= f.submit 'コメントする' %>
 <% end %>
 
-
-
 <div class="row">
     <ul>
         <li class="comment-create">
@@ -110,5 +108,4 @@
 </div>
 
 <%= link_to("ホームへ戻る", root_path, data: {"turbolinks"=>false}) %>
-
 <%# <a href="#example">ここをクリック！</a> %>
