@@ -16,7 +16,7 @@ class PostsController < ApplicationController
   # 記事検索
   def search
     #Viewのformで取得したパラメータをモデルに渡す
-    @posts = Post.search(params[:search])
+    @posts = Post.search(params[:search]).order(created_at: :desc)
   end
 
   def show
