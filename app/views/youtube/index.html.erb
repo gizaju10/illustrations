@@ -9,38 +9,9 @@
 <dl class="p-faq">
   <dt class="p-faq-title">投稿する</dt>
 
-  <dd class="p-faq-description"><%= form_for @post do |f| %>
-    <%# <%= f.label :content %>
-    <% @post.errors.full_messages_for(:title).each do |message| %>
-    <div>
-      <%= message %>
-    </div>
-    <% end %>
-    <diV>
-    <%= f.text_field :title, placeholder: "タイトル" %>
-    </div>
-    <p>
-
-    <% @post.errors.full_messages_for(:url).each do |message| %>
-    <div>
-      <%= message %>
-    </div>
-    <% end %>
-    <diV>
-    <%= f.text_field :url, placeholder: "YouTubeのURLを入力して下さい", value: "https://www.youtube.com/watch?v=#{item.id.video_id}", class: "url_text" %>
-    </div>
-    <p>
-
-    <% @post.errors.full_messages_for(:content).each do |message| %>
-    <div>
-      <%= message %>
-    </div>
-    <% end %>
-    <diV>
-    <%= f.text_area :content, placeholder: "紹介文" %>
-    </div>
-    <%= f.submit %>
-  <% end %></dd>
+  <dd class="p-faq-description">
+  <%= render "posts/post" %>
+  </dd>
   <p>
 <% end %>
 <%= link_to("YouTubeで確認する", "https://www.youtube.com/", class: 'navbar-brand underscore') %>
