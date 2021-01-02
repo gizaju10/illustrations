@@ -48,6 +48,9 @@
             <li class="nav-item underscore">
               <%= link_to("YouTube2検索", youtube_indexx_path, class: 'nav-link', data: {"turbolinks"=>false}) %>
             </li>
+            <li class="nav-item underscore">
+              <%= link_to("お問い合わせ", inquiry_index_path, class: 'nav-link', data: {"turbolinks"=>false}) %>
+            </li>
 
             <div class="spview">
               <li class="nav-item underscore">
@@ -140,6 +143,7 @@
       <li class="nav-item underscore">
         <%= link_to"ログイン", new_user_session_path, class: '', data: {"turbolinks"=>false} %>
       </li>
+      <%# <%= render "devise/shared/test_user_login" %>
       <%# <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <%# <div class="test-user"> %>
       <%# <%= f.hidden_field :email, value: ENV['TEST_USER'] %>
