@@ -6,9 +6,12 @@ ja:
         post:
           title: タイトル
           url: YouTube動画
-          or_categories: カテゴリー
-          or_jobs: 対象職種
-          or_targets: 対象者
+          category_list: カテゴリー
+          occupation_list: 対象職種
+          target_list: 対象者
+          # or_categories: カテゴリー
+          # or_jobs: 対象職種
+          # or_targets: 対象者
           content: 紹介文
       errors:
         models:
@@ -23,16 +26,26 @@ ja:
                 blank: '紹介したい%{attribute}のURLを入力をして下さい'
                 invalid: '紹介したい%{attribute}のURLを入力をして下さい'
                 too_long: '%{count}文字以内で入力して下さい'
-              or_categories:
+              category_list:
                 format: '%{message}'
                 blank: '%{attribute}の選択は必須です ※複数選択可'
-              or_jobs:
+              occupation_list:
                 format: '%{message}'
                 blank: '%{attribute}の選択は必須です ※複数選択可'
-              or_targets:
+              target_list:
                 format: '%{message}'
                 blank: '%{attribute}の選択は必須です ※複数選択可'
               content:
+              # or_categories:
+              #   format: '%{message}'
+              #   blank: '%{attribute}の選択は必須です ※複数選択可'
+              # or_jobs:
+              #   format: '%{message}'
+              #   blank: '%{attribute}の選択は必須です ※複数選択可'
+              # or_targets:
+              #   format: '%{message}'
+              #   blank: '%{attribute}の選択は必須です ※複数選択可'
+              # content:
                 format: '%{message}'
                 blank: '%{attribute}の入力は必須です'
                 too_long: '%{count}文字以内で入力して下さい'

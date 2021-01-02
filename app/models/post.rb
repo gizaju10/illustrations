@@ -7,6 +7,9 @@ class Post < ApplicationRecord
   VALID_YOUTUBE_URL = /(\Ahttps:\/\/www\.youtube\.com\/watch\?v=)+[\w]{11}/
   validates:url, {presence: true, format: {with: VALID_YOUTUBE_URL}, length: {maximum: 120}} # 未入力NG, YouTubeのURL以外NG, 最大文字数を120文字
   validates:content, {presence: true, length: {maximum: 300}} # 未入力NG, 最大文字数を300文字
+  validates:category_list, {presence: true}
+  validates:occupation_list, {presence: true}
+  validates:target_list, {presence: true}
 
   belongs_to :user
   has_many :comments, dependent: :destroy # 追加 コメント 削除も仮追加
