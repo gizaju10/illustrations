@@ -17,6 +17,8 @@
  /* @import "font-awesome-sprockets";
  @import "font-awesome"; */
 
+@import "loading";
+
 /* gem'devise' */
 .alert {
 	text-align: center;
