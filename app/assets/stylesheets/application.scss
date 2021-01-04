@@ -12,12 +12,13 @@
  *
  *= require_tree .
  *= require_self
+ 
  */
 
- /* @import "font-awesome-sprockets";
- @import "font-awesome"; */
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
 
-@import "loading";
+// @import "loading";
 
 /* gem'devise' */
 .alert {
@@ -401,3 +402,22 @@ h2{
     margin: auto;
     text-align: center;
   }
+
+
+/* .like-btn { */
+    /* width: 25px;
+    height: 30px;
+    font-size: 25px; */
+    /* color: #808080; */
+    /* text-decoration: none; */
+    /* margin-left: 20px; */
+/* } */
+
+/* .unlike-btn { */
+    /* width: 25px;
+    height: 30px;
+    font-size: 25px; */
+    /* color: #e54747; */
+    /* text-decoration: none; */
+    /* margin-left: 20px; */
+/* } */

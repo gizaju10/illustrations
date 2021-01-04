@@ -86,6 +86,6 @@ gem 'hirb-unicode'
 gem 'acts-as-taggable-on', '~> 6.0'
 
 # gem 'font-awesome-rails'
-# gem 'font-awesome-sass'
+gem 'font-awesome-sass'
 
 gem 'jquery-rails'

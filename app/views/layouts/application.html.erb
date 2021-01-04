@@ -11,7 +11,8 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <script src="https://kit.fontawesome.com/5e4f54e2ab.js" crossorigin="anonymous"></script>
+
+
   <%# <script src="https://code.jquery.com/jquery-3.3.1.js"></script> %>
   <%# 開発用Vue.js %>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -69,6 +70,7 @@
               <i class="far fa-heart"></i>
               <i class="fas fa-heart"></i>
               <i class="fas fa-cog fa-spin"></i>
+              <%# <i class="fas fa-sync-alt"></i> %>
               <h5>カテゴリーから探す</h5>
               <% @categories.each do |tag| %>
               <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "nav-link", data: {"turbolinks"=>false}) %>
@@ -119,10 +121,6 @@
         <% end %>
       </center>
 
-      <i class="fas fa-tag"></i>
-      <i class="far fa-heart"></i>
-      <i class="fas fa-heart"></i>
-      <i class="fas fa-cog fa-spin"></i>
 
       <h5>カテゴリーから探す</h5>
       <% @categories.each do |tag| %>
