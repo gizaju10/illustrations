@@ -34,12 +34,13 @@ class YoutubeController < ApplicationController
     !params[:keyword].blank?
     require 'google/apis/youtube_v3'
     youtube = Google::Apis::YoutubeV3::YouTubeService.new
-    youtube.key = ENV['YOUTUBE_1']
+    youtube.key = ENV['YOUTUBE_2']
     youtube_search_list = youtube.list_searches("id,snippet", type: "video",
                                                             q: params[:keyword],
-                                                            max_results: 5)
+                                                            max_results: 2)
     search_result = youtube_search_list.to_h
     @movies = search_result[:items]
+    @post = Post.new
 
     rescue Google::Apis::ClientError
       flash[:alert] = "１日の上限に達しました。"
