@@ -6,4 +6,12 @@
     <%= render 'follow' %>
   <% end %>
   </div>
-<% end %>  
+ 
+  <div id="stats">
+  <% if current_user.following?(@user) %>
+    <%= render 'stats' %>
+  <% else %>
+    <%= render 'stats' %>
+  <% end %>
+  </div>
+  <% end %> 

@@ -11,7 +11,7 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.2.1/font-awesome-animation.css" type="text/css" media="all" />
 
   <%# <script src="https://code.jquery.com/jquery-3.3.1.js"></script> %>
   <%# 開発用Vue.js %>
@@ -66,11 +66,6 @@
                 <%= submit_tag '検索する', :name => nil %>
                 <% end %>
               </center>
-              <i class="fas fa-tag"></i>
-              <i class="far fa-heart"></i>
-              <i class="fas fa-heart"></i>
-              <i class="fas fa-cog fa-spin"></i>
-              <%# <i class="fas fa-sync-alt"></i> %>
               <h5>カテゴリーから探す</h5>
               <% @categories.each do |tag| %>
               <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "nav-link", data: {"turbolinks"=>false}) %>
@@ -101,6 +96,9 @@
   </header>
 
   <aside class="px-3">
+  <p class="faa-parent animated-hover">
+  <i class="fas fa-music faa-bounce"></i>
+</p>
     <%# <aside class="shadow-none p-3 mb-5 bg-white rounded"> %>
     <div class="fixed pcview">
       <% if user_signed_in? %>
