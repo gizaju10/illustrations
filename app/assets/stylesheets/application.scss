@@ -79,6 +79,19 @@ body {
         / 0.3fr 5px 1fr;
 }
 
+// body {
+//     min-height: 100vh;
+//     margin: 0; /* ページ周りの余白をなくす */
+//     display: grid;
+//     grid-template:
+//         "header header header" 
+//         "...... ...... ......" 
+//         "left   ...... right " 1fr
+//         "...... ...... ......" 10px
+//         "footer footer footer" 
+//         / 0.3fr 5px 1fr;
+// }
+
 header {
     grid-area: header;
 }
@@ -114,7 +127,8 @@ main {
      bottom: 0; /*下に固定*/
  }
 
-@media screen and (max-width: 481px) {
+// @media screen and (max-width: 481px) {
+@media screen and (max-width: 991px) {
     body {
         grid-template:
         "header"
@@ -365,10 +379,10 @@ nav.pagination {
 
 
 
-h2{
-    text-align: center;
-    margin-bottom: 30px;
-  }
+// h2{
+//     text-align: center;
+//     margin-bottom: 30px;
+//   }
   #page_top{
     width: 50px;
     height: 50px;
