@@ -43,7 +43,14 @@ Rails.application.routes.draw do
   resources :relationships,       only: [:create, :destroy]
   # フォロー関連ここまで
 
-  root 'posts#index'
+  # root 'posts#index'
+  # root 'users/registrations#new'
+  # root 'registrations#new'
+
+  devise_scope :user do
+    root :to => "devise/registrations#new"
+    end
+
 
   get   'inquiry'         => 'inquiry#index'     # 入力画面
   post  'inquiry/confirm' => 'inquiry#confirm'   # 確認画面

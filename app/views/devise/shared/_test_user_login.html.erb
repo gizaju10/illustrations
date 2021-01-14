@@ -1,5 +1,5 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="test-user">
+      <div class="test-user padding_down">
         <p><i class="fas fa-user"></i>テストユーザーとしてログインできます</p>
         <%= f.hidden_field :email, value: ENV['TEST_USER'] %>
         <%= f.hidden_field :password, value: ENV['TEST_USER_PASSWORD'] %>

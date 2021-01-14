@@ -24,6 +24,7 @@
 </head>
 
 <body>
+<% if not current_page?(root_path) || current_page?(new_user_registration_path) %>
   <header id="grid-header">
     <div class="shadow-sm p-3 mb-3 bg-white rounded">
       <nav class="navbar navbar-expand-lg">
@@ -96,8 +97,10 @@
       </nav>
     </div>
   </header>
+<% end %>
 
   <aside class="px-3">
+  <% if user_signed_in? %>
     <p class="faa-parent animated-hover">
       <i class="fas fa-music faa-bounce"></i>
     </p>
@@ -107,8 +110,7 @@
       <div><%= text_field_tag :keyword %><%= submit_tag "検索" %></div>
       <% end %>
     </div>
-    <div class="fixed pcview">
-      <% if user_signed_in? %>
+    <div class="fixed pcview">      
       <% if current_user.image.blank? %>
       <%= image_tag '/default.png', class: "icon_image" %>
       <% else %>
@@ -172,10 +174,11 @@
     <%# <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css"> %>
     <div id="page_top"><a href="#"></a></div>
   </main>
-
+<% if not current_page?(root_path) || current_page?(new_user_registration_path) %>
   <footer>
     &copy;Teppei Mimachi 2020
   </footer>
+<% end %>
 
   <%# <% if @path %>
   <script>

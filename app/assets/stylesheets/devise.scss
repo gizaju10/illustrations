@@ -1,0 +1,32 @@
+video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 0;
+}
+
+.new_background {
+  background-color: rgba(255, 255, 255, 0.8);
+  // background: #ccc; 
+  display: inline-block;
+  // text-shadow:
+  // 0.5px 0 0 white,
+  // 0 0.5px 0 white,
+  // -0.5px 0 0 white,
+  // 0 -0.5px 0 white;
+  padding: 20px;
+  border-radius: 10px; /* 角を丸くする */
+}
+
+h2 {
+  padding-top: 20px;
+}
+
+.padding_down {
+  padding-bottom: 20px; 
+}

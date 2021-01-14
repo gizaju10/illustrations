@@ -8,6 +8,9 @@ class ApplicationController < ActionController::Base
   # deviseコントローラーにストロングパラメータを追加する          
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def after_sign_in_path_for(resource) 
+    posts_path
+  end
 
   def tags
     @categories = ActsAsTaggableOn::Tag.named_any(["知識", "技術", "メンタル", "その他カテゴリー"]).order("id")
