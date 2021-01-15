@@ -1,5 +1,33 @@
-<p>Welcome <%= @email %>!</p>
+<%# <p>Welcome <%= @email %>
+<%# !</p> %>
 
-<p>You can confirm your account email through the link below:</p>
+<%# <p>You can confirm your account email through the link below:</p> %>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<%# <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %>
+<%# </p> %>
+
+<p>※このメールは自動送信メールです。</p>
+
+<p><%= @email %> 様</p>
+
+<p>「<%= ENV['APP_NAME'] %>」事務局でございます。</p>
+<p>この度は「<%= ENV['APP_NAME'] %>」にご登録いただきありがとうございます。</p>
+
+<p>下記のリンクからアカウントメールの確認をお願いいたします。</p>
+
+<p><%= link_to 'アカウントメールの確認はこちら', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+
+<p>※このメールは返信しても届きません。お問い合わせはアプリを起動して「お問い合わせ」からお願いいたします。</p>
+
+<p>
+覚えがないのにこのメールが届いたという方<br>
+ご迷惑をおかけし申し訳ありません。大変お手数ですが下記メールアドレスまでご連絡をお願いいたします。<br>
+</p>
+<p><%= ENV['MAIL_BCC'] %></p>
+
+<p>――――――――――――――――――――――――――――――</p>
+<%= ENV['APP_NAME'] %><br>
+URL ： <%= ENV['WEB_PROTOCOL'] %>://<%= ENV['WEB_HOST'] %><br>
+Mail ： <%= ENV['MAIL_BCC'] %><br>
+<p>――――――――――――――――――――――――――――――</p>

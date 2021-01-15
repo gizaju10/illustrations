@@ -1,7 +1,33 @@
-<p>Hello <%= @resource.email %>!</p>
+<%# <p>Hello <%= @resource.email %>
+<%# !</p> %>
 
-<p>Your account has been locked due to an excessive number of unsuccessful sign in attempts.</p>
+<%# <p>Your account has been locked due to an excessive number of unsuccessful sign in attempts.</p> %>
 
-<p>Click the link below to unlock your account:</p>
+<%# <p>Click the link below to unlock your account:</p> %>
 
-<p><%= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token) %></p>
+<%# <p><%= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token) %>
+<%# </p> %>
+
+<p>※このメールは自動送信メールです。</p>
+
+<p><%= @resource.email %>様</p>
+
+<p>「<%= ENV['APP_NAME'] %>」事務局でございます。</p>
+
+<p>サインインの失敗回数が上限に達し、アカウントがロックされました。</p>
+
+<p>下記のリンクをクリックすると、アカウントのロックが解除されます。</p>
+
+<p><%= link_to 'アカウントをアンロックする', unlock_url(@resource, unlock_token: @token) %></p>
+
+<p>
+覚えがないのにこのメールが届いたという方<br>
+ご迷惑をおかけし申し訳ありません。大変お手数ですが下記メールアドレスまでご連絡をお願いいたします。<br>
+</p>
+<p><%= ENV['MAIL_BCC'] %></p>
+
+<p>――――――――――――――――――――――――――――――</p>
+<%= ENV['APP_NAME'] %><br>
+URL ： <%= ENV['WEB_PROTOCOL'] %>://<%= ENV['WEB_HOST'] %><br>
+Mail ： <%= ENV['MAIL_BCC'] %><br>
+<p>――――――――――――――――――――――――――――――</p>

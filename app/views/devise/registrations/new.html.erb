@@ -10,6 +10,8 @@
   <div class="col-12 my-auto">
     <div class="masthead-content text-black py-5 py-md-0 new_background">
       <h2>新規登録(無料)して利用を開始しましょう。</h2>
+      <%= render 'layouts/alert' %>
+      <h2>新規登録</h2>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
@@ -45,17 +47,20 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "Sign up" %>
+        <%= f.submit "新規登録する" %>
       </div>
       <% end %>
 
-      <%= render "devise/shared/links" %> 
+      <%= render "devise/shared/links" %>
 
       <%= render "devise/shared/test_user_login" %>
 
-      </div>
+      <footer>
+        &copy;Teppei Mimachi 2020
+      </footer>
     </div>
-    <%# </div> %>
-    <%# </div> %>
-    <%# </div> %>
-    <%# </div> %>
+  </div>
+  <%# </div> %>
+  <%# </div> %>
+  <%# </div> %>
+  <%# </div> %>
