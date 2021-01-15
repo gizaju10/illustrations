@@ -1,6 +1,6 @@
 <% if request.fullpath =~ /\?keyword\=/ %>
  <div class="col-md-3 col-md-offset-3 search-form">
-     <%= form_tag( youtube_indexx_path,:method => 'get') do %>
+     <%= form_tag( youtube_search_path,:method => 'get') do %>
      <label for="keyword">検索</label>
      <div><%= text_field_tag :keyword %><%= submit_tag "検索" %></div>
      <% end %>
@@ -97,7 +97,7 @@
                  <diV>
                      <%= f.text_area :content, placeholder: "紹介文" %>
                  </div>
-                 <%= f.submit %>
+                 <%= f.submit value: "投稿する" %>
                  <% end %>
      </dd>
      <p>
@@ -106,7 +106,7 @@
 
 <% else %>
  <div class="col-md-3 col-md-offset-3 search-form">
-     <%= form_tag( youtube_indexx_path,:method => 'get') do %>
+     <%= form_tag( youtube_search_path,:method => 'get') do %>
      <label for="keyword">検索</label>
      <div><%= text_field_tag :keyword %><%= submit_tag "検索" %></div>
      <% end %>

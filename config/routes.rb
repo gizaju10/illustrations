@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # get 'users/show'
 
   get "youtube/index"
-  get "youtube/indexx"
+  get "youtube/search"
 
   devise_for :users, controllers: {
     registrations: "users/registrations",
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show]
   put "/users/:id/hide" => "users#hide", as: 'users_hide'
-  resources :posts, only: [:new, :index, :show, :create, :edit] do
+  resources :posts, only: [:new, :index, :show, :create, :edit, :update] do
     # resources :comments, only: [:create]
     resources :comments, only: [:create, :destroy]
     resources :likes, only: [:create, :destroy]
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   get "search" => "posts#search" # 記事検索機能
 
-  post "posts/:id/update" => "posts#update" # 投稿編集→投稿更新
+  # post "posts/:id/update" => "posts#update" # 投稿編集→投稿更新
   post "posts/:id/destroy" => "posts#destroy" # 投稿編集→投稿削除
 
   get "comments/:id/edit" => "comments#edit" # 投稿編集
