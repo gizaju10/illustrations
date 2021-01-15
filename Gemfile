@@ -89,3 +89,8 @@ gem 'acts-as-taggable-on', '~> 6.0'
 gem 'font-awesome-sass'
 
 gem 'jquery-rails'
+
+gem 'devise-i18n'
+gem 'devise-bootstrap-views'
+
+gem "bullet"

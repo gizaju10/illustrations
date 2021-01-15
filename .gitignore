@@ -39,3 +39,6 @@ yarn-debug.log*
 /public/*.png
 /public/uploads/user/image/**/*
 /public/images/*
+
+.DS_Store
+bg.mp4
