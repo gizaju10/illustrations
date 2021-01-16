@@ -23,7 +23,14 @@ video {
   border-radius: 10px; /* 角を丸くする */
 }
 
-h2 {
+.new_image {
+  // width: 150px;
+  height: 70px;
+  /* サイズ指定 */
+  /* border-radius: 100px; */
+  /* 画像を丸くする */
+  object-fit: cover;
+  /* タテヨコ比を変えないままトリミング */
   padding-top: 20px;
 }
 
