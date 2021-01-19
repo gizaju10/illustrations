@@ -260,20 +260,22 @@ main {
     width: 30px;
     height: 30px;
     /* サイズ指定 */
-    /* border-radius: 100px; */
+     border-radius: 50%;
     /* 画像を丸くする */
     object-fit: cover;
     /* タテヨコ比を変えないままトリミング */
+    // border: 0.1px solid #000; /* 枠線を付加 */
 }
 
 .icon_image_large {
     width: 60px;
     height: 60px;
     /* サイズ指定 */
-    /* border-radius: 100px; */
+    border-radius: 50%;
     /* 画像を丸くする */
     object-fit: cover;
     /* タテヨコ比を変えないままトリミング */
+    // border: 0.1px solid #000; /* 枠線を付加 */
 }
 
 
@@ -475,6 +477,34 @@ nav.pagination {
 
 
 
+.posted-date {
+    position: relative;
+    padding-left: 25px;
+  }
+  
+  .posted-date:before {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: none;
+    border-left: solid 15px transparent;
+    border-bottom: solid 15px rgb(119, 195, 223);
+  }
+  .posted-date:after {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 10px;
+    width: 96%;
+    border-bottom: solid 3px rgb(119, 195, 223);
+  }
+
+
+
+
 
 
 .box26 {
@@ -499,4 +529,30 @@ nav.pagination {
 .box26 p {
     margin: 0; 
     padding: 0;
+}
+
+
+
+
+
+.cp_link {
+	display: inline-block;
+	color: #000;
+}
+.cp_link {
+	transition: .5s;
+}
+.cp_link:hover {
+	transform: rotateX(360deg);
+}
+
+.cp_link_b {
+	display: inline-block;
+	// color: ;
+}
+.cp_link_b {
+	transition: .5s;
+}
+.cp_link_b:hover {
+	transform: rotateX(360deg);
 }
