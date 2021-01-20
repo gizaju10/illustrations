@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Illustration</title>
+  <title>IllustTube</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= favicon_link_tag 'favicon.ico' %>
@@ -24,11 +24,15 @@
 </head>
 
 <body>
-<% if not current_page?(root_path) || current_page?(new_user_registration_path) %>
+  <% if not current_page?(root_path) || current_page?(new_user_registration_path) %>
   <header id="grid-header">
     <div class="shadow-sm p-3 mb-3 bg-white rounded">
       <nav class="navbar navbar-expand-lg">
-        <%= link_to("イラストアプリ", root_path, class: 'navbar-brand underscore', data: {"turbolinks"=>false}) %>
+        <%# class: 'navbar-brand underscore' %>
+        <%# <%= link_to image_tag("/illusttube.png", class:"title_image", data: {"turbolinks"=>false}) %>
+        <%= link_to posts_path, data: {"turbolinks"=>false} do %>
+        <%= image_tag("/illusttube.png", class:"title_image") %>
+        <% end %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -37,80 +41,209 @@
           <ul class="navbar-nav mr-auto">
             <% if user_signed_in? %>
             <!-- ログインしている場合 -->
+            <%# PC & タブレット用 %>
             <li class="nav-item underscore">
-              <%= link_to("マイページへ", user_path(current_user.id), class: 'nav-link', data: {"turbolinks"=>false}) %>
-            </li>
+              <%= link_to user_path(current_user.id), class: 'nav-link', data: {"turbolinks"=>false}, method: :get do %>
+              <i class="fa fa-user-plus"></i> マイページ
+              <% end %>
             <li class="nav-item underscore">
-              <%= link_to("ユーザー一覧へ", users_path, class: 'nav-link', data: {"turbolinks"=>false}) %>
-            </li>
+              <%= link_to users_path, class: 'nav-link', data: {"turbolinks"=>false}, method: :get do %>
+              <i class="fas fa-users"></i> ユーザー一覧
+              <% end %>
             <li class="nav-item underscore">
-              <%= link_to("新規投稿", new_post_path, class: 'nav-link', data: {"turbolinks"=>false}) %>
-            </li>
+              <%= link_to new_post_path, class: 'nav-link', data: {"turbolinks"=>false}, method: :get do %>
+              <i class="fas fa-clipboard"></i> 新規投稿
+              <% end %>
             <li class="nav-item underscore">
+              <%= link_to inquiry_index_path, class: 'nav-link', data: {"turbolinks"=>false}, method: :get do %>
+              <i class="fas fa-envelope"></i> お問い合わせ
+              <% end %>
+
+
+
+
+            <%# 仮 %>
+            <li class="nav-item underscore">
+              <%= link_to youtube_search_path, class: 'nav-link', data: {"turbolinks"=>false}, method: :get do %>
+              <i class="fab fa-youtube faa-flash animated"></i> 検索して新規投稿
+              <% end %>
+
+              <%# <li class="nav-item underscore">
               <%= link_to("YouTube1", youtube_index_path, class: 'nav-link', data: {"turbolinks"=>false}) %>
-            </li>
-            <li class="nav-item underscore">
-              <%= link_to("YouTube2検索", youtube_indexx_path, class: 'nav-link', data: {"turbolinks"=>false}) %>
-            </li>
-            <li class="nav-item underscore">
-              <%= link_to("お問い合わせ", inquiry_index_path, class: 'nav-link', data: {"turbolinks"=>false}) %>
+            <%# 仮ここまで %>
             </li>
 
             <div class="spview">
-              <li class="nav-item underscore">
-                <%= link_to("#{current_user.name}", user_path(current_user.id), class: 'nav-link', data: {"turbolinks"=>false}) %>
+              <%# タブレット用 %>
+              <hr>
+
+
+
+              <% if current_user.image.blank? %>
+              <%= image_tag '/default.png', class: "icon_image" %>
+              <% else %>
+              <img src=<%= current_user.image %> class="icon_image">
+              <% end %>
+              <li class="underscore">
+                <%= link_to("#{current_user.name}", user_path(current_user.id), class: '', data: {"turbolinks"=>false}) %>
               </li>
-              <li class="nav-item underscore">
-                <%= link_to("ログアウト", destroy_user_session_path, :method => :delete, class: 'nav-link', data: {"turbolinks"=>false}) %>
-              </li>
+              <%= render 'users/stats' %>
+
+              <%# いずれ編集するここから %>
+
+
+                <li class="">
+                  <%= link_to destroy_user_session_path, class: 'btn btn-secondary', data: {"turbolinks"=>false}, method: :delete do %>
+                  <i class="fas fa-sign-out-alt"></i> ログアウト
+                  <% end %>
+
+              <%# <%= link_to("ログアウト", destroy_user_session_path, :method => :delete, class: '', data: {"turbolinks"=>false}) %>
+
+
+
+              
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item underscore">
+                  <%= link_to user_path(current_user.id), class: 'nav-link', data: {"turbolinks"=>false}, method: :get do %>
+                  <i class="fas fa-envelope"></i> <%= current_user.name %>
+                  <% end %>
+
+                <li class="nav-item underscore">
+                  <%= link_to("#{current_user.name}", user_path(current_user.id), class: 'nav-link', data: {"turbolinks"=>false}) %>
+                </li>
+                <%# <li class="">
+                  <%= link_to("ログアウト", destroy_user_session_path, :method => :delete, class: 'btn btn-secondary', data: {"turbolinks"=>false}) %>
+                <%# </li> %>
+              </ul>
+              <%# いずれ編集するここまで %>
+
+
+
               <center>
+                <%# タブレット用 %>
+                <%# <div class="field"> %>
+                <hr>
                 <%= form_tag(search_path,:method => 'get') do %>
-                <%= text_field_tag :search, '', class: '', placeholder: "記事を探す" %>
-                <%= submit_tag '検索する', :name => nil %>
+                <%= text_field_tag :search, '', class: '', placeholder: "投稿記事を探す" %>
+                <%# <%= submit_tag '検索', class: "btn-outline-info badge-light", :name => nil %>
+                <%= button_tag :name => nil, :class =>"btn-outline-info badge-light" do %>
+                <i class="fa fa-search"></i>検索
+                <%# </div> %>
+                <% end %>
                 <% end %>
               </center>
-              <h5>カテゴリーから探す</h5>
-              <% @categories.each do |tag| %>
-              <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "nav-link", data: {"turbolinks"=>false}) %>
-              <% end %>
-              <h5>対象職種から探す</h5>
-              <% @occupations.each do |tag| %>
-              <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "nav-link", data: {"turbolinks"=>false}) %>
-              <% end %>
-              <h5>対象者から探す</h5>
-              <% @targets.each do |tag| %>
-              <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "nav-link", data: {"turbolinks"=>false}) %>
-              <%# data: { confirm: 'Are you sure?' } %>
-              <% end %>
+
+              <%# <div class="col-md-3 col-md-offset-3 search-form">
+                <%= form_tag( youtube_search_path,:method => 'get') do %>
+              <%# <div><%= text_field_tag :keyword %>
+              <%# <%= submit_tag "YouTubeから探す" %>
+              <%# </div> %>
+              <%# <% end %>
+              <%# </div> %>
+
+
+
+
+<%# ------------------------------------------------------ %>
+
+
+      <hr>
+      <%# <h5>カテゴリーから探す</h5> %>
+      <% @categories.each do |tag| %>
+      <%# <div class="badge badge-pill badge-primary"> %>
+        <%# <i class="fas fa-tag"></i> %>
+        <%# <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "badge badge-pill badge-primary", data: {"turbolinks"=>false}) %>
+
+        <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-primary", data: {"turbolinks"=>false} do %>
+        <i class="fas fa-tag"></i><%= tag.name %>(<%= tag.taggings_count %>)
+        <% end %>
+
+      <%# </div> %>
+      <% end %>
+      <%# <h5>対象職種から探す</h5> %>
+      <hr>
+      <% @occupations.each do |tag| %>
+      <%# <div class="badge badge-pill badge-success"> %>
+
+        <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-success", data: {"turbolinks"=>false} do %>
+        <i class="fas fa-tags"></i><%= tag.name %>(<%= tag.taggings_count %>)
+        <% end %>
+
+      <%# </div> %>
+      <% end %>
+      <%# <h5>対象者から探す</h5> %>
+      <hr>
+      <% @targets.each do |tag| %>
+      <%# <div class="badge badge-pill badge-danger"> %>
+
+        <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-danger", data: {"turbolinks"=>false} do %>
+        <i class="fas fa-user-tag"></i><%= tag.name %>(<%= tag.taggings_count %>)
+        <% end %>
+
+      <%# </div> %>
+      <% end %>
+
+
+
+
+
+
+<%# ------------------------------------------------------ %>
+
+
+
+
+              <footer>
+                &copy;Teppei Mimachi 2021
+              </footer>
             </div>
             <% else %>
             <!-- ログアウトしている場合 -->
             <li class="nav-item underscore">
-              <%= link_to"ユーザー登録", new_user_registration_path, class: "nav-link", data: {"turbolinks"=>false} %>
-            </li>
-            <li class="nav-item underscore">
-              <%= link_to"ログイン", new_user_session_path, class: "nav-link", data: {"turbolinks"=>false} %>
-            </li>
-            <% end %>
+              <%= link_to new_user_registration_path, class: 'nav-link', data: {"turbolinks"=>false}, method: :get do %>
+              <i class="fas fa-sign-in-alt"></i> ユーザー登録
+              <% end %>
+              <%# <li class="nav-item underscore">
+                <%= link_to new_user_session_path, class: 'nav-link', data: {"turbolinks"=>false}, method: :get do %>
+              <%# <i class="fas fa-sign-in-alt"></i> ログイン %>
+              <%# <% end %>
+              <% end %>
+              <%# <div class="spview">
+              <footer>
+                &copy;Teppei Mimachi 2020
+              </footer>
+            </div> %>
           </ul>
+
+
+          <div class="fixed pcview">
+            <%# 右に表示できる %>
+            <li class="nav-item underscore">
+              <%= link_to youtube_search_path, class: 'nav-link', data: {"turbolinks"=>false}, method: :get do %>
+              <i class="fab fa-youtube faa-flash animated"></i> 検索して新規投稿
+              <% end %>
+          </div>
         </div>
       </nav>
     </div>
   </header>
-<% end %>
+  <% end %>
 
   <aside class="px-3">
-  <% if user_signed_in? %>
-    <p class="faa-parent animated-hover">
-      <i class="fas fa-music faa-bounce"></i>
-    </p>
-    <div class="col-md-3 col-md-offset-3 search-form">
-      <%= form_tag( youtube_indexx_path,:method => 'get') do %>
-      <label for="keyword">検索</label>
-      <div><%= text_field_tag :keyword %><%= submit_tag "検索" %></div>
-      <% end %>
-    </div>
-    <div class="fixed pcview">      
+    <% if user_signed_in? %>
+    <%# <p class="faa-parent animated-hover">
+    <i class="fas fa-music faa-bounce"></i>
+    </p> %>
+
+
+
+
+
+
+
+    <div class="fixed pcview">
+      <%# PC用 %>
+      <center>
       <% if current_user.image.blank? %>
       <%= image_tag '/default.png', class: "icon_image" %>
       <% else %>
@@ -120,42 +253,94 @@
         <%= link_to("#{current_user.name}", user_path(current_user.id), class: '', data: {"turbolinks"=>false}) %>
       </li>
       <%= render 'users/stats' %>
-      <%= link_to("ログアウト", destroy_user_session_path, :method => :delete, class: '', data: {"turbolinks"=>false}) %>
+      <%= link_to destroy_user_session_path, class: 'btn btn-outline-dark', data: {"turbolinks"=>false}, method: :delete do %>
+      <i class="fas fa-sign-out-alt"></i>ログアウト
+      <% end %>
+      </center>
+      <%# <div class="col-md-3 col-md-offset-3 search-form"> %>
+      <%# <%= form_tag( youtube_search_path,:method => 'get') do %>
+      <%# <label for="keyword">YouTubeから探す</label> %>
+      <%# <div><%= text_field_tag :keyword, '',　class: '', placeholder: "YouTubeから新規投稿" %>
+      <%# <%= submit_tag "検索" %>
+      <%# </div> %>
+      <%# <% end %>
+      <%# </div> %>
+
+      <hr>
       <center>
+        <%# PC用 %>
         <%= form_tag(search_path,:method => 'get') do %>
-        <%= text_field_tag :search, '', class: '', placeholder: "記事を探す" %>
-        <%= submit_tag '検索する', :name => nil %>
+        <%= text_field_tag :search, '', class: '', placeholder: "投稿記事を探す" %>
+        <%# <%= submit_tag '検索', class: "btn-outline-info badge-light", :name => nil %>
+        <%= button_tag :name => nil, :class =>"btn-outline-info badge-light" do %>
+        <i class="fa fa-search"></i>検索
+        <% end %>
         <% end %>
       </center>
 
 
-      <h5>カテゴリーから探す</h5>
+
+
+<%# ------------------------------------------------------ %>
+
+
+
+
+
+
+      <hr>
+      <%# <h5>カテゴリーから探す</h5> %>
       <% @categories.each do |tag| %>
-      <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "", data: {"turbolinks"=>false}) %>
-      <% end %>
-      <h5>対象職種から探す</h5>
-      <% @occupations.each do |tag| %>
-      <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "", data: {"turbolinks"=>false}) %>
-      <% end %>
-      <h5>対象者から探す</h5>
-      <% @targets.each do |tag| %>
-      <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "label label-default", data: {"turbolinks"=>false}) %>
-      <% end %>
-      <% else %>
-      <li class="nav-item underscore">
-        <%= link_to"ユーザー登録", new_user_registration_path, class: '', data: {"turbolinks"=>false} %>
-      </li>
-      <li class="nav-item underscore">
-        <%= link_to"ログイン", new_user_session_path, class: '', data: {"turbolinks"=>false} %>
-      </li>
-      <%# <%= render "devise/shared/test_user_login" %>
-      <%# <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <%# <div class="test-user"> %>
-      <%# <%= f.hidden_field :email, value: ENV['TEST_USER'] %>
-      <%# <%= f.hidden_field :password, value: ENV['TEST_USER_PASSWORD'] %>
-      <%# <%= f.submit 'テストログイン', class: 'btn btn-outline-dark' %>
+      <%# <div class="badge badge-pill badge-primary"> %>
+        <%# <i class="fas fa-tag"></i> %>
+        <%# <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "badge badge-pill badge-primary", data: {"turbolinks"=>false}) %>
+
+        <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-primary", data: {"turbolinks"=>false} do %>
+        <i class="fas fa-tag"></i><%= tag.name %>(<%= tag.taggings_count %>)
+        <% end %>
+
       <%# </div> %>
-      <%# <% end %>
+      <% end %>
+      <%# <h5>対象職種から探す</h5> %>
+      <hr>
+      <% @occupations.each do |tag| %>
+      <%# <div class="badge badge-pill badge-success"> %>
+
+        <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-success", data: {"turbolinks"=>false} do %>
+        <i class="fas fa-tags"></i><%= tag.name %>(<%= tag.taggings_count %>)
+        <% end %>
+
+      <%# </div> %>
+      <% end %>
+      <%# <h5>対象者から探す</h5> %>
+      <hr>
+      <% @targets.each do |tag| %>
+      <%# <div class="badge badge-pill badge-danger"> %>
+
+        <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-danger", data: {"turbolinks"=>false} do %>
+        <i class="fas fa-user-tag"></i><%= tag.name %>(<%= tag.taggings_count %>)
+        <% end %>
+
+      <%# </div> %>
+      <% end %>
+
+
+
+
+
+
+
+
+<%# ------------------------------------------------------ %>
+      <% else %>
+      <% end %>
+
+
+
+      <% if user_signed_in? %>
+      <footer>
+        &copy;Teppei Mimachi 2020
+      </footer>
       <% end %>
     </div>
   </aside>
@@ -167,30 +352,27 @@
     <%= render 'layouts/alert' %>
 
     <%= yield %>
-    <div id="app">
-      {{ message }}
-    </div>
 
-    <%# <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css"> %>
+    <%# <div id="app">
+      {{ message }}
+    </div> %>
+
     <div id="page_top"><a href="#"></a></div>
   </main>
-<% if not current_page?(root_path) || current_page?(new_user_registration_path) %>
-  <footer>
+  <%# <% if not current_page?(root_path) || current_page?(new_user_registration_path) %>
+  <%# <footer>
     &copy;Teppei Mimachi 2020
-  </footer>
-<% end %>
+  </footer> %>
+  <%# <% end %>
 
-  <%# <% if @path %>
-  <script>
+  <%# <script>
     var app = new Vue({
       el: '#app',
       data: {
         message: 'Vue.jsで表示'
       }
     })
-  </script>
-  <%# <% else %>
-  <%# <% end %>
+  </script> %>
 
   <div class="loader-wrap">
     <div class="loader">Loading...</div>
@@ -198,14 +380,3 @@
 </body>
 
 </html>
-
-<%# <input id="acd-check1" class="acd-check" type="checkbox">
-<label class="acd-label" for="acd-check1">クリックで開く1<i class="fas fa-angle-double-down fa-1x fa-pull-right"></i></span></label>
-<div class="acd-content">
-  <p>hello.world!</p>
-</div> %>
-<%# <input id="acd-check2" class="acd-check" type="checkbox">
-<label class="acd-label" for="acd-check2">クリックで開く2<i class="fas fa-angle-double-down fa-1x fa-pull-right"></i></label>
-<div class="acd-content">
-  <p>hello.world2!</p>
-</div> %>
