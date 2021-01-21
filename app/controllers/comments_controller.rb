@@ -27,9 +27,9 @@ class CommentsController < ApplicationController
     @comment.content = params[:content]
     if @comment.save
       flash[:notice] = "コメントを編集しました"
-      redirect_to("/")
+      redirect_to("/posts")
     else
-      render("/")
+      render("/posts")
     end
   end
 
