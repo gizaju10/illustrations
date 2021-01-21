@@ -2,15 +2,15 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:show, :create] # ログインしていないユーザーはshow, createは実行できない
 
   def index
-    @posts = Post.all
+    # @posts = Post.all
     @posts = Post.page(params[:page]).per(1).order(created_at: :desc)
     # @posts = Post.page(params[:page]).order(created_at: :desc).without_count.per(1)
     # Post.find_by(id: 1).occupation_list
     # @post = Post.new
-    if params[:tag_name]
+    # 1/19にコメント化　# if params[:tag_name]
       # @path = request.fullpath.include?("tag_name")
-      @posts = Post.tagged_with("#{params[:tag_name]}").page(params[:page]).per(1).order(created_at: :desc)
-    end
+    # 1/19にコメント化  # @posts = Post.tagged_with("#{params[:tag_name]}").page(params[:page]).per(1).order(created_at: :desc)
+    # 1/19にコメント化　# end
   end
 
   # 記事検索
@@ -47,7 +47,7 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     if @post.save
       flash[:notice] = "投稿を作成しました"
-      redirect_to(root_path)
+      redirect_to("/posts")
     else
       flash.now[:alert] = "投稿に失敗しました"
 
@@ -66,21 +66,30 @@ class PostsController < ApplicationController
   # 投稿編集→投稿更新
   def update
     @post = Post.find_by(id: params[:id])
-    @post.content = params[:content]
-    if @post.save
+    # @post.content = params[:content]
+    if @post.update(post_params)
       flash[:notice] = "投稿を編集しました"
-      redirect_to("/")
+      redirect_to("/posts")
     else
-      render("/")
+      render :new
     end
   end
+
+  # def update
+  #   @post = Post.find(params[:id])
+  #   if @post.update(post_params)
+  #     redirect_to request.referer
+  #   else
+  #     render :new
+  #   end
+  # end
 
   # 投稿編集→投稿削除
   def destroy
     @post = Post.find_by(id: params[:id])
     @post.destroy
     flash[:notice] = "投稿を削除しました"
-    redirect_to("/")
+    redirect_to("/posts")
   end
 
   private
