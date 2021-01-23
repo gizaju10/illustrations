@@ -2,13 +2,22 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    # .page(params[:page]).per(1)
   end
 
   def show
     @user = User.find(params[:id])
+
+    # @users = User.find(params[:id]).posts.includes(:taggings).page(params[:page]).per(1)
+    @users = User.find(params[:id]).posts.page(params[:page]).per(1)
+    
+    # @users = Post.page(params[:page]).per(1)
+    # @users = @user.posts.page(1).per(1)
     # @user = current_user
+    # @posts = Post.where(user_id: params[:id]).count.per(1).order(created_at: :desc)
   end
-  
+
+
   # フォロー関連
   def following
     @user  = User.find(params[:id])
