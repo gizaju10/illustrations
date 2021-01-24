@@ -4,7 +4,7 @@ class YoutubeController < ApplicationController
   def find_videos(keyword, after: 500.months.ago, before: Time.now)
   begin
    service = Google::Apis::YoutubeV3::YouTubeService.new
-   service.key = ENV['YOUTUBE_3']
+   service.key = ENV['YOUTUBE_1']
 
    next_page_token = nil
    opt = {
@@ -19,16 +19,16 @@ class YoutubeController < ApplicationController
    service.list_searches(:snippet, opt)
   rescue Google::Apis::ClientError
     flash[:alert] = "１日の上限に達しました。"
-    redirect_to(root_path)
+    redirect_to(posts_path)
   end
   end
 
   def index
-    @youtube_data = find_videos('c')
+    @youtube_data = find_videos('a')
     @post = Post.new
   end
 
-def indexx
+def search
   require 'google/apis/youtube_v3'
   youtube = Google::Apis::YoutubeV3::YouTubeService.new
           
@@ -83,7 +83,7 @@ def indexx
                         flash[:alert] = "10"
                       rescue Google::Apis::ClientError
                         flash[:alert] = "１日の上限に達しました。"
-                        redirect_to(root_path)
+                        redirect_to(posts_path)
                       end
                     end
                   end
