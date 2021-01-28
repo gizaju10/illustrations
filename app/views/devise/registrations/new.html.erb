@@ -9,45 +9,52 @@
   <%# <div class="row h-100"> %>
   <div class="col-12 my-auto">
     <div class="masthead-content text-black py-5 py-md-0 new_background">
+     <%= image_tag '/illusttube.png', class: "new_image" %>
       <h2>新規登録(無料)して利用を開始しましょう。</h2>
-      <%= render 'layouts/alert' %>
-      <h2>新規登録</h2>
-
+      <%# <%= render 'layouts/alert' %>
+      <%# <h2>新規登録</h2> %>
+<%= render 'layouts/alert' %>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <!--サインアップ時に名前を入力できるようにフォームを追加-->
       <div class="field">
-        <%= f.label :name %><br />
-        <%= f.text_field :name, autofocus: true %>
+        <%# <%= f.label :name<br /> %>
+        <div class="font-weight-bold">名前:</div>
+        <%= f.text_field :name, autofocus: true, placeholder: "名前" %>
       </div>
 
       <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%# <%= f.label :email<br /> %>
+        <div class="font-weight-bold">メールアドレス:</div>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
       </div>
 
       <div class="field">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
+        <%# <%= f.label :password %>
+        <%# <% if @minimum_password_length %>
+        <%# <em>(<%= @minimum_password_length characters minimum)</em> %>
+        <%# <% end %>
+        <%# <br /> %>
+        <div class="font-weight-bold">パスワード:</div>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード ※#{@minimum_password_length}文字以上" %>
       </div>
 
       <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <%# <%= f.label :password_confirmation<br /> %>
+        <%# <div class="font-weight-bold">パスワード:</div> %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード ※再入力" %>
       </div>
 
       <!--サインアップ時に画像を入力できるようにフォームを追加-->
       <div class="field">
-        <%= f.label :image %><br />
+        <%# <%= f.label :image<br /> %>
+        <div class="font-weight-bold">プロフィール画像:</div>
         <%= f.file_field :image %>
       </div>
 
-      <div class="actions">
-        <%= f.submit "新規登録する" %>
+      <div class="actions field">
+        <%= f.submit "新規登録する", class: "btn btn-outline-danger"  %>
       </div>
       <% end %>
 
@@ -56,7 +63,7 @@
       <%= render "devise/shared/test_user_login" %>
 
       <footer>
-        &copy;Teppei Mimachi 2020
+        &copy;Teppei Mimachi 2021
       </footer>
     </div>
   </div>
