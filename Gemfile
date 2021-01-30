@@ -94,3 +94,5 @@ gem 'devise-i18n'
 gem 'devise-bootstrap-views'
 
 gem "bullet"
+
+gem 'rspec-rails'
