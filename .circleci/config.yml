@@ -77,9 +77,9 @@ jobs:
             POSTGRES_USER: postgres
             #下記を書けばパスワードなしでデータベースにログインしてくれる。 
             POSTGRES_HOST_AUTH_METHOD: trust
-            POSTGRES_DB: portfolio_test
+            POSTGRES_DB: illustrations_test
       #自身のアプリ名にする
-      working_directory: ~/Portfolio
+      working_directory: ~/Illustrations
       steps:
         - checkout
         #bundle キャッシュをリストアする。公式の設定通り。
