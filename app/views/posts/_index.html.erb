@@ -1,4 +1,4 @@
-<div class="row no-gutters bg-white position-relative box">
+<div id="parent_flame" class="row no-gutters bg-white position-relative box">
     <div class="col-md-6 mb-md-0 p-md-4">
         <div class="max-youtube">
             <div class="responsibe-youtube">
@@ -10,9 +10,11 @@
         </div>
     </div>
     <div class="col-md-6 position-static p-4 pl-md-0">
-    <div><%= link_to(post.created_at.strftime("%Y-%m-%d %H:%M:%S"), "/posts/#{post.id}") %></div>
+    <span class="posted-date"><%= link_to(post.created_at.strftime("%Y-%m-%d %H:%M:%S"), "/posts/#{post.id}", class: "cp_link") %></span>
     <% if not post.created_at <= (Time.now.at_beginning_of_day - 72.hour) %>
-    <div class="badge badge-secondary">New</div>
+    <div class="badge badge-secondary balloonoya">New
+     <span class="balloon">投稿から3日以内の投稿です。</span>
+     </div>
     <% else %>
     <% end %>
         <div>
@@ -25,13 +27,25 @@
         <%= render 'posts/target_list', target_list: post.target_list %>
         </div>
 
-        <div><%= link_to(post.title, "/posts/#{post.id}") %></div>
+<div class="box26">
+        <span class="box-title cp_link_b"><%= link_to(post.title, "/posts/#{post.id}") %></span>
 
-        <div><%= link_to(post.content.truncate(40, omission: '...(続きを読む)'), "/posts/#{post.id}") %></div>
+        <p><%= link_to(post.content.truncate(40, omission: '...(続きを読む)'), "/posts/#{post.id}", class: "cp_link_b") %></p>
+</div>
+
+<div id="child_flame_br">
+        投稿者:<a href="/users/<%= post.user.id %>"><img src=<%= post.user.image %> class = "icon_image"><%= post.user.name %></a>
+        
+       コメント:<%= post.comments.count %>件
 
 
-        <a href="/users/<%= post.user.id %>"><img src=<%= post.user.image %> class = "icon_image"><%= post.user.name %></a>
-        いいね!(<%= post.liked_users.count %>)
+    <% if not post.liked_users.count == 0 %>
+            <i class="fas fa-heart unlike-btn" style="color: #e54747;"></i><span style="color: #e54747;"><%= post.likes.count %></span>
+    <% else %>
+            <i class="far fa-heart like-btn" style="color: #808080;"></i><span style="color: #808080;"><%= post.likes.count %></span>
+    <% end %>
+</div>
+
     </div>
 </div>
 <p>

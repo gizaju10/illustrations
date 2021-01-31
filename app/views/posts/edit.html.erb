@@ -1,7 +1,86 @@
 <h1>編集する</h1>
-<%= form_tag("/posts/#{@post.id}/update") do %>
+<%# <%= form_tag("/posts/#{@post.id}/update") do %>
 
-<%= render "posts/post" %>
+<%# <%= render "posts/post" %>
 
-<input type="submit" value="保存">
+<%# <input type="submit" value="保存"> %>
+
+<%= form_for(@post, url: post_path(@post)) do |f| %>
+
+<% @post.errors.full_messages_for(:title).each do |message| %>
+<div>
+  <%= message %>
+</div>
+<% end %>
+<diV>
+  <%= f.text_field :title, placeholder: "タイトル" %>
+</div>
+<p>
+  <% @post.errors.full_messages_for(:url).each do |message| %>
+  <div>
+    <%= message %>
+  </div>
+  <% end %>
+  <diV>
+    <%= f.text_field :url, placeholder: "https://www.youtube.com/watch?v=", class: "url_text" %>
+  </div>
+  <p>
+
+
+
+
+    <%# <%= f.label :tag_list %>
+    <%# <%= f.text_field :tag_list, value: @post.tag_list.join(','), class: "form-control" %>
+  <% @post.errors.full_messages_for(:category_list).each do |message| %>
+  <div>
+    <%= message %>
+  </div>
+  <% end %>
+    <div class="">カテゴリー</div>
+    <div class="col-sm-12">
+      <% @categories.each do |tag| %>
+      <%= f.check_box :category_list, { multiple: true }, "#{tag.name}", nil %>
+      <%= f.label " #{tag.name}(#{tag.taggings_count})", class: "" %>
+      <% end %>
+    </div>
+
+  <% @post.errors.full_messages_for(:occupation_list).each do |message| %>
+  <div>
+    <%= message %>
+  </div>
+  <% end %>
+    <div class="">対象職種</div>
+    <div class="col-sm-12">
+      <% @occupations.each do |tag| %>
+      <%= f.check_box :occupation_list, { multiple: true }, "#{tag.name}", nil %>
+      <%= f.label " #{tag.name}(#{tag.taggings_count})", class: "" %>
+      <% end %>
+    </div>
+
+  <% @post.errors.full_messages_for(:target_list).each do |message| %>
+  <div>
+    <%= message %>
+  </div>
+  <% end %>
+    <%# <label class="col-sm-12">対象者</label> %>
+    <div class="">対象者</div>
+    <div class="col-sm-12">
+      <% @targets.each do |tag| %>
+      <%= f.check_box :target_list, { multiple: true }, "#{tag.name}", nil %>
+      <%= f.label " #{tag.name}(#{tag.taggings_count})", class: "label label-default" %>
+      <% end %>
+    </div>
+
+
+    <% @post.errors.full_messages_for(:content).each do |message| %>
+    <div>
+      <%= message %>
+    </div>
+    <% end %>
+    <diV>
+      <%= f.text_area :content, placeholder: "紹介文" %>
+    </div>
+
+
+ <div><%= f.submit "更新する" %></div>
 <% end %>

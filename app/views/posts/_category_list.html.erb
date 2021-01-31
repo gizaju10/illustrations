@@ -1,4 +1,10 @@
-カテゴリー：
+カテゴリー:
 <% category_list.each do |tag| %>
-<%= link_to tag, posts_path(tag_name: tag), class: "" %>
+<%= link_to posts_path(tag_name: tag), class: "badge badge-pill badge-primary", data: {"turbolinks"=>false} do %>
+<i class="fas fa-tag"></i><%= tag %>
 <% end %>
+<% end %>
+
+
+
+

@@ -1,32 +1,78 @@
 <%= form_for @inquiry, :url => inquiry_confirm_path do |f| %>
-  <div class="page-header">
-    <h1>お問い合わせ</h1>
-  </div>
+  <%# <div class="page-header"> %>
+    <h4>お問い合わせ</h4>
+  <%# </div> %>
+
+<%= render 'layouts/alert' %>
 
   <% if @inquiry.errors.any? %>
-    <div class="alert alert-danger" role="alert">
-      <strong>入力内容にエラーがあります</strong>
-      <ul>
-        <% @inquiry.errors.each do |attr, msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
+    <div class="alert alert-danger" role="alert">入力内容にエラーがあります
+     <button type="button" class="close" data-dismiss="alert">&times;</button>
+   </div>
   <% end %>
 
-  <table class="table">
+
+  <%# <% if @inquiry.errors.any? %>
+    <%# <div class="alert alert-danger" role="alert">
+      <strong>入力内容にエラーがあります</strong>
+      <ul> %>
+        <%# <% @inquiry.errors.each do |attr, msg|
+          <li><%= msg %>
+          <%# </li>
+        <% end %>
+      <%# </ul> %>
+    <%# </div> %>
+  <%# <% end %>
+
+ 
+
+<%# <hr> %>
+<%# <div class="font-weight-bold">名前:</div> %>
+<% @inquiry.errors.full_messages_for(:name).each do |message| %>
+<div class="badge badge-warning">
+  <%= message %>
+</div>
+<% end %>
+<div class="field"><%= f.text_field :name, placeholder: "お名前" %></div>
+<%# <hr> %>
+<%# <div class="font-weight-bold">メールアドレス:</div> %>
+<% @inquiry.errors.full_messages_for(:email).each do |message| %>
+<div class="badge badge-warning">
+  <%= message %>
+</div>
+<% end %>
+<div class="field"><%= f.email_field :email, placeholder: "メールアドレス" %></div>
+<%# <hr> %>
+<%# <div class="font-weight-bold">お問い合わせ内容:</div> %>
+<% @inquiry.errors.full_messages_for(:message).each do |message| %>
+<div class="badge badge-warning">
+  <%= message %>
+</div>
+<% end %>
+<div class="field"><%= f.text_area :message, placeholder: "お問い合わせ内容" %></div>
+
+
+
+
+
+
+  <%# <table class="table">
     <tr>
       <th>名前<span class="text-danger">（必須）</span></th>
-      <td><%= f.text_field :name %></td>
-    </tr>
+      <td><%= f.text_field :name %>
+      <%# </td> %>
+    <%# </tr>
     <tr>
       <th>メールアドレス<span class="text-danger">（必須）</span></th>
-      <td><%= f.text_field :email %></td>
-    </tr>
+      <td><%= f.text_field :email %>
+      <%# </td> %>
+    <%# </tr>
     <tr>
       <th>お問い合わせ内容</th>
-      <td><%= f.text_area :message %></td>
-    </tr>
-  </table>
-  <%= f.submit '確認', class: 'btn btn-primary' %>
+      <td><%= f.text_area :message %>
+      <%# </td> %>
+    <%# </tr>
+  </table> %>
+
+<div><%= f.submit '確認', class: 'btn btn-primary' %></div>
 <% end %>

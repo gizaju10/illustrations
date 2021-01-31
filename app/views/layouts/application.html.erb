@@ -30,7 +30,7 @@
       <nav class="navbar navbar-expand-lg">
         <%# class: 'navbar-brand underscore' %>
         <%# <%= link_to image_tag("/illusttube.png", class:"title_image", data: {"turbolinks"=>false}) %>
-        <%= link_to posts_path, data: {"turbolinks"=>false} do %>
+        <%= link_to posts_path do %>
         <%= image_tag("/illusttube.png", class:"title_image") %>
         <% end %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -374,9 +374,10 @@
     })
   </script> %>
 
-  <div class="loader-wrap">
+<%# ローディングの表示 %>
+  <%# <div class="loader-wrap">
     <div class="loader">Loading...</div>
-  </div>
+  </div> %>
 </body>
 
 </html>
