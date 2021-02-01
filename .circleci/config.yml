@@ -62,7 +62,7 @@
 version: 2.1
 jobs:                                   #----------------------------------------------ジョブ
    build:
-      docker:
+      docker:                    #----------------------------------------------Executor
         #アプリのバージョンを指定
         - image: circleci/ruby:2.7.1
           environment:
