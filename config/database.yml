@@ -14,3 +14,4 @@ development:
 test:
   <<: *default
   database: illustrations_test
+  host: localhost 
