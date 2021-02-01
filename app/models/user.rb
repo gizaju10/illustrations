@@ -8,6 +8,10 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :profile, length: { maximum: 200 }
 
+  # validates :password, presence: true
+  # validates :email, presence: true 
+  # validates :email, uniqueness: true
+
   has_many :sns_credentials, dependent: :destroy
   has_many :posts, dependent: :destroy # 追加 もしユーザーがデータベースから削除されてしまった場合にユーザーがした投稿も全て消える
   has_many :comments, dependent: :destroy # 追加 コメント 削除も仮追加
