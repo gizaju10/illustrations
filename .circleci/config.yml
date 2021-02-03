@@ -80,7 +80,7 @@ jobs:                                   #---------------------------------------
             POSTGRES_DB: illustrations_test
       #自身のアプリ名にする
       working_directory: ~/Illustrations
-      steps:
+      steps:                      #---------------------------------------------★ステップ
         - checkout
         #bundle キャッシュをリストアする。公式の設定通り。
         - restore_cache:
