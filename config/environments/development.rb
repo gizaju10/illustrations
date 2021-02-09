@@ -86,4 +86,7 @@ Rails.application.configure do
     authentication:       'plain',
     enable_starttls_auto:  true
   }
+
+  # ホワイトリスト全体をクリア(nginx)
+  config.hosts.clear
 end
