@@ -14,4 +14,11 @@ development:
 test:
   <<: *default
   database: illustrations_test
-  host: localhost 
+  host: localhost
+
+production:
+  <<: *default 
+  database: sample_app_production
+  username: postgres # RDS DBインスタンスのユーザー名
+  password: password # RDS DBインスタンスのパスワード
+  host: xxxx.xxxx.ap-northeast-1.rds.amazonaws.com # RDS DBインスタンスのエンドポイント
