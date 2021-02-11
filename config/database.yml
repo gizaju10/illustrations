@@ -18,7 +18,7 @@ test:
 
 production:
   <<: *default 
-  database: sample_app_production
-  username: postgres # RDS DBインスタンスのユーザー名
-  password: password # RDS DBインスタンスのパスワード
-  host: xxxx.xxxx.ap-northeast-1.rds.amazonaws.com # RDS DBインスタンスのエンドポイント
+  database: <%= ENV['DB_DATABASE'] %>
+  username: <%= ENV['DB_USERNAME'] %> # RDS DBインスタンスのユーザー名
+  password: <%= ENV['DB_PASSWORD'] %> # RDS DBインスタンスのパスワード
+  host: <%= ENV['DB_HOST'] %> #xxxx.xxxx.ap-northeast-1.rds.amazonaws.com # RDS DBインスタンスのエンドポイント
