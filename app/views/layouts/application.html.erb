@@ -10,14 +10,22 @@
   <%# <script src="https://kit.fontawesome.com/5e4f54e2ab.js" crossorigin="anonymous"></script> %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%# <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.2.1/font-awesome-animation.css"
     type="text/css" media="all" />
 
+
+    <%# <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> %>
+
+
+
   <%# <script src="https://code.jquery.com/jquery-3.3.1.js"></script> %>
   <%# 開発用Vue.js %>
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <%# <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> %>
   <%# 本番用Vue.js %>
   <%# <script src="https://cdn.jsdelivr.net/npm/vue"></script> %>
   <%# <script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script> %>
@@ -43,19 +51,19 @@
             <!-- ログインしている場合 -->
             <%# PC & タブレット用 %>
             <li class="nav-item underscore">
-              <%= link_to user_path(current_user.id), class: 'nav-link', data: {"turbolinks"=>false}, method: :get do %>
+              <%= link_to user_path(current_user.id), class: 'nav-link', method: :get do %>
               <i class="fa fa-user-plus"></i> マイページ
               <% end %>
             <li class="nav-item underscore">
-              <%= link_to users_path, class: 'nav-link', data: {"turbolinks"=>false}, method: :get do %>
+              <%= link_to users_path, class: 'nav-link', method: :get do %>
               <i class="fas fa-users"></i> ユーザー一覧
               <% end %>
             <li class="nav-item underscore">
-              <%= link_to new_post_path, class: 'nav-link', data: {"turbolinks"=>false}, method: :get do %>
+              <%= link_to new_post_path, class: 'nav-link', method: :get do %>
               <i class="fas fa-clipboard"></i> 新規投稿
               <% end %>
             <li class="nav-item underscore">
-              <%= link_to inquiry_index_path, class: 'nav-link', data: {"turbolinks"=>false}, method: :get do %>
+              <%= link_to inquiry_index_path, class: 'nav-link', method: :get do %>
               <i class="fas fa-envelope"></i> お問い合わせ
               <% end %>
 
@@ -64,12 +72,12 @@
 
             <%# 仮 %>
             <li class="nav-item underscore">
-              <%= link_to youtube_search_path, class: 'nav-link', data: {"turbolinks"=>false}, method: :get do %>
+              <%= link_to youtube_search_path, class: 'nav-link', method: :get do %>
               <i class="fab fa-youtube faa-flash animated"></i> 検索して新規投稿
               <% end %>
 
               <%# <li class="nav-item underscore">
-              <%= link_to("YouTube1", youtube_index_path, class: 'nav-link', data: {"turbolinks"=>false}) %>
+              <%= link_to("YouTube1", youtube_index_path, class: 'nav-link') %>
             <%# 仮ここまで %>
             </li>
 
@@ -85,7 +93,7 @@
               <img src=<%= current_user.image %> class="icon_image">
               <% end %>
               <li class="underscore">
-                <%= link_to("#{current_user.name}", user_path(current_user.id), class: '', data: {"turbolinks"=>false}) %>
+                <%= link_to("#{current_user.name}", user_path(current_user.id), class: '') %>
               </li>
               <%= render 'users/stats' %>
 
@@ -93,26 +101,26 @@
 
 
                 <li class="">
-                  <%= link_to destroy_user_session_path, class: 'btn btn-secondary', data: {"turbolinks"=>false}, method: :delete do %>
+                  <%= link_to destroy_user_session_path, class: 'btn btn-secondary', method: :delete do %>
                   <i class="fas fa-sign-out-alt"></i> ログアウト
                   <% end %>
 
-              <%# <%= link_to("ログアウト", destroy_user_session_path, :method => :delete, class: '', data: {"turbolinks"=>false}) %>
+              <%# <%= link_to("ログアウト", destroy_user_session_path, :method => :delete, class: '') %>
 
 
 
               
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item underscore">
-                  <%= link_to user_path(current_user.id), class: 'nav-link', data: {"turbolinks"=>false}, method: :get do %>
+                  <%= link_to user_path(current_user.id), class: 'nav-link', method: :get do %>
                   <i class="fas fa-envelope"></i> <%= current_user.name %>
                   <% end %>
 
                 <li class="nav-item underscore">
-                  <%= link_to("#{current_user.name}", user_path(current_user.id), class: 'nav-link', data: {"turbolinks"=>false}) %>
+                  <%= link_to("#{current_user.name}", user_path(current_user.id), class: 'nav-link') %>
                 </li>
                 <%# <li class="">
-                  <%= link_to("ログアウト", destroy_user_session_path, :method => :delete, class: 'btn btn-secondary', data: {"turbolinks"=>false}) %>
+                  <%= link_to("ログアウト", destroy_user_session_path, :method => :delete, class: 'btn btn-secondary') %>
                 <%# </li> %>
               </ul>
               <%# いずれ編集するここまで %>
@@ -152,9 +160,9 @@
       <% @categories.each do |tag| %>
       <%# <div class="badge badge-pill badge-primary"> %>
         <%# <i class="fas fa-tag"></i> %>
-        <%# <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "badge badge-pill badge-primary", data: {"turbolinks"=>false}) %>
+        <%# <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "badge badge-pill badge-primary") %>
 
-        <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-primary", data: {"turbolinks"=>false} do %>
+        <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-primary" do %>
         <i class="fas fa-tag"></i><%= tag.name %>(<%= tag.taggings_count %>)
         <% end %>
 
@@ -165,7 +173,7 @@
       <% @occupations.each do |tag| %>
       <%# <div class="badge badge-pill badge-success"> %>
 
-        <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-success", data: {"turbolinks"=>false} do %>
+        <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-success" do %>
         <i class="fas fa-tags"></i><%= tag.name %>(<%= tag.taggings_count %>)
         <% end %>
 
@@ -176,7 +184,7 @@
       <% @targets.each do |tag| %>
       <%# <div class="badge badge-pill badge-danger"> %>
 
-        <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-danger", data: {"turbolinks"=>false} do %>
+        <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-danger" do %>
         <i class="fas fa-user-tag"></i><%= tag.name %>(<%= tag.taggings_count %>)
         <% end %>
 
@@ -200,11 +208,11 @@
             <% else %>
             <!-- ログアウトしている場合 -->
             <li class="nav-item underscore">
-              <%= link_to new_user_registration_path, class: 'nav-link', data: {"turbolinks"=>false}, method: :get do %>
+              <%= link_to new_user_registration_path, class: 'nav-link', method: :get do %>
               <i class="fas fa-sign-in-alt"></i> ユーザー登録
               <% end %>
               <%# <li class="nav-item underscore">
-                <%= link_to new_user_session_path, class: 'nav-link', data: {"turbolinks"=>false}, method: :get do %>
+                <%= link_to new_user_session_path, class: 'nav-link', method: :get do %>
               <%# <i class="fas fa-sign-in-alt"></i> ログイン %>
               <%# <% end %>
               <% end %>
@@ -219,7 +227,7 @@
           <div class="fixed pcview">
             <%# 右に表示できる %>
             <li class="nav-item underscore">
-              <%= link_to youtube_search_path, class: 'nav-link', data: {"turbolinks"=>false}, method: :get do %>
+              <%= link_to youtube_search_path, class: 'nav-link', method: :get do %>
               <i class="fab fa-youtube faa-flash animated"></i> 検索して新規投稿
               <% end %>
           </div>
@@ -250,10 +258,10 @@
       <img src=<%= current_user.image %> class="icon_image">
       <% end %>
       <li class="underscore">
-        <%= link_to("#{current_user.name}", user_path(current_user.id), class: '', data: {"turbolinks"=>false}) %>
+        <%= link_to("#{current_user.name}", user_path(current_user.id), class: '') %>
       </li>
       <%= render 'users/stats' %>
-      <%= link_to destroy_user_session_path, class: 'btn btn-outline-dark', data: {"turbolinks"=>false}, method: :delete do %>
+      <%= link_to destroy_user_session_path, class: 'btn btn-outline-dark', method: :delete do %>
       <i class="fas fa-sign-out-alt"></i>ログアウト
       <% end %>
       </center>
@@ -293,9 +301,9 @@
       <% @categories.each do |tag| %>
       <%# <div class="badge badge-pill badge-primary"> %>
         <%# <i class="fas fa-tag"></i> %>
-        <%# <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "badge badge-pill badge-primary", data: {"turbolinks"=>false}) %>
+        <%# <%= link_to("#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: "badge badge-pill badge-primary") %>
 
-        <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-primary", data: {"turbolinks"=>false} do %>
+        <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-primary" do %>
         <i class="fas fa-tag"></i><%= tag.name %>(<%= tag.taggings_count %>)
         <% end %>
 
@@ -306,7 +314,7 @@
       <% @occupations.each do |tag| %>
       <%# <div class="badge badge-pill badge-success"> %>
 
-        <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-success", data: {"turbolinks"=>false} do %>
+        <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-success" do %>
         <i class="fas fa-tags"></i><%= tag.name %>(<%= tag.taggings_count %>)
         <% end %>
 
@@ -317,7 +325,7 @@
       <% @targets.each do |tag| %>
       <%# <div class="badge badge-pill badge-danger"> %>
 
-        <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-danger", data: {"turbolinks"=>false} do %>
+        <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-danger" do %>
         <i class="fas fa-user-tag"></i><%= tag.name %>(<%= tag.taggings_count %>)
         <% end %>
 
