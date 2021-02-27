@@ -1,6 +1,6 @@
 Rails.application.configure do
   config.after_initialize do
-    Bullet.enable        = true #Bullet gemを有効
+    Bullet.enable        = false #Bullet gemを有効
     Bullet.alert         = true #ブラウザにJavaScriptアラートをポップアップ
     Bullet.bullet_logger = true #Bulletログファイル（Rails.root/log/bullet.log）に記録
     Bullet.console       = true #警告をブラウザーのconsole.logに記録
@@ -61,7 +61,7 @@ Rails.application.configure do
   # number of complex assets.
 
   # 本番環境でCSSが反映では、falseにする。
-  config.assets.debug = false
+  config.assets.debug = true
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
@@ -71,7 +71,8 @@ Rails.application.configure do
 
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'localhost' }
 
   # 変更前
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker

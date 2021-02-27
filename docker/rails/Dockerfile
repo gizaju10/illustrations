@@ -21,7 +21,6 @@ apt-get install nodejs
 #各自のアプリ名に変更する
 ENV RAILS_ROOT /illustrations
 
-RUN mkdir $RAILS_ROOT
 WORKDIR $RAILS_ROOT
 
 COPY Gemfile Gemfile

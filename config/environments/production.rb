@@ -20,13 +20,40 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  # config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  
+  # public以下を静的ファイルとして取り扱う
+  config.public_file_server.enabled = true
+
+
+
+  # Compress JavaScripts 必要か?
+  config.assets.js_compressor = :uglifier
 
   # Compress CSS using a preprocessor.
-  # config.assets.css_compressor = :sass
+  config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
+  # サーバー側でコンパイルしてくれる。
+  # config.assets.compile = true
+  # config.assets.compile = false
+
+  # ↓
+  
   config.assets.compile = false
+
+  config.assets.precompile += %w(*.js *.less *.css *.erb)
+
+
+
+
+
+  config.public_file_server.enabled = true
+
+  # assetファイル名にハッシュをつける。
+  config.assets.digest = true
+
+
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
@@ -109,4 +136,19 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+  #deviseが認証用のURLなどを生成するのに必要になる
+  config.action_mailer.default_url_options = {  :host => 'https://illusttube.work/' }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                  587,
+    domain:               'gmail.com',
+    user_name:            ENV['GOOGLE_MAIL'],
+    password:             ENV['GOOGLE_PASSWORD'],
+    authentication:       'plain',
+    enable_starttls_auto:  true
+  }
+
 end

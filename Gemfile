@@ -56,7 +56,8 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data'
 
 # 追加 エラーメッセージの日本語化
 gem 'rails-i18n'
@@ -74,13 +75,15 @@ gem 'google-api-client'
 
 gem 'devise', '~> 4.7', '>= 4.7.3'
 
-gem 'omniauth-facebook'                  # Facebook認証
-gem 'omniauth-twitter'                   # Twitter認証
+# gem 'omniauth-facebook'                  # Facebook認証
+# gem 'omniauth-twitter'                   # Twitter認証
 gem 'omniauth-google-oauth2'             # Google認証
-gem 'omniauth-line'                      # LINE認証
+# gem 'omniauth-line'                      # LINE認証
 
 gem 'rename'
 
+# for image uploader with AWS S3
+gem 'fog'
 gem 'carrierwave' #画像アップロード
 
 gem 'rmagick' #画像の加工
@@ -103,3 +106,5 @@ gem "bullet"
 # gem 'rspec-rails'
 
 # gem 'factory_bot_rails'
+
+gem 'bootstrap'
