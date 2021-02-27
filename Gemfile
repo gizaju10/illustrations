@@ -108,3 +108,6 @@ gem "bullet"
 # gem 'factory_bot_rails'
 
 gem 'bootstrap'
+
+# ExecJS::RuntimeUnavailable対応
+gem 'mini_racer'
