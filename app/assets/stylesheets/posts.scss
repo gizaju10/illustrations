@@ -40,3 +40,41 @@ textarea {
   white-space: pre-wrap;
   word-wrap: break-word;
 }
+
+
+
+
+
+
+.post_show {
+  word-break: break-word;
+  padding: 0.5em 1em;
+  margin: 0.5em 0;
+  color: #474747;
+  background: whitesmoke;/*背景色*/
+  border-left: double 7px #4ec4d3;/*左線*/
+  border-right: double 7px #4ec4d3;/*右線*/
+}
+.post_show p {
+  margin: 0; 
+  padding: 0;
+}
+
+
+
+
+
+
+.comment_show {
+  word-break: break-word;
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  color: #00BCD4;
+  background: #e4fcff;/*背景色*/
+  border-top: solid 6px #1dc1d6;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
+}
+.comment_show p {
+  margin: 0; 
+  padding: 0;
+}
