@@ -342,6 +342,28 @@ h4 {
     display: inline-block;
   }
 
+h5 {
+  position: relative;/*相対位置*/
+  padding-left: 1.5em;/*アイコン分のスペース*/
+  line-height: 1.4;/*行高*/
+  color: black;/*文字色*/
+}
+
+h5:before {
+  font-family: "Font Awesome 5 Free";/*忘れずに*/
+  content: "\f111";/*アイコンのユニコード*/
+  font-weight: 900;
+  position: absolute;/*絶対位置*/
+  font-size: 1.4em;/*サイズ*/
+  left: 0;/*アイコンの位置*/
+  top: -0.2em;/*アイコンの位置*/
+}
+
+h5:before {
+    color: #a1ceff;
+  }
+  
+
 /* h3 { */
     /* color: #364e96; */
     /*文字色*/
@@ -509,21 +531,24 @@ nav.pagination {
 
 
 
-.box26 {
+  .box26 {
     position: relative;
     margin: 2em 0;
-    padding: 0.5em 1em;
+    // padding: 0.5em 1em;
+    padding: 1.2em 1em 1em 1em;
     border: solid 3px #95ccff;
     border-radius: 8px;
 }
 .box26 .box-title {
     position: absolute;
     display: inline-block;
-    top: -13px;
+    // top: -13px;
+    top: -14px;
     left: 10px;
     padding: 0 9px;
     line-height: 1;
-    font-size: 19px;
+    // font-size: 18px;
+    font-size: 18px;
     background: #FFF;
     color: #95ccff;
     font-weight: bold;
@@ -573,7 +598,7 @@ nav.pagination {
     display: none;                        /* 要素を非表示 */
     padding: 2px;                         /* テキストの前後の余白 */
     background-color: rgba(255, 0, 0, 0.69);       /* 背景色（透明度） */
-    width:180px;                          /* 吹き出し全体の幅 */
+    width:120px;                          /* 吹き出し全体の幅 */
     left : 30%;                           /* 表示位置 */
     bottom : 100%;                        /* 表示位置 */
     margin-bottom : 12px;                 /* 表示位置 */
@@ -587,4 +612,18 @@ nav.pagination {
     left : 5%;                              /* 吹き出し口の横位置 */
     content: "";                       /* コンテンツの挿入 */
     position: absolute;                /* 親要素を基準 */
+  }
+
+
+// li要素のリストマーク（・）を消す
+  ul {
+    list-style: none;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  .border_none {
+    border: none;
   }
