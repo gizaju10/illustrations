@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :create] # ログインしていないユーザーはshow, createは実行できない
+  before_action :authenticate_user!
+  # , only: [:show, :create] # ログインしていないユーザーはshow, createは実行できない
 
   def index
     # @posts = Post.all
@@ -26,7 +27,10 @@ class PostsController < ApplicationController
     # @comment = Comment.new # コメント機能
     @comment = Comment.new
     #新着順で表示
-    @comments = @post.comments.order(created_at: :desc)
+    @comments = @post.comments
+    # @comments = @post.comments.order(created_at: :desc)
+    # @comments = @post.comments.order(created_at: :desc).page(params[:page]).per(1)
+    # @comments = @post.comments.page(params[:page]).per(1)
     @like = Like.new # いいね機能
   end
 
@@ -46,10 +50,11 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      flash[:notice] = "投稿を作成しました"
-      redirect_to("/posts")
+      flash[:notice] = "投稿を作成しました。"
+      # redirect_to("/posts")
+      redirect_to @post
     else
-      flash.now[:alert] = "投稿に失敗しました"
+      flash.now[:alert] = "投稿に失敗しました。"
 
       # 追加
       @tags = ActsAsTaggableOn::Tag.all
@@ -68,8 +73,9 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
     # @post.content = params[:content]
     if @post.update(post_params)
-      flash[:notice] = "投稿を編集しました"
-      redirect_to("/posts")
+      flash[:notice] = "投稿を編集しました。"
+      # redirect_back(fallback_location: root_path)
+      redirect_to @post
     else
       render :new
     end
@@ -88,7 +94,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find_by(id: params[:id])
     @post.destroy
-    flash[:notice] = "投稿を削除しました"
+    flash[:notice] = "投稿を削除しました。"
     redirect_to("/posts")
   end
 
