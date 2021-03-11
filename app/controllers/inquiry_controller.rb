@@ -24,6 +24,12 @@ class InquiryController < ApplicationController
     InquiryMailer.received_email(@inquiry).deliver
 
     # 完了画面を表示
-    render :action => 'thanks'
+    flash[:notice] = "お問い合わせいただきありがとうございました。"
+    if user_signed_in?
+      # render :action => 'thanks'
+      redirect_to("/posts")
+    else
+      redirect_to("/")
+    end
   end
 end
