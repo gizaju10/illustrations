@@ -11,7 +11,7 @@ ja:
         target_list: 対象者
         content: 紹介文
       inquiry:
-        name: 名前
+        name: ユーザー名
         email: メールアドレス
         message: お問い合わせ内容
     errors:
@@ -20,22 +20,22 @@ ja:
           attributes:
             title:
               format: '%{message}'
-              blank: '%{attribute}の入力は必須です'
-              too_long: '%{count}文字以内で入力して下さい'
+              blank: '%{attribute}の入力は必須です。'
+              too_long: '%{count}文字以内で入力して下さい。'
             url:
               format: '%{message}'
-              blank: '紹介したい%{attribute}のURLを入力をして下さい'
-              invalid: '紹介したい%{attribute}のURLを入力をして下さい'
-              too_long: '%{count}文字以内で入力して下さい'
+              blank: '紹介したい%{attribute}のURLを入力をして下さい。'
+              invalid: '紹介したい%{attribute}のURLを入力をして下さい。'
+              too_long: '%{count}文字以内で入力して下さい。'
             category_list:
               format: '%{message}'
-              blank: '%{attribute}の選択は必須です ※複数選択可'
+              blank: '%{attribute}の選択は必須です。 ※複数選択可'
             occupation_list:
               format: '%{message}'
-              blank: '%{attribute}の選択は必須です ※複数選択可'
+              blank: '%{attribute}の選択は必須です。 ※複数選択可'
             target_list:
               format: '%{message}'
-              blank: '%{attribute}の選択は必須です ※複数選択可'
+              blank: '%{attribute}の選択は必須です。 ※複数選択可'
             content:
               format: '%{message}'
               blank: '%{attribute}の入力は必須です'
