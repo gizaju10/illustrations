@@ -111,3 +111,5 @@ gem 'bootstrap'
 
 # ExecJS::RuntimeUnavailable対応
 gem 'mini_racer'
+
+gem 'cancancan'
