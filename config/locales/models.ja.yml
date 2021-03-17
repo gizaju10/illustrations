@@ -4,6 +4,12 @@ ja:
       models:
         user:
           attributes:
+            name:
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
             email:
               taken: "は既に使用されています。"
               blank: "が入力されていません。"
@@ -20,7 +26,7 @@ ja:
     attributes:
       user:
         current_password: "現在のパスワード"
-        name: 名前
+        name: "ユーザー名"
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
@@ -56,7 +62,7 @@ ja:
         new_password: "新しいパスワード"
       new:
         forgot_your_password: "パスワードを忘れましたか?"
-        send_me_reset_password_instructions: "パスワードの再設定方法を送信する"
+        send_me_reset_password_instructions: "パスワードの再設定方法を送信する。"
     registrations:
       edit:
         are_you_sure: "本当に良いですか?"
@@ -66,7 +72,7 @@ ja:
         title: "%{resource}編集"
         unhappy: "気に入りません"
         update: "更新"
-        we_need_your_current_password_to_confirm_your_changes: "変更を反映するには現在のパスワードを入力してください"
+        we_need_your_current_password_to_confirm_your_changes: "変更を反映するには現在のパスワードを入力してください。"
       new:
         sign_up: "アカウント登録"
     sessions:
