@@ -19,20 +19,20 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show]
   put "/users/:id/hide" => "users#hide", as: 'users_hide'
-  resources :posts, only: [:new, :index, :show, :create, :edit, :update] do
+  resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
     # resources :comments, only: [:create]
-    resources :comments, only: [:create, :destroy]
+    resources :comments, only: [:create, :update, :edit, :destroy, :update]
     resources :likes, only: [:create, :destroy]
   end
 
   get "search" => "posts#search" # 記事検索機能
 
   # post "posts/:id/update" => "posts#update" # 投稿編集→投稿更新
-  post "posts/:id/destroy" => "posts#destroy" # 投稿編集→投稿削除
+  # post "posts/:id/destroy" => "posts#destroy" # 投稿編集→投稿削除
 
-  get "comments/:id/edit" => "comments#edit" # 投稿編集
-  post "comments/:id/update" => "comments#update" # コメント編集→コメント更新
-  post "comments/:id/destroy" => "comments#destroy" # コメント編集→コメント削除
+  # get "comments/:id/edit" => "comments#edit" # 投稿編集
+  # post "comments/:id/update" => "comments#update" # コメント編集→コメント更新
+  # post "comments/:id/destroy" => "comments#destroy" # コメント編集→コメント削除
 
   # フォロー関連ここから
   resources :users do
@@ -48,7 +48,10 @@ Rails.application.routes.draw do
   # root 'registrations#new'
 
   devise_scope :user do
+    # get 'users/sign_up' => "devise/registrations#new"
+    # get 'users/sign_up' => "devise/registrations#create"
     root :to => "devise/registrations#new"
+    # get 'signup' => 'devise_invitable/registrations#new', as: :new_user_registration
     end
 
 
