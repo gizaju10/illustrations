@@ -627,3 +627,21 @@ nav.pagination {
   .border_none {
     border: none;
   }
+
+// check_boxの見栄えを良くする
+.check_paragraph {
+  white-space: nowrap;
+}
+
+// label, input {
+//   display: block;
+// }
+
+.margin_up {
+  margin-top: 5px; 
+}
+
+.margin_up_down {
+  margin-top: 5px; 
+  margin-bottom: 5px; 
+}

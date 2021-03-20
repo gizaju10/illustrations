@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :reject_user, only: [:create]
 
   protected

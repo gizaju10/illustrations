@@ -33,7 +33,11 @@
   <%= message %>
 </div>
 <% end %>
+<% if user_signed_in? %>
+<div class="field"><%= f.text_field :name, placeholder: "お名前", value: "#{current_user.name}" %></div>
+<% else %>
 <div class="field"><%= f.text_field :name, placeholder: "お名前" %></div>
+<% end %>
 <%# <hr> %>
 <%# <div class="font-weight-bold">メールアドレス:</div> %>
 <% @inquiry.errors.full_messages_for(:email).each do |message| %>
@@ -41,7 +45,11 @@
   <%= message %>
 </div>
 <% end %>
+<% if user_signed_in? %>
+<div class="field"><%= f.email_field :email, placeholder: "メールアドレス", value: "#{current_user.email}" %></div>
+<% else %>
 <div class="field"><%= f.email_field :email, placeholder: "メールアドレス" %></div>
+<% end %>
 <%# <hr> %>
 <%# <div class="font-weight-bold">お問い合わせ内容:</div> %>
 <% @inquiry.errors.full_messages_for(:message).each do |message| %>

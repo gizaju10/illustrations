@@ -13,7 +13,7 @@
     <span class="posted-date"><%= link_to(post.created_at.strftime("%Y-%m-%d %H:%M:%S"), "/posts/#{post.id}", class: "cp_link") %></span>
     <% if not post.created_at <= (Time.now.at_beginning_of_day - 72.hour) %>
     <div class="badge badge-secondary balloonoya">New
-     <span class="balloon">投稿から3日以内の投稿です。</span>
+     <span class="balloon">3日以内の投稿です。</span>
      </div>
     <% else %>
     <% end %>

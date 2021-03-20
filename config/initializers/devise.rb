@@ -208,12 +208,14 @@ Devise.setup do |config|
 
   # Number of authentication tries before locking an account if lock_strategy
   # is failed attempts.
-  # config.maximum_attempts = 20
+  # アカウントロックまでの試行回数を設定
+  # config.maximum_attempts = 3
 
   # Time interval to unlock the account if :time is enabled as unlock_strategy.
   # config.unlock_in = 1.hour
 
   # Warn on the last attempt before the account is locked.
+  # アカウントロック前の最後の試行で警告するか選択（今回は警告ありを設定）
   # config.last_attempt_warning = true
 
   # ==> Configuration for :recoverable
@@ -224,7 +226,8 @@ Devise.setup do |config|
   # Time interval you can reset your password with a reset password key.
   # Don't put a too small interval or your users won't have the time to
   # change their passwords.
-  config.reset_password_within = 6.hours
+  # アカウントをアンロックする時間を設定
+  # config.reset_password_within = 1.hours
 
   # When set to false, does not sign a user in automatically after their password is
   # reset. Defaults to true, so a user is signed in automatically after a reset.

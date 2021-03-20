@@ -10,8 +10,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     # @users = User.find(params[:id]).posts.includes(:taggings).page(params[:page]).per(1)
-    @users = User.find(params[:id]).posts.page(params[:page]).per(1)
-    
+    @users = User.find(params[:id]).posts.page(params[:page]).order(created_at: :desc).per(1)
+    # @user_favorites = @user.liked_posts.includes(:user).page(params[:page]).order(created_at: :desc).per(1)
+    # @user_favorites = @user.liked_posts.page(params[:page]).order(created_at: :desc).per(1)
+    @user_favorites = @user.liked_posts.order("RANDOM()").limit(2)
     # @users = Post.page(params[:page]).per(1)
     # @users = @user.posts.page(1).per(1)
     # @user = current_user

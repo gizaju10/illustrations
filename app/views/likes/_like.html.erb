@@ -1,26 +1,29 @@
 <% if user_signed_in? %>
-    <% if current_user.already_liked?(post) %>
-        <%# <%= button_to 'いいねを取り消す', post_like_path(post_id: post.id, id: post.likes[0].id), method: :delete, remote: true %>
-        <%= link_to post_like_path(post_id: post.id, id: post.likes[0].id), method: :delete, remote: true do %>
-            <i class="fas fa-heart unlike-btn" style="color: #e54747;"></i><span style="color: #e54747;"><%= post.likes.count %></span>
-        <% end %>
-    <% else %>
-        <%= link_to post_likes_path(post.id), method: :post, remote: true do %>
-            <%# <div class="likeCounts"> %>
-                <i class="far fa-heart like-btn" style="color: #808080;"></i><span style="color: #808080;"><%= post.likes.count %></span>
-        <% end %>
-    <% end %>
-            <%# いいね数：
-                <%= post.likes.count %>
-            <%# </div> %>
-            <div>いいねしたユーザー:</div>
-                <% @post.liked_users.each do |user| %>
-                    <li><%= user.name %></li>
-                <% end %>
+<% if current_user.already_liked?(post) %>
+<%# <%= button_to 'いいねを取り消す', post_like_path(post_id: post.id, id: post.likes[0].id), method: :delete, remote: true %>
+<%= link_to post_like_path(post_id: post.id, id: post.likes[0].id), method: :delete, remote: true do %>
+<i class="fas fa-heart unlike-btn faa-pulse animated" style="color: #e54747;"></i><span
+    style="color: #e54747;">&ensp;<%= post.likes.count %></span>
 <% end %>
-
-<style>
-a:hover {
-    text-decoration: none;
-}
-</style>
+<% else %>
+<%= link_to post_likes_path(post.id), method: :post, remote: true do %>
+<%# <div class="likeCounts"> %>
+<i class="far fa-heart like-btn faa-vertical animated" style="color: #808080;"></i><span
+    style="color: #808080;">&ensp;<%= post.likes.count %></span>
+<% end %>
+<% end %>
+<%# いいね数：
+                <%= post.likes.count %>
+<%# </div> %>
+<h6>いいねしたユーザー:</h6>
+<% @post.liked_users.each do |user| %>
+<%# <li><%= user.name %>
+<%# </li> %>
+<% if user.image.blank? %>
+<li class="margin_up_down"><%= image_tag '/default.png', class: "icon_image" %><%= link_to "#{user.name}", "/users/#{user.id}", :style => "color: black;" %></li>
+<% else %>
+<li  class="margin_up_down"><img src=<%= user.image %>
+                class="icon_image"><%= link_to "#{user.name}", "/users/#{user.id}", :style => "color: black;" %></li>
+<% end %>
+<% end %>
+<% end %>

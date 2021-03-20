@@ -1,23 +1,25 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<%# <h2>Edit <%= resource_name.to_s.humanize %>
+<%# </h2> %>
+<h4>プロフィールの編集</h4>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <!--アカウント編集時に名前を入力できるようにフォームを追加-->
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
+    <%= f.label :name, "ユーザー名：" %>
+    <%= f.text_field :name, autofocus: true, placeholder: "メールアドレス" %>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :email, "メールアドレス：" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
   </div>
 
   <!--アカウント編集時にプロフィールを入力できるようにフォームを追加-->
   <div class="field">
-    <%= f.label :profile %><br />
-    <%= f.text_area :profile, autofocus: true %>
+    <%= f.label :profile, "プロフィール：", class: "" %><br/>
+    <%= f.text_area :profile, autofocus: true, class: "textarea_comment", placeholder: "メールアドレス" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -26,17 +28,37 @@
 
   <!--アカウント編集時に画像を入力できるようにフォームを追加-->
   <div class="field">
-  <%= f.label :image %><br/>
+  <%= f.label :image, "プロフィール画像：" %>
   <%= f.file_field :image %>
   </div>
+<% if user_signed_in? && @user.id == current_user.id && current_user.id != 1 %>
+      <div class="actions field">
+        <%= f.submit "更新する", class: "btn btn-success"  %>
+      </div>
+<% else %>
+      <div class="actions field">
+        <button type="button" class="btn btn-success btn_alert">更新する</button>
+      </div>
+      <% end %>
 
-  <div class="actions">
+  <%# <div class="actions">
     <%= f.submit "Update" %>
-  </div>
+  <%# </div> %>
 <% end %>
 
-<h3>Cancel my account</h3>
+<%# <h3>Cancel my account</h3> %>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<hr>
 
-<%= link_to "Back", :back %>
+<h5>アカウント削除</h5>
+<%= "アカウントを削除すると、#{current_user.name}さんの投稿は全て削除され、二度と元に戻せません。十分ご注意ください。" %>
+<% if user_signed_in? && @user.id == current_user.id && current_user.id != 1 %>
+<%= link_to "アカウントを削除する", users_hide_path(current_user), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
+<% else %>
+<div><button type="button" class="btn btn-outline-danger">アカウントを削除する</button></div>
+<% end %>
+
+<%# <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+<%# </p> %>
+
+<div><%= link_to "元のページへ戻る", :back %></div>

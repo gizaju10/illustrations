@@ -25,7 +25,9 @@ class PostsController < ApplicationController
     @new_posts = Time.now.at_beginning_of_day - 72.hour
     # @comments = @post.comments # コメント機能
     # @comment = Comment.new # コメント機能
+    # @comment = Comment.new
     @comment = Comment.new
+    # @comment = @post.comments.build
     #新着順で表示
     @comments = @post.comments
     # @comments = @post.comments.order(created_at: :desc)

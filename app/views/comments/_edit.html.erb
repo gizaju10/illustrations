@@ -1,0 +1,18 @@
+<% if @comment.user == current_user %>
+<%# <h4>編集する</h4> %>
+<%= form_tag("/posts/#{@comment.post_id}/comments/#{@comment.id}", method: :patch, remote: true) do %>
+<%# <%= form_tag("/comments/#{@comment.id}/update", method: :patch) do %>
+
+<%= render "comments/comment" %>
+
+<%# <input type="submit" value="保存"> %>
+<% end %>
+      <%= button_tag :type => "submit", :class =>"btn waves-effect waves-light btn-primary" do %>
+        更新する
+      <% end %>
+      <%= link_to :back, class: "btn waves-effect waves-light btn-light" do %>
+        戻る
+      <% end %>
+<% else %>
+権限がありません。
+<% end %>

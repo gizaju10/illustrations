@@ -13,14 +13,9 @@
 //     $("p").text("jQuery稼働テスト(稼働中です)");
 //   });
 
-
-
-
-
-
-
-
-
+// $('.abcde').click(function() {
+//   alert('おかしいです');
+// });
 
 // 無限スクロール
 $(document).on('turbolinks:load', function() {
@@ -55,7 +50,7 @@ $(document).on('turbolinks:load', function() {
     }
   });
   pagetop.click(function () {
-    $('body, html').animate({ scrollTop: 0 }, 500); //0.5秒かけてトップへ戻る
+    $('body, html').animate({ scrollTop: 0 }, 300); //0.3秒かけてトップへ戻る
     return false;
   });
 });

@@ -1,15 +1,17 @@
-<h2>Resend unlock instructions</h2>
+<%# <h2>Resend unlock instructions</h2> %>
+<h4>アカウントのロック解除する</h4>
 
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <div><%= f.label :email, "メールアドレス：" %></div>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Resend unlock instructions" %>
+    <%# <%= f.submit "Resend unlock instructions" %>
+    <%= f.submit "ロック解除する" %>
   </div>
 <% end %>
 
