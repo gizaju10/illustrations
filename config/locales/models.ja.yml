@@ -1,6 +1,9 @@
 ja:
   activerecord:
     errors:
+      messages:
+        # confirmation: と%{attribute}の入力が一致しません。
+        confirmation: とパスワードの入力が一致しません。
       models:
         user:
           attributes:
