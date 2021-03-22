@@ -118,5 +118,6 @@ gem 'cancancan'
 # gem "activerecord", ">= 6.0.3.5"
 # gem "actionpack", ">= 6.0.3.5"
 gem "carrierwave", ">= 2.1.1"
-# gem "omniauth", ">= 1.9.1"
+# gem "omniauth"
+gem 'omniauth-rails_csrf_protection'
 # gem "nokogiri", ">= 1.11.0"
