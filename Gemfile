@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
+gem 'rails', '~> 6.0.3', '>= 6.0.3.5'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -84,7 +84,7 @@ gem 'rename'
 
 # for image uploader with AWS S3
 gem 'fog'
-gem 'carrierwave' #画像アップロード
+# gem 'carrierwave' #画像アップロード
 
 gem 'rmagick' #画像の加工
 
@@ -113,3 +113,10 @@ gem 'bootstrap'
 gem 'mini_racer'
 
 gem 'cancancan'
+
+# Git Hub We found potential security vulnerabilities in your dependencies.
+# gem "activerecord", ">= 6.0.3.5"
+# gem "actionpack", ">= 6.0.3.5"
+gem "carrierwave", ">= 2.1.1"
+# gem "omniauth", ">= 1.9.1"
+# gem "nokogiri", ">= 1.11.0"
