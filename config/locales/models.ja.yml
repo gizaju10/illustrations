@@ -2,8 +2,8 @@ ja:
   activerecord:
     errors:
       messages:
-        # confirmation: と%{attribute}の入力が一致しません。
-        confirmation: とパスワードの入力が一致しません。
+        confirmation: と%{attribute}の入力が一致しません。
+        # confirmation: とパスワードの入力が一致しません。
       models:
         user:
           attributes:
@@ -23,15 +23,19 @@ ja:
               taken: "は既に使用されています。"
               blank: "が入力されていません。"
               too_short: "は%{count}文字以上に設定して下さい。"
+              # too_long: "は%{count}文字以下に設定して下さい。"
               too_long: "は%{count}文字以下に設定して下さい。"
               invalid: "は有効でありません。"
               confirmation: "が内容とあっていません。"
+            profile:
+              too_long: "は%{count}文字以下で入力してください。"
     attributes:
       user:
         current_password: "現在のパスワード"
         name: "ユーザー名"
         email: "メールアドレス"
         password: "パスワード"
+        profile: "プロフィール"
         password_confirmation: "確認用パスワード"
         remember_me: "次回から自動的にログイン"
         image: "プロフィール画像"
