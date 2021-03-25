@@ -3,7 +3,30 @@
   <img src=<%= user.image %> class = "icon_image">
   <%# <a href="/users/<%= user.id"> %>
   <%# <%= user.name</a> %>
-  <%= link_to "#{user.name}", "/users/#{user.id}", data: {"turbolinks"=>false} %>
+  <%= link_to "#{user.name}", "/users/#{user.id}" %>
+  <%# <%= if user.id == @post.user_id %>
+
+  <%# <%= "#{User.find("#{user.id}").posts.select("title")}" %>
+  <%# <%= link_to "#{User.find("#{user.id}").posts.select("title")}", "/users/#{user.id}" %>
+  <%= link_to "#{user.posts.count}件の投稿があります。", "/users/#{user.id}", :style => "color: black;" %>
+
+
+<%# <% end %>
+<%# フォロー関連 %>
+<%# <div class="margin_up_down">
+<%= render 'follow_form' %>
+<%# </div> %>
+
   <hr>
 <% end %>
 <%= render "shared/link_home" %>
+
+<%# <div class="center-letter"><h4>ユーザー一覧</h4></div>
+<% @posts.includes(:taggings, :user).each do |use| %>
+  <%# <img src=<%= use.user.image %>
+   <%# class = "icon_image"> %>
+<%# 
+  <%= link_to "#{use.user.name}", "/users/#{use.user.id}" %>
+  <%# <%= link_to "#{use.title}", "/users/#{use.user.id}" %>
+  <%# <hr> %>
+<%# <% end %>
