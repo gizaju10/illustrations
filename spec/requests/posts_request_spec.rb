@@ -1,13 +1,13 @@
 require "rails_helper"
 
 RSpec.describe "Posts", type: :request do
-  let(:user) { create(:user) }
-  let!(:other_user) { create(:user) }
+  # let(:user) { create(:user) }
+  # let!(:other_user) { create(:user) }
 
   # let(:test_post) { create(:post, user_id: user.id) }
   # let(:test_post2) { create(:post, user_id: other_user.id) }
-  let(:test_post) { create(:post, user: user) }
-  let(:test_post2) { create(:post, user: other_user) }
+  # let(:test_post) { create(:post, user: user) }
+  # let(:test_post2) { create(:post, user: other_user) }
   # let(:post_photo) { Rack::Test::UploadedFile.new(File.join(Rails.root, "spec/image/main_top.jpg")) }
   # let(:post_params) { { area: "area", post_photo: post_photo } }
 
