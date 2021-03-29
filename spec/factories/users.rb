@@ -19,19 +19,19 @@ FactoryBot.define do
     # profile_photo { Rack::Test::UploadedFile.new(File.join(Rails.root, "spec/image/main_top.jpg")) }
   end
 
-  factory :takashi, class: User do
-    name                  {"Takashi"}
-    email                 {"takashi@example.com"}
-    password              {"aaaaaa"}
-    password_confirmation {"aaaaaa"}
-    profile               {"初め"}
-  end
+  # factory :takashi, class: User do
+  #   name                  {"Takashi"}
+  #   email                 {"takashi@example.com"}
+  #   password              {"aaaaaa"}
+  #   password_confirmation {"aaaaaa"}
+  #   profile               {"初め"}
+  # end
 
-  factory :satoshi, class: User do
-    name                  {"Satoshi"}
-    email                 {"satoshi@example.com"}
-    password              {"aaaaaa"}
-    password_confirmation {"aaaaaa"}
-    profile               {"初"}
-  end
+  # factory :satoshi, class: User do
+  #   name                  {"Satoshi"}
+  #   email                 {"satoshi@example.com"}
+  #   password              {"aaaaaa"}
+  #   password_confirmation {"aaaaaa"}
+  #   profile               {"初"}
+  # end
 end

@@ -30,6 +30,7 @@ RSpec.describe "Posts", type: :request do
   describe "new" do
     context "ログイン時" do
       before do
+        user = build(:user) # 追加
         user.confirm
         sign_in user
         get new_post_path
