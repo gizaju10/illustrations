@@ -15,7 +15,7 @@ development:
 test:
   <<: *default
   database: illustrations_test
-  # host: localhost # circleciでのテストのみ使用
+  host: localhost # circleciでのテストのみ使用
 
 production:
   <<: *default 
