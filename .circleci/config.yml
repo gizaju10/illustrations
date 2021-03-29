@@ -9,6 +9,9 @@ jobs:                                   #---------------------------------------
             POSTGRES_USER: postgres 
             PGHOST: 127.0.0.1
             RAILS_ENV: test
+        - image: selenium/standalone-chrome-debug # 追加
+          logging:
+            driver: none
         #使ってるデータベースとバージョンを指定する。# 「host: localhost」でアクセスできるサービスコンテナイメージ。
         - image: circleci/postgres:latest
           environment:

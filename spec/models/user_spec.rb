@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-# RSpec.describe User, type: :model do
+RSpec.describe User, type: :model do
 #   # pending "add some examples to (or delete) #{__FILE__}"
 #   # it "名前とメールアドレスとパスワードがあれば登録できる" do 
 #   #   expect(FactoryBot.create(:user)).to be_valid
@@ -32,15 +32,15 @@ require 'rails_helper'
 #     expect(FactoryBot.build(:user,password:"password",password_confirmation: "passward")).to_not be_valid 
 #   end 
 
-  describe User do
-    describe '#create' do
+  # describe User do
+    # describe '#create' do
       # 入力されている場合のテスト ▼
   
       it "全ての項目の入力が存在すれば登録できること" do # テストしたいことの内容
         user = build(:user)  # 変数userにbuildメソッドを使用して、factory_botのダミーデータを代入
         expect(user).to be_valid # 変数userの情報で登録がされるかどうかのテストを実行
       end
-    end
+    
 
     it "nameがない場合は登録できないこと" do # テストしたいことの内容
       user = build(:user, name: nil) # 変数userにbuildメソッドを使用して、factory_botのダミーデータを代入(今回の場合は意図的にnicknameの値をからに設定)
@@ -60,10 +60,33 @@ require 'rails_helper'
       expect(user.errors[:password]).to include("が入力されていません。")
     end
 
-    it "パスワードと確認が一致していないと登録できない" do
-      user = build(:user, password_confirmation: "")
-      user.valid?
-      expect(user.errors[:password_confirmation]).to include("とパスワードの入力が一致しません。")
+    it "パスワードが6文字以上であれば登録できる" do
+      password = Faker::Internet.password(min_length: 6, max_length: 6)
+      user = build(:user, password: password, password_confirmation: password)
+      expect(user).to be_valid
     end
 
+    it "パスワードが5文字以下だと登録できない" do
+      password = Faker::Internet.password(min_length: 5, max_length: 5)
+      user = build(:user, password: password, password_confirmation: password)
+      user.valid?
+      # expect(user.errors[:password]).to include(I18n.t('errors.messages.too_short', count: 6))
+      expect(user.errors).to be_added(:password, :too_short, count: 6) # countはなくても良いらしい
+    end
+
+    it "パスワードと確認が一致していないと登録できないこと" do
+      user = build(:user, password_confirmation: "")
+      user.valid?
+      # expect(user.errors[:password_confirmation]).to include("とパスワードの入力が一致しません。")
+      expect(user.errors).to be_added(:password_confirmation, :confirmation, attribute: "パスワード")
+    end
+
+    # it "登録済みのemailアドレスでは登録できない" do
+    #   email = Faker::Internet.email
+    #   user = create(:user, email: email)
+    #   user2 = build(:user, email: email)
+    #   user2.valid?
+    #   expect(user2.errors[:email]).to include("は既に使用されています。")
+    # end
+  # end
 end
