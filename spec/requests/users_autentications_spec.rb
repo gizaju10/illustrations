@@ -9,7 +9,7 @@ describe 'GET #edit' do
     subject { get edit_user_registration_path }
     context 'ログインしている場合' do
       before do
-        user = build(:user) # 追加
+        # user = build(:user) # 追加
         user.confirm
         sign_in user
       end
