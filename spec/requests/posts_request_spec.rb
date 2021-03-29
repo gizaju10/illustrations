@@ -82,6 +82,7 @@ RSpec.describe "Posts", type: :request do
     context 'ログインしている時' do
       context '本人の場合' do
         before do
+          user = build(:user) # 追加
           user.confirm
           sign_in user
           get edit_post_path(test_post.id)
@@ -131,6 +132,7 @@ RSpec.describe "Posts", type: :request do
       context "本人でない場合" do
         # before { sign_in other_user }
         before do
+          user = build(:user) # 追加
           user.confirm
           sign_in user
         end
