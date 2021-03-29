@@ -59,6 +59,23 @@ services:
     stdin_open: true
     depends_on:
       - db # 依存関係を示していて、起動順を指定できます。ここではdb→webへと起動します。
+      - chrome
+    environment:
+      SELENIUM_DRIVER_URL: http://chrome:4444/wd/hub 
+  chrome:
+    image: selenium/standalone-chrome:latest
+    ports:
+      - 4444:4444
+    # environment:
+    #   SELENIUM_DRIVER_URL: http://chrome:4444/wd/hub 
+    
+  # # selenium_chrome を使うために以下の行を追加
+  #   environment:
+  #   - "SELENIUM_DRIVER_URL=http://selenium_chrome:4444/wd/hub"
+  # selenium_chrome:
+  #   image: selenium/standalone-chrome-debug
+  #   logging:
+  #     driver: none
     
   db:
     image: postgres
