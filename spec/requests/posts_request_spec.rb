@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Posts", type: :request do
-  let!(:user) { create(:user) }
+  let!(:user) { build(:user) }
   let!(:other_user) { create(:user) }
 
   # let(:test_post) { create(:post, user_id: user.id) }
