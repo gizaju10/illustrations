@@ -1,13 +1,13 @@
 require "rails_helper"
 
 RSpec.describe "Posts", type: :request do
-  # let(:user) { create(:user) }
-  # let!(:other_user) { create(:user) }
+  let!(:user) { create(:user) }
+  let!(:other_user) { create(:user) }
 
   # let(:test_post) { create(:post, user_id: user.id) }
   # let(:test_post2) { create(:post, user_id: other_user.id) }
-  # let(:test_post) { create(:post, user: user) }
-  # let(:test_post2) { create(:post, user: other_user) }
+  let(:test_post) { create(:post, user: user) }
+  let(:test_post2) { create(:post, user: other_user) }
   # let(:post_photo) { Rack::Test::UploadedFile.new(File.join(Rails.root, "spec/image/main_top.jpg")) }
   # let(:post_params) { { area: "area", post_photo: post_photo } }
 
@@ -30,7 +30,6 @@ RSpec.describe "Posts", type: :request do
   describe "new" do
     context "ログイン時" do
       before do
-        user = build(:user) # 追加
         user.confirm
         sign_in user
         get new_post_path
@@ -82,7 +81,6 @@ RSpec.describe "Posts", type: :request do
     context 'ログインしている時' do
       context '本人の場合' do
         before do
-          user = build(:user) # 追加
           user.confirm
           sign_in user
           get edit_post_path(test_post.id)
@@ -132,7 +130,6 @@ RSpec.describe "Posts", type: :request do
       context "本人でない場合" do
         # before { sign_in other_user }
         before do
-          user = build(:user) # 追加
           user.confirm
           sign_in user
         end
