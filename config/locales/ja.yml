@@ -10,6 +10,8 @@ ja:
         occupation_list: 対象職種
         target_list: 対象者
         content: 紹介文
+      comment:
+        content: コメント
       inquiry:
         name: ユーザー名
         email: メールアドレス
@@ -24,8 +26,8 @@ ja:
               too_long: '%{count}文字以内で入力して下さい。'
             url:
               format: '%{message}'
-              blank: '紹介したい%{attribute}のURLを入力をして下さい。'
-              invalid: '紹介したい%{attribute}のURLを入力をして下さい。 ※投稿できない動画もあります。'
+              blank: '入力は必須です。'
+              invalid: '紹介したい%{attribute}のURLを入力して下さい。 ※投稿できない動画もあります。'
               too_long: '%{count}文字以内で入力して下さい。'
             category_list:
               format: '%{message}'
@@ -39,4 +41,10 @@ ja:
             content:
               format: '%{message}'
               blank: '%{attribute}の入力は必須です。'
+              too_long: '%{count}文字以内で入力して下さい。'
+        comment:
+          attributes:
+            content:
+              format: '%{message}'
+              blank: '空欄でのコメント投稿はできません。'
               too_long: '%{count}文字以内で入力して下さい。'
