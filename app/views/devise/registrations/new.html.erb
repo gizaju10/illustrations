@@ -1,167 +1,104 @@
-<%# <% if current_page?(root_path) && request.fullpath == "http://localhost/" %>
 <% if current_page?(root_path) %>
-<%# <% if request.fullpath == "http://localhost/" %>
-
-
-<%# <head>
-<meta name="viewport" content="width=device-width,initial-scale=1"> <!-- 画面サイズに表示を調整 -->
-</head> %>
 <% content_for :css do %>
-    <%# <%= stylesheet_link_tag 'posts' %>
-    <%# <link rel="stylesheet" href="devise.css" type="text/css"　media="screen and (min-width: 992px)"> %>
-    <%# <%= stylesheet_link_tag 'application' %>
-    <%# <%= stylesheet_link_tag 'devise', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'devise' %>
-<%# <link rel="stylesheet" href="medium.css" media="screen and (min-width:480px) and (max-width:1024px)"> /* 画面サイズ480pxから1024pxまではこのファイルのスタイルが適用される。 */ %>
-
+<%= stylesheet_link_tag 'devise' %>
 <% end %>
-  
-  <div class="overlay"></div>
-  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-    <source src="/videos/illustration.mp4" type="video/mp4">
-  </video>
 
-  <%# <div class="masthead"> %>
-  <%# <div class="masthead-bg"></div> %>
-  <%# <div class="container h-100"> %>
-  <%# <div class="row h-100"> %>
-  
-  <div class="col-12 my-auto">
-    <div class="masthead-content text-black py-5 py-md-0 new_background">
-     <center><%= image_tag '/illusttube.png', class: "new_image" %></center>
-      <h2>新規登録(無料)して利用を開始しましょう。</h2>
-      <%# <%= render 'layouts/alert' %>
-      <%# <h2>新規登録</h2> %>
-<%# <%= render 'layouts/alert' %>
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      
+<div class="overlay"></div>
+<video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+  <source src="/videos/illustration.mp4" type="video/mp4">
+</video>
 
-      <!--サインアップ時に名前を入力できるようにフォームを追加-->
-      <div class="field">
-        <%= f.label :name, "ユーザー名：", class: "font-weight-bold" %>
-        <%# <div class="font-weight-bold">名前:</div> %>
-        <%= f.text_field :name, autofocus: true, placeholder: "ユーザー名" %>
-      </div>
+<div class="col-12 my-auto">
+  <div class="masthead-content text-black py-5 py-md-0 new_background">
+    <center><%= image_tag '/illusttube.png', class: "new_image" %></center>
+    <h2>新規登録(無料)して利用を開始しましょう。</h2>
+    <%= render 'layouts/alert' %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-      <div class="field">
-        <%= f.label :email, "メールアドレス：", class: "font-weight-bold" %>
-        <%# <div class="font-weight-bold">メールアドレス:</div> %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
-      </div>
-
-      <div class="field">
-        <%= f.label :password, "パスワード：", class: "font-weight-bold" %>
-        <%# <% if @minimum_password_length %>
-        <%# <em>(<%= @minimum_password_length characters minimum)</em> %>
-        <%# <% end %>
-        <%# <br /> %>
-        <%# <div class="font-weight-bold">パスワード:</div> %>
-        <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード ※#{@minimum_password_length}文字以上" %>
-      </div>
-
-      <div class="field">
-        <%# <%= f.label :password_confirmation<br /> %>
-        <%# <div class="font-weight-bold">パスワード:</div> %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード ※再入力" %>
-      </div>
-
-      <!--サインアップ時に画像を入力できるようにフォームを追加-->
-      <div class="field">
-        <%= f.label :image, "プロフィール画像：", class: "font-weight-bold" %>
-        <%# <div class="font-weight-bold">プロフィール画像</div> %>
-        <%= f.file_field :image %>
-      </div>
-
-      <div class="actions field">
-        <%# <%= f.submit "新規登録する", class: "btn btn-outline-danger", data: {"turbolinks"=>false}  %>
-        <%= f.submit "新規登録する", class: "btn btn-outline-danger" %>
-      </div>
-      <% end %>
-
-      <hr class="border_none">
-
-      <%= render "devise/shared/links" %>
-
-      <%= render "devise/shared/test_user_login" %>
-
-      <footer>
-        &copy;Teppei Mimachi 2021
-      </footer>
+    <!--サインアップ時にユーザー名を入力できるようにフォームを追加-->
+    <div class="field">
+      <%= f.label :name, "ユーザー名：", class: "font-weight-bold" %>
+      <%= f.text_field :name, autofocus: true, placeholder: "ユーザー名", id: 'user_name' %>
     </div>
-  </div>
-  <%# </div> %>
-  <%# </div> %>
-  <%# </div> %>
-  <%# </div> %>
-  </div>
 
-<%# <% elif request.fullpath == "http://localhost/users/" %>
+    <div class="field">
+      <%= f.label :email, "メールアドレス：", class: "font-weight-bold" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", id: 'user_email' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password, "パスワード：", class: "font-weight-bold" %>
+      <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード ※#{@minimum_password_length}文字以上", id: 'user_password' %>
+    </div>
+
+    <div class="field">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード ※再入力", id: 'user_password_confirmation' %>
+    </div>
+
+    <!--サインアップ時に画像を入力できるようにフォームを追加-->
+    <div class="field">
+      <%= f.label :image, "プロフィール画像：", class: "font-weight-bold" %>
+      <%= f.file_field :image %>
+    </div>
+
+    <div class="actions field">
+      <%= f.submit "新規登録する", class: "btn btn-outline-danger" %>
+    </div>
+    <% end %>
+
+    <hr class="border_none">
+
+    <%= render "devise/shared/links" %>
+
+    <%= render "devise/shared/test_user_login" %>
+
+    <footer>
+      &copy;Teppei Mimachi 2021
+    </footer>
+  </div>
+</div>
+</div>
+
 <% else %>
-
-<%# <% content_for :css do %>
-    <%# <%= stylesheet_link_tag 'posts' %>
-    <%# <link rel="stylesheet" href="devise.css" type="text/css"　media="screen and (min-width: 992px)"> %>
-    <%# <%= stylesheet_link_tag 'application' %>
-    <%# <%= stylesheet_link_tag 'devise', 'data-turbolinks-track': 'reload' %>
-    <%# <%= stylesheet_link_tag 'application' %>
-    <%# <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-<%# <% end %>
 <%= render "devise/shared/error_messages", resource: resource %>
 <h4>新規登録</h4>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <!--サインアップ時に名前を入力できるようにフォームを追加-->
-      <div class="field">
-        <div><%= f.label :name, "ユーザー名：", class: "" %></div>
-        <%# <div class="font-weight-bold">名前:</div> %>
-        <%= f.text_field :name, autofocus: true, placeholder: "名前" %>
-      </div>
+<!--サインアップ時に名前を入力できるようにフォームを追加-->
+<div class="field">
+  <div><%= f.label :name, "ユーザー名：", class: "" %></div>
+  <%= f.text_field :name, autofocus: true, placeholder: "名前" %>
+</div>
 
-      <div class="field">
-        <div><%= f.label :email, "メールアドレス：", class: "" %></div>
-        <%# <div class="font-weight-bold">メールアドレス:</div> %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
-      </div>
+<div class="field">
+  <div><%= f.label :email, "メールアドレス：", class: "" %></div>
+  <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
+</div>
 
-      <div class="field">
-        <div><%= f.label :password, "パスワード：", class: "" %></div>
-        <%# <% if @minimum_password_length %>
-        <%# <em>(<%= @minimum_password_length characters minimum)</em> %>
-        <%# <% end %>
-        <%# <br /> %>
-        <%# <div class="font-weight-bold">パスワード:</div> %>
-        <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード ※#{@minimum_password_length}文字以上" %>
-      </div>
+<div class="field">
+  <div><%= f.label :password, "パスワード：", class: "" %></div>
+  <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード ※#{@minimum_password_length}文字以上" %>
+</div>
 
-      <div class="field">
-        <%# <%= f.label :password_confirmation<br /> %>
-        <%# <div class="font-weight-bold">パスワード:</div> %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード ※再入力" %>
-      </div>
+<div class="field">
+  <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード ※再入力" %>
+</div>
 
-      <!--サインアップ時に画像を入力できるようにフォームを追加-->
-      <div class="field">
-        <div><%= f.label :image, "プロフィール画像：", class: "" %></div>
-        <%# <div class="font-weight-bold">プロフィール画像</div> %>
-        <%= f.file_field :image %>
-      </div>
+<!--サインアップ時に画像を入力できるようにフォームを追加-->
+<div class="field">
+  <div><%= f.label :image, "プロフィール画像：", class: "" %></div>
+  <%= f.file_field :image %>
+</div>
 
-      <div class="actions field">
-        <%# <%= f.submit "新規登録する", class: "btn btn-outline-danger", data: {"turbolinks"=>false}  %>
-        <%= f.submit "新規登録する", class: "btn btn-outline-danger" %>
-      </div>
-      <% end %>
+<div class="actions field">
+  <%= f.submit "新規登録する", class: "btn btn-outline-danger" %>
+</div>
+<% end %>
 
-      <hr class="border_none">
+<hr class="border_none">
 
-      <%= render "devise/shared/links" %>
+<%= render "devise/shared/links" %>
 
-      <%= render "devise/shared/test_user_login" %>
+<%= render "devise/shared/test_user_login" %>
 
 &copy;Teppei Mimachi 2021
-
-
-
-<%# <% else %>
-
-
 <% end %>
