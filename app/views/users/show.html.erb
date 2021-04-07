@@ -1,7 +1,11 @@
 <%= render "shared/link_home" %>
 
 <div class="center-letter">
-    <h4>ユーザー詳細</h4>
+<% if user_signed_in? && @user.id == current_user.id %>
+    <h4><i class="fa fa-user-plus"></i> マイページ</h4>
+<% else %>
+    <h4><i class="fa fa-user-plus"></i> マイページ</h4>
+<% end %>
 </div>
 
 <% if @user.image.blank? %>
@@ -38,7 +42,7 @@
 
 
 <div class="center-letter">
-    <h4>いいねしている投稿</h4>
+    <h4><i class="fas fa-heart"></i> いいねしている投稿</h4>
 </div>
 <%= @user.liked_posts.includes(:user).count %>件の投稿をいいねしています。<span class="badge">ランダムで2件まで表示</span>
 <%# <% @user.liked_posts.includes(:user).order(created_at: :desc).first(2).each do |post| %>
@@ -132,7 +136,7 @@
     <hr>
 
     <div class="center-letter">
-        <h4>投稿内容</h4>
+        <h4><i class="fas fa-clipboard"></i> 投稿内容</h4>
     </div>
 
     <div class="skill-list jscroll">
