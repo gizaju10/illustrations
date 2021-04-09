@@ -17,7 +17,19 @@ class PostsController < ApplicationController
   # 記事検索
   def search
     #Viewのformで取得したパラメータをモデルに渡す
-    @posts = Post.search(params[:search]).order(created_at: :desc)
+    # @posts = Post.page(params[:search]).order(created_at: :desc)
+    @posts_count = Post.search(params[:search]).count
+    # @posts = Post.page(params[:page]).per(1).order(created_at: :desc)
+    # @posts = Post.page(params[:page]).order(created_at: :desc)
+    # @posts = Post.page(params[:page]).per(1)
+    # @posts = Post.search(params[:keyword]).page(params[:page])
+    # if request.fullpath.include?("?search\=")
+    # @posts = Post.search(params[:search]).page(params[:page]).per(1).order(created_at: :desc)
+    @posts = Post.search(params[:search]).page(params[:page]).per(1).order(created_at: :desc)
+    # else
+      # redirect_to posts_path
+    # end
+
   end
 
   def show
@@ -65,6 +77,19 @@ class PostsController < ApplicationController
     end
   end
 
+  # def create
+  #   @post = Post.new(post_params)
+  #   @post.category_ids = session[:category_ids]
+  #   if @post.save
+  #     redirect_to @post
+  #     flash[:notice] = "投稿が完了しました。"
+  #   else
+  #     render :new
+  #   end
+  # end
+
+
+
   # 投稿編集
   def edit
     @post = Post.find_by(id: params[:id])
@@ -102,6 +127,8 @@ class PostsController < ApplicationController
 
   private
   def post_params
+    # params.require(:post).permit(:title, :url, :content, category_list: [], occupation_list: [], target_list: []).merge(user_id: current_user.id)
     params.require(:post).permit(:title, :url, :content, category_list: [], occupation_list: [], target_list: [])
+    # .merge(user_id: current_user.id)
   end
 end
