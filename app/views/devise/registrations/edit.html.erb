@@ -7,12 +7,12 @@
 
   <!--アカウント編集時に名前を入力できるようにフォームを追加-->
   <div class="field">
-    <%= f.label :name, "ユーザー名：" %>
+    <div><%= f.label :name, "ユーザー名：" %></div>
     <%= f.text_field :name, autofocus: true, placeholder: "メールアドレス" %>
   </div>
 
   <div class="field">
-    <%= f.label :email, "メールアドレス：" %>
+    <div><%= f.label :email, "メールアドレス：" %></div>
     <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
   </div>
 
@@ -28,7 +28,7 @@
 
   <!--アカウント編集時に画像を入力できるようにフォームを追加-->
   <div class="field">
-  <%= f.label :image, "プロフィール画像：" %>
+  <div><%= f.label :image, "プロフィール画像：" %></div>
   <%= f.file_field :image %>
   </div>
 <% if user_signed_in? && @user.id == current_user.id && current_user.id != 1 %>
@@ -55,7 +55,7 @@
 <% if user_signed_in? && @user.id == current_user.id && current_user.id != 1 %>
 <%= link_to "アカウントを削除する", users_hide_path(current_user), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
 <% else %>
-<div><button type="button" class="btn btn-outline-danger">アカウントを削除する</button></div>
+<div><button type="button" class="btn btn-outline-danger  btn_alert">アカウントを削除する</button></div>
 <% end %>
 
 <%# <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
