@@ -1,9 +1,9 @@
-</div>
-<% @comment.errors.full_messages_for(:content).each do |message| %>
-<div>
+<%# </div> %>
+<%# <% @comment.errors.full_messages_for(:content).each do |message| %>
+<%# <div>
     <%= message %>
-</div>
-<% end %>
+<%# </div> %>
+<%# <% end %>
 <div>
     <textarea placeholder="コメント" required name="content" class="textarea_comment"><%= @comment.content %></textarea>
 </div>
