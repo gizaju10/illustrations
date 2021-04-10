@@ -50,23 +50,23 @@ RSpec.describe "Posts", type: :request do
   end
 
   describe "create" do
-    # context "ログイン時" do
-    #   # before { user.confirm sign_in user }
-    #   before do
-    #     user.confirm
-    #     sign_in user
-    #   end
+    context "ログイン時" do
+      # before { user.confirm sign_in user }
+      before do
+        user.confirm
+        sign_in user
+      end
 
-    #   example "正常に投稿を作成できること" do
-    #     expect do
-    #       # post posts_path, params: { post: attributes_for(:test_post) }
-    #       # post posts_path, params: post_params
-    #       # post posts_path, params: { post: post_params }
-    #       # post posts_path, params: post_params, as: :json
-    #       # post posts_path, params: { post: {to_param:post_params }
-    #     end.to change(Post, :count).by(1)
-    #   end
-    # end
+      example "正常に投稿を作成できること" do
+        expect do
+          post posts_path, params: { post: attributes_for(:post) }
+          # post posts_path, params: post_params
+          # post posts_path, params: { post: post_params }
+          # post posts_path, params: post_params, as: :json
+          # post posts_path, params: { post: {to_param:post_params }
+        end.to change(Post, :count).by(1)
+      end
+    end
 
     context "非ログイン時" do
       before { get new_post_path }

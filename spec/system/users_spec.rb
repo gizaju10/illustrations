@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'ユーザー新規登録', type: :system do
   before do
-    @user = FactoryBot.build(:user)
+    @user = build(:user)
   end
 
   context 'ユーザー新規登録ができるとき' do
@@ -51,7 +51,7 @@ end
 
 RSpec.describe 'ログイン', type: :system do
   before do
-    @user = FactoryBot.create(:user)
+    @user = create(:user)
     @gest
   end
   context 'ログインができるとき' do
