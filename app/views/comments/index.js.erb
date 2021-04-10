@@ -1,3 +1,4 @@
 $("#comments_area").html("<%= j(render 'comments/index', { comments: @comment.post.comments, post: @comment.post }) %>")
+$("#error_explanation").html("<%= j(render 'error', { comment: @comment }) %>")
 $("textarea").val('')
-$('#error_explanation').remove();
+<%# $('#error_explanation').remove(); %>
