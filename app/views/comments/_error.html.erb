@@ -1,11 +1,41 @@
-<% if @comment.errors.any? %>
-  <div id="error_explanation">
+<%# <% if @comment.errors.any? %>
+  <%# <div id="error_explanation">
     <%= render 'layouts/flash' %>
-    <h5><%= @comment.errors.count %>件のエラーがあります。</h5>
+    <%# <h5><%= @comment.errors.count %>
+    <%# 件のエラーがあります。</h5> %>
+    <%# <ul>
+      <% @comment.errors.full_messages.each do |msg| %>
+        <%# <li><%= msg %>
+        <%# </li> %>
+      <%# <% end %>
+    <%# </ul>
+  </div>
+<% end %>
+
+<%# <% if comment.errors.any? %>
+  <%# <div class="error_message alert alert-warning"> %>
+    <%# <ul> %>
+      <%# <% comment.errors.full_messages.each do |message| %>
+        <%# <li><%= message %>
+        <%# </li> %>
+      <%# <% end %>
+    <%# </ul> %>
+  <%# </div> %>
+<%# <% end %>
+
+
+<% if @comment.errors.any? %>
+  <div id="error_explanation" class="margin_up">
+    <%# <%= render 'layouts/flash' %>
+    <%# <h5><%= @comment.errors.count %>
+    <%# 件のエラーがあります。</h5> %>
     <ul>
       <% @comment.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <li  class="alert alert-danger"><%= msg %>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </li>
       <% end %>
     </ul>
   </div>
 <% end %>
+
