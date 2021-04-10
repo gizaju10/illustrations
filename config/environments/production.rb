@@ -44,12 +44,6 @@ Rails.application.configure do
 
   config.assets.precompile += %w(*.js *.less *.css *.erb)
 
-
-
-
-
-  config.public_file_server.enabled = true
-
   # assetファイル名にハッシュをつける。
   config.assets.digest = true
 
