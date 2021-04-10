@@ -1,86 +1,65 @@
-<%# <hr> %>
 <%= form_for @post do |f| %>
-<%# <%= f.label :content %>
 <% @post.errors.full_messages_for(:title).each do |message| %>
 <div class="badge badge-warning">
   <%= message %>
 </div>
 <% end %>
 <diV>
-  <%= f.text_field :title, placeholder: "タイトル" %>
+  <%= f.text_field :title, placeholder: "タイトル", id: "post_title" %>
 </div>
-<%# <hr> %>
-<%= f.label :url, "紹介したいYouTubeのURL：", class: "font-weight-bold field" %>
-<%# <div class="field">紹介したいYouTubeのURL：</div> %>
-  <% @post.errors.full_messages_for(:url).each do |message| %>
-  <div class="badge badge-warning">
-    <%= message %>
-  </div>
+<div><%= f.label :url, "紹介したいYouTubeのURL：", class: "font-weight-bold field" %></div>
+<% @post.errors.full_messages_for(:url).each do |message| %>
+<div class="badge badge-warning">
+  <%= message %>
+</div>
+<% end %>
+<diV>
+  <%= f.text_field :url, placeholder: "https://www.youtube.com/watch?v=", class: "url_text", id: "post_url" %>
+</div>
+<div class="font-weight-bold field">カテゴリー：</div>
+<%# <label class="font-weight-bold field" for="post_category">カテゴリー：</label> %>
+<% @post.errors.full_messages_for(:category_list).each do |message| %>
+<div class="badge badge-warning">
+  <%= message %>
+</div>
+<% end %>
+<div class="col-sm-12">
+  <% @categories.each do |tag| %>
+  <span class="check_paragraph"><%= f.check_box :category_list, { multiple: true }, "#{tag.name}", nil %>
+    <%= f.label "#{tag.name}(#{tag.taggings_count})", class: "badge badge-primary" %></span>&emsp;
   <% end %>
-  <diV>
-    <%= f.text_field :url, placeholder: "https://www.youtube.com/watch?v=", class: "url_text" %>
-  </div>
- 
-
-<%# <hr> %>
-
-    <%# <%= f.label :tag_list %>
-    <%# <%= f.label :category_list, "カテゴリー：", class: "field" %>
-    <%# <%= f.text_field :tag_list, value: @post.tag_list.join(','), class: "form-control" %>
-    <div class="font-weight-bold field">カテゴリー：</div>
-  <% @post.errors.full_messages_for(:category_list).each do |message| %>
-  <div class="badge badge-warning">
-    <%= message %>
-  </div>
-  <% end %>
-    
-    <div class="col-sm-12">
-      <% @categories.each do |tag| %>
-      <span class="check_paragraph"><%= f.check_box :category_list, { multiple: true }, "#{tag.name}", nil %>
-      <%= f.label "#{tag.name}(#{tag.taggings_count})", class: "badge badge-primary" %></span>&emsp;
-      <% end %>
-    </div>
-<%# <hr> %>
+</div>
 <div class="font-weight-bold field">対象職種：</div>
-  <% @post.errors.full_messages_for(:occupation_list).each do |message| %>
-  <div class="badge badge-warning">
-    <%= message %>
-  </div>
+<% @post.errors.full_messages_for(:occupation_list).each do |message| %>
+<div class="badge badge-warning">
+  <%= message %>
+</div>
+<% end %>
+<div class="col-sm-12">
+  <% @occupations.each do |tag| %>
+  <span class="check_paragraph"><%= f.check_box :occupation_list, { multiple: true }, "#{tag.name}", nil %>
+    <%= f.label "#{tag.name}(#{tag.taggings_count})", class: "badge badge-success" %></span>&emsp;
   <% end %>
-    
-    <div class="col-sm-12">
-      <% @occupations.each do |tag| %>
-      <%# <%= f.check_box :occupation_list, { multiple: true }, "#{tag.name}", nil  %>
-      <%# <%= f.label "#{tag.name}(#{tag.taggings_count})", class: "badge badge-success" %>
-      <%# &emsp; %>
-      <span class="check_paragraph"><%= f.check_box :occupation_list, { multiple: true }, "#{tag.name}", nil %>
-      <%= f.label "#{tag.name}(#{tag.taggings_count})", class: "badge badge-success" %></span>&emsp;
-      <% end %>
-    </div>
-<%# <hr> %>
+</div>
 <div class="font-weight-bold field">対象者：</div>
-  <% @post.errors.full_messages_for(:target_list).each do |message| %>
-  <div class="badge badge-warning">
-    <%= message %>
-  </div>
+<% @post.errors.full_messages_for(:target_list).each do |message| %>
+<div class="badge badge-warning">
+  <%= message %>
+</div>
+<% end %>
+<div class="col-sm-12">
+  <% @targets.each do |tag| %>
+  <span class="check_paragraph"><%= f.check_box :target_list, { multiple: true }, "#{tag.name}", nil %>
+    <%= f.label "#{tag.name}(#{tag.taggings_count})", class: "badge badge-danger" %></span>&emsp;
   <% end %>
-    <%# <label class="col-sm-12">対象者</label> %>
-    
-    <div class="col-sm-12">
-      <% @targets.each do |tag| %>
-      <span class="check_paragraph"><%= f.check_box :target_list, { multiple: true }, "#{tag.name}", nil %>
-      <%= f.label "#{tag.name}(#{tag.taggings_count})", class: "badge badge-danger" %></span>&emsp;
-      <% end %>
-    </div>
-
-<%# <hr> %>
-    <% @post.errors.full_messages_for(:content).each do |message| %>
-    <div class="badge badge-warning">
-      <%= message %>
-    </div>
-    <% end %>
-    <diV class="field">
-      <%= f.text_area :content, placeholder: "紹介文", class: "textarea" %>
-    </div>
-    <%= f.submit '投稿', class: 'btn btn-primary' %>
-    <% end %>
+</div>
+<% @post.errors.full_messages_for(:content).each do |message| %>
+<div class="badge badge-warning">
+  <%= message %>
+</div>
+<% end %>
+<diV class="field">
+  <%= f.text_area :content, placeholder: "紹介文", class: "textarea", id: "post_content" %>
+</div>
+<%= f.submit '投稿', class: 'btn btn-primary' %>
+<% end %>
