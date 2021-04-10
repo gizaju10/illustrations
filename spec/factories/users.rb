@@ -1,37 +1,21 @@
-# FactoryBot.define do 
-#   factory :user do #factory :testuser, class: User do のようにクラスを明示すればモデル名以外のデータも作れます。
-#     name { "test" }
-#     sequence(:email) { |n| "TEST#{n}@example.com" }
-#     password { "testuser" }
-#   end
-# end
-
 FactoryBot.define do
 
   factory :user do
     # name                  {"テストユーザー"}
-    sequence(:name) { |n| "name" }
+    # name                  { Faker::Name.last_name }
+    name                  {Faker::Name.initials(number: 6)}
+    # sequence(:name) { |n| "name" }
     # email                 {"abcde@gmail.com"}
-    sequence(:email)      { |n| "TEST#{n}@example.com" }
-    password              {"aaaaaa"}
-    password_confirmation {"aaaaaa"}
-    profile               {"初めまして。"}
+    email                 {Faker::Internet.free_email}
+    # sequence(:email)      { |n| "TEST#{n}@example.com" }
+    # password              {"aaaaaa"}
+    password              {Faker::Internet.password(min_length: 6)}
+    # password_confirmation {"aaaaaa"}
+    password_confirmation {password}
+    # profile               {"初めまして。"}
+    profile               {Faker::Lorem.sentence}
     # profile_photo { Rack::Test::UploadedFile.new(File.join(Rails.root, "spec/image/main_top.jpg")) }
+    # image {""}
   end
 
-  # factory :takashi, class: User do
-  #   name                  {"Takashi"}
-  #   email                 {"takashi@example.com"}
-  #   password              {"aaaaaa"}
-  #   password_confirmation {"aaaaaa"}
-  #   profile               {"初め"}
-  # end
-
-  # factory :satoshi, class: User do
-  #   name                  {"Satoshi"}
-  #   email                 {"satoshi@example.com"}
-  #   password              {"aaaaaa"}
-  #   password_confirmation {"aaaaaa"}
-  #   profile               {"初"}
-  # end
 end
