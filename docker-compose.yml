@@ -57,15 +57,19 @@ services:
       - public_data:/illustrations/public
     tty: true
     stdin_open: true
+    environment:
+      SELENIUM_DRIVER_URL: http://chrome:4444/wd/hub
     depends_on:
       - db # 依存関係を示していて、起動順を指定できます。ここではdb→webへと起動します。
       - chrome
-    environment:
-      SELENIUM_DRIVER_URL: http://chrome:4444/wd/hub 
+    # environment:
+      # SELENIUM_DRIVER_URL: http://chrome:4444/wd/hub
   chrome:
     image: selenium/standalone-chrome:latest
+    # image: selenium/standalone-chrome-debug:latest
     ports:
       - 4444:4444
+      # - 5900:5900
     # environment:
     #   SELENIUM_DRIVER_URL: http://chrome:4444/wd/hub 
     
