@@ -66,6 +66,7 @@
               <%= link_to new_post_path, class: 'nav-link nav-item underscore', method: :get do %>
               <i class="fas fa-clipboard"></i> 新規投稿
               <% end %>
+              <%# <%= link_to "新規投稿",new_post_path, class: 'nav-link nav-item underscore', method: :get %>
             </li>
 
 
@@ -134,14 +135,7 @@
                   <%# タブレット用 %>
                   <%# <div class="field"> %>
                   <hr>
-                  <%= form_tag(search_path,:method => 'get') do %>
-                  <%= text_field_tag :search, '', class: '', placeholder: "投稿記事を探す" %>
-                  <%# <%= submit_tag '検索', class: "btn-outline-info badge-light", :name => nil %>
-                  <%= button_tag :name => nil, :class =>"btn-outline-info badge-light" do %>
-                  <i class="fa fa-search"></i>検索
-                  <%# </div> %>
-                  <% end %>
-                  <% end %>
+<%= render "shared/posts_search" %>
                 </center>
                 <hr>
               <li class="">
@@ -407,12 +401,13 @@
   <%# <div class="loader-wrap">
     <div class="loader">Loading...</div>
   </div> %>
-</body>
 
-</html>
-
-<script>
+  <script>
 $('.btn_alert').click(function() {
   alert('テストユーザーの為、この機能をご利用できません。');
 });
 </script>
+</body>
+
+</html>
+
