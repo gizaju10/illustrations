@@ -51,8 +51,15 @@
 
 <% if user_signed_in? && current_user.id == @post.user_id %>
 <div>
+  <%# <%= link_to("/posts/#{@post.id}/edit"), id: "post_edit" do %>
+  <%# 編集 <i class="fas fa-edit"></i><% end %>
   <%= link_to("/posts/#{@post.id}/edit") do %>編集 <i class="fas fa-edit"></i><% end %>
-  <%= link_to("/posts/#{@post.id}", {method: "delete"}) do %>削除 <i class="fas fa-trash"></i><% end %>
+  <%= link_to "/posts/#{@post.id}", method: "delete", data: { confirm: "本当に削除しますか?"} do %>削除 <i class="fas fa-trash"></i><% end %>
+</div>
+<% elsif current_user.id == 2 %>
+<div>
+  <%= link_to("/posts/#{@post.id}/edit") do %>管理者権限で編集 <i class="fas fa-edit"></i><% end %>
+  <%= link_to "/posts/#{@post.id}", method: "delete", data: { confirm: "本当に削除しますか?"} do %>管理者権限で削除 <i class="fas fa-trash"></i><% end %>
 </div>
 <% end %>
 
@@ -150,6 +157,9 @@
 <h5>コメントを投稿する</h5>
   <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
 <% end %>
+
+  <div id="error_explanation">
+  </div>
 
 <hr>
 
