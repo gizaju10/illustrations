@@ -1,10 +1,4 @@
 <h1>編集する</h1>
-<%# <%= form_tag("/posts/#{@post.id}/update") do %>
-
-<%# <%= render "posts/post" %>
-
-<%# <input type="submit" value="保存"> %>
-
 <%= form_for(@post, url: post_path(@post)) do |f| %>
 
 <% @post.errors.full_messages_for(:title).each do |message| %>
@@ -26,16 +20,11 @@
   </div>
   <p>
 
-
-
-
-    <%# <%= f.label :tag_list %>
-    <%# <%= f.text_field :tag_list, value: @post.tag_list.join(','), class: "form-control" %>
-  <% @post.errors.full_messages_for(:category_list).each do |message| %>
-  <div>
-    <%= message %>
-  </div>
-  <% end %>
+    <% @post.errors.full_messages_for(:category_list).each do |message| %>
+    <div>
+      <%= message %>
+    </div>
+    <% end %>
     <div class="">カテゴリー</div>
     <div class="col-sm-12">
       <% @categories.each do |tag| %>
@@ -44,11 +33,11 @@
       <% end %>
     </div>
 
-  <% @post.errors.full_messages_for(:occupation_list).each do |message| %>
-  <div>
-    <%= message %>
-  </div>
-  <% end %>
+    <% @post.errors.full_messages_for(:occupation_list).each do |message| %>
+    <div>
+      <%= message %>
+    </div>
+    <% end %>
     <div class="">対象職種</div>
     <div class="col-sm-12">
       <% @occupations.each do |tag| %>
@@ -57,12 +46,11 @@
       <% end %>
     </div>
 
-  <% @post.errors.full_messages_for(:target_list).each do |message| %>
-  <div>
-    <%= message %>
-  </div>
-  <% end %>
-    <%# <label class="col-sm-12">対象者</label> %>
+    <% @post.errors.full_messages_for(:target_list).each do |message| %>
+    <div>
+      <%= message %>
+    </div>
+    <% end %>
     <div class="">対象者</div>
     <div class="col-sm-12">
       <% @targets.each do |tag| %>
@@ -70,7 +58,6 @@
       <%= f.label " #{tag.name}(#{tag.taggings_count})", class: "label label-default" %>
       <% end %>
     </div>
-
 
     <% @post.errors.full_messages_for(:content).each do |message| %>
     <div>
@@ -81,6 +68,5 @@
       <%= f.text_area :content, placeholder: "紹介文" %>
     </div>
 
-
- <div><%= f.submit "更新する" %></div>
-<% end %>
+    <div><%= f.submit "更新する" %></div>
+    <% end %>
