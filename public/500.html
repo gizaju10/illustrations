@@ -51,16 +51,39 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+
+  .new_image {
+   height: 70px;
+   object-fit: cover;
+   /* タテヨコ比を変えないままトリミング */
+   padding-top: 20px;
+  }
   </style>
 </head>
 
-<body class="rails-default-error-page">
+<!-- <body class="rails-default-error-page"> -->
   <!-- This file lives in public/500.html -->
-  <div class="dialog">
+  <!-- <div class="dialog">
     <div>
       <h1>We're sorry, but something went wrong.</h1>
     </div>
     <p>If you are the application owner check the logs for more information.</p>
+  </div>
+</body> -->
+<!-- </html> -->
+<body class="rails-default-error-page">
+  <!-- This file lives in public/500.html -->
+  <div class="dialog">
+    <div>
+      <!-- <p><img src="https://illusttube.work/images/illusttube.png"> -->
+      <p><img src="https://illusttube.work/illusttube.png" class="new_image"></p>
+      <!-- <center><%= image_tag '/illusttube.png', class: "new_image" %></center> -->
+      <h1>このページは表示できません</h1>
+      <p>大変申し訳ありません。<br/>
+        一時的なエラーが発生しました。</p>
+    </div>
+    <p>トップページへは<a href="https://illusttube.work/posts">こちら</a>より戻れます。<br/>
+    <a href="https://illusttube.work/inquiry/index">お問い合わせ</a></p>
   </div>
 </body>
 </html>
