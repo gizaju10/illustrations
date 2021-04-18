@@ -1,39 +1,34 @@
-// Place all the styles related to the posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
-
 textarea {
-    resize: auto;
-    max-width: 500px;
-    max-height: 500px;
-    min-width: 100px;
-    min-height: 100px;
-    height:300px;
-    width:100%;
-  }
+  resize: auto;
+  max-width: 500px;
+  max-height: 500px;
+  min-width: 100px;
+  min-height: 100px;
+  height: 300px;
+  width: 100%;
+}
 
 .url_text {
   resize: auto;
   max-width: 400px;
   min-width: 100px;
-  width:100%;
+  width: 100%;
 }
-
 
 .textarea {
   resize: none;
   max-width: 500px;
   min-width: 100px;
-  width:100%;
-  height:300px;
+  width: 100%;
+  height: 300px;
 }
 
 .textarea_comment {
   resize: none;
   max-width: 500px;
   min-width: 100px;
-  width:100%;
-  height:100px;
+  width: 100%;
+  height: 100px;
 }
 
 .textarea_post {
@@ -41,44 +36,42 @@ textarea {
   word-wrap: break-word;
 }
 
-
-
-
-
-
 .post_show {
   word-break: break-word;
   padding: 0.5em 1em;
   margin: 0.5em 0;
   color: #474747;
-  background: whitesmoke;/*背景色*/
-  border-left: double 7px #4ec4d3;/*左線*/
-  border-right: double 7px #4ec4d3;/*右線*/
+  background: whitesmoke;
+  /*背景色*/
+  border-left: double 7px #4ec4d3;
+  /*左線*/
+  border-right: double 7px #4ec4d3;
+  /*右線*/
 }
+
 .post_show p {
-  margin: 0; 
+  margin: 0;
   padding: 0;
 }
-
-
-
-
-
 
 .comment_show {
   word-break: break-word;
   padding: 0.5em 1em;
   margin: 2em 0;
   color: #00BCD4;
-  background: #e4fcff;/*背景色*/
+  background: #e4fcff;
+  /*背景色*/
   border-top: solid 6px #1dc1d6;
-  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+  /*影*/
 }
+
 .comment_show p {
-  margin: 0; 
+  margin: 0;
   padding: 0;
 }
 
-label, input {
+label,
+input {
   display: inline;
 }
