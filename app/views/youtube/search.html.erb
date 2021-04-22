@@ -1,9 +1,9 @@
 <center>
   <h4><i class="fab fa-youtube"></i> 検索して投稿</h4>
   <%= form_tag( youtube_search_path,:method => 'get') do %>
-  <%= text_field_tag :keyword, '', class: '', placeholder: "YouTubeから投稿する" %>
-  <%= button_tag :name => nil, :class =>"btn-danger badge-light" do %>
-  <i class="fas fa-file-video"></i>検索
+  <%= text_field_tag :keyword, '',value: params[:keyword], placeholder: "YouTubeから投稿する", class: 'search_text'%>
+  <%= button_tag :name => nil, :class =>"btn-danger badge-light search_right_text" do %>
+  <i class="fas fa-file-video"></i>
   <% end %>
   <% end %>
 </center>
@@ -23,21 +23,78 @@
   </div>
 </div>
 <dl class="p-faq">
-  <dt class="p-faq-title">この動画を投稿する</dt>
+  <dt class="p-faq-title">この動画を投稿する <i class="fas fa-arrow-circle-up faa-bounce animated"></i></dt>
   <dd class="p-faq-description">
 
-    <%= render "posts/post"%>
+    <%= form_for @post do |f| %>
+    <div><%= f.label :title, "タイトル：", class: "font-weight-bold field" %></div>
+    <% @post.errors.full_messages_for(:title).each do |message| %>
+    <div class="badge badge-warning">
+      <%= message %>
+    </div>
+    <% end %>
+    <div>
+      <%= f.text_field :title, placeholder: "24文字以内で入力", class: "post_title_text", id: "post_title" %>
+    </div>
+    <div><%= f.label :url, "紹介したいYouTubeのURL：", class: "font-weight-bold field" %></div>
+    <% @post.errors.full_messages_for(:url).each do |message| %>
+    <div class="badge badge-warning">
+      <%= message %>
+    </div>
+    <% end %>
+    <diV>
+      <%= f.text_field :url, placeholder: "https://www.youtube.com/watch?v=", value: "https://www.youtube.com/watch?v=#{movie[:id][:video_id]}", class: "url_text", id: "post_url" %>
+    </div>
+    <div class="font-weight-bold field">カテゴリー：</div>
+    <% @post.errors.full_messages_for(:category_list).each do |message| %>
+    <div class="badge badge-warning">
+      <%= message %>
+    </div>
+    <% end %>
+    <div class="col-sm-12">
+      <% @categories.each do |tag| %>
+      <span class="check_paragraph"><%= f.check_box :category_list, { multiple: true }, "#{tag.name}", nil %>
+        <%= f.label "#{tag.name}(#{tag.taggings_count})", class: "badge badge-primary" %></span>&emsp;
+      <% end %>
+    </div>
+    <div class="font-weight-bold field">対象職種：</div>
+    <% @post.errors.full_messages_for(:occupation_list).each do |message| %>
+    <div class="badge badge-warning">
+      <%= message %>
+    </div>
+    <% end %>
+    <div class="col-sm-12">
+      <% @occupations.each do |tag| %>
+      <span class="check_paragraph"><%= f.check_box :occupation_list, { multiple: true }, "#{tag.name}", nil %>
+        <%= f.label "#{tag.name}(#{tag.taggings_count})", class: "badge badge-success" %></span>&emsp;
+      <% end %>
+    </div>
+    <div class="font-weight-bold field">対象者：</div>
+    <% @post.errors.full_messages_for(:target_list).each do |message| %>
+    <div class="badge badge-warning">
+      <%= message %>
+    </div>
+    <% end %>
+    <div class="col-sm-12">
+      <% @targets.each do |tag| %>
+      <span class="check_paragraph"><%= f.check_box :target_list, { multiple: true }, "#{tag.name}", nil %>
+        <%= f.label "#{tag.name}(#{tag.taggings_count})", class: "badge badge-danger" %></span>&emsp;
+      <% end %>
+    </div>
+    <div><%= f.label :content, "紹介文：", class: "font-weight-bold field" %></div>
+    <% @post.errors.full_messages_for(:content).each do |message| %>
+    <div class="badge badge-warning">
+      <%= message %>
+    </div>
+    <% end %>
+    <diV>
+      <%= f.text_area :content, placeholder: "300文字内で入力", class: "textarea", id: "post_content" %>
+    </div>
+    <%= f.submit '投稿する', class: 'btn btn-primary' %>
+    <% end %>
 
   </dd>
   <p>
     <% end %>
     <%= link_to("YouTubeで確認する", "https://www.youtube.com/", class: 'navbar-brand underscore') %>
-
-    <% else %>
     <% end %>
-    <script>
-      $('.p-faq-title').on('click', function () {
-        $(this).toggleClass('active');
-        $(this).next().slideToggle();
-      });
-    </script>

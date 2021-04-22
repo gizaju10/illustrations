@@ -44,3 +44,17 @@ $(document).on('turbolinks:load', function () {
     return false;
   });
 });
+
+// YouTube検索ページで投稿欄隠す
+$(document).on('turbolinks:load', function () {
+  $('.p-faq-title').on('click', function () {
+    $(this).toggleClass('active');
+    $(this).next().slideToggle();
+  });
+});
+
+$(document).on('turbolinks:load', function () {
+  $('.btn_alert').click(function () {
+    alert('テストユーザーの為、この機能をご利用できません。');
+  });
+});

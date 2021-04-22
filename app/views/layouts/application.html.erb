@@ -58,54 +58,25 @@
               <%# タブレット用 %>
               <hr>
 
+              <center>
+                <%= render "shared/profile" %>
 
+                <li>
+                  <%= link_to destroy_user_session_path, class: 'btn btn-secondary margin_up', method: :delete do %>
+                  <i class="fas fa-sign-out-alt"></i> ログアウト
+                  <% end %>
 
-              <% if current_user.image.blank? %>
-              <%= image_tag '/default.png', class: "icon_image" %>
-              <% else %>
-              <img src=<%= current_user.image %> class="icon_image">
-              <% end %>
-              <li class="underscore">
-                <%= link_to("#{current_user.name}", user_path(current_user.id), class: '') %>
-              </li>
-
-              <li>
-                <%= link_to destroy_user_session_path, class: 'btn btn-secondary margin_up', method: :delete do %>
-                <i class="fas fa-sign-out-alt"></i> ログアウト
-                <% end %>
-
-                <center>
                   <hr>
                   <%= render "shared/posts_search" %>
-                </center>
-                <hr>
+              </center>
+              <hr>
               <li>
                 <%= link_to inquiry_index_path, class: 'nav-link nav-item underscore', method: :get do %>
                 <i class="fas fa-envelope"></i> お問い合わせ
                 <% end %>
               </li>
 
-              <hr>
-              <%# <h5>カテゴリーから探す</h5> %>
-              <% @categories.each do |tag| %>
-              <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-primary" do %>
-              <i class="fas fa-tag"></i><%= tag.name %>(<%= tag.taggings_count %>)
-              <% end %>
-              <% end %>
-
-              <hr>
-              <% @occupations.each do |tag| %>
-              <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-success" do %>
-              <i class="fas fa-tags"></i><%= tag.name %>(<%= tag.taggings_count %>)
-              <% end %>
-              <% end %>
-
-              <hr>
-              <% @targets.each do |tag| %>
-              <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-danger" do %>
-              <i class="fas fa-user-tag"></i><%= tag.name %>(<%= tag.taggings_count %>)
-              <% end %>
-              <% end %>
+              <%= render "shared/categories_etc" %>
 
               <footer>
                 &copy;Teppei Mimachi 2021
@@ -124,23 +95,14 @@
               <% end %>
             </li>
             <div class="spview">
-              <li class="nav-item underscore">
-                <%= link_to inquiry_index_path, class: 'nav-link', method: :get do %>
-                <i class="fas fa-envelope"></i> お問い合わせ
-                <% end %>
-              </li>
+              <%= render "shared/inquiry" %>
             </div>
             <% end %>
           </ul>
 
           <div class="fixed pcview">
             <%# 右に表示 %>
-            <li class="nav-item underscore">
-              <%= link_to inquiry_index_path, class: 'nav-link', method: :get do %>
-              <i class="fas fa-envelope"></i> お問い合わせ
-              <% end %>
-            </li>
-
+            <%= render "shared/inquiry" %>
           </div>
         </div>
       </nav>
@@ -153,56 +115,20 @@
     <div class="fixed pcview">
       <%# PC用 %>
       <center>
-        ようこそ
-        <% if current_user.image.blank? %>
-        <%= image_tag '/default.png', class: "icon_image" %>
-        <% else %>
-        <img src=<%= current_user.image %> class="icon_image">
-        <% end %>
-        <li class="underscore">
-          <%= link_to("#{current_user.name}", user_path(current_user.id), class: '') %>
-        </li>
-        さん
+        <%= render "shared/profile" %>
         <div>
           <%= link_to destroy_user_session_path, class: 'btn btn-outline-dark margin_up', method: :delete do %>
           <i class="fas fa-sign-out-alt"></i>ログアウト
           <% end %>
         </div>
-      </center>
 
-      <hr>
-      <center>
+        <hr>
         <%# PC用 %>
-        <%= form_tag(search_path,:method => 'get') do %>
-        <%= text_field_tag :search, '', class: '', placeholder: "投稿記事を探す" %>
-        <%= button_tag :name => nil, :class =>"btn-outline-info badge-light" do %>
-        <i class="fa fa-search"></i>検索
-        <% end %>
-        <% end %>
+        <%= render "shared/posts_search" %>
       </center>
 
-      <hr>
-      <% @categories.each do |tag| %>
-      <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-primary" do %>
-      <i class="fas fa-tag"></i><%= tag.name %>(<%= tag.taggings_count %>)
+      <%= render "shared/categories_etc" %>
       <% end %>
-      <% end %>
-      <hr>
-      <% @occupations.each do |tag| %>
-      <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-success" do %>
-      <i class="fas fa-tags"></i><%= tag.name %>(<%= tag.taggings_count %>)
-      <% end %>
-      <% end %>
-
-      <hr>
-      <% @targets.each do |tag| %>
-      <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-danger" do %>
-      <i class="fas fa-user-tag"></i><%= tag.name %>(<%= tag.taggings_count %>)
-      <% end %>
-      <% end %>
-      <% end %>
-
-
 
       <% if user_signed_in? %>
       <footer>
@@ -222,12 +148,6 @@
   <%# <div class="loader-wrap">
     <div class="loader">Loading...</div>
   </div> %>
-
-  <script>
-    $('.btn_alert').click(function () {
-      alert('テストユーザーの為、この機能をご利用できません。');
-    });
-  </script>
 </body>
 
 </html>
