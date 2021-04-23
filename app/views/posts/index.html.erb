@@ -1,17 +1,17 @@
 <% if user_signed_in? %>
-<div class="center-letter"><h4>投稿一覧</h4></div>
-
-<div class="skill-list jscroll">
-<% @posts.includes(:taggings, :user).each do |post| %>
-<%= render partial: "index", collection: @posts, as: 'post' %>
-<% end %>
-
-<%# <% if current_page?(root_path) %>
-<%= paginate @posts %>
-<%# <% else %>
-<%# <% end %>
-
+<div class="center-letter">
+    <h4><i class="fas fa-film"></i> 投稿一覧</h4>
 </div>
 
-<% else %>
+<div class="skill-list jscroll">
+    <% @posts.includes(:taggings, :user).each do |post| %>
+    <div id="parent_flame" class="row no-gutters bg-white position-relative box">
+        <%= render partial: "index", collection: @posts, as: 'post' %>
+    </div>
+    <p>
+        <% end %>
+
+        <%= paginate @posts %>
+
+</div>
 <% end %>

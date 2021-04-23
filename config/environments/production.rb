@@ -25,29 +25,20 @@ Rails.application.configure do
   # public以下を静的ファイルとして取り扱う
   config.public_file_server.enabled = true
 
-
-
-  # Compress JavaScripts 必要か?
+  # Compress JavaScripts
   config.assets.js_compressor = :uglifier
 
   # Compress CSS using a preprocessor.
   config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  # サーバー側でコンパイルしてくれる。
-  # config.assets.compile = true
-  # config.assets.compile = false
-
-  # ↓
-  
+  # サーバー側でコンパイルするかの有無
   config.assets.compile = false
 
   config.assets.precompile += %w(*.js *.less *.css *.erb)
 
-  # assetファイル名にハッシュをつける。
+  # assetファイル名にハッシュをつける
   config.assets.digest = true
-
-
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'

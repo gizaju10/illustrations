@@ -26,7 +26,6 @@ class InquiryController < ApplicationController
     # 完了画面を表示
     flash[:notice] = "お問い合わせいただきありがとうございました。"
     if user_signed_in?
-      # render :action => 'thanks'
       redirect_to("/posts")
     else
       redirect_to("/")

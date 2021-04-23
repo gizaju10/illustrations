@@ -18,9 +18,6 @@ class Post < ApplicationRecord
 
   # 記事検索
   def self.search(search)
-    # self.where(['title LIKE ? OR content LIKE ? OR category_list LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%"])
     self.joins(:user).where(['title LIKE ? OR content LIKE ? OR users.name LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%"])
-    # self.where(['title LIKE ? OR content LIKE ?', "%#{search}%", "%#{search}%"])
-    # self.joins(:user).where(['users.name LIKE ?', "%#{search}%"])
   end
 end

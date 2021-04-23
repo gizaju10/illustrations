@@ -1,85 +1,57 @@
 <%= comments.count %>件のコメント
-<%# <%= render 'layouts/flash' %>
-<%# <div class="post-content show-box">
-  <%= simple_format(post.title) %>
-<%# </div> %>
-
-
-<% comments.order(created_at: :desc).each do |comment| %>
+<% comments.includes(:user).order(created_at: :desc).each do |comment| %>
 <% if comment.user.image.blank? %>
-
 <div class="comment_show">
-
   <div>
-    <%= image_tag '/default.png', class: "icon_image" %><%= link_to "#{comment.user.name}", "/users/#{comment.user.id}", :style => "color: black;" %>
+  <%= link_to "/users/#{comment.user.id}" do %>
+    <%= image_tag '/default.png', class: "icon_image" %>
+    <% end %>
+    <%= link_to "#{comment.user.name}", "/users/#{comment.user.id}", :style => "color: black;" %>
     <% if not comment.created_at <= (Time.now.at_beginning_of_day - 72.hour) %>
-    <%# <div class="badge badge-secondary balloonoya">New %>
-      <span class="balloon">3日以内のコメントです。</span>
-    <%# </div> %>
+    <span class="balloon">3日以内のコメントです。</span>
     <p><%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
-
-
-    <%# <% else %>
     <% end %>
   </div>
   <% else %>
-
   <div class="comment_show">
-
-    <div><img src=<%= comment.user.image %>
-        class="icon_image"><%= link_to "#{comment.user.name}", "/users/#{comment.user.id}", :style => "color: black;" %>
+    <div>
+    <%= link_to "/users/#{comment.user.id}" do %>
+    <img src=<%= comment.user.image %> class="icon_image">
+    <% end %>
+    <%= link_to "#{comment.user.name}", "/users/#{comment.user.id}", :style => "color: black;" %>
     </div>
     <% end %>
-
-
-
-
-
-
-
-
     <% if comment.id.present? %>
     <div class="show-comment show-box" id="comment_<%= comment.id %>">
       <div>
       </div>
-      <%# <div id="errors_area_<%= comment.id %>
-      <%# "> %>
-        <%# <%= render partial: 'comments/edit_error' %>
-      <%# </div> %>
       <div class="comment-content" id="this_comment_<%= comment.id %>">
         <p class="textarea_post" style="color: black;"><%= comment.content %></p>
       </div>
       <span>投稿日時:<%= time_ago_in_words(comment.created_at) %>前
-      
-      <% if not comment.created_at <= (Time.now.at_beginning_of_day - 72.hour) %>
-      <div class="badge badge-secondary balloonoya">New
-      </div>
-      <%# <p><%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
-      <%# </p> %>
-
-      <%# <% else %>
-      <% end %>
-      
-      
+        <% if not comment.created_at <= (Time.now.at_beginning_of_day - 72.hour) %>
+        <div class="badge badge-secondary balloonoya">New
+        </div>
+        <% end %>
       </span>
       <% if comment.user == current_user %>
-      <span class="badge"><%= link_to post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, data: { confirm: "本当に削除しますか?"} do %>削除 <i class="fas fa-trash"></i>
+      <span
+        class="badge"><%= link_to post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, data: { confirm: "本当に削除しますか?"} do %>削除
+        <i class="fas fa-trash"></i>
         <% end %></span>
-
-
-      <span class="badge"><%= link_to edit_post_comment_path(post, comment), remote: true do %>編集 <i class="fas fa-edit"></i>
+      <span class="badge"><%= link_to edit_post_comment_path(post, comment), remote: true do %>編集 <i
+          class="fas fa-edit"></i>
         <% end %></span>
-<% elsif current_user.id == 2 %>
-      <span class="badge"><%= link_to post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, data: { confirm: "本当に削除しますか?"} do %>削除 <i class="fas fa-trash"></i>
+      <% elsif current_user.id == 2 %>
+      <span
+        class="badge"><%= link_to post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, data: { confirm: "本当に削除しますか?"} do %>削除
+        <i class="fas fa-trash"></i>
         <% end %></span>
-
-
-      <span class="badge"><%= link_to edit_post_comment_path(post, comment), remote: true do %>編集 <i class="fas fa-edit"></i>
+      <span class="badge"><%= link_to edit_post_comment_path(post, comment), remote: true do %>編集 <i
+          class="fas fa-edit"></i>
         <% end %></span>
       <% end %>
     </div>
   </div>
   <% end %>
   <% end %>
-
-

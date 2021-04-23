@@ -11,7 +11,6 @@ development:
   <<: *default
   database: illustrations_development
 
-
 test:
   <<: *default
   database: illustrations_test

@@ -1,18 +1,4 @@
-<%# <% @user.followers.each do |user| %>
-<%# <table>
-<tr>
-  <%# <td>  <%= user.username %> 
-  <%# </td>
-  <td>  <%= user.email %> 
-  <%# </td>
-  <td><%= link_to '詳細', user_path(user) %>
-  <%# </td>
-</tr>
-
-</table>
-<% end %>
-
- <% @user ||= current_user %>
+<% @user ||= current_user %>
 <div class="stats">
   <a href="<%= followers_user_path(@user) %>">
     <strong id="followers" class="stat">
@@ -21,24 +7,21 @@
     フォロワー
   </a>
 </div>
-
+<hr>
 <% @user.followers.each do |user| %>
-  <%# <img src=<%= user.image %>
-   <%# class = "icon_image"> %>
-
-<% if user.image.blank? %>
-</div><%= image_tag '/default.png', class: "icon_image" %><%= link_to "#{user.name}", "/users/#{user.id}", :style => "color: black;" %>
+<div>
+  <% if user.image.blank? %>
+  <%= link_to "/users/#{user.id}" do %>
+  <%= image_tag '/default.png', class: "icon_image" %><%= link_to "#{user.name}", "/users/#{user.id}", :style => "color: black;" %>
+  <% end %>
+  <% else %>
+  <%= link_to "/users/#{user.id}" do %>
+  <img src=<%= user.image %>
+    class="icon_image"><%= link_to "#{user.name}", "/users/#{user.id}", :style => "color: black;" %>
+  <% end %>
+  <% end %>
+  <%= link_to '詳細', user_path(user) %>
 </div>
-<% else %>
-<div><img src=<%= user.image %> class="icon_image"><%= link_to "#{user.name}", "/users/#{user.id}", :style => "color: black;" %>
-</div>
-<% end %>
-
-  <%# <a href="/users/<%= user.id"> %>
-  <%# <%= user.name</a> %>
-  <%# <%= link_to "#{user.name}", "/users/#{user.id}" %>
-
-  <div><%= link_to '詳細', user_path(user) %></div>
-  <hr>
+<hr>
 <% end %>
 <%= render "shared/link_home" %>

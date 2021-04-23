@@ -49,8 +49,8 @@
             </li>
 
             <li>
-              <%= link_to youtube_search_path, class: 'nav-link nav-item underscore', method: :get do %>
-              <i class="fab fa-youtube faa-flash animated"></i> 検索して新規投稿
+              <%= link_to youtube_search_path(keyword: "イラスト 描き方") , class: 'nav-link nav-item underscore', method: :get do %>
+              <i class="fab fa-youtube faa-flash animated"></i> 動画を検索して新規投稿
               <% end %>
             </li>
 
@@ -67,7 +67,12 @@
                   <% end %>
 
                   <hr>
-                  <%= render "shared/posts_search" %>
+                  <%= form_tag(search_path, method: 'get', id: "search_form_sp") do %>
+                  <%= text_field_tag :search, '',value: params[:search], placeholder: "投稿記事を探す", class: 'search_text_sp search_text' %>
+                  <%= button_tag :name => nil, class: "btn-outline-info badge-light search_right_text" do %>
+                  <i class="fa fa-search"></i>
+                  <% end %>
+                  <% end %>
               </center>
               <hr>
               <li>
@@ -124,7 +129,12 @@
 
         <hr>
         <%# PC用 %>
-        <%= render "shared/posts_search" %>
+        <%= form_tag(search_path, method: 'get', id: "search_form_pc_side") do %>
+        <%= text_field_tag :search, '',value: params[:search], placeholder: "投稿記事を探す", class: 'search_text_pc_side search_text' %>
+        <%= button_tag :name => nil, class: "btn-outline-info badge-light search_right_text" do %>
+        <i class="fa fa-search"></i>
+        <% end %>
+        <% end %>
       </center>
 
       <%= render "shared/categories_etc" %>
@@ -148,6 +158,7 @@
   <%# <div class="loader-wrap">
     <div class="loader">Loading...</div>
   </div> %>
+
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-<%= form_for @post do |f| %>
+<%= form_for(@post, url: post_path(@post)) do |f| %>
 <div><%= f.label :title, "タイトル：", class: "font-weight-bold field" %></div>
 <% @post.errors.full_messages_for(:title).each do |message| %>
 <div class="badge badge-warning">
@@ -8,11 +8,7 @@
 <div>
   <%= f.text_field :title, placeholder: "24文字以内で入力", class: "post_title_text", id: "post_title" %>
 </div>
-<div class="youtube_show"><%= f.label :url, "紹介したいYouTubeのURL：", class: "font-weight-bold field" %><div class="badge">動画を探してみる</div></div>
-<div class="p-faq-description">
-<li><%= link_to youtube_search_path(keyword: "キャラクター 上達"), target: :_blank , method: :get do %>本サイトIllustTubeから<% end %></li>
-<li><%= link_to "https://www.youtube.com/", target: :_blank , method: :get do %>YouTube公式サイトから<% end %></li>
-</div>
+<div><%= f.label :url, "紹介したいYouTubeのURL：", class: "font-weight-bold field" %></div>
 <% @post.errors.full_messages_for(:url).each do |message| %>
 <div class="badge badge-warning">
   <%= message %>
@@ -66,5 +62,6 @@
 <diV>
   <%= f.text_area :content, placeholder: "300文字内で入力", class: "textarea", id: "post_content" %>
 </div>
-<%= f.submit '投稿する', class: 'btn btn-primary' %>
+
+<div><%= f.submit "更新する", class: 'btn btn-primary' %></div>
 <% end %>

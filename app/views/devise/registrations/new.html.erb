@@ -16,27 +16,27 @@
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
     <!--サインアップ時にユーザー名を入力できるようにフォームを追加-->
-    <div class="field">
+    <div>
       <%= f.label :name, "ユーザー名：", class: "font-weight-bold" %>
-      <%= f.text_field :name, autofocus: true, placeholder: "ユーザー名", id: 'user_name' %>
+      <%= f.text_field :name, autofocus: true, placeholder: "ユーザー名", class: 'normal_text', id: 'user_name' %>
     </div>
 
-    <div class="field">
+    <div>
       <%= f.label :email, "メールアドレス：", class: "font-weight-bold" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", id: 'user_email' %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: 'normal_text', id: 'user_email' %>
     </div>
 
-    <div class="field">
+    <div>
       <%= f.label :password, "パスワード：", class: "font-weight-bold" %>
-      <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード ※#{@minimum_password_length}文字以上", id: 'user_password' %>
+      <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード ※#{@minimum_password_length}文字以上", class: 'password_text', id: 'user_password' %>
     </div>
 
-    <div class="field">
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード ※再入力", id: 'user_password_confirmation' %>
+    <div>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード ※再入力", class: 'normal_text', id: 'user_password_confirmation' %>
     </div>
 
     <!--サインアップ時に画像を入力できるようにフォームを追加-->
-    <div class="field">
+    <div>
       <%= f.label :image, "プロフィール画像：", class: "font-weight-bold" %>
       <%= f.file_field :image %>
     </div>
@@ -61,30 +61,30 @@
 
 <% else %>
 <%= render "devise/shared/error_messages", resource: resource %>
-<h4>新規登録</h4>
+<h4><i class="fas fa-sign-in-alt"></i> 新規登録</h4>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 <!--サインアップ時に名前を入力できるようにフォームを追加-->
-<div class="field">
+<div>
   <div><%= f.label :name, "ユーザー名：", class: "" %></div>
-  <%= f.text_field :name, autofocus: true, placeholder: "名前" %>
+  <%= f.text_field :name, autofocus: true, placeholder: "ユーザー名", class: 'normal_text' %>
 </div>
 
-<div class="field">
+<div>
   <div><%= f.label :email, "メールアドレス：", class: "" %></div>
-  <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
+  <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: 'normal_text' %>
 </div>
 
-<div class="field">
+<div>
   <div><%= f.label :password, "パスワード：", class: "" %></div>
-  <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード ※#{@minimum_password_length}文字以上" %>
+  <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード ※#{@minimum_password_length}文字以上", class: 'password_text' %>
 </div>
 
-<div class="field">
-  <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード ※再入力" %>
+<div>
+  <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード ※再入力", class: 'normal_text' %>
 </div>
 
 <!--サインアップ時に画像を入力できるようにフォームを追加-->
-<div class="field">
+<div>
   <div><%= f.label :image, "プロフィール画像：", class: "" %></div>
   <%= f.file_field :image %>
 </div>

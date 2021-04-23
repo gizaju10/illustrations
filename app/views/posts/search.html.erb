@@ -1,18 +1,29 @@
+<%= render "shared/link_home" %>
 <div class="center-letter">
-    <h4>検索結果</h4>
+    <h4><i class="fa fa-search"></i> 検索結果</h4>
 </div>
-<div>「<%= params[:search] %>」のキーワードで<%= @posts_count %>件の記事が投稿されています。</div>
-<% if request.fullpath =~ /\?search\=$/ %>
-<div>この検索は無効です。キーワードを入力してください。</div>
-<%= render "shared/posts_search" %>
+<% if @posts_count == 0 %>
+<div>「<%= params[:search] %>」のキーワードでの投稿はありません。</div>
+<div><%= current_user.name %>さんが投稿者になって皆様の学習をサポートしてみませんか？</div>
 <% else %>
+<div>「<%= params[:search] %>」のキーワードで<%= @posts_count %>件の記事が投稿されています。</div>
 <div class="skill-list jscroll">
     <% @posts.includes(:taggings, :user).each do |post| %>
-    <%= render partial: "index", collection: @posts, as: 'post' %>
-    <% end %>
-    <%= paginate @posts %>
+    <div id="parent_flame" class="row no-gutters bg-white position-relative box">
+        <%= render partial: "index", collection: @posts, as: 'post' %>
+    </div>
+    <p>
+        <% end %>
+        <%= paginate @posts %>
 </div>
-<div>もし、ご希望のYouTube動画が見つからなかった場合、あなたが投稿者になって皆様の学習をサポートしてみませんか？</div>
-<%# <%= render "shared/posts_search" %>
-<%# キーワードを入力して検索して下さい。 %>
+<div>もし、ご希望のYouTube動画が見つからなかった場合、<%= current_user.name %>さんが投稿者になって皆様の学習をサポートしてみませんか？</div>
 <% end %>
+
+<%= form_tag(search_path, method: 'get', id: "search_form_pc_sp") do %>
+<%= text_field_tag :search, '',value: params[:search], placeholder: "投稿記事を探す", class: 'search_text_pc_sp search_yt_text' %>
+<%= button_tag :name => nil, class: "btn-outline-info badge-light search_right_text" do %>
+<i class="fa fa-search"></i>
+<% end %>
+<% end %>
+<br/>
+<%= render "shared/link_home" %>

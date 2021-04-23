@@ -54,7 +54,50 @@ $(document).on('turbolinks:load', function () {
 });
 
 $(document).on('turbolinks:load', function () {
+  $('.youtube_show').on('click', function () {
+    $(this).toggleClass('active');
+    $(this).next().slideToggle();
+  });
+});
+
+$(document).on('turbolinks:load', function () {
   $('.btn_alert').click(function () {
     alert('テストユーザーの為、この機能をご利用できません。');
+  });
+});
+
+$(document).on('turbolinks:load', function () {
+  $('#search_form_pc_sp').submit(function () {
+    if ($.trim($(".search_text_pc_sp").val()) === "") {
+      alert('検索キーワードを入力してください。');
+      return false;
+    }
+  });
+});
+
+$(document).on('turbolinks:load', function () {
+  $('#search_form_pc_side').submit(function () {
+    if ($.trim($(".search_text_pc_side").val()) === "") {
+      alert('検索キーワードを入力してください。');
+      return false;
+    }
+  });
+});
+
+$(document).on('turbolinks:load', function () {
+  $('#search_form_sp').submit(function () {
+    if ($.trim($(".search_text_sp").val()) === "") {
+      alert('検索キーワードを入力してください。');
+      return false;
+    }
+  });
+});
+
+$(document).on('turbolinks:load', function () {
+  $('#search_yt_form').submit(function () {
+    if ($.trim($(".search_yt_text").val()) === "") {
+      alert('検索キーワードを入力してください。');
+      return false;
+    }
   });
 });

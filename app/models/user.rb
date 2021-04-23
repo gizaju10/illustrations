@@ -1,46 +1,35 @@
 class User < ApplicationRecord
   validates :name, presence: true
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :omniauthable, omniauth_providers: [:google_oauth2]
   mount_uploader :image, ImageUploader
-
   validates :profile, length: { maximum: 200 }
-
-  # validates :password, presence: true
-  # validates :email, presence: true 
-  # validates :email, uniqueness: true
-
   has_many :sns_credentials, dependent: :destroy
-  has_many :posts, dependent: :destroy # 追加 もしユーザーがデータベースから削除されてしまった場合にユーザーがした投稿も全て消える
-  has_many :comments, dependent: :destroy # 追加 コメント 削除も仮追加
-  has_many :likes, dependent: :destroy # 追加
-  has_many :liked_posts, through: :likes, source: :post # 追加 いいね機能の利用
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: :post # いいね機能の利用
+  has_many :following_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy # フォローできるユーザーを取り出す
+  has_many :followings, through: :following_relationships # フォローしているユーザーを取り出す
+  has_many :follower_relationships, class_name: "Relationship", foreign_key: "following_id", dependent: :destroy # フォローされているユーザーを取り出す
+  has_many :followers, through: :follower_relationships # フォローされているユーザーを取り出す
 
-  has_many :following_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy # 追加 フォローできるユーザーを取り出す
-  has_many :followings, through: :following_relationships # 追加 フォローしているユーザーを取り出す
-
-  has_many :follower_relationships, class_name: "Relationship", foreign_key: "following_id", dependent: :destroy # 追加 フォローされているユーザーを取り出す
-
-  has_many :followers, through: :follower_relationships # 追加 フォローされているユーザーを取り出す
-
-  # いいねしているかどうかの判定
+  # いいねしているかどうか
   def already_liked?(post)
     self.likes.exists?(post_id: post.id)
   end
   
-  # フォローする関数
+  # フォローしているか調べる
   def following?(other_user)
     following_relationships.find_by(following_id: other_user.id)
   end
 
-  # フォローしているか調べるための関数
+  # フォローする
   def follow!(other_user)
     following_relationships.create!(following_id: other_user.id)
   end
 
-  # フォローを外す関数
+  # フォローを外す
   def unfollow!(other_user)
     following_relationships.find_by(following_id: other_user.id).destroy
   end

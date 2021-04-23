@@ -1,11 +1,11 @@
 <%= render "shared/link_home" %>
 
 <div class="center-letter">
-<% if user_signed_in? && @user.id == current_user.id %>
+    <% if user_signed_in? && @user.id == current_user.id %>
     <h4><i class="fa fa-user-plus"></i> マイページ</h4>
-<% else %>
+    <% else %>
     <h4><i class="fa fa-user-plus"></i> ユーザー詳細</h4>
-<% end %>
+    <% end %>
 </div>
 
 <% if @user.image.blank? %>
@@ -32,203 +32,35 @@
 <% if user_signed_in? && @user.id == current_user.id %>
 <p><%= link_to edit_user_registration_path do %>ユーザー情報を編集する <i class="fas fa-edit"></i><% end %></p>
 <% elsif current_user.id == 2 %>
- <p class="margin_up"><%= link_to "強制退会させる", users_hide_path(params[:id]), method: :put, "data-confirm" => "本当に強制退会しますか？", class: "btn btn-outline-danger" %></p>
+<p class="margin_up">
+    <%= link_to "強制退会させる", users_hide_path(params[:id]), method: :put, "data-confirm" => "本当に強制退会しますか？", class: "btn btn-outline-danger" %>
+</p>
 <% end %>
 
 <hr>
-
-
-
-
-
 <div class="center-letter">
     <h4><i class="fas fa-heart"></i> いいねしている投稿</h4>
 </div>
 <%= @user.liked_posts.includes(:user).count %>件の投稿をいいねしています。<span class="badge">ランダムで2件まで表示</span>
-<%# <% @user.liked_posts.includes(:user).order(created_at: :desc).first(2).each do |post| %>
-<%# <% @user.liked_posts.order(created_at: :desc).each do |post| %>
 <% @user_favorites.each do |post| %>
-<%# <div><%= post.count %>
-<%# </div> %>
-
-<%# <div><%= link_to "#{post.user.name}", "/users/#{post.user.id}"%>
-<%# <%= link_to(post.title, "/posts/#{post.id}") %>
-<%# <%= post.created_at %>
-<%# </div> %>
-
-
-
-<div id="" class="row no-gutters bg-white position-relative box">
-    <div class="col-md-6 mb-md-0 p-md-4">
-        <div class="max-youtube">
-            <div class="responsibe-youtube">
-                <iframe width="560" height="315" src="<%= "https://www.youtube.com/embed/#{post.url[32..42]}" %>?rel=0"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6 position-static p-4 pl-md-0">
-        <span
-            class="posted-date"><%= link_to(post.created_at.strftime("%Y-%m-%d %H:%M:%S"), "/posts/#{post.id}", class: "cp_link") %></span>
-        <% if not post.created_at <= (Time.now.at_beginning_of_day - 72.hour) %>
-        <div class="badge badge-secondary balloonoya">New
-            <span class="balloon">3日以内の投稿です。</span>
-        </div>
-        <% else %>
-        <% end %>
-        <div>
-            <%= render 'posts/category_list', category_list: post.category_list %>
-        </div>
-        <div>
-            <%= render 'posts/occupation_list', occupation_list: post.occupation_list %>
-        </div>
-        <div>
-            <%= render 'posts/target_list', target_list: post.target_list %>
-        </div>
-
-        <div class="box26">
-            <span class="box-title cp_link_b"><%= link_to(post.title, "/posts/#{post.id}") %></span>
-
-            <p><%= link_to(post.content.truncate(40, omission: '...(続きを読む)'), "/posts/#{post.id}", class: "cp_link_b") %>
-            </p>
-        </div>
-
-        <div id="child_flame_br">
-            <% if post.user.image.blank? %>
-
-            投稿者:<%= image_tag '/default.png', class: "icon_image" %><%= link_to "#{post.user.name}", "/users/#{post.user.id}" %>
-
-            <% else %>
-            投稿者:<img src=<%= post.user.image %>
-                class="icon_image"><%= link_to "#{post.user.name}", "/users/#{post.user.id}" %>
-            <% end %>
-            コメント:<%= post.comments.count %>件
-
-
-            <% if not post.liked_users.count == 0 %>
-            <i class="fas fa-heart unlike-btn" style="color: #e54747;"></i><span
-                style="color: #e54747;"><%= post.likes.count %></span>
-            <% else %>
-            <i class="far fa-heart like-btn" style="color: #808080;"></i><span
-                style="color: #808080;"><%= post.likes.count %></span>
-            <% end %>
-        </div>
-
-    </div>
+<div class="row no-gutters bg-white position-relative box">
+    <%= render partial: "posts/index", locals: { post: post } %>
 </div>
 <p>
-
-
-
-
-
-
     <% end %>
 
-
-    <%# <%= paginate @user_favorites %>
-
-
-
-
     <hr>
-
     <div class="center-letter">
         <h4><i class="fas fa-clipboard"></i> 投稿内容</h4>
     </div>
-
     <div class="skill-list jscroll">
-
-
-
-
 
         <% @users.each do |post| %>
         <div id="parent_flame" class="row no-gutters bg-white position-relative box">
-            <div class="col-md-6 mb-md-0 p-md-4">
-                <div class="max-youtube">
-                    <div class="responsibe-youtube">
-                        <iframe width="560" height="315"
-                            src="<%= "https://www.youtube.com/embed/#{post.url[32..42]}" %>?rel=0" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 position-static p-4 pl-md-0">
-                <span
-                    class="posted-date"><%= link_to(post.created_at.strftime("%Y-%m-%d %H:%M:%S"), "/posts/#{post.id}", class: "cp_link") %></span>
-                <% if not post.created_at <= (Time.now.at_beginning_of_day - 72.hour) %>
-                <div class="badge badge-secondary balloonoya">New
-                    <span class="balloon">3日以内の投稿です。</span>
-                </div>
-                <% else %>
-                <% end %>
-                <div>
-                    <%= render 'posts/category_list', category_list: post.category_list %>
-                </div>
-                <div>
-                    <%= render 'posts/occupation_list', occupation_list: post.occupation_list %>
-                </div>
-                <div>
-                    <%= render 'posts/target_list', target_list: post.target_list %>
-                </div>
-
-                <div class="box26">
-                    <span class="box-title cp_link_b"><%= link_to(post.title, "/posts/#{post.id}") %></span>
-
-                    <p><%= link_to(post.content.truncate(40, omission: '...(続きを読む)'), "/posts/#{post.id}", class: "cp_link_b") %>
-                    </p>
-                </div>
-
-                <div id="child_flame_br">
-                    <% if post.user.image.blank? %>
-
-                    投稿者:<%= image_tag '/default.png', class: "icon_image" %><%= link_to "#{post.user.name}", "/users/#{post.user.id}" %>
-
-                    <% else %>
-                    投稿者:<img src=<%= post.user.image %>
-                        class="icon_image"><%= link_to "#{post.user.name}", "/users/#{post.user.id}" %>
-                    <% end %>
-                    コメント:<%= post.comments.count %>件
-
-
-                    <% if not post.liked_users.count == 0 %>
-                    <i class="fas fa-heart unlike-btn" style="color: #e54747;"></i><span
-                        style="color: #e54747;"><%= post.likes.count %></span>
-                    <% else %>
-                    <i class="far fa-heart like-btn" style="color: #808080;"></i><span
-                        style="color: #808080;"><%= post.likes.count %></span>
-                    <% end %>
-                </div>
-
-            </div>
+            <%= render partial: "posts/index", locals: { post: post } %>
         </div>
         <p>
-
-
-
             <% end %>
             <%= paginate @users %>
-
-
-
-
     </div>
-
-
-
-    <%# <%= link_to "ユーザー一覧へ", users_path %>
-
-
-
-
-    <%# <% if user_signed_in? && @user.id == current_user.id %>
-    <%# <% if current_user.id == 2 %>
-    <%# <%= link_to "退会", users_hide_path(current_user), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
-   
-    <%# <% end %>
-
     <%= render "shared/link_home" %>

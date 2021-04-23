@@ -1,188 +1,89 @@
 <h4><%= @post.title %></h4>
 <div><span class="posted-date"><%= @post.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
-<%# </div> %>
-<% if not @post.created_at <= (@new_posts) %>
-<div class="badge badge-secondary">New</div>
+  <% if not @post.created_at <= (@new_posts) %>
+  <div class="badge badge-secondary">New</div>
 </div>
-<% else %>
 <% end %>
-
-
 
 <div class="post_show">
-
-
-
-
-<div>
-  <%= render 'posts/category_list', category_list: @post.category_list %>
-</div>
-<div>
-  <%= render 'posts/occupation_list', occupation_list: @post.occupation_list %>
-</div>
-<div>
-  <%= render 'posts/target_list', target_list: @post.target_list %>
-</div>
-
-<hr class="border_none">
-
-<div class="max-youtube">
-  <div class="responsibe-youtube">
-    <iframe width="560" height="315" src="<%= "https://www.youtube.com/embed/#{@post.url[32..42]}" %>?rel=0"
-      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen></iframe>
+  <div>
+    <%= render 'posts/category_list', category_list: @post.category_list %>
   </div>
+  <div>
+    <%= render 'posts/occupation_list', occupation_list: @post.occupation_list %>
+  </div>
+  <div>
+    <%= render 'posts/target_list', target_list: @post.target_list %>
+  </div>
+
+  <hr class="border_none">
+  <div class="max-youtube">
+    <div class="responsibe-youtube">
+      <iframe width="560" height="315" src="<%= "https://www.youtube.com/embed/#{@post.url[32..42]}" %>?rel=0"
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <hr class="border_none">
+  <p class="textarea_post"><%= @post.content %></p>
+
+  <hr>
+  <% if @post.user.image.blank? %>
+  <div>
+    投稿者：
+    <%= link_to "/users/#{@post.user.id}" do %>
+    <%= image_tag '/default.png', class: "icon_image" %><%= link_to "#{@post.user.name}", "/users/#{@post.user.id}" %>
+    <% end %>
+  </div>
+  <% else %>
+  <div>投稿者：
+  <%= link_to "/users/#{@post.user.id}" do %>
+  <img src=<%= @post.user.image %> class="icon_image">
+  <% end %>
+  <%= link_to "#{@post.user.name}", "/users/#{@post.user.id}" %></div>
+  <% end %>
+
+  <% if user_signed_in? && current_user.id == @post.user_id %>
+  <div>
+    <%= link_to "/posts/#{@post.id}", method: "delete", data: { confirm: "本当に削除しますか?"} do %>削除 <i
+      class="fas fa-trash"></i><% end %>
+    <%= link_to("/posts/#{@post.id}/edit") do %>編集 <i class="fas fa-edit"></i><% end %>
+  </div>
+  <% elsif current_user.id == 2 %>
+  <div>
+    <%= link_to "/posts/#{@post.id}", method: "delete", data: { confirm: "本当に削除しますか?"} do %>管理者権限で削除 <i
+      class="fas fa-trash"></i><% end %>
+    <%= link_to("/posts/#{@post.id}/edit") do %>管理者権限で編集 <i class="fas fa-edit"></i><% end %>
+  </div>
+  <% end %>
+
+  <%= link_to "https://twitter.com/share?url=#{request.url}/&text=#{ @post.title } - illusttube", title: 'Twitter', target: '_blank' do %>
+  <i class="fab fa-twitter fa-2x"></i>
+  <% end %>
+
+  <%= link_to "http://line.me/R/msg/text/?#{ @post.title } - illusttube #{request.url}", title: 'Line', target: '_blank' do %>
+  <i class="fab fa-line fa-2x" style="color:#00B900;"></i>
+  <% end %>
 </div>
-
-<hr class="border_none">
-
-<p class="textarea_post"><%= @post.content %></p>
-
-<hr>
-
-<% if @post.user.image.blank? %>
-<div>
-  投稿者:<%= image_tag '/default.png', class: "icon_image" %><%= link_to "#{@post.user.name}", "/users/#{@post.user.id}" %>
-</div>
-<% else %>
-<div>投稿者:<img src=<%= @post.user.image %>
-    class="icon_image"><%= link_to "#{@post.user.name}", "/users/#{@post.user.id}" %></div>
-<% end %>
-
-<% if user_signed_in? && current_user.id == @post.user_id %>
-<div>
-  <%# <%= link_to("/posts/#{@post.id}/edit"), id: "post_edit" do %>
-  <%# 編集 <i class="fas fa-edit"></i><% end %>
-  <%= link_to("/posts/#{@post.id}/edit") do %>編集 <i class="fas fa-edit"></i><% end %>
-  <%= link_to "/posts/#{@post.id}", method: "delete", data: { confirm: "本当に削除しますか?"} do %>削除 <i class="fas fa-trash"></i><% end %>
-</div>
-<% elsif current_user.id == 2 %>
-<div>
-  <%= link_to("/posts/#{@post.id}/edit") do %>管理者権限で編集 <i class="fas fa-edit"></i><% end %>
-  <%= link_to "/posts/#{@post.id}", method: "delete", data: { confirm: "本当に削除しますか?"} do %>管理者権限で削除 <i class="fas fa-trash"></i><% end %>
-</div>
-<% end %>
-
-<%# <%= link_to 'Twitter', "https://twitter.com/share?url=#{request.url}/&text=#{ @post.title } - illusttube", title: 'Twitter', target: '_blank' %>
-<%= link_to "https://twitter.com/share?url=#{request.url}/&text=#{ @post.title } - illusttube", title: 'Twitter', target: '_blank' do %>
-<i class="fab fa-twitter fa-2x"></i>
-<% end %>
-
-<%# <%= link_to "https://social-plugins.line.me/lineit/share?url=#{request.url}/&text=#{ @post.title } - illusttube", title: 'Line' do %>
-<%= link_to "http://line.me/R/msg/text/?#{ @post.title } - illusttube #{request.url}", title: 'Line', target: '_blank' do %>
-<i class="fab fa-line fa-2x" style="color:#00B900;"></i>
-<% end %>
-
-
-
-<%# <div class="line-it-button" data-lang="ja" data-type="share-b" data-ver="3" data-url="<%= request.url %>
-<%# " %>
-  <%# data-color="default" data-size="large" data-count="false" style="display: none;"></div> %>
-<%# <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"> %>
-<%# </script> %>
-
-<%# <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fqiita.com%2F&layout=button&size=large&width=79&height=28&appId" width="79" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe> %>
-
-<%# <div id="fb-root"></div> %>
-<%# <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v9.0" nonce="erZOo8Wx"></script> %>
-
-<%# <div class="fb-share-button" data-href="https://qiita.com/" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fqiita.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">シェア</a></div> %>
-
-</div>
-
-
-
-<%# <hr> %>
 
 <div class="like">
   <%= render partial: "likes/like", locals: {post: @post} %>
 </div>
 
-<%# <% if current_user.already_liked?(@post) %>
-<%# <%= button_to 'いいねを取り消す', post_like_path(post_id: post.id, id: post.likes[0].id), method: :delete, remote: true %>
-<%# <% else %>
-<%# <%= button_to 'いいね', post_likes_path(@post), method: :post, remote: true %>
-<%# <% end %>
-
-
-<%# <div>いいね件数: <%= @post.likes.count %>
-<%# </div> %>
-
-<%# <% if current_user.already_liked?(@post) %>
-<%# <%= button_to 'いいねを取り消す', post_like_path(@post), method: :delete %>
-<%# <% else %>
-<%# <%= button_to 'いいね', post_likes_path(@post) %>
-<%# <% end %>
-
-<%# <h4>いいねしたユーザー</h4> %>
-<%# <% @post.liked_users.each do |user| %>
-<%# <li><%= user.name %>
-<%# </li> %>
-<%# <% end %>
-
-<%# <h4>コメント一覧</h4> %>
-<%# <% @comments.each do |c| %>
-<%# <div> %>
-  <%# <a href="/users/<%= @post.user.id %>
-  <%# "><%= c.user.email %>
-  <%# </a> %>
-  <%# <%= c.content %>
-  <%# <% if user_signed_in? && current_user.id == c.user_id %>
-  <%# <%= link_to("編集", "/posts/#{@post.id}/comments/#{c.id}/edit") %>
-  <%# <%= link_to("削除", "/comments/#{c.id}/destroy", {method: "post"}) %>
-  <%# <div class="timeline-item" id='<%= c.id %>
-  <%# '> %>
-    <%# <p><%= c.content %>
-    <%# </p> %>
-    <%# <%= link_to "/posts/#{@post.id}/comments/#{c.id}/edit", :method => :get, :remote => true, :class => "post-edit" do %>
-        <%# 編集 <i class="fas fa-edit"></i> %>
-    <%# <% end %
-<%# </div> %>
-  <%# <% end %>
-  <%# <hr> %>
-<%# </div> %>
-<%# <% end %>
-
-<%# <%= form_for [@post, @comment] do |f| %>
-<%# <%= f.text_field :content %>
-<%# <%= f.hidden_field :post_id, value: @post.id %> <%# 追加 %>
-<%# <br>
-  <%= f.submit 'コメントする' %>
-<%# <% end %>
-
-
-
 <% if user_signed_in? %>
 <hr>
 <h5>コメントを投稿する</h5>
-  <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
+<%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
 <% end %>
 
-  <div id="error_explanation">
-  </div>
+<div id="error_explanation">
+</div>
 
 <hr>
-
 <h5>コメント一覧</h5>
-
-<%# <p id="notice"><%= notice %>
-<%# </p> %>
-<%# <p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-<%# </p> %>
-
-<%# <%= link_to 'Edit', edit_post_path(@post) %>
- <%# | %>
-<%# <%= link_to 'Back', posts_path %>
-
 <div id="comments_area">
   <%= render partial: 'comments/index', locals: { comments: @comments, post: @post } %>
 </div>
-
-
-
-
-
 
 <%= render "/shared/link_home" %>

@@ -1,0 +1,14 @@
+ようこそ
+<% if current_user.image.blank? %>
+<%= link_to "/users/#{current_user.id}" do %>
+<%= image_tag '/default.png', class: "icon_image" %>
+<% end %>
+<% else %>
+<%= link_to "/users/#{current_user.id}" do %>
+<img src=<%= current_user.image %> class="icon_image">
+<% end %>
+<% end %>
+<li class="underscore">
+  <%= link_to("#{current_user.name}", user_path(current_user.id)) %>
+</li>
+さん

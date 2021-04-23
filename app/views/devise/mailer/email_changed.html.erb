@@ -1,14 +1,3 @@
-<%# <p>Hello <%= @email %>
-<%# !</p> %>
-
-<%# <% if @resource.try(:unconfirmed_email?) %>
-  <%# <p>We're contacting you to notify you that your email is being changed to <%= @resource.unconfirmed_email %>
-  <%# .</p> %>
-<%# <% else %>
-  <%# <p>We're contacting you to notify you that your email has been changed to <%= @resource.email %>
-  <%# .</p> %>
-<%# <% end %>
-
 <p>※このメールは自動送信メールです。</p>
 
 <p><%= @email %> 様</p>
@@ -16,16 +5,18 @@
 <p>「<%= ENV['APP_NAME'] %>」事務局でございます。</p>
 
 <% if @resource.try(:unconfirmed_email?) %>
-  <p>ご登録のメールアドレスが<%= @resource.unconfirmed_email %>に変更されたことをお知らせします。</p>
+<p>ご登録のメールアドレスが<%= @resource.unconfirmed_email %>に変更されたことをお知らせします。</p>
 <% else %>
-  <p>ご登録のメールアドレスが<%= @resource.email %>に変更されたことをお知らせします。</p>
+<p>ご登録のメールアドレスが<%= @resource.email %>に変更されたことをお知らせします。</p>
 <% end %>
 
 <p>
-覚えがないのにこのメールが届いたという方<br>
-ご迷惑をおかけし申し訳ありません。大変お手数ですが下記メールアドレスまでご連絡をお願いいたします。<br>
+    覚えがないのにこのメールが届いたという方<br>
+    ご迷惑をおかけし申し訳ありません。大変お手数ですが下記メールアドレスまでご連絡をお願いいたします。<br>
 </p>
 <p><%= ENV['MAIL_BCC'] %></p>
+
+<p>※「お問い合わせ( <%= ENV['WEB_PROTOCOL'] %>://<%= ENV['WEB_HOST'] %><%=  ENV['WEB_INQUIRY'] %> )」からでも対応できます。</p>
 
 <p>――――――――――――――――――――――――――――――</p>
 <%= ENV['APP_NAME'] %><br>

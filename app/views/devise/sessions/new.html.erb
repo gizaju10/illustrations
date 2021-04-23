@@ -1,40 +1,25 @@
-<h4>ログイン</h4>
+<h4><i class="fas fa-sign-in-alt"></i> ログイン</h4>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <div><%= f.label :email, "メールアドレス：" %></div>
-    <%# <br /> %>
-    <%# <div class="font-weight-bold">メールアドレス:</div> %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
-  </div>
+<div>
+  <div><%= f.label :email, "メールアドレス：" %></div>
+  <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: 'normal_text' %>
+</div>
 
-  <div class="field">
-    <div><%= f.label :password, "パスワード：" %></div>
-    <%# <br /> %>
-    <%# <div class="font-weight-bold">パスワード:</div> %>
-    <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード" %>
-  </div>
+<div>
+  <div><%= f.label :password, "パスワード：" %></div>
+  <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: 'password_text' %>
+</div>
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%# <%= link_to "Forgot your password?", new_password_path(resource_name) %>
-  <%= link_to new_password_path(resource_name), class: '', data: {"turbolinks"=>false} do %>
-  <i class="fas fa-unlock-alt"></i> パスワードをお忘れですか?
-  <% end %>
-  <br />
+<%= link_to new_password_path(resource_name), class: '', data: {"turbolinks"=>false} do %>
+<i class="fas fa-unlock-alt"></i> パスワードをお忘れですか?
+<% end %>
+<br />
 <% end %>
 
-
-  <%# <% if devise_mapping.rememberable? %>
-    <%# <div class="field">
-      <%= f.check_box :remember_me %>
-      <%# <%= f.label :remember_me %>
-    <%# </div> %>
-  <%# <% end %>
-
-
-
-  <div class="actions margin_top_bttom">
-    <%= f.submit "ログインする", class: "btn btn-outline-primary" %>
-  </div>
+<div class="actions margin_top_bttom field">
+  <%= f.submit "ログインする", class: "btn btn-outline-primary" %>
+</div>
 <% end %>
 
 <hr class="border_none">

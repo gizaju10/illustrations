@@ -569,3 +569,76 @@ a:hover {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 0 .5em 0;
+  padding: .8em;
+  border-radius: 1em;
+  border: 2px solid #aaa;
+}
+
+.normal_text {
+  resize: auto;
+  max-width: 200px;
+  min-width: 100px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 0 1em 0;
+  padding: .2em .8em;
+  border-radius: 2em;
+  border: 2px solid #aaa;
+}
+
+.password_text {
+  resize: auto;
+  max-width: 200px;
+  min-width: 100px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 0 .3em 0;
+  padding: .2em .8em;
+  border-radius: 2em;
+  border: 2px solid #aaa;
+}
+
+.search_text {
+  resize: auto;
+  max-width: 230px;
+  min-width: 100px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: .2em .8em;
+  border-radius: 2em;
+  border: 2px solid #aaa;
+}
+
+.search_right_text {
+  resize: auto;
+  max-width: 50px;
+  min-width: 50px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: .2em .8em;
+  border-radius: 2em;
+  border: 2px solid #aaa;
+}
+
+.search_yt_text {
+  resize: auto;
+  max-width: 280px;
+  min-width: 100px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 1em 0 0 0;
+  padding: .2em .8em;
+  border-radius: 2em;
+  border: 2px solid #aaa;
+}
+
+.youtube_show {
+  cursor: pointer;
+}

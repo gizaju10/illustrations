@@ -18,12 +18,6 @@
 
 
 
-
-
-
-
-
-
 # nginx使用時に利用
 version: '3.8'  # docker-composeのバージョン
 # version: '3'

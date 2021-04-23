@@ -1,11 +1,13 @@
+<%= render "shared/link_home" %>
 <center>
-  <h4><i class="fab fa-youtube"></i> 検索して投稿</h4>
-  <%= form_tag( youtube_search_path,:method => 'get') do %>
-  <%= text_field_tag :keyword, '',value: params[:keyword], placeholder: "YouTubeから投稿する", class: 'search_text'%>
-  <%= button_tag :name => nil, :class =>"btn-danger badge-light search_right_text" do %>
+  <h4><i class="fab fa-youtube"></i> 動画を検索して新規投稿</h4>
+  <%= form_tag( youtube_search_path, method: 'get', id: "search_yt_form") do %>
+  <%= text_field_tag :keyword, '',value: params[:keyword], placeholder: "YouTubeから投稿する", class: 'search_yt_text' %>
+  <%= button_tag :name => nil, class: "btn-danger badge-light search_right_text" do %>
   <i class="fas fa-file-video"></i>
   <% end %>
   <% end %>
+  <div class="badge">投稿したい動画の検索キーワードを入力して下さい。</div>
 </center>
 <% if request.fullpath =~ /\?keyword\=/ %>
 <% @movies.each do |movie| %>
@@ -98,3 +100,4 @@
     <% end %>
     <%= link_to("YouTubeで確認する", "https://www.youtube.com/", class: 'navbar-brand underscore') %>
     <% end %>
+    <%= render "shared/link_home" %>
