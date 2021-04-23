@@ -26,8 +26,8 @@ RSpec.configure do |config|
           # next 3 lines to compile webpacker before running our test suite
           require "rake"
           Rails.application.load_tasks
-          Rake::Task["assets:clobber"].execute
-          Rake::Task["assets:precompile"].execute
+          # Rake::Task["assets:clobber"].execute
+          # Rake::Task["assets:precompile"].execute
         ensure
           $stdout.reopen(original_stdout)
           $stdout.puts "Finished in #{(Time.current - start).round(2)} seconds"
