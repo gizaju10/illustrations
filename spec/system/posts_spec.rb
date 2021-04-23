@@ -32,7 +32,7 @@ RSpec.describe '新規投稿', type: :system do
       # 投稿するとPostモデルのカウントが1上がる
       expect  do
         # find('input[name="commit"]').click
-        click_on '投稿'
+        click_on '投稿する'
       end.to change { Post.count }.by(1)
       # トップページに遷移し、投稿した情報が存在する
     #   expect(current_path).to eq root_path
