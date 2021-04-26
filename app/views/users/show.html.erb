@@ -22,11 +22,11 @@
     <%= render 'follow_form' %>
 </div>
 
-<h5>ユーザー名</h5>
+<h5 class="margin_up">ユーザー名</h5>
 <%= @user.name %>
-<h5>メールアドレス</h5>
+<h5 class="margin_up">メールアドレス</h5>
 <%= @user.email %>
-<h5>プロフィール</h5>
+<h5 class="margin_up">プロフィール</h5>
 <%= @user.profile%>
 
 <% if user_signed_in? && @user.id == current_user.id %>
@@ -41,7 +41,10 @@
 <div class="center-letter">
     <h4><i class="fas fa-heart"></i> いいねしている投稿</h4>
 </div>
-<%= @user.liked_posts.includes(:user).count %>件の投稿をいいねしています。<span class="badge">ランダムで2件まで表示</span>
+<%= @user.liked_posts.includes(:user).count %>件の投稿をいいねしています。
+<% if @user.liked_posts.includes(:user).count >= 3 %>
+<span class="badge">ランダムで2件まで表示</span>
+<% end %>
 <% @user_favorites.each do |post| %>
 <div class="row no-gutters bg-white position-relative box">
     <%= render partial: "posts/index", locals: { post: post } %>
