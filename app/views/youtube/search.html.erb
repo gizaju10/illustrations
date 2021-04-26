@@ -2,7 +2,7 @@
 <center>
   <h4><i class="fab fa-youtube"></i> 動画を検索して新規投稿</h4>
   <%= form_tag( youtube_search_path, method: 'get', id: "search_yt_form") do %>
-  <%= text_field_tag :keyword, '',value: params[:keyword], placeholder: "YouTubeから投稿する", class: 'search_yt_text' %>
+  <%= text_field_tag :keyword, '',value: params[:keyword], placeholder: "投稿したい動画を探す", class: 'search_yt_text' %>
   <%= button_tag :name => nil, class: "btn-danger badge-light search_right_text" do %>
   <i class="fas fa-file-video"></i>
   <% end %>
@@ -98,6 +98,7 @@
   </dd>
   <p>
     <% end %>
-    <%= link_to("YouTubeで確認する", "https://www.youtube.com/", class: 'navbar-brand underscore') %>
+    <div>「<%= params[:keyword] %>」の検索で<%= current_user.name %>さんがお求めの動画は見つかりましたか?</div>
+    <div><%= link_to("YouTube公式サイトからの検索", "https://www.youtube.com/results?search_query=キャラクター 上達", target: :_blank) %>からも該当動画のURLを貼り付けて投稿ができます。</div>
     <% end %>
     <%= render "shared/link_home" %>
