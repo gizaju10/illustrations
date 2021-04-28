@@ -1,65 +1,29 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  # , only: [:show, :create] # ログインしていないユーザーはshow, createは実行できない
 
   def index
-    # @posts = Post.all
     @posts = Post.page(params[:page]).per(1).order(created_at: :desc)
-    # @posts = Post.page(params[:page]).order(created_at: :desc).without_count.per(1)
-    # Post.find_by(id: 1).occupation_list
-    # @post = Post.new
-    # 1/19にコメント化　# if params[:tag_name]
-      # @path = request.fullpath.include?("tag_name")
-    # 1/19にコメント化  # @posts = Post.tagged_with("#{params[:tag_name]}").page(params[:page]).per(1).order(created_at: :desc)
-    # 1/19にコメント化　# end
   end
 
   # 記事検索
   def search
     #Viewのformで取得したパラメータをモデルに渡す
-    # @posts = Post.page(params[:search]).order(created_at: :desc)
     @posts_count = Post.search(params[:search]).count
-    # @posts = Post.page(params[:page]).per(1).order(created_at: :desc)
-    # @posts = Post.page(params[:page]).order(created_at: :desc)
-    # @posts = Post.page(params[:page]).per(1)
-    # @posts = Post.search(params[:keyword]).page(params[:page])
-    # if request.fullpath.include?("?search\=")
-    # @posts = Post.search(params[:search]).page(params[:page]).per(1).order(created_at: :desc)
     @posts = Post.search(params[:search]).page(params[:page]).per(1).order(created_at: :desc)
-    # else
-      # redirect_to posts_path
-    # end
-
   end
 
   def show
     @post = Post.find(params[:id])
-    # @post_likes = Post.includes(:user).find(params[:id])
-    @post_likes = Post.includes(:user).find(params[:id])
-    @new_posts = Time.now.at_beginning_of_day - 72.hour
-    # @comments = @post.comments # コメント機能
-    # @comment = Comment.new # コメント機能
-    # @comment = Comment.new
+    @new_posts = Time.now.at_beginning_of_day - 168.hour
     @comment = Comment.new
-    # @comment = @post.comments.build
-    #新着順で表示
-    # @comments = @post.includes(:user).comments
     @comments = @post.comments
-    # @comments = @post.comments.order(created_at: :desc)
-    # @comments = @post.comments.order(created_at: :desc).page(params[:page]).per(1)
-    # @comments = @post.comments.page(params[:page]).per(1)
     @like = Like.new # いいね機能
   end
 
   # 新規投稿
   def new
     @post = Post.new
-
-    # 追加
     @tags = ActsAsTaggableOn::Tag.all
-    # @categories = ActsAsTaggableOn::Tag.named_any(["知識", "技術", "メンタル", "その他カテゴリー"])
-    # @occupations = ActsAsTaggableOn::Tag.named_any(["漫画家", "イラストレーター", "キャラクターデザイナー", "コンセプトアーティスト", "アニメーター", "絵本作家", "その他職種"])
-    # @targets = ActsAsTaggableOn::Tag.named_any(["初心者", "中級者", "上級者", "小学生以下", "中学・高校生", "専門・大学生", "社会人"])
   end
 
   # 新規投稿→投稿送信
@@ -72,26 +36,10 @@ class PostsController < ApplicationController
       redirect_to @post
     else
       flash.now[:alert] = "投稿に失敗しました。"
-
-      # 追加
       @tags = ActsAsTaggableOn::Tag.all
-
       render("/posts/new")
     end
   end
-
-  # def create
-  #   @post = Post.new(post_params)
-  #   @post.category_ids = session[:category_ids]
-  #   if @post.save
-  #     redirect_to @post
-  #     flash[:notice] = "投稿が完了しました。"
-  #   else
-  #     render :new
-  #   end
-  # end
-
-
 
   # 投稿編集
   def edit
@@ -101,24 +49,13 @@ class PostsController < ApplicationController
   # 投稿編集→投稿更新
   def update
     @post = Post.find_by(id: params[:id])
-    # @post.content = params[:content]
     if @post.update(post_params)
       flash[:notice] = "投稿を編集しました。"
-      # redirect_back(fallback_location: root_path)
       redirect_to @post
     else
       render :new
     end
   end
-
-  # def update
-  #   @post = Post.find(params[:id])
-  #   if @post.update(post_params)
-  #     redirect_to request.referer
-  #   else
-  #     render :new
-  #   end
-  # end
 
   # 投稿編集→投稿削除
   def destroy
@@ -130,8 +67,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    # params.require(:post).permit(:title, :url, :content, category_list: [], occupation_list: [], target_list: []).merge(user_id: current_user.id)
     params.require(:post).permit(:title, :url, :content, category_list: [], occupation_list: [], target_list: [])
-    # .merge(user_id: current_user.id)
   end
 end
