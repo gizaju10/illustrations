@@ -155,9 +155,11 @@
   </main>
 
   <%# ローディングの表示 %>
-  <%# <div class="loader-wrap">
+  <% if Rails.env.production? %>
+  <div class="loader-wrap">
     <div class="loader">Loading...</div>
-  </div> %>
+  </div>
+  <% end %>
 
 </body>
 
