@@ -2,6 +2,12 @@
 <div class="center-letter">
     <h4><i class="fa fa-search"></i> 検索結果</h4>
 </div>
+<%= form_tag(search_path, method: 'get', id: "search_form_pc_sp") do %>
+<%= text_field_tag :search, '',value: params[:search], placeholder: "投稿記事を探す", class: 'search_text_pc_sp search_yt_text' %>
+<%= button_tag :name => nil, class: "btn-outline-info badge-light search_right_text" do %>
+<i class="fa fa-search"></i>
+<% end %>
+<% end %>
 <% if @posts_count == 0 %>
 <div>「<%= params[:search] %>」のキーワードでの投稿はありません。</div>
 <div><%= current_user.name %>さんが投稿者になって皆様の学習をサポートしてみませんか？</div>
@@ -16,14 +22,12 @@
         <% end %>
         <%= paginate @posts %>
 </div>
-<div>もし、ご希望のYouTube動画が見つからなかった場合、<%= current_user.name %>さんが投稿者になって皆様の学習をサポートしてみませんか？</div>
+<div>ご希望のYouTube動画は見つかりましたか？</div>
+<div>もし見つからない場合、<%= current_user.name %>さんが投稿者になって皆様の学習をサポートしてみませんか？</div>
+<% end %>
+<p>
+<%= link_to youtube_search_path(keyword: "イラスト 描き方"), method: :get do %>
+<i class="fab fa-youtube faa-flash animated"></i> 新規投稿してみる
 <% end %>
 
-<%= form_tag(search_path, method: 'get', id: "search_form_pc_sp") do %>
-<%= text_field_tag :search, '',value: params[:search], placeholder: "投稿記事を探す", class: 'search_text_pc_sp search_yt_text' %>
-<%= button_tag :name => nil, class: "btn-outline-info badge-light search_right_text" do %>
-<i class="fa fa-search"></i>
-<% end %>
-<% end %>
-<br/>
 <%= render "shared/link_home" %>
