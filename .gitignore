@@ -37,6 +37,7 @@ yarn-debug.log*
 
 .env
 /public/*.png
+/public/assets/*
 /public/uploads/user/image/**/*
 /public/images/*
 
