@@ -11,6 +11,7 @@
 /* gem'devise' */
 .alert {
   text-align: center;
+  position: relative;
 }
 
 .alert-info {
@@ -23,6 +24,12 @@
   background-color: #f3c0c0;
   border-color: #f3c0c0;
   color: #3e3a3a;
+}
+
+.close {
+  position: absolute;
+  // top: 0;
+  right: 5px;
 }
 
 /* ヘッダー */
