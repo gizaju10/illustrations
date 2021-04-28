@@ -27,7 +27,7 @@
   * Nginx/Puma
 
 ## ER図
-
+![ER1-2](https://user-images.githubusercontent.com/60719889/116409828-2fb29100-a86f-11eb-87f2-873170257fa1.png)
 
 ## インフラ構成図
 
