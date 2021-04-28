@@ -1,6 +1,6 @@
 RSpec.configure do |config|
     config.before(:each, type: :system) do
-      driven_by :remote_chrome
+      # driven_by :remote_chrome
       # Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
       # Capybara.server_port = 3000
       # Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
@@ -27,7 +27,6 @@ RSpec.configure do |config|
           'headless',
           'disable-gpu',
           'window-size=1680,1050'
-        #   'window-size=300,200'
         ]
       }
     )
