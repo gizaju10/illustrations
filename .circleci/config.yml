@@ -32,6 +32,7 @@ jobs:                                   #---------------------------------------
             command: |
               gem install bundler -v 2.1.4
               bundle install --jobs=4 --retry=3 --path vendor/bundle
+
         # bundle キャッシュを保存する。公式の設定通り。
         - save_cache:
             key: v1-dependencies-{{ checksum "Gemfile.lock" }}
