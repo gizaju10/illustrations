@@ -29,8 +29,8 @@
 ## ER図
 ![ER図](https://user-images.githubusercontent.com/60719889/116413114-4a3a3980-a872-11eb-8e78-64f24a573fb0.png)
 
-
 ## インフラ構成図
+![aws](https://user-images.githubusercontent.com/60719889/116472796-54c7f380-a8b1-11eb-9f32-65d9894b14f0.png)
 
 ## 機能一覧
 | 機能名 | 主要gem | 説明 |
