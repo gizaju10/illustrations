@@ -12,7 +12,7 @@ video {
 
 .new_background {
    background-color: rgba(255, 255, 255, 0.8);
-   display: inline-block;
+   // display: inline-block;
    padding: 20px;
    border-radius: 10px;
    /* 角を丸くする */
@@ -51,7 +51,7 @@ body {
       / 1fr auto auto 1fr;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 762px) {
    body {
       grid-template:
          "header"
