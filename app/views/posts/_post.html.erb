@@ -10,8 +10,8 @@
 </div>
 <div class="youtube_show"><%= f.label :url, "紹介したいYouTubeのURL：", class: "font-weight-bold field" %><div class="badge">動画を探してみる</div></div>
 <div class="p-faq-description">
-<li><%= link_to youtube_search_path(keyword: "キャラクター 上達"), target: :_blank , method: :get do %>本サイトIllustTubeから<% end %></li>
-<li><%= link_to "https://www.youtube.com/", target: :_blank , method: :get do %>YouTube公式サイトから<% end %></li>
+<li><%= link_to("本サイトIllustTubeから", youtube_search_path(keyword: "キャラクター 上達"), target: :_blank) %></li>
+<li><%= link_to("YouTube公式サイトから", "https://www.youtube.com/results?search_query=キャラクター 上達", target: :_blank) %></li>
 </div>
 <% @post.errors.full_messages_for(:url).each do |message| %>
 <div class="badge badge-warning">
