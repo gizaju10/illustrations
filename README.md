@@ -1,5 +1,5 @@
 # IllustTube
-『IllustTube』は絵を描く全ての方へ向けたYouTUbe動画学習サービスです。
+『IllustTube』は絵を描く全ての方へ向けたYouTUbe動画学習サービスです。  
 ゲストログインを用意しておりますので、どなたでも使用できるようにしております。
 
 ###  [リンク]：( https://illusttube.work )
