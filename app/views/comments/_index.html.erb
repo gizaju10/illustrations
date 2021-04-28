@@ -1,24 +1,24 @@
 <%= comments.count %>件のコメント
+<% if comments.count >= 101 %>
+<span class="badge">最新の100件まで表示</span>
+<% end %>
 <% comments.includes(:user).order(created_at: :desc).each do |comment| %>
 <% if comment.user.image.blank? %>
 <div class="comment_show">
   <div>
-  <%= link_to "/users/#{comment.user.id}" do %>
+    <%= link_to "/users/#{comment.user.id}" do %>
     <%= image_tag '/default.png', class: "icon_image" %>
     <% end %>
     <%= link_to "#{comment.user.name}", "/users/#{comment.user.id}", :style => "color: black;" %>
-    <% if not comment.created_at <= (Time.now.at_beginning_of_day - 72.hour) %>
-    <span class="balloon">3日以内のコメントです。</span>
     <p><%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
-    <% end %>
   </div>
   <% else %>
   <div class="comment_show">
     <div>
-    <%= link_to "/users/#{comment.user.id}" do %>
-    <img src=<%= comment.user.image %> class="icon_image">
-    <% end %>
-    <%= link_to "#{comment.user.name}", "/users/#{comment.user.id}", :style => "color: black;" %>
+      <%= link_to "/users/#{comment.user.id}" do %>
+      <img src=<%= comment.user.image %> class="icon_image">
+      <% end %>
+      <%= link_to "#{comment.user.name}", "/users/#{comment.user.id}", :style => "color: black;" %>
     </div>
     <% end %>
     <% if comment.id.present? %>
@@ -28,8 +28,8 @@
       <div class="comment-content" id="this_comment_<%= comment.id %>">
         <p class="textarea_post" style="color: black;"><%= comment.content %></p>
       </div>
-      <span>投稿日時:<%= time_ago_in_words(comment.created_at) %>前
-        <% if not comment.created_at <= (Time.now.at_beginning_of_day - 72.hour) %>
+      <span>投稿日時：<%= time_ago_in_words(comment.created_at) %>前
+        <% if not comment.created_at <= (Time.now.at_beginning_of_day - 168.hour) %>
         <div class="badge badge-secondary balloonoya">New
         </div>
         <% end %>
