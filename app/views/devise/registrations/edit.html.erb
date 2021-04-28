@@ -14,15 +14,19 @@
   <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "normal_text", placeholder: "メールアドレス" %>
 </div>
 
+<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+<div>※メールアドレスの変更の依頼を受付中です。</div>
+<div>下記のメールアドレスをご確認下さい。</div>
+<div><%= resource.unconfirmed_email %></div>
+<br/>
+<% end %>
+
 <!--アカウント編集時にプロフィールを入力できるようにフォームを追加-->
 <div>
   <%= f.label :profile, "プロフィール：", class: "" %><br />
   <%= f.text_area :profile, autofocus: true, class: "textarea_comment", placeholder: "プロフィール" %>
 </div>
 
-<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-<% end %>
 
 <!--アカウント編集時に画像を入力できるようにフォームを追加-->
 <div>
