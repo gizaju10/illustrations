@@ -4,7 +4,6 @@ jobs:                                   #---------------------------------------
       docker:                    #----------------------------------------------Executor
         #アプリのバージョンを指定
         - image: circleci/ruby:3.0.1
-        - image: circleci/node@4.3.0
           environment:
             #自身の登録しているユーザに変える。
             POSTGRES_USER: postgres 
