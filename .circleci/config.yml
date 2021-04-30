@@ -17,6 +17,8 @@ jobs:                                   #---------------------------------------
             #下記を書けばパスワードなしでデータベースにログインしてくれる。 
             POSTGRES_HOST_AUTH_METHOD: trust
             POSTGRES_DB: illustrations_test
+        - image: selenium/standalone-chrome-debug:latest
+          name: chrome
       #自身のアプリ名にする
       working_directory: ~/Illustrations
       steps:                      #---------------------------------------------ステップ
