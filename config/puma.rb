@@ -37,15 +37,6 @@
 # # Allow puma to be restarted by `rails restart` command.
 # plugin :tmp_restart
 
-
-
-
-
-
-
-
-
-
 # nginx使用時に利用
 threads_count = ENV.fetch('RAILS_MAX_THREADS') { 5 }.to_i
 threads threads_count, threads_count
