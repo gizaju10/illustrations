@@ -28,7 +28,7 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-/public/packs
+# /public/packs
 /public/packs-test
 /node_modules
 /yarn-error.log
@@ -36,10 +36,10 @@ yarn-debug.log*
 .yarn-integrity
 
 .env
-/public/*.png
-/public/assets/*
-/public/uploads/user/image/**/*
-/public/images/*
+# /public/*.png
+# /public/assets/*
+# /public/uploads/user/image/**/*
+# /public/images/*
 
 .DS_Store
-bg.mp4
+# bg.mp4
