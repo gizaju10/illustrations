@@ -43,7 +43,8 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '>= 4.0.0.beta3'
+  # gem 'webdrivers'
   gem 'cuprite'
 end
 
