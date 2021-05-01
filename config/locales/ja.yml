@@ -27,7 +27,7 @@ ja:
             url:
               format: '%{message}'
               blank: '入力は必須です。'
-              invalid: '紹介したい%{attribute}のURLを入力して下さい。 ※投稿できない動画もあります。'
+              invalid: '紹介したい%{attribute}のURLを入力して下さい。'
               too_long: '%{count}文字以内で入力して下さい。'
             category_list:
               format: '%{message}'
