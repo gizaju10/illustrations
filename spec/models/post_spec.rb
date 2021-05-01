@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
   let!(:user) { create(:user) }
-  # let!(:post) { create(:post) }
 
   context '投稿を保存できる' do
     let!(:post) { build(:post, user: user) }
@@ -22,15 +21,13 @@ RSpec.describe Post, type: :model do
       title = SecureRandom.alphanumeric(25)
       post = build(:post, title: title)
       post.valid?
-      # expect(post.errors[:title]).to be_valid
-      # expect(post.errors[:title]).to include("タイトルの入力は必須です。")
       expect(post.errors).to be_added(:title, :too_long, count: 24)
     end
 
     it 'urlが空の場合' do
       post = build(:post, url: nil)
       post.valid?
-      expect(post.errors[:url]).to include("入力は必須です。", "紹介したいYouTube動画のURLを入力して下さい。 ※投稿できない動画もあります。")
+      expect(post.errors[:url]).to include("入力は必須です。", "紹介したいYouTube動画のURLを入力して下さい。")
     end
 
     it 'urlが121文字以上の場合' do
@@ -78,40 +75,40 @@ RSpec.describe Post, type: :model do
         user = create(:user)
         @post = create(
           :post,
-          title: "天気が良い",
-          content: "今日は快晴です",
+          title: "漫画家志望向け",
+          content: "マンガの描き方の基本が分かります。",
         )
   
         @other_post = create(
           :post,
-          title: "天気が悪い",
-          content: "今日は雨です",
+          title: "背景の描き方",
+          content: "雨の表現が上手いです。",
         )
       end
   
-      context "「晴」で検索した場合、曖昧検索できているか" do
+      context "「漫画家志望」で検索した場合、曖昧検索できているか" do
         it "@postを返すこと" do
-          expect(Post.search("晴")).to include(@post)
+          expect(Post.search("マンガ")).to include(@post)
         end
   
         it "@other_postを返さないこと" do
-          expect(Post.search("晴")).to_not include(@other_post)
+          expect(Post.search("マンガ")).to_not include(@other_post)
         end
       end
   
-      context "「快晴」で検索した場合、一致検索できているか" do
+      context "「マンガの描き方」で検索した場合、一致検索できているか" do
         it "@postを返すこと" do
-          expect(Post.search("快晴")).to include(@post)
+          expect(Post.search("マンガの描き方")).to include(@post)
         end
   
         it "@other_postを返さないこと" do
-          expect(Post.search("快晴")).to_not include(@other_post)
+          expect(Post.search("マンガの描き方")).to_not include(@other_post)
         end
       end
   
       context "検索に一致しないものは表示されないこと" do
-        it "「曇り」で検索した場合、0件であること" do
-          expect(Post.search("曇り")).to be_empty
+        it "「雨空」で検索した場合、0件であること" do
+          expect(Post.search("雨空")).to be_empty
         end
       end
     end
