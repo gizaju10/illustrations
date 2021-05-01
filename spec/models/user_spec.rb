@@ -7,6 +7,12 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid
     end
 
+    it "nameが8文字以下である場合" do
+      name = Faker::Name.initials(number: 8)
+      user = build(:user, name: name)
+      expect(user).to be_valid
+    end
+    
     it "passwordが6文字以上である場合" do
       password = Faker::Internet.password(min_length: 6, max_length: 6)
       user = build(:user, password: password, password_confirmation: password)
@@ -20,10 +26,17 @@ RSpec.describe User, type: :model do
   end
   
   context 'ユーザーを登録できない' do
-    it "nameがない場合" do
+    it "nameが空の場合" do
       user = build(:user, name: nil)
       user.valid?
       expect(user.errors[:name]).to include("が入力されていません。")
+    end
+
+    it "nameが9文字以上の場合" do
+      name = Faker::Name.initials(number: 9)
+      user = build(:user, name: name)
+      user.valid?
+      expect(user.errors).to be_added(:name, :too_long, count: 8)
     end
 
     it "emailが空の場合" do
