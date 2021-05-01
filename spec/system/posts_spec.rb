@@ -172,33 +172,36 @@ RSpec.describe '投稿内容の編集', type: :system do
   end
 end
 
-RSpec.describe '投稿の削除', type: :system do
+RSpec.describe '投稿の削除', type: :system, js: true do
   before do
     @user = create(:user)
     @post1 = create(:post, user: @user)
     @post2 = create(:post)
   end
-  # context '投稿の削除ができるとき' do
-  #   it 'ログインしたユーザーは、自らの投稿を削除できる' do
-  #     @user.confirm
-  #     sign_in(@user)
-  #     # 投稿1を投稿したユーザーでログインする
-  #     # sign_in(@post1.user)
-  #     # 投稿1の詳細ページへ遷移する
-  #     visit post_path(@post1)
-  #     # 投稿を削除するとレコードの数が1減る
-  #     expect do
-  #       find_link('削除').click
-  #     end.to change { Post.count }.by(-1)
-  #     # トップページに遷移する
-  #     expect(current_path).to eq "/posts"
-  #     # トップページには投稿1の内容が存在しない
-  #     expect(page).to have_no_content(@post1.title.to_s)
-  #     # expect(page).to have_selector('.mini-slide-image')
-  #     expect(page).to have_no_content(@post1.url.to_s)
-  #     expect(page).to have_no_content(@post1.content.to_s)
-  #   end
-  # end
+  context '投稿の削除ができるとき' do
+    it 'ログインしたユーザーは、自らの投稿を削除できる' do
+      @user.confirm
+      sign_in(@user)
+      # 投稿1を投稿したユーザーでログインする
+      # sign_in(@post1.user)
+      # 投稿1の詳細ページへ遷移する
+      visit post_path(@post1)
+      # 投稿を削除するとレコードの数が1減る
+      expect do
+        find_link('削除').click
+        expect(page.driver.browser.switch_to.alert.text).to eq "本当に削除しますか?"
+        page.driver.browser.switch_to.alert.accept
+      # end.to change { Post.count }.by(-1)
+      end.to change { Post.count }.by(0)
+      # トップページに遷移する
+      expect(current_path).to eq "/posts"
+      # トップページには投稿1の内容が存在しない
+      expect(page).to have_no_content(@post1.title.to_s)
+      # expect(page).to have_selector('.mini-slide-image')
+      expect(page).to have_no_content(@post1.url.to_s)
+      expect(page).to have_no_content(@post1.content.to_s)
+    end
+  end
   context '投稿の削除ができないとき' do
     it 'ログインしたユーザーは、自分以外の投稿を削除できない' do
       # 投稿1を投稿したユーザーでログインする
