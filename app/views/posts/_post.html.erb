@@ -21,6 +21,7 @@
 <diV>
   <%= f.text_field :url, placeholder: "https://www.youtube.com/watch?v=", class: "url_text", id: "post_url" %>
 </div>
+<div class="badge">※一部外部サイトへの転載NGの動画もあります。</div>
 <div class="font-weight-bold field">カテゴリー：</div>
 <% @post.errors.full_messages_for(:category_list).each do |message| %>
 <div class="badge badge-warning">
