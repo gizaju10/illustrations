@@ -20,7 +20,7 @@
   * YouTube Data API
   * Rspec
 * インフラ・開発環境
-  * MacBook Air macOS Big Sur 11.2.3
+  * MacBook Air macOS Big Sur 11.3
   * Docker/Docker-compose
   * AWS（ECR,ECS(EC2),VPC,S3,Route53,ALB,RDS(PostgreSQL 12.5),ACM）
   * CircleCI(CIのみ)
@@ -39,7 +39,8 @@
 | Oauth機能  | omniauth-google-oauth2 | Googleアカウント使用でユーザー機能の使用 |
 | 記事投稿機能 | - | 新規投稿、編集、削除 |
 | タグ管理機能 | acts-as-taggable-on | 記事に対してタグの追加、削除 |
-| 記事検索機能 | - | 記事検索(ユーザー名からも検索可) |
+| タグ管理機能 | acts-as-taggable-on | 記事に対してタグの追加、削除 |
+| 記事シェア機能 | - | twitter/LINEに記事をシェアできるボタン |
 | YouTube検索機能 | google-api-client | YouTubeの動画検索機能(YouTube Data API)|
 | いいね機能 | - | 記事にいいねができる(Ajax)、いいねを消す(Ajax) |
 | コメント機能 | - | コメントを投稿(Ajax)、削除(Ajax)、編集(一部Ajax) |
