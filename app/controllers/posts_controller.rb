@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:index, :search, :create, :new, :create, :edit, :update, :destroy]
 
   def index
     @posts = Post.page(params[:page]).per(1).order(created_at: :desc)
