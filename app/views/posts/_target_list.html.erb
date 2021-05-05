@@ -1,6 +1,6 @@
 対象者：
 <% target_list.each do |tag| %>
-<%= link_to posts_path(tag_name: tag), class: "badge badge-pill badge-danger", data: {"turbolinks"=>false} do %>
+<%= link_to posts_path(tag_name: tag), class: "badge badge-pill badge-danger" do %>
 <i class="fas fa-user-tag"></i><%= tag %>
 <% end %>
 <% end %>

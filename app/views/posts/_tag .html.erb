@@ -1,18 +1,18 @@
       <hr>
       <% @categories.each do |tag| %>
-      <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-primary", data: {"turbolinks"=>false} do %>
+      <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-primary" do %>
       <i class="fas fa-tag"></i><%= tag.name %>(<%= tag.taggings_count %>)
       <% end %>
       <% end %>
       <hr>
       <% @occupations.each do |tag| %>
-      <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-success", data: {"turbolinks"=>false} do %>
+      <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-success" do %>
       <i class="fas fa-tags"></i><%= tag.name %>(<%= tag.taggings_count %>)
       <% end %>
       <% end %>
       <hr>
       <% @targets.each do |tag| %>
-      <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-danger", data: {"turbolinks"=>false} do %>
+      <%= link_to posts_path(tag_name: tag.name), class: "badge badge-pill badge-danger" do %>
       <i class="fas fa-user-tag"></i><%= tag.name %>(<%= tag.taggings_count %>)
       <% end %>
       <% end %>
