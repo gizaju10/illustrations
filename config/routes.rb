@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   }
 
   resources :relationships, only: [:create, :destroy]
+  resources :notifications, only: :index
 
   resources :users, only: [:index, :show]
   put "/users/:id/hide" => "users#hide", as: 'users_hide'
@@ -27,7 +28,7 @@ Rails.application.routes.draw do
      get :following, :followers
     end
   end
-  resources :relationships, only: [:create, :destroy]
+  # resources :relationships, only: [:create, :destroy]
   # フォロー関連ここまで
 
   devise_scope :user do
