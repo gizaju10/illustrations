@@ -65,17 +65,17 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 <!--サインアップ時に名前を入力できるようにフォームを追加-->
 <div>
-  <div><%= f.label :name, "ユーザー名：", class: "" %></div>
+  <div><%= f.label :name, "ユーザー名：" %></div>
   <%= f.text_field :name, autofocus: true, placeholder: "ユーザー名", class: 'normal_text' %>
 </div>
 
 <div>
-  <div><%= f.label :email, "メールアドレス：", class: "" %></div>
+  <div><%= f.label :email, "メールアドレス：" %></div>
   <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: 'normal_text' %>
 </div>
 
 <div>
-  <div><%= f.label :password, "パスワード：", class: "" %></div>
+  <div><%= f.label :password, "パスワード：" %></div>
   <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード ※#{@minimum_password_length}文字以上", class: 'password_text' %>
 </div>
 
@@ -85,7 +85,7 @@
 
 <!--サインアップ時に画像を入力できるようにフォームを追加-->
 <div>
-  <div><%= f.label :image, "プロフィール画像：", class: "" %></div>
+  <div><%= f.label :image, "プロフィール画像：" %></div>
   <%= f.file_field :image %>
 </div>
 

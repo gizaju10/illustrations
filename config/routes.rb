@@ -22,14 +22,11 @@ Rails.application.routes.draw do
 
   get "search" => "posts#search" # 記事検索機能
 
-  # フォロー関連ここから
   resources :users do
     member do
      get :following, :followers
     end
   end
-  # resources :relationships, only: [:create, :destroy]
-  # フォロー関連ここまで
 
   devise_scope :user do
     root :to => "devise/registrations#new"
