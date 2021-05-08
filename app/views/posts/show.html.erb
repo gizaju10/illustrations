@@ -46,7 +46,8 @@
       <%= link_to "#{@post.user.name}", "/users/#{@post.user.id}" %></div>
     <% end %>
 
-    <% if user_signed_in? && current_user.id == @post.user_id %>
+<% if user_signed_in? %>
+    <% if current_user.id == @post.user_id %>
     <div>
       <%= link_to "/posts/#{@post.id}", method: "delete", data: { confirm: "本当に削除しますか?"} do %>削除 <i
         class="fas fa-trash"></i><% end %>
@@ -59,6 +60,7 @@
       <%= link_to("/posts/#{@post.id}/edit") do %>管理者権限で編集 <i class="fas fa-edit"></i><% end %>
     </div>
     <% end %>
+<% end %>
 
     <%= link_to "https://twitter.com/share?url=#{request.url}/&text=#{ @post.title } - illusttube", title: 'Twitter', target: '_blank' do %>
     <i class="fab fa-twitter fa-2x"></i>

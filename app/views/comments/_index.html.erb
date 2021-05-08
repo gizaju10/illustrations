@@ -34,6 +34,8 @@
         </div>
         <% end %>
       </span>
+
+      <% if user_signed_in? %>
       <% if comment.user == current_user %>
       <span
         class="badge"><%= link_to post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, data: { confirm: "本当に削除しますか?"} do %>削除
@@ -51,6 +53,8 @@
           class="fas fa-edit"></i>
         <% end %></span>
       <% end %>
+      <% end %>
+
     </div>
   </div>
   <% end %>
