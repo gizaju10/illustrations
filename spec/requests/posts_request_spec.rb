@@ -22,8 +22,8 @@ RSpec.describe "Posts", type: :request do
   describe "show" do
     before { get post_path(test_post.id) }
 
-    example "リクエストが成功すること" do
-      expect(response).to have_http_status(302)
+    example "未ログインでリクエストが成功すること" do
+      expect(response).to have_http_status(200)
     end
   end
 
