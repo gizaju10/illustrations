@@ -76,28 +76,12 @@ $(document).on('turbolinks:load', function () {
 });
 
 $(document).on('turbolinks:load', function () {
-  $('#search_form_pc_side').submit(function () {
-    if ($.trim($(".search_text_pc_side").val()) === "") {
-      alert('検索キーワードを入力してください。');
-      return false;
-    }
+  $('.js-modal-open').on('click', function () {
+    $('.js-modal').fadeIn();
+    return false;
   });
-});
-
-$(document).on('turbolinks:load', function () {
-  $('#search_form_sp').submit(function () {
-    if ($.trim($(".search_text_sp").val()) === "") {
-      alert('検索キーワードを入力してください。');
-      return false;
-    }
-  });
-});
-
-$(document).on('turbolinks:load', function () {
-  $('#search_yt_form').submit(function () {
-    if ($.trim($(".search_yt_text").val()) === "") {
-      alert('検索キーワードを入力してください。');
-      return false;
-    }
+  $('.js-modal-close').on('click', function () {
+    $('.js-modal').fadeOut();
+    return false;
   });
 });

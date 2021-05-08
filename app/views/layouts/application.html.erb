@@ -50,7 +50,7 @@
 
             <li>
               <%= link_to youtube_search_path(keyword: "イラスト 描き方") , class: 'nav-link nav-item underscore', method: :get do %>
-              <i class="fab fa-youtube faa-flash animated"></i> 動画を検索して新規投稿
+              <i class="fab fa-youtube"></i> 動画を検索して新規投稿
               <% end %>
             </li>
 
@@ -59,9 +59,13 @@
               <hr>
 
               <center>
-                <%= render "shared/profile" %>
+                <div>
+                  <%= render "shared/profile" %>
+                  <%= render "shared/circle" %>
+                </div>
 
                 <li>
+
                   <%= link_to destroy_user_session_path, class: 'btn btn-secondary margin_up', method: :delete do %>
                   <i class="fas fa-sign-out-alt"></i> ログアウト
                   <% end %>
@@ -75,11 +79,72 @@
                   <% end %>
               </center>
               <hr>
-              <li>
+
+              <div class="nav-item underscore">
+                <a class="js-modal-open nav-link" href=""><i class="fas fa-envelope"></i> お問い合わせ</a>
+              </div>
+              <div class="modal js-modal">
+                <div class="modal__bg js-modal-close"></div>
+                <div class="modal__content">
+
+                  <%= form_for @inquiry, :url => inquiry_confirm_path do |f| %>
+
+                  <% if @inquiry.errors.any? %>
+                  <div class="alert alert-danger" role="alert">入力内容にエラーがあります。
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  </div>
+                  <% end %>
+
+
+                  <div class="center">
+
+                    <h4><i class="fas fa-envelope"></i> お問い合わせ</h4>
+
+                    <% @inquiry.errors.full_messages_for(:name).each do |message| %>
+                    <div class="badge badge-warning">
+                      <%= message %>
+                    </div>
+                    <% end %>
+                    <% if user_signed_in? %>
+                    <div class="field">
+                      <%= f.text_field :name, placeholder: "お名前", value: "#{current_user.name}", class: 'normal_text' %>
+                    </div>
+                    <% else %>
+                    <div class="field"><%= f.text_field :name, placeholder: "お名前", class: 'normal_text' %></div>
+                    <% end %>
+
+                    <% @inquiry.errors.full_messages_for(:email).each do |message| %>
+                    <div class="badge badge-warning">
+                      <%= message %>
+                    </div>
+                    <% end %>
+                    <% if user_signed_in? %>
+                    <div class="field">
+                      <%= f.email_field :email, placeholder: "メールアドレス", value: "#{current_user.email}", class: 'normal_text' %>
+                    </div>
+                    <% else %>
+                    <div class="field"><%= f.email_field :email, placeholder: "メールアドレス", class: 'normal_text' %></div>
+                    <% end %>
+
+                    <% @inquiry.errors.full_messages_for(:message).each do |message| %>
+                    <div class="badge badge-warning">
+                      <%= message %>
+                    </div>
+                    <% end %>
+                    <div class="field"><%= f.text_area :message, placeholder: "お問い合わせ内容" %></div>
+                    <div><%= f.submit '確認する', class: 'btn btn-primary' %></div>
+                    <% end %>
+                    <a class="js-modal-close" href="">閉じる</a>
+                  </div>
+                  <!--modal__inner-->
+                </div>
+                <!--modal-->
+              </div>
+              <%# <li>
                 <%= link_to inquiry_index_path, class: 'nav-link nav-item underscore', method: :get do %>
-                <i class="fas fa-envelope"></i> お問い合わせ
+              <%# <i class="fas fa-envelope"></i> お問い合わせ
                 <% end %>
-              </li>
+              <%# </li> %>
 
               <%= render "shared/categories_etc" %>
 
@@ -120,7 +185,10 @@
     <div class="fixed pcview">
       <%# PC用 %>
       <center>
-        <%= render "shared/profile" %>
+        <div>
+          <%= render "shared/profile" %>
+          <%= render "shared/circle" %>
+        </div>
         <div>
           <%= link_to destroy_user_session_path, class: 'btn btn-outline-dark margin_up', method: :delete do %>
           <i class="fas fa-sign-out-alt"></i>ログアウト
