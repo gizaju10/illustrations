@@ -11,7 +11,7 @@
   <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: 'password_text' %>
 </div>
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-<%= link_to new_password_path(resource_name), class: '', data: {"turbolinks"=>false} do %>
+<%= link_to new_password_path(resource_name), data: {"turbolinks"=>false} do %>
 <i class="fas fa-unlock-alt"></i> パスワードをお忘れですか?
 <% end %>
 <br />
