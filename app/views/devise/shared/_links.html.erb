@@ -1,26 +1,26 @@
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-<%= link_to new_confirmation_path(resource_name), class: '', data: {"turbolinks"=>false} do %>
+<%= link_to new_confirmation_path(resource_name), data: {"turbolinks"=>false} do %>
 <i class="far fa-envelope"></i> 確認メールの再送信
 <% end %>
 <br />
 <% end %>
 
 <%- if controller_name != 'sessions' %>
-<%= link_to new_session_path(resource_name), class: '', data: {"turbolinks"=>false} do %>
+<%= link_to new_session_path(resource_name), data: {"turbolinks"=>false} do %>
 <i class="fas fa-sign-in-alt"></i> ログインページはコチラから
 <% end %>
 <br />
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-<%= link_to root_path, class: '', data: {"turbolinks"=>false} do %>
+<%= link_to root_path, data: {"turbolinks"=>false} do %>
 <i class="fas fa-sign-in-alt"></i> ユーザー登録はコチラから
 <% end %>
 <br />
 <% end %>
 
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-<%= link_to "アカウント凍結解除メールの再送信", new_unlock_path(resource_name), class: '', data: {"turbolinks"=>false} %><br />
+<%= link_to "アカウント凍結解除メールの再送信", new_unlock_path(resource_name), data: {"turbolinks"=>false} %><br />
 <% end %>
 
 <%- if devise_mapping.omniauthable? %>
@@ -32,7 +32,7 @@
 <% end %>
 <br />
 <%- elsif devise_mapping.registerable? && controller_name != 'registrations' %>
-<%= link_to omniauth_authorize_path(resource_name, provider), class: 'btn btn-outline-info margin_up', method: :post do %>
+<%= link_to omniauth_authorize_path(resource_name, provider), class: 'btn btn-outline-info margin_up', data: {"turbolinks"=>false}, method: :post do %>
 <i class="fab fa-google"></i> Googleアカウントからログインする
 <% end %>
 <br />
