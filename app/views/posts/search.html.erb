@@ -9,10 +9,10 @@
 <% end %>
 <% end %>
 <% if @posts_count == 0 %>
-<div>「<%= params[:search] %>」のキーワードでの投稿はありません。</div>
-<div><%= current_user.name %>さんが投稿者になって皆様の学習をサポートしてみませんか？</div>
+<div class="small">「<%= params[:search] %>」のキーワードでの投稿はありません。</div>
+<div class="small"><%= current_user.name %>さんが投稿者になって皆様の学習をサポートしてみませんか？</div>
 <% else %>
-<div>「<%= params[:search] %>」のキーワードで<%= @posts_count %>件の記事が投稿されています。</div>
+<div class="small">「<%= params[:search] %>」のキーワードで<%= @posts_count %>件の記事が投稿されています。</div>
 <div class="skill-list jscroll">
     <% @posts.includes(:taggings, :user).each do |post| %>
     <div id="parent_flame" class="row no-gutters bg-white position-relative box">
@@ -22,8 +22,8 @@
         <% end %>
         <%= paginate @posts %>
 </div>
-<div>ご希望のYouTube動画は見つかりましたか？</div>
-<div>もし見つからない場合、<%= current_user.name %>さんが投稿者になって皆様の学習をサポートしてみませんか？</div>
+<div class="small">ご希望のYouTube動画は見つかりましたか？</div>
+<div class="small">もし見つからない場合、<%= current_user.name %>さんが投稿者になって皆様の学習をサポートしてみませんか？</div>
 <% end %>
 <p>
 <%= link_to youtube_search_path(keyword: "イラスト 描き方"), method: :get do %>
