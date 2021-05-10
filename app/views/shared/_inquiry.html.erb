@@ -1,6 +1,10 @@
 <li class="nav-item underscore">
   <a class="js-modal-open nav-link" href=""><i class="fas fa-envelope"></i> お問い合わせ</a>
+  <% if user_signed_in? %>
   </div>
+  <% else %>
+  </li>
+  <% end %>
   <div class="modal js-modal">
     <div class="modal__bg js-modal-close"></div>
     <div class="modal__content">
@@ -13,5 +17,3 @@
   </div>
   <!--modal-->
   </div>
-<%# </li> %>
-</div>
