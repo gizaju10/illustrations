@@ -26,7 +26,6 @@ RSpec.describe Comment, type: :model do
       it "contentが141文字の場合" do
         comment = build(:comment, content: "a" * 141)
         comment.valid?
-        # expect(comment.errors[:content]).to include("140文字以内で入力して下さい。")
         expect(comment.errors).to be_added(:content, :too_long, count: 140)
       end
   end

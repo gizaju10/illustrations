@@ -2,26 +2,20 @@ require 'rails_helper'
 
 RSpec.describe Like, type: :model do
   let!(:user) { create(:user) }
-  # let!(:post) { build(:post, user: user) }
 
   describe '正常値と異常値の確認' do
     context 'likeモデルのバリデーション' do
       it "user_idとpost_idがあれば保存できる" do
-        # expect(FactoryBot.build_stubbed(:like)).to be_valid
         expect(FactoryBot.create(:like)).to be_valid
       end
 
       it "user_idがなければ無効な状態であること" do
         like = build(:like, user_id: nil)
-        # like.valid?
-        # expect(like.errors[:user_id]).to include("を入力してください")
         expect(like).not_to be_valid
       end
 
       it "post_idがなければ無効な状態であること" do
         like = build(:like, post_id: nil)
-        # like.valid?
-        # expect(like.errors[:post_id]).to include("を入力してください")
         expect(like).not_to be_valid
       end
 

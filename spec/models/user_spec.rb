@@ -79,4 +79,71 @@ RSpec.describe User, type: :model do
       expect(user2.errors[:email]).to include("は既に使用されています。")
     end
   end
+
+
+  describe 'アソシエーション' do
+    let(:association) do
+      described_class.reflect_on_association(target)
+    end
+
+    context 'Postモデルとの関係' do
+      let(:target) { :posts }
+      it '1:多' do
+        expect(association.macro).to eq :has_many
+      end
+      it '結合するモデルのクラス名：Post' do
+        expect(association.class_name).to eq 'Post'
+      end
+    end
+
+    context 'Likeモデルとの関係' do
+      let(:target) { :likes }
+      it '1:多' do
+        expect(association.macro).to eq :has_many
+      end
+      it '結合するモデルのクラス名：Like' do
+        expect(association.class_name).to eq 'Like'
+      end
+    end
+
+    context 'Commentモデルとの関係' do
+      let(:target) { :comments }
+      it '1:多' do
+        expect(association.macro).to eq :has_many
+      end
+      it '結合するモデルのクラス名：Like' do
+        expect(association.class_name).to eq 'Comment'
+      end
+    end
+
+    context 'FollowRelationship（following_relationships）モデルとの関係' do
+      let(:target) { :following_relationships }
+      it '1:多' do
+        expect(association.macro).to eq :has_many
+      end
+      it '結合するモデルのクラス：Relationship' do
+        expect(association.class_name).to eq 'Relationship'
+      end
+    end
+
+    context 'FollowRelationship（follower_relationships）モデルとの関係' do
+      let(:target) { :follower_relationships }
+      it '1:多' do
+        expect(association.macro).to eq :has_many
+      end
+      it '結合するモデルのクラス：Relationship' do
+        expect(association.class_name).to eq 'Relationship'
+      end
+    end
+
+    context 'SnsCredentialモデルとの関係' do
+      let(:target) { :sns_credentials }
+      it '1:1' do
+        expect(association.macro).to eq :has_many
+      end
+      it '結合するモデルのクラス：SnsCredential' do
+        expect(association.class_name).to eq 'SnsCredential'
+      end
+    end
+  end
 end

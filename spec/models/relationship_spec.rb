@@ -31,7 +31,6 @@ RSpec.describe Relationship, type: :model do
       it "follower_idとfollowing_idの組み合わせは一意でなければ保存できない" do
         relation2 = build(:relationship, follower_id: @relation.follower_id, following_id: @relation.following_id)
         relation2.valid?
-        # expect(relation2.errors[:follower_id]).to include("はすでに存在します")
         expect(relationship).to be_valid
       end
 
