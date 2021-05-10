@@ -1,5 +1,17 @@
 <li class="nav-item underscore">
-    <%= link_to inquiry_index_path, class: 'nav-link', method: :get do %>
-    <i class="fas fa-envelope"></i> お問い合わせ
-    <% end %>
-</li>
+  <a class="js-modal-open nav-link" href=""><i class="fas fa-envelope"></i> お問い合わせ</a>
+  </div>
+  <div class="modal js-modal">
+    <div class="modal__bg js-modal-close"></div>
+    <div class="modal__content">
+
+      <%= render "inquiry/index" %>
+
+      <a class="js-modal-close" href="">閉じる</a>
+    </div>
+    <!--modal__inner-->
+  </div>
+  <!--modal-->
+  </div>
+<%# </li> %>
+</div>
