@@ -48,3 +48,7 @@ ja:
               format: '%{message}'
               blank: '空欄でのコメント投稿はできません。'
               too_long: '%{count}文字以内で入力して下さい。'
+        inquiry:
+          attributes:
+            message:
+              too_long: 'は%{count}文字以内で入力して下さい。'
