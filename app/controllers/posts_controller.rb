@@ -4,6 +4,9 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.page(params[:page]).per(1).order(created_at: :desc)
+    if params[:tag_name]
+      @posts = Post.tagged_with("#{params[:tag_name]}").page(params[:page]).per(1).order(created_at: :desc)
+    end
   end
 
   # 記事検索

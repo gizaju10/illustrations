@@ -2,7 +2,9 @@
 <div class="center-letter">
     <h4><i class="fas fa-film"></i> 投稿一覧</h4>
 </div>
-
+<% if params[:tag_name] %>
+<h5><%= params[:tag_name] %></h5>
+<% end %>
 <div class="skill-list jscroll">
     <% @posts.includes(:taggings, :user).each do |post| %>
     <div id="parent_flame" class="row no-gutters bg-white position-relative box">
@@ -10,8 +12,6 @@
     </div>
     <p>
         <% end %>
-
         <%= paginate @posts %>
-
 </div>
 <% end %>
