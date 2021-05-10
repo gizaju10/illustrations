@@ -1,0 +1,10 @@
+<%= link_to(notifications_path) do %>
+  <% if unchecked_notifications.any? %>
+    <span class="fa-stack">
+      <i class="far fa-bell fa-lg faa-ring animated" style="font-size: 1.7em;"></i>
+      <i class="fas fa-circle n-circle fa-stack-1x faa-flash animated"></i>
+    </span>
+  <% else %>
+    <i class="far fa-bell fa-lg" style="font-size: 1.7em;"></i>
+  <% end %> 
+<% end %>
