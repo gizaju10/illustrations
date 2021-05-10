@@ -172,7 +172,9 @@
 
           <div class="fixed pcview">
             <%# 右に表示 %>
+            <%# <% unless Rails.env.test? %>
             <%= render "shared/inquiry" %>
+            <%# <% end %>
           </div>
         </div>
       </nav>

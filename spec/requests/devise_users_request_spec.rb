@@ -4,6 +4,7 @@ RSpec.describe "UserAuthentications", type: :request do
   let(:user) { create(:user) }
   let(:user_params) { attributes_for(:user) }
   let(:invalid_user_params) { attributes_for(:user, name: "") }
+  # let!(:inquiry) { create(:inquiry) }
 
   describe 'GET #edit' do
     subject { get edit_user_registration_path }
