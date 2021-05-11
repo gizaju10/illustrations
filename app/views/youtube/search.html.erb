@@ -36,7 +36,7 @@
     </div>
     <% end %>
     <div>
-      <%= f.text_field :title, placeholder: "24文字以内で入力", class: "post_title_text", id: "post_title" %>
+      <%= f.text_field :title, placeholder: "24文字以内で入力", class: "post_title_text", id: "post_title", value: "#{movie[:snippet][:title]}" %>
     </div>
     <div><%= f.label :url, "紹介したいYouTubeのURL：", class: "font-weight-bold field" %></div>
     <% @post.errors.full_messages_for(:url).each do |message| %>
