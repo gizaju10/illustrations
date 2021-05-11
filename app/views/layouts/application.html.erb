@@ -140,11 +140,6 @@
                 </div>
                 <!--modal-->
               </div>
-              <%# <li>
-                <%= link_to inquiry_index_path, class: 'nav-link nav-item underscore', method: :get do %>
-              <%# <i class="fas fa-envelope"></i> お問い合わせ
-                <% end %>
-              <%# </li> %>
 
               <%= render "shared/categories_etc" %>
 
@@ -172,9 +167,7 @@
 
           <div class="fixed pcview">
             <%# 右に表示 %>
-            <%# <% unless Rails.env.test? %>
             <%= render "shared/inquiry" %>
-            <%# <% end %>
           </div>
         </div>
       </nav>
