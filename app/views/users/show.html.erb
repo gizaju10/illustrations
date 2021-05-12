@@ -7,7 +7,7 @@
     <h4><i class="fa fa-user-plus"></i> ユーザー詳細</h4>
     <% end %>
 </div>
-
+<hr>
 <% if @user.image.blank? %>
 <%= image_tag '/default.png', class: "icon_image_large" %>
 <% else %>
@@ -22,11 +22,11 @@
     <%= render 'follow_form' %>
 </div>
 
-<h5 class="margin_up">ユーザー名</h5>
+<h5 class="margin_up_up">ユーザー名</h5>
 <%= @user.name %>
-<h5 class="margin_up">メールアドレス</h5>
+<h5 class="margin_up_up">メールアドレス</h5>
 <%= @user.email %>
-<h5 class="margin_up">プロフィール</h5>
+<h5 class="margin_up_up">プロフィール</h5>
 <%= @user.profile%>
 
 <% if user_signed_in? && @user.id == current_user.id %>
@@ -41,7 +41,13 @@
 <div class="center-letter">
     <h4><i class="fas fa-heart"></i> いいねしている投稿</h4>
 </div>
+<% if @user.liked_posts.exists? %>
 <%= @user.liked_posts.includes(:user).count %>件の投稿をいいねしています。
+<% else %>
+<center>
+いいねをしていません
+</center>
+<% end %>
 <% if @user.liked_posts.includes(:user).count >= 3 %>
 <span class="badge">ランダムで2件まで表示</span>
 <% end %>
@@ -56,6 +62,7 @@
     <div class="center-letter">
         <h4><i class="fas fa-clipboard"></i> 投稿内容</h4>
     </div>
+    <% if @users.exists? %>
     <div class="skill-list jscroll">
 
         <% @users.each do |post| %>
@@ -66,4 +73,10 @@
             <% end %>
             <%= paginate @users %>
     </div>
+    <% else %>
+    <center>
+    投稿はありません
+    </center>
+    <% end %>
+    <hr>
     <%= render "shared/link_home" %>
