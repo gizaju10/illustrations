@@ -6,9 +6,9 @@
 </div>
 <% end %>
 <div>
-  <%= f.text_field :title, placeholder: "24文字以内で入力", class: "post_title_text", id: "post_title" %>
+  <%= f.text_field :title, placeholder: "23文字以内推奨", class: "url_text", id: "post_title" %>
 </div>
-<div class="youtube_show"><%= f.label :url, "紹介したいYouTubeのURL：", class: "font-weight-bold field" %><div class="badge">動画を探してみる</div></div>
+<div class="youtube_show"><%= f.label :url, "紹介したいYouTubeのURL：", class: "font-weight-bold field" %><div class="badge"><i class="fas fa-chevron-circle-down"></i> 動画を探してみる <i class="fas fa-chevron-circle-down"></i></div></div>
 <div class="p-faq-description">
 <li><%= link_to("本サイトIllustTubeから", youtube_search_path(keyword: "キャラクター 上達"), target: :_blank) %></li>
 <li><%= link_to("YouTube公式サイトから", "https://www.youtube.com/results?search_query=キャラクター 上達", target: :_blank) %></li>
