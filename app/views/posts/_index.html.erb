@@ -27,7 +27,7 @@
     </div>
 
     <div class="box26">
-        <span class="box-title cp_link_b"><%= link_to(post.title, "/posts/#{post.id}") %></span>
+        <span class="box-title cp_link_b"><%= link_to(post.title.truncate(26, omission: '...'), "/posts/#{post.id}") %></span>
 
         <p><%= link_to(post.content.truncate(40, omission: '...(続きを読む)'), "/posts/#{post.id}", class: "cp_link_b") %>
         </p>

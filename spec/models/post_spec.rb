@@ -17,11 +17,11 @@ RSpec.describe Post, type: :model do
       expect(post.errors[:title]).to include("タイトルの入力は必須です。")
     end
 
-    it 'titleが25文字以上の場合' do
-      title = SecureRandom.alphanumeric(25)
+    it 'titleが101文字以上の場合' do
+      title = SecureRandom.alphanumeric(101)
       post = build(:post, title: title)
       post.valid?
-      expect(post.errors).to be_added(:title, :too_long, count: 24)
+      expect(post.errors).to be_added(:title, :too_long, count: 100)
     end
 
     it 'urlが空の場合' do
@@ -31,10 +31,10 @@ RSpec.describe Post, type: :model do
     end
 
     it 'urlが121文字以上の場合' do
-      title = SecureRandom.alphanumeric(121)
-      post = build(:post, title: title)
+      url = SecureRandom.alphanumeric(121)
+      post = build(:post, url: url)
       post.valid?
-      expect(post.errors).to be_added(:title, :too_long, count: 24)
+      expect(post.errors).to be_added(:url, :too_long, count: 120)
     end
 
     it 'contentが空の場合' do

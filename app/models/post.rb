@@ -3,7 +3,7 @@ class Post < ApplicationRecord
   acts_as_taggable_on :categories, :occupations, :targets
   # acts_as_taggable
 
-  validates:title, {presence: true, length: {maximum: 24}} # 未入力NG, 最大文字数制限あり
+  validates:title, {presence: true, length: {maximum: 100}} # 未入力NG, 最大文字数制限あり
   VALID_YOUTUBE_URL = /(\Ahttps:\/\/www\.youtube\.com\/watch\?v=)+[\w]{11}/
   validates:url, {presence: true, format: {with: VALID_YOUTUBE_URL}, length: {maximum: 120}} # 未入力NG, YouTubeのURL以外NG, 最大文字数を120文字
   validates:content, {presence: true, length: {maximum: 300}} # 未入力NG, 最大文字数を300文字
