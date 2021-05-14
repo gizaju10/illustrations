@@ -4,8 +4,8 @@ class LikesController < ApplicationController
 def create
   @post = Post.find(params[:post_id])
   @like = current_user.likes.build(post_id: params[:post_id])
-  # post.create_notification_like!(current_user)
-  # @item.create_notification_by(current_user)
+  post = Post.find(params[:post_id])
+  post.create_notification_like!(current_user)
   @like.save
   @likeCounts = Like.where(post_id: params[:post_id])
 end
