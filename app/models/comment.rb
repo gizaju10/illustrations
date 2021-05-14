@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
-  has_many :notifications, dependent: :destroy
+  has_many :notifications, dependent: :destroy # コメントの通知
 
   belongs_to :user
   belongs_to :post
