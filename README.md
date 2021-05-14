@@ -20,7 +20,7 @@
   * YouTube Data API
   * Rspec
 * インフラ・開発環境
-  * MacBook Air macOS Big Sur 11.3
+  * MacBook Air macOS Big Sur 11.3.1
   * Docker/Docker-compose
   * AWS（ECR,ECS(EC2),VPC,S3,Route53,ALB,RDS(PostgreSQL 12.5),ACM）
   * CircleCI(CIのみ)
@@ -44,5 +44,5 @@
 | YouTube検索機能 | google-api-client | YouTubeの動画検索機能(YouTube Data API)|
 | いいね機能 | - | 記事にいいねができる(Ajax)、いいねを消す(Ajax) |
 | コメント機能 | - | コメントを投稿(Ajax)、削除(Ajax)、編集(一部Ajax) |
-| お問い合わせ機能 | - | 未ログイン時でも管理者に問い合わせができる |
+| お問い合わせ機能 | - | 未ログイン時でも管理者に問い合わせができる、モーダルウィンドウで表示 |
 | 管理者機能 | devise | id: 2 ユーザーにのみ全ユーザーのアカウント削除、全投稿の削除/編集、全投稿の削除/編集|
