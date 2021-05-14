@@ -45,7 +45,7 @@
 <%= @user.liked_posts.includes(:user).count %>件の投稿をいいねしています。
 <% else %>
 <center>
-いいねをしていません
+いいねをしている投稿がありません
 </center>
 <% end %>
 <% if @user.liked_posts.includes(:user).count >= 3 %>
