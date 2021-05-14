@@ -1,4 +1,5 @@
 <div class="badge">ようこそ</div>
+<% if user_signed_in? %>
 <% if current_user.image.blank? %>
 <%= link_to "/users/#{current_user.id}" do %>
 <%= image_tag '/default.png', class: "icon_image" %>
@@ -10,5 +11,19 @@
 <% end %>
 <li class="underscore edge">
   <%= link_to("#{current_user.name}", user_path(current_user.id)) %>
+  <div class="badge">さん</div>
 </li>
+<% else %>
+ゲストユーザー
 <div class="badge">さん</div>
+</li>
+  <%= link_to root_path, class: 'btn btn-primary margin_up margin_right', method: :get do %>
+  <i class="fas fa-sign-in-alt"></i> ユーザー登録
+  <% end %>
+  <%= link_to new_user_session_path, class: 'btn btn-outline-success margin_up', method: :get do %>
+  <i class="fas fa-sign-in-alt"></i> ログイン
+  <% end %>
+<div class="small">
+※現在一部の機能のみご利用頂けます
+</div>
+<% end %>
