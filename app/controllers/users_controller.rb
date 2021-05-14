@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @users = User.find(params[:id]).posts.page(params[:page]).order(created_at: :desc).per(1)
-    @user_favorites = @user.liked_posts.includes(:taggings,:user).order("RANDOM()").limit(3)
+    @user_favorites = @user.liked_posts.includes(:taggings,:user).order("RANDOM()").limit(2)
   end
 
   # フォロー関連
