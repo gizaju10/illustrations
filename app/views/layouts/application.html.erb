@@ -86,86 +86,31 @@
               <div class="modal js-modal">
                 <div class="modal__bg js-modal-close"></div>
                 <div class="modal__content">
-
-                  <%= form_for @inquiry, :url => inquiry_confirm_path do |f| %>
-
-                  <% if @inquiry.errors.any? %>
-                  <div class="alert alert-danger" role="alert">入力内容にエラーがあります。
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                  </div>
-                  <% end %>
-
-
-                  <div class="center">
-
-                    <h4><i class="fas fa-envelope"></i> お問い合わせ</h4>
-
-                    <% @inquiry.errors.full_messages_for(:name).each do |message| %>
-                    <div class="badge badge-warning">
-                      <%= message %>
-                    </div>
-                    <% end %>
-                    <% if user_signed_in? %>
-                    <div class="field">
-                      <%= f.text_field :name, placeholder: "お名前", value: "#{current_user.name}", class: 'normal_text' %>
-                    </div>
-                    <% else %>
-                    <div class="field"><%= f.text_field :name, placeholder: "お名前", class: 'normal_text' %></div>
-                    <% end %>
-
-                    <% @inquiry.errors.full_messages_for(:email).each do |message| %>
-                    <div class="badge badge-warning">
-                      <%= message %>
-                    </div>
-                    <% end %>
-                    <% if user_signed_in? %>
-                    <div class="field">
-                      <%= f.email_field :email, placeholder: "メールアドレス", value: "#{current_user.email}", class: 'normal_text' %>
-                    </div>
-                    <% else %>
-                    <div class="field"><%= f.email_field :email, placeholder: "メールアドレス", class: 'normal_text' %></div>
-                    <% end %>
-
-                    <% @inquiry.errors.full_messages_for(:message).each do |message| %>
-                    <div class="badge badge-warning">
-                      <%= message %>
-                    </div>
-                    <% end %>
-                    <div class="field"><%= f.text_area :message, placeholder: "お問い合わせ内容" %></div>
-                    <div><%= f.submit '確認する', class: 'btn btn-primary' %></div>
-                    <% end %>
-                    <a class="js-modal-close" href="">閉じる</a>
-                  </div>
-                  <!--modal__inner-->
+                  <%= render "inquiry/index" %>
+                  <a class="js-modal-close" href="">閉じる</a>
                 </div>
-                <!--modal-->
+
+
+                <%= render "shared/categories_etc" %>
+
+                <footer>
+                  &copy;Teppei Mimachi 2021
+                </footer>
               </div>
-
-              <%= render "shared/categories_etc" %>
-
-              <footer>
-                &copy;Teppei Mimachi 2021
-              </footer>
-            </div>
-            <% else %>
-            <!-- ログアウトしている場合 -->
-            <li>
-              <%= link_to root_path, class: 'nav-link nav-item underscore', method: :get do %>
-              <i class="fas fa-sign-in-alt"></i> ユーザー登録
+              <% else %>
+              <!-- ログアウトしている場合 -->
+              <div class="spview">
+                <hr>
+                <center>
+                  <%= render "shared/profile" %>
+                </center>
+                <hr>
+                <%= render "shared/inquiry" %>
+              </div>
               <% end %>
-            </li>
-            <li>
-              <%= link_to new_user_session_path, class: 'nav-link nav-item underscore', method: :get do %>
-              <i class="fas fa-sign-in-alt"></i> ログイン
-              <% end %>
-            </li>
-            <div class="spview">
-              <%= render "shared/inquiry" %>
-            </div>
-            <% end %>
           </ul>
 
-          <div class="fixed pcview">
+          <div class="fixed pcview z-index">
             <%# 右に表示 %>
             <%= render "shared/inquiry" %>
           </div>
@@ -176,13 +121,14 @@
   <% end %>
 
   <aside class="px-3">
-    <% if user_signed_in? %>
+
     <div class="fixed pcview">
-      <%# PC用 %>
       <center>
         <div>
-        <hr>
+          <hr>
           <%= render "shared/profile" %>
+          <% if user_signed_in? %>
+          <%# PC用 %>
           <%= render "shared/circle" %>
         </div>
         <div>
@@ -192,7 +138,6 @@
         </div>
 
         <hr>
-        <%# PC用 %>
         <%= form_tag(search_path, method: 'get', id: "search_form_pc_side") do %>
         <%= text_field_tag :search, '',value: params[:search], placeholder: "投稿記事を探す", class: 'search_text_pc_side search_text' %>
         <%= button_tag :name => nil, class: "btn-outline-info badge-light search_right_text" do %>
@@ -204,11 +149,11 @@
       <%= render "shared/categories_etc" %>
       <% end %>
 
-      <% if user_signed_in? %>
+      <%# <% if user_signed_in? %>
       <footer>
         &copy;Teppei Mimachi 2021
       </footer>
-      <% end %>
+      <%# <% end %>
     </div>
   </aside>
 
@@ -224,7 +169,6 @@
     <div class="loader">Loading...</div>
   </div>
   <% end %>
-
 </body>
 
 </html>
