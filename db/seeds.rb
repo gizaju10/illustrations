@@ -60,8 +60,8 @@ User.create!(
       password: ENV['TEST_ETC_PASSWORD'],
       password_confirmation: ENV['TEST_ETC_PASSWORD'],
       confirmed_at: Time.now,
-      profile: "絵を楽しんで描いています。"
-      # image: File.open('./app/assets/images/test.jpg')
+      profile: "絵を楽しんで描いています。",
+      image: File.open("./db/fixtures/test4.png")
     },
     {
       email: "test5@test.com",
@@ -69,8 +69,8 @@ User.create!(
       password: ENV['TEST_ETC_PASSWORD'],
       password_confirmation: ENV['TEST_ETC_PASSWORD'],
       confirmed_at: Time.now,
-      profile: "初心者ですが、初心者でも分かりやすい動画を紹介していきたいです。"
-      # image: File.open('./app/assets/images/test.jpg')
+      profile: "初心者ですが、初心者でも分かりやすい動画を紹介していきたいです。",
+      image: File.open("./db/fixtures/test5.png")
     },
     {
       email: "test6@test.com",
