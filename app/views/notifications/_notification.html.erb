@@ -28,13 +28,16 @@
             <% case notification.action %>
             <% when 'follow' then %>
             <%= "あなたをフォローしました" %>
-                        <div class="small text-muted text-right">
+                        <div class="small text-muted">
                 <%= time_ago_in_words(notification.created_at).upcase %>前
             </div>
             <% when 'like' then %>
             <%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;" %>
             <%= "にいいねしました" %>
-
+                      <div class="small text-muted">
+                <%= time_ago_in_words(notification.created_at).upcase %>前
+            </div>
+            <hr> <%# この一行をなんとかしたい %>
 
             <% when 'comment' then %>
             <% if notification.post.user_id == visited.id %>
@@ -43,6 +46,7 @@
             <% else %>
             <span>
                 <%= link_to post_path(notification.post) do %>
+                あなたがコメントをした
                 <%# <%= image_tag avatar_url(notification.post.user).to_s, class: "icon_mini" %>
                 <strong>
                     <%= notification.post.user.name + 'さんの投稿' %>
