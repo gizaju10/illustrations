@@ -12,7 +12,7 @@
 <% end %>
 
 <h6>いいねしたユーザー：</h6>
-<% @post.liked_users.order(created_at: :asc).limit(3).each do |user| %>
+<% @post.liked_users.order(created_at: :desc).limit(3).each do |user| %>
 <% if user.image.blank? %>
 <li class="margin_up_down">
 <%= link_to "/users/#{user.id}" do %>
@@ -29,6 +29,6 @@
 <% end %>
 <% end %>
 <% end %>
-<% if @post.liked_users.limit(3).count >= 4 %>
+<% if @post.liked_users.count >= 4 %>
 <span class="badge">最新の3名まで表示</span>
 <% end %>
