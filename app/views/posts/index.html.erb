@@ -5,6 +5,7 @@
 <% if params[:tag_name] %>
 <h5><%= params[:tag_name] %></h5>
 <% end %>
+<% if @posts.exists? %>
 <div class="skill-list jscroll">
     <% @posts.includes(:taggings, :user).each do |post| %>
     <div id="parent_flame" class="row no-gutters bg-white position-relative box">
@@ -14,4 +15,11 @@
         <% end %>
         <%= paginate @posts %>
 </div>
+<% else %>
+<center>
+<hr>
+投稿はありません
+<hr>
+</center>
+<% end %>
 <% end %>
