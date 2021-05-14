@@ -86,6 +86,11 @@ aside {
   display: none;
 }
 
+.z-index {
+   z-index: 100;
+  /* z-indexで最前面に持ってくる */
+}
+
 .fixed {
   position: -webkit-sticky;
   /* Safari用 */
@@ -93,8 +98,6 @@ aside {
   /* 要素をスクロールに応じて固定 */
   top: 0;
   /* 縦スクロールに追従 */
-  z-index: 100;
-  /* z-indexで最前面に持ってくる */
 }
 
 main {
@@ -570,6 +573,10 @@ a:hover {
 
 .margin_up {
   margin-top: 5px;
+}
+
+.margin_right {
+  margin-right: 5px;
 }
 
 .margin_up_up {
