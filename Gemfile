@@ -97,9 +97,3 @@ gem 'cancancan'
 
 # Git Hub We found potential security vulnerabilities in your dependencies.の為
 gem 'omniauth-rails_csrf_protection'
-
-# 0.4.0以降でruby2.7.3以降だとエラーが出る為 ※ Rails6.1.3.1依存なし
-# gem 'mimemagic', '~> 0.3.0'
-
-# 2.0,0以降だとエラーが出る為(RuntimeError: You are using an old OmniAuth version, please ensure you have 1.0.0.pr2 version or later installed.)
-# gem 'omniauth', '1.9.1'
