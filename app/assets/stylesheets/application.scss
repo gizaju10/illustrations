@@ -196,11 +196,8 @@ footer {
 }
 
 .acd-label:after {
-  /* background: #00479d; */
   box-sizing: border-box;
-  /* content: '\f067'; */
   display: block;
-  /* font-family: "Font Awesome 5 Free"; */
   height: 52px;
   padding: 10px 20px;
   position: absolute;
@@ -218,9 +215,6 @@ footer {
   visibility: hidden;
 }
 
-/* .acd-check:checked + .acd-label:after{
-    content: '\f068';
-} */
 .acd-check:checked+.acd-label+.acd-content {
   height: 50px;
   opacity: 1;
@@ -575,8 +569,8 @@ a:hover {
   margin-top: 5px;
 }
 
-.margin_right {
-  margin-right: 5px;
+.margin_left {
+  margin-left: 5px;
 }
 
 .margin_up_up {
