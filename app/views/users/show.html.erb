@@ -1,5 +1,5 @@
 <%= render "shared/link_home" %>
-
+<hr class="border_none">
 <div class="center-letter">
     <% if user_signed_in? && @user.id == current_user.id %>
     <h4><i class="fa fa-user-plus"></i> マイページ</h4>
@@ -42,13 +42,13 @@
     <h4><i class="fas fa-heart"></i> いいねしている投稿</h4>
 </div>
 <% if @user.liked_posts.exists? %>
-<%= @user.liked_posts.includes(:user).count %>件の投稿をいいねしています。
+<%= @user_counts %>件の投稿をいいねしています。
 <% else %>
 <center>
-いいねをしている投稿がありません
+    いいねをしている投稿がありません
 </center>
 <% end %>
-<% if @user.liked_posts.includes(:user).count >= 3 %>
+<% if @user_counts >= 3 %>
 <span class="badge">ランダムで2件まで表示</span>
 <% end %>
 <% @user_favorites.each do |post| %>
@@ -75,8 +75,9 @@
     </div>
     <% else %>
     <center>
-    投稿はありません
+        投稿はありません
     </center>
     <% end %>
     <hr>
+    <hr class="border_none">
     <%= render "shared/link_home" %>

@@ -1,3 +1,5 @@
+<%= render "/shared/link_home" %>
+<hr class="border_none">
 <h4><%= @post.title %></h4>
 <div><span class="posted-date"><%= @post.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
   <% if not @post.created_at <= (@new_posts) %>
@@ -89,5 +91,5 @@
   <div id="comments_area">
     <%= render partial: 'comments/index', locals: { comments: @comments, post: @post } %>
   </div>
-
+  <hr class="border_none">
   <%= render "/shared/link_home" %>

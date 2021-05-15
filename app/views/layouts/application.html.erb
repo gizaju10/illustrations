@@ -99,6 +99,16 @@
               </div>
               <% else %>
               <!-- ログアウトしている場合 -->
+                          <li>
+              <%= link_to root_path, class: 'nav-link nav-item underscore', method: :get do %>
+              <i class="fas fa-sign-in-alt"></i> ユーザー登録
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_user_session_path, class: 'nav-link nav-item underscore', method: :get do %>
+              <i class="fas fa-sign-in-alt"></i> ログイン
+              <% end %>
+            </li>
               <div class="spview">
                 <hr>
                 <center>
@@ -123,10 +133,12 @@
   <aside class="px-3">
 
     <div class="fixed pcview">
+      <% unless current_page?(root_path) %>
       <center>
         <div>
           <hr>
           <%= render "shared/profile" %>
+          <% end %>
           <% if user_signed_in? %>
           <%# PC用 %>
           <%= render "shared/circle" %>
@@ -149,22 +161,24 @@
       <%= render "shared/categories_etc" %>
       <% end %>
 
-      <%# <% if user_signed_in? %>
+      <% unless current_page?(root_path) %>
       <footer>
         &copy;Teppei Mimachi 2021
       </footer>
-      <%# <% end %>
+      <% end %>
     </div>
   </aside>
 
   <main class="shadow-none p-3 mb-5 bg-white rounded">
+    <% unless current_page?(root_path) %>
     <%= render 'layouts/alert' %>
+    <% end %>
     <%= yield %>
     <div id="page_top"><a href="#"></a></div>
   </main>
 
   <%# ローディングの表示 %>
-  <% if Rails.env.production? %>
+  <% if Rails.env.production? || Rails.env.development? %>
   <div class="loader-wrap">
     <div class="loader">Loading...</div>
   </div>

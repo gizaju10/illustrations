@@ -1,11 +1,5 @@
 <%= render "shared/link_home" %>
-<%# 自分の投稿に対するいいね、コメントは通知に表示しない %>
-    <%# <%= link_to destroy_all_users_notifications_path, method: :delete do %>
-        <%# <i class="fas fa-trash" style="color: black;"></i> %>
-        <%# <h7 style="color: black;">全削除</h7> %>
-    <%# <% end %>
-    <%# <hr> %>
-
+<hr class="border_none">
 <center>
 <h4><i class="far fa-bell fa-lg"></i> 通知</h4>
 <hr>
@@ -22,4 +16,5 @@
 <hr>
 <% end %>
 </center>
+<hr class="border_none">
 <%= render "shared/link_home" %>

@@ -1,4 +1,5 @@
 <%= render "shared/link_home" %>
+<hr class="border_none">
 <center>
   <h4><i class="fab fa-youtube"></i> 動画を検索して新規投稿</h4>
   <%= form_tag( youtube_search_path, method: 'get', id: "search_yt_form") do %>
@@ -102,4 +103,5 @@
     <div>「<%= params[:keyword] %>」の検索で<%= current_user.name %>さんがお求めの動画は見つかりましたか?</div>
     <div><%= link_to("YouTube公式サイトからの検索", "https://www.youtube.com/results?search_query=キャラクター 上達", target: :_blank) %>からも該当動画のURLを貼り付けて投稿ができます。</div>
     <% end %>
+    <hr class="border_none">
     <%= render "shared/link_home" %>

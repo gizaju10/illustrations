@@ -16,14 +16,8 @@
 <% else %>
 ゲストユーザー
 <div class="badge">さん</div>
-</li>
-  <%= link_to root_path, class: 'btn btn-primary margin_up margin_right', method: :get do %>
-  <i class="fas fa-sign-in-alt"></i> ユーザー登録
-  <% end %>
-  <%= link_to new_user_session_path, class: 'btn btn-outline-success margin_up', method: :get do %>
-  <i class="fas fa-sign-in-alt"></i> ログイン
-  <% end %>
 <div class="small">
 ※現在一部の機能のみご利用頂けます
 </div>
+<hr>
 <% end %>
