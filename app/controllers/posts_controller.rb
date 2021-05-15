@@ -1,11 +1,10 @@
 class PostsController < ApplicationController
-  # before_action :authenticate_user!
   before_action :authenticate_user!, only: [:index, :search, :create, :new, :create, :edit, :update, :destroy]
 
   def index
-    @posts = Post.page(params[:page]).per(1).order(created_at: :desc)
+    @posts = Post.includes(:taggings, :user).page(params[:page]).per(1).order(created_at: :desc)
     if params[:tag_name]
-      @posts = Post.tagged_with("#{params[:tag_name]}").page(params[:page]).per(1).order(created_at: :desc)
+      @posts = Post.includes(:taggings, :user).tagged_with("#{params[:tag_name]}").page(params[:page]).per(1).order(created_at: :desc)
     end
   end
 
@@ -13,14 +12,14 @@ class PostsController < ApplicationController
   def search
     #Viewのformで取得したパラメータをモデルに渡す
     @posts_count = Post.search(params[:search]).count
-    @posts = Post.search(params[:search]).page(params[:page]).per(1).order(created_at: :desc)
+    @posts = Post.includes(:taggings, :user).search(params[:search]).page(params[:page]).per(1).order(created_at: :desc)
   end
 
   def show
     @post = Post.find(params[:id])
     @new_posts = Time.now.at_beginning_of_day - 168.hour
     @comment = Comment.new
-    @comments = @post.comments
+    @comments = @post.comments.includes(:user)
     @like = Like.new # いいね機能
   end
 
