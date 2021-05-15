@@ -12,7 +12,7 @@
 <% end %>
 
 <h6>いいねしたユーザー：</h6>
-<% @post.liked_users.order(created_at: :desc).limit(3).each do |user| %>
+<% @post.liked_users.limit(3).order(created_at: :desc).each do |user| %>
 <% if user.image.blank? %>
 <li class="margin_up_down">
 <%= link_to "/users/#{user.id}" do %>

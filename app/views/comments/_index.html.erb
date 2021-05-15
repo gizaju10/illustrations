@@ -2,7 +2,7 @@
 <% if comments.count >= 101 %>
 <span class="badge">最新の100件まで表示</span>
 <% end %>
-<% comments.includes(:user).order(created_at: :desc).each do |comment| %>
+<% comments.order(created_at: :desc).each do |comment| %>
 <% if comment.user.image.blank? %>
 <div class="comment_show">
   <div>

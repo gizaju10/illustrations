@@ -7,7 +7,7 @@
 <% end %>
 <% if @posts.exists? %>
 <div class="skill-list jscroll">
-    <% @posts.includes(:taggings, :user).each do |post| %>
+    <% @posts.each do |post| %>
     <div id="parent_flame" class="row no-gutters bg-white position-relative box">
         <%= render partial: "index", collection: @posts, as: 'post' %>
     </div>
