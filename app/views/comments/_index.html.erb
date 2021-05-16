@@ -10,7 +10,6 @@
     <%= image_tag '/default.png', class: "icon_image" %>
     <% end %>
     <%= link_to "#{comment.user.name}", "/users/#{comment.user.id}", :style => "color: black;" %>
-    <p><%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
   </div>
   <% else %>
   <div class="comment_show">
