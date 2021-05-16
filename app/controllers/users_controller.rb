@@ -2,25 +2,25 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users = User.page(params[:page]).order(created_at: :desc).per(3)
+    @users = User.page(params[:page]).order(created_at: :desc).per(4)
   end
 
   def show
     @user = User.find(params[:id])
-    @users = User.find(params[:id]).posts.page(params[:page]).order(created_at: :desc).per(1)
+    @users = @user.posts.page(params[:page]).order(created_at: :desc).per(1)
     @user_counts = @user.liked_posts.includes(:user).count
     @user_favorites = @user.liked_posts.includes(:taggings,:user).order("RANDOM()").limit(2)
   end
 
   # フォロー関連
   def following
-    @user  = User.find(params[:id])
+    @user = User.find(params[:id])
     @users = @user.followings
     render 'show_follow'
   end
 
   def followers
-    @user  = User.find(params[:id])
+    @user = User.find(params[:id])
     @users = @user.followers
     render 'show_follower'
   end
