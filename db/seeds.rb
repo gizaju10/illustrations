@@ -16,7 +16,7 @@ User.create!(
       password_confirmation: ENV['TEST_USER_PASSWORD'],
       confirmed_at: Time.now,
       profile: "テストユーザーです。\r\n\r\nポートフォリオ閲覧用の為、一部機能は使用できないようにしています。",
-      # image: File.open('./app/assets/images/test.jpg')
+      image: File.open("./db/fixtures/test_user.jpg")
     },
     {
       email: ENV['ADMINISTRATOR_USER'],
@@ -25,7 +25,6 @@ User.create!(
       password_confirmation: ENV['ADMINISTRATOR_USER_PASSWORD'],
       confirmed_at: Time.now,
       profile: "よろしくお願いします。"
-      # image: File.open('./app/assets/images/test.jpg')
     },
     {
       email: "test1@test.com",
@@ -34,7 +33,7 @@ User.create!(
       password_confirmation: ENV['TEST_ETC_PASSWORD'],
       confirmed_at: Time.now,
       profile: "絵を描くことが好きです。\nみなさんよろしく！",
-      # image: File.open('./app/assets/images/test.jpg')
+      image: File.open("./db/fixtures/test1.jpg")
     },
     {
       email: "test2@test.com",
@@ -43,7 +42,6 @@ User.create!(
       password_confirmation: ENV['TEST_ETC_PASSWORD'],
       confirmed_at: Time.now,
       profile: "趣味で漫画を描いています。\nよろしくお願いします。"
-      # image: File.open('./app/assets/images/test.jpg')
     },
     {
       email: "test3@test.com",
@@ -51,8 +49,8 @@ User.create!(
       password: ENV['TEST_ETC_PASSWORD'],
       password_confirmation: ENV['TEST_ETC_PASSWORD'],
       confirmed_at: Time.now,
-      profile: "イラスト初心者です。"
-      # image: File.open('./app/assets/images/test.jpg')
+      profile: "イラスト初心者です。",
+      image: File.open("./db/fixtures/test3.jpg")
     },
     {
       email: "test4@test.com",
@@ -70,7 +68,6 @@ User.create!(
       password_confirmation: ENV['TEST_ETC_PASSWORD'],
       confirmed_at: Time.now,
       profile: "初心者ですが、初心者でも分かりやすい動画を紹介していきたいです。",
-      image: File.open("./db/fixtures/test5.png")
     },
     {
       email: "test6@test.com",
@@ -78,8 +75,8 @@ User.create!(
       password: ENV['TEST_ETC_PASSWORD'],
       password_confirmation: ENV['TEST_ETC_PASSWORD'],
       confirmed_at: Time.now,
-      profile: "このサイトで独学の絵の勉強を始めました。\r\n\r\n沢山投稿していきたいです。"
-      # image: File.open('./app/assets/images/test.jpg')
+      profile: "このサイトで独学の絵の勉強を始めました。\r\n\r\n沢山投稿していきたいです。",
+      image: File.open("./db/fixtures/test6.png")
     }
   ]
 )
