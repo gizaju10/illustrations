@@ -27,7 +27,7 @@
 <h5 class="margin_up_up">メールアドレス</h5>
 <%= @user.email %>
 <h5 class="margin_up_up">プロフィール</h5>
-<%= @user.profile%>
+<%= simple_format(@user.profile) %>
 
 <% if user_signed_in? && @user.id == current_user.id %>
 <p><%= link_to edit_user_registration_path do %>ユーザー情報を編集する <i class="fas fa-edit"></i><% end %></p>
