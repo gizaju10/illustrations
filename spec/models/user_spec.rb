@@ -55,14 +55,12 @@ RSpec.describe User, type: :model do
       password = Faker::Internet.password(min_length: 5, max_length: 5)
       user = build(:user, password: password, password_confirmation: password)
       user.valid?
-      # expect(user.errors[:password]).to include(I18n.t('errors.messages.too_short', count: 6))
-      expect(user.errors).to be_added(:password, :too_short, count: 6) # countはなくても良いらしい
+      expect(user.errors).to be_added(:password, :too_short, count: 6)
     end
 
     it "パスワードと確認が一致していない場合" do
       user = build(:user, password_confirmation: "")
       user.valid?
-      # expect(user.errors[:password_confirmation]).to include("とパスワードの入力が一致しません。")
       expect(user.errors).to be_added(:password_confirmation, :confirmation, attribute: "パスワード")
     end
     
@@ -72,7 +70,6 @@ RSpec.describe User, type: :model do
     end
 
     it "登録済みのemailアドレスがある場合" do
-      # email = Faker::Internet.email
       user = create(:user, email: "aaa@mail.com")
       user2 = build(:user, email: "aaa@mail.com")
       user2.valid?
