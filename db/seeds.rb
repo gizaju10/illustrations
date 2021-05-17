@@ -15,7 +15,7 @@ User.create!(
       password: ENV['TEST_USER_PASSWORD'],
       password_confirmation: ENV['TEST_USER_PASSWORD'],
       confirmed_at: Time.now,
-      profile: "テストユーザーです。\r\n\r\nポートフォリオ閲覧用の為、一部機能は使用できないようにしています。",
+      profile: "テストユーザーです。\nポートフォリオ閲覧用の為、一部機能は使用できないようにしています。",
       image: File.open("./db/fixtures/test_user.jpg")
     },
     {
