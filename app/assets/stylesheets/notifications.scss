@@ -3,8 +3,12 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .n-circle {
-    position: absolute;
-    padding-left: 1rem;
-    padding-top: 0rem;
-    color: #efa04c;
-  }
+  position: absolute;
+  padding-left: 1rem;
+  padding-top: 0rem;
+  color: #efa04c;
+}
+
+.text-right {
+  max-width: 400px;
+}

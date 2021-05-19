@@ -1,7 +1,6 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
 <div class="col-md-6.mx-auto">
-    <div class="">
         <span>
             <% if visitor.image.blank? %>
             <%= link_to "/users/#{visitor.id}" do %>
@@ -20,47 +19,63 @@
             <%= 'さんが' %>
             <% case notification.action %>
             <% when 'follow' then %>
-            <%= "あなたをフォローしました" %>
-            <div class="small text-muted">
+            <nobr>
+                あなたを <i class="fas fa-user-plus"></i> フォローしました
+            </nobr>
+            <div class="small text-muted text-right">
                 <%= time_ago_in_words(notification.created_at).upcase %>前
-                <hr>
             </div>
+            <hr>
             <% when 'like' then %>
-            <%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;" %>
-            <%= "にいいねしました" %>
-            <div class="small text-muted">
+            <nobr>
+                <%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;" %><%= " に" %>
+            </nobr>
+            <nobr>
+                <i class="fas fa-heart unlike-btn" style="color: #e54747;"></i> いいねしました
+            </nobr>
+            <div class="small text-muted text-right">
                 <%= time_ago_in_words(notification.created_at).upcase %>前
             </div>
             <hr>
             <% when 'comment' then %>
             <% if notification.post.user_id == visited.id %>
-            <%= link_to "あなたの投稿", notification.post, style: "font-weight: bold;" %>
-            <%= "にコメントしました" %>
+            <nobr>
+                <%= link_to "あなたの投稿", notification.post, style: "font-weight: bold;" %><%= " に" %>
+            </nobr>
+            <nobr>
+                <i class="far fa-comment"></i> コメントしました
+            </nobr>
             <% else %>
             <span>
-                あなたがコメントをした
-                <% if notification.post.user.image.blank? %>
-                <%= link_to "/users/#{notification.post.user.id}" do %>
-                <%= image_tag '/default.png', class: "icon_image" %>
-                <% end %>
-                <% else %>
-                <%= link_to "/users/#{notification.post.user.id}" do %>
-                <img src=<%= notification.post.user.image %> class="icon_image">
-                <% end %>
-                <% end %>
-                <%= link_to post_path(notification.post) do %>
-                <strong>
-                    <%= notification.post.user.name + 'さんの投稿' %>
-                </strong>
-                <% end %>
-                <%= "にコメントしました" %>
+                <nobr>
+                    あなたが <i class="far fa-comment"></i> コメントをした
+                </nobr>
+                <nobr>
+                    <% if notification.post.user.image.blank? %>
+                    <%= link_to "/users/#{notification.post.user.id}" do %>
+                    <%= image_tag '/default.png', class: "icon_image" %>
+                    <% end %>
+                    <% else %>
+                    <%= link_to "/users/#{notification.post.user.id}" do %>
+                    <img src=<%= notification.post.user.image %> class="icon_image">
+                    <% end %>
+                    <% end %>
+                    <%= link_to post_path(notification.post) do %>
+                    <strong>
+                        <%= notification.post.user.name + 'さんの投稿' %>
+                    </strong>
+                    <% end %>
+                    <%= " に" %>
+                </nobr>
+                <nobr>
+                    <i class="far fa-comments "></i> コメントしました
+                </nobr>
             </span>
             <% end %>
-            <div class="small text-muted">
+            <div class="small text-muted text-right">
                 <%= time_ago_in_words(notification.created_at).upcase %>前
             </div>
         </span>
-    </div>
     <hr>
 </div>
 <% end %>
