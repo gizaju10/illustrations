@@ -4,12 +4,8 @@ RSpec.describe "Posts", type: :request do
   let(:user) { create(:user) }
   let!(:other_user) { create(:user) }
 
-  # let(:test_post) { create(:post, user_id: user.id) }
-  # let(:test_post2) { create(:post, user_id: other_user.id) }
   let(:test_post) { create(:post, user: user) }
   let(:test_post2) { create(:post, user: other_user) }
-  # let(:post_photo) { Rack::Test::UploadedFile.new(File.join(Rails.root, "spec/image/main_top.jpg")) }
-  # let(:post_params) { { area: "area", post_photo: post_photo } }
 
   describe "index" do
     before { get posts_path }
@@ -60,10 +56,6 @@ RSpec.describe "Posts", type: :request do
       example "正常に投稿を作成できること" do
         expect do
           post posts_path, params: { post: attributes_for(:post) }
-          # post posts_path, params: post_params
-          # post posts_path, params: { post: post_params }
-          # post posts_path, params: post_params, as: :json
-          # post posts_path, params: { post: {to_param:post_params }
         end.to change(Post, :count).by(1)
       end
     end
@@ -134,7 +126,6 @@ RSpec.describe "Posts", type: :request do
           sign_in user
         end
 
-        # N＋1問題がある
         example "削除されないこと" do
           expect do
             delete post_path(test_post2.id)

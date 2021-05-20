@@ -12,7 +12,6 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       # 確認メール・ログインページに遷移するボタンがある
       expect(page).to have_link '確認メール', href: new_user_confirmation_path
       expect(page).to have_link 'ログイン', href: new_user_session_path
-      # expect(page).to have_link 'テストユーザーログイン', href: new_user_session_path
       # ユーザー情報を入力する
       fill_in 'user_name', with: @user.name
       fill_in 'user_email', with: @user.email
@@ -20,10 +19,8 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       fill_in 'user_password_confirmation', with: @user.password_confirmation
       # # 新規登録ボタンを押すとuserモデルのカウントが1上がる
       expect  do
-        # find('input[name="commit"]').click
         click_on '新規登録する'
       end.to change { User.count }.by(1)
-      # .to have_content '本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。'
       # トップページへ遷移する
       expect(current_path).to eq root_path
     end
@@ -40,7 +37,6 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       fill_in 'user_password_confirmation', with: ''
       # 新規登録ボタンを押してもユーザーモデルのカウントは上がらない
       expect  do
-        # find('input[name="commit"]').click
         click_on '新規登録する'
       end.to change { User.count }.by(0)
       # 新規登録ページへ戻される
@@ -65,13 +61,8 @@ RSpec.describe 'ログイン', type: :system do
       fill_in 'user_password', with: @user.password
       # ログインボタンを押す
       all('input[name="commit"]')[1].click
-      # click_on 'ログインする'
       # トップページへ遷移する
       expect(current_path).to eq user_session_path
-      # 新規登録ボタン・ログインボタンが表示されていない
-      # expect(page).to have_no_link 'ログイン', href: new_user_session_path
-      # expect(page).to have_no_link 'かんたんログイン', href: new_user_session_path
-      # expect(page).to have_no_link '新規登録', href: new_user_registration_path
     end
   end
 

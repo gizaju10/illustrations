@@ -11,35 +11,21 @@ RSpec.describe '新規投稿', type: :system do
       # ログインする
       @user.confirm
       sign_in(@user)
-    #   visit posts_path
       visit new_post_path
-      # 「ランニングコースを投稿」をクリックし、新規投稿ページへ遷移する
-    #   first(:link, '新規投稿').click
-    # 　click_on '新規投稿'
-    #   expect(current_path).to eq new_post_path
-      # フォームに情報を入力する
-    #   image_path = Rails.root.join('public/images/dog2.png')
-
       fill_in 'post_title', with: @post.title
-    #   attach_file('post[place_image]', image_path, make_visible: true)
       fill_in 'post_url', with: @post.url
       check "post_category_list_知識"
       check "post_occupation_list_漫画家"
       check "post_target_list_初心者"
-    # uncheck "チェックボックスのid"
       fill_in 'post_content', with: @post.content
-    #   all('input[name="post[level]"]')[0].click
-      # 投稿するとPostモデルのカウントが1上がる
       expect  do
         # find('input[name="commit"]').click
         click_on '投稿する'
       end.to change { Post.count }.by(1)
       # トップページに遷移し、投稿した情報が存在する
-    #   expect(current_path).to eq root_path
     id = @post.id.to_i + 1
       expect(current_path).to eq "/posts/#{id}"
       expect(page).to have_content(@post.title)
-    #   expect(page).to have_selector('.mini-slide-image')
     end
   end
 
@@ -47,8 +33,6 @@ RSpec.describe '新規投稿', type: :system do
 
   context '新規投稿ができないとき' do
     it 'ログインしていないと新規投稿ページに遷移できない' do
-      # トップページに遷移する
-    #   visit root_path
       visit new_post_path
       # 新規投稿ページへのリンクがない
       expect(page).to have_no_content('新規投稿')
@@ -58,7 +42,6 @@ RSpec.describe '新規投稿', type: :system do
       @user.confirm
       sign_in(@user)
       visit new_post_path
-    #   visit new_post_path
       # 「新規投稿」をクリックし、新規投稿ページへ遷移する
       first(:link, '新規投稿').click
       expect(current_path).to eq new_post_path
@@ -88,32 +71,18 @@ RSpec.describe '投稿内容の編集', type: :system do
       # 投稿1を投稿したユーザーでログインする
       @user.confirm
       sign_in(@user)
-      # sign_in(@post1.user)
       # 投稿1の詳細ページへ遷移する
       visit post_path(@post1)
       # 編集するボタンをクリックし、編集ページへ遷移する
-    #   find_link('ユーザー情報を編集する ').click
-      # first(:link, '編集 ').click
       find_link('編集').click
-      # find_by_id('post_edit').click
-    # first(:link, '編集').click
-    # visit edit_post_path(@post1)
-    # click_on 'ユーザー情報を編集する'
-    # click_link 'post_edit'
-    # click_on '#post_edit'
-    # click_on 'post_edit'
-    # click_on '#aaabbbccc'
       expect(current_path).to eq edit_post_path(@post1)
-      # expect(current_path).to eq "/users/sign_in"
       # すでに投稿済みの内容がフォームに入っている
       expect(
         find('#post_title').value
       ).to eq @post1.title
-      # expect(page).to have_selector('.before_image')
       expect(
         find('#post_url').value
       ).to eq @post1.url
-
       expect(
         find("#post_category_list_知識").value
       ).to eq @post1.category_list.join(',')
@@ -129,10 +98,7 @@ RSpec.describe '投稿内容の編集', type: :system do
       ).to eq @post1.content
       # 投稿内容を編集する
       image_path = Rails.root.join('public/images/place_image.png')
-
-      # fill_in 'post_place_name', with: "#{@post1.place_name}+編集OK!"
       fill_in 'post_title', with: "#{@post1.title}+編集OK!"
-      # attach_file('post[place_image]', image_path, make_visible: true)
       fill_in 'post_url', with: "#{@post1.url}+編集OK!"
       
       # チェックボックスの変更も追加要
@@ -143,10 +109,8 @@ RSpec.describe '投稿内容の編集', type: :system do
         find('input[name="commit"]').click
       end.to change {Post.count}.by(0)
       # トップページには編集した内容の投稿が存在する
-      # expect(current_path).to eq root_path
       expect(current_path).to eq "/posts/#{@post1.id}"
       expect(page).to have_content("#{@post1.title}+編集OK!")
-      # expect(page).to have_selector('.mini-slide-image')
     end
   end
   context '投稿内容が編集できないとき' do
@@ -154,7 +118,6 @@ RSpec.describe '投稿内容の編集', type: :system do
       # 投稿1を投稿したユーザーでログインする
       @user.confirm
       sign_in(@user)
-      # sign_in(@post1.user)
       # 投稿2の詳細ページへ遷移する
       visit post_path(@post2)
       expect(current_path).to eq post_path(@post2)
@@ -180,10 +143,10 @@ RSpec.describe '投稿の削除', type: :system, js: true do
   end
   context '投稿の削除ができるとき' do
     it 'ログインしたユーザーは、自らの投稿を削除できる' do
+      # 投稿1を投稿したユーザーでログインする
       @user.confirm
       sign_in(@user)
-      # 投稿1を投稿したユーザーでログインする
-      # sign_in(@post1.user)
+      
       # 投稿1の詳細ページへ遷移する
       visit post_path(@post1)
       # 投稿を削除するとレコードの数が1減る
