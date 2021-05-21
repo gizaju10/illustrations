@@ -2,11 +2,11 @@
 
 # IllustTube
 『IllustTube』は絵を描く全ての方へ向けたYouTUbe動画学習サービスです。  
-ゲストログインを用意しておりますので、どなたでも使用できるようにしております。
 
 ###  [リンク]：( https://illusttube.work )
 
 ## トップページ
+1. <strong>テストログイン</strong>を用意しておりますので、どなたでもご利用出来る様にしております。
 ![top_1](https://github.com/gizaju10/images/blob/main/%E3%83%88%E3%83%83%E3%83%97.gif)
 
 ## 使用した技術
