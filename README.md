@@ -27,10 +27,10 @@
   * Nginx/Puma
 
 ## ER図
-![ER図](https://user-images.githubusercontent.com/60719889/116413114-4a3a3980-a872-11eb-8e78-64f24a573fb0.png)
+![ER](https://user-images.githubusercontent.com/60719889/119190379-3a4ff700-bab8-11eb-9e17-0d372b9f9e0d.png)
 
 ## インフラ構成図
-![aws](https://user-images.githubusercontent.com/60719889/116472796-54c7f380-a8b1-11eb-9f32-65d9894b14f0.png)
+![qws](https://user-images.githubusercontent.com/60719889/119190394-420f9b80-bab8-11eb-83bb-229f30a1c327.png)
 
 ## 機能一覧
 | 機能名 | 主要gem | 説明 |
