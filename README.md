@@ -6,8 +6,16 @@
 ###  [リンク]：( https://illusttube.work )
 
 ## トップページ
-1. <strong>テストログイン</strong>を用意しておりますので、どなたでもご利用出来る様にしております。
+
+1. <strong>テストログイン</strong>を用意しておりますので、どなたでもご利用できる様にしております。
 ![top_1](https://github.com/gizaju10/images/blob/main/%E3%83%88%E3%83%83%E3%83%97.gif)
+
+2. ログインすると記事一覧を<strong>自動スクロール</strong>でストレスフリーに閲覧できます。
+![top_2](https://github.com/gizaju10/images/blob/main/%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3_PC.gif)
+
+3. CSS グリッドレイアウトにより、スマートフォンからでも快適に使用ができます。
+
+
 
 ## 使用した技術
 * フロントエンド
