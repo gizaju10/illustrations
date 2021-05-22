@@ -1,7 +1,8 @@
 [![gizaju10](https://circleci.com/gh/gizaju10/illustrations.svg?style=svg)](https://circleci.com/gh/gizaju10/illustrations)
 
 # IllustTube
-『IllustTube』は絵を描く全ての方へ向けたYouTUbe動画学習サービスです。  
+『IllustTube』は絵を描く全ての方へ向けたYouTUbe動画学習サービスです。 
+YouTube Data API を用いて動画検索を行い、オススメ動画をシェアすることができます。
 
 ###  [リンク]：( https://illusttube.work )
 
@@ -13,7 +14,7 @@
 2. ログインすると記事一覧を<strong>自動スクロール</strong>でストレスフリーに閲覧できます。
 ![top_2](https://github.com/gizaju10/images/blob/main/%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3_PC.gif)
 
-3. CSS グリッドレイアウトにより、スマートフォンからでも快適に使用ができます。
+3. CSS グリッドレイアウトにより、スマートフォンからでも快適にご利用ができます。
 ![スマホ](https://github.com/gizaju10/images/blob/main/%E3%82%B9%E3%83%9E%E3%83%9B.gif)
 
 ## 使用した技術
