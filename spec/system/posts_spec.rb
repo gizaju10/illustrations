@@ -19,7 +19,6 @@ RSpec.describe '新規投稿', type: :system do
       check "post_target_list_初心者"
       fill_in 'post_content', with: @post.content
       expect  do
-        # find('input[name="commit"]').click
         click_on '投稿する'
       end.to change { Post.count }.by(1)
       # トップページに遷移し、投稿した情報が存在する
@@ -28,8 +27,6 @@ RSpec.describe '新規投稿', type: :system do
       expect(page).to have_content(@post.title)
     end
   end
-
-
 
   context '新規投稿ができないとき' do
     it 'ログインしていないと新規投稿ページに遷移できない' do
@@ -145,8 +142,7 @@ RSpec.describe '投稿の削除', type: :system, js: true do
     it 'ログインしたユーザーは、自らの投稿を削除できる' do
       # 投稿1を投稿したユーザーでログインする
       @user.confirm
-      sign_in(@user)
-      
+      sign_in(@user)   
       # 投稿1の詳細ページへ遷移する
       visit post_path(@post1)
       # 投稿を削除するとレコードの数が1減る
@@ -154,7 +150,6 @@ RSpec.describe '投稿の削除', type: :system, js: true do
         find_link('削除').click
         expect(page.driver.browser.switch_to.alert.text).to eq "本当に削除しますか?"
         page.driver.browser.switch_to.alert.accept
-      # end.to change { Post.count }.by(-1)
       end.to change { Post.count }.by(0)
       # トップページに遷移する
       expect(current_path).to eq "/posts"
@@ -185,28 +180,24 @@ RSpec.describe '投稿の削除', type: :system, js: true do
   end
 end
 
-# RSpec.describe '投稿詳細', type: :system do
-#   before do
-#     @post = create(:post)
-#   end
-#   it 'ログインしたユーザーは、投稿詳細ページに遷移してコメント投稿欄が表示される' do
-#     # ログインする
-#     sign_in(@post.user)
-#     # 投稿の文章をクリックし、投稿詳細ページへ遷移する
-#     visit post_path(@post)
-#     # GoogleMapが表示されている
-#     expect(page).to have_selector('#map')
-#     # コメント用のフォームが存在する
-#     expect(page).to have_selector 'form'
-#   end
-#   it 'ログインしていない状態では、投稿詳細ページに遷移できるものの、コメント投稿欄が表示されない' do
-#     # トップページに移動する
-#     visit root_path
-#     # 投稿の文章をクリックし、投稿詳細ページへ遷移する
-#     visit post_path(@post)
-#     # GoogleMapが表示されている
-#     expect(page).to have_selector('#map')
-#     # コメント用のフォームが存在する
-#     expect(page).to have_no_selector 'form'
-#   end
-# end
+RSpec.describe '投稿詳細', type: :system do
+  before do
+    @user = create(:user)
+    @post = create(:post)
+  end
+  it 'ログインしたユーザーは、投稿詳細ページに遷移してコメント投稿欄が表示される' do
+    # ログインする
+    @user.confirm
+    sign_in(@post.user)
+    # 投稿の文章をクリックし、投稿詳細ページへ遷移する
+    visit post_path(@post)
+    # コメント用のフォームが存在する
+    expect(page).to have_selector 'form'
+  end
+  it 'ログインしていない状態では、投稿詳細ページに遷移できるものの、コメント投稿欄が表示されない' do
+    # 投稿詳細ページへ遷移する
+    visit post_path(@post)
+    # コメント用のフォームが存在しない
+    expect(page).to have_no_selector 'form'
+  end
+end
