@@ -8,32 +8,8 @@ YouTube Data API を用いて動画検索を行い、オススメ動画をシェ
 
 ## 機能紹介
 ### ゲストログイン
-
-1. <strong>テストログイン</strong>を用意しておりますので、どなたでもご利用できる様にしております。
+<strong>テストログイン</strong>を用意しておりますので、どなたでもご利用できる様にしております。
 <img src="https://user-images.githubusercontent.com/60719889/119719537-dbb5bf00-bea3-11eb-991a-43013378888c.png" width="640">
-
-![ログイン2](https://user-images.githubusercontent.com/60719889/119720877-7b278180-bea5-11eb-93b3-9468c91c10ec.png)
-
-### 記事一覧機能
-2. ログインすると記事一覧を<strong>自動スクロール</strong>でストレスフリーに閲覧できます。
-![ログイン_PC_2](https://user-images.githubusercontent.com/60719889/119719127-5e8a4a00-bea3-11eb-850c-5805877e161f.gif)
-
-### 投稿機能
-3. YouTubeの動画を検索して自由に投稿ができます。
-<img src="https://user-images.githubusercontent.com/60719889/119724050-2ab22300-bea9-11eb-9801-343d1f93734f.png" width="640">
-
-<img src="https://user-images.githubusercontent.com/60719889/119724099-3aca0280-bea9-11eb-95dd-eab00602b227.png" width="640">
-
-3. CSS グリッドレイアウトにより、スマートフォンからでも快適にご利用ができます。
-![スマホ (1)](https://user-images.githubusercontent.com/60719889/119718972-313d9c00-bea3-11eb-9686-f74b8f22ba28.gif)
-
-
-
-## 機能紹介
-### ゲストログイン
-
-<strong>テストログイン</strong>を用意しておりますので、どなたでもご利用できる様にしております。  
-![ログイン1](https://user-images.githubusercontent.com/60719889/119744137-568fd180-bec6-11eb-9955-303705d3a15b.png)
 ![ログイン2](https://user-images.githubusercontent.com/60719889/119720877-7b278180-bea5-11eb-93b3-9468c91c10ec.png)
 
 ### 記事一覧機能
@@ -44,14 +20,17 @@ YouTube Data API を用いて動画検索を行い、オススメ動画をシェ
 YouTubeの動画を検索して自由に投稿ができます。
 ![4](https://user-images.githubusercontent.com/60719889/119744363-ce5dfc00-bec6-11eb-8863-dc46682169a0.png)
 
-① 検索窓から投稿したい動画を検索します。
-② __この動画を投稿する__から投稿したい動画を選択します。
-![5](https://user-images.githubusercontent.com/60719889/119744514-24cb3a80-bec7-11eb-809c-d68f5698c8c6.png)
+① 検索窓から投稿したい動画を検索します。  
+② <strong>この動画を投稿する</strong>から投稿したい動画を選択します。  
+<img src="https://user-images.githubusercontent.com/60719889/119724050-2ab22300-bea9-11eb-9801-343d1f93734f.png" width="640">
 
-![6](https://user-images.githubusercontent.com/60719889/119744520-298fee80-bec7-11eb-8415-45ddeecae41c.png)
+③ 投稿する内容を記述します。  
+④ <storong>投稿する</strong>を押すことで投稿が完了します。  
+<img src="https://user-images.githubusercontent.com/60719889/119724099-3aca0280-bea9-11eb-95dd-eab00602b227.png" width="640">
 
-
-
+### スマホからも快適
+CSS グリッドレイアウトにより、スマートフォンからでも快適にご利用ができます。
+![スマホ (1)](https://user-images.githubusercontent.com/60719889/119718972-313d9c00-bea3-11eb-9686-f74b8f22ba28.gif)
 
 ## 使用した技術
 * フロントエンド
