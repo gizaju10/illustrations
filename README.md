@@ -20,7 +20,9 @@ YouTube Data API を用いて動画検索を行い、オススメ動画をシェ
 
 ### 投稿機能
 3. YouTubeの動画を検索して自由に投稿ができます。
+<img src="https://user-images.githubusercontent.com/60719889/119724050-2ab22300-bea9-11eb-9801-343d1f93734f.png" width="640">
 
+<img src="https://user-images.githubusercontent.com/60719889/119724099-3aca0280-bea9-11eb-95dd-eab00602b227.png" width="640">
 
 3. CSS グリッドレイアウトにより、スマートフォンからでも快適にご利用ができます。
 ![スマホ (1)](https://user-images.githubusercontent.com/60719889/119718972-313d9c00-bea3-11eb-9686-f74b8f22ba28.gif)
