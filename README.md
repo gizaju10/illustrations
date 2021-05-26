@@ -31,13 +31,10 @@ YouTube Data API を用いて動画検索を行い、オススメ動画をシェ
 * バックエンド
   * Ruby 3.0.1
   * Ruby on Rails 6.1.3.1
-  * YouTube Data API
-  * Rspec
 * インフラ・開発環境
   * MacBook Air macOS Big Sur 11.3.1
   * Docker/Docker-compose
   * AWS（ECR,ECS(EC2),VPC,S3,Route53,ALB,RDS(PostgreSQL 12.5),ACM）
-  * CircleCI(CIのみ)
   * Nginx/Puma
 * テスト
   * Rspec (単体・結合）
@@ -45,6 +42,8 @@ YouTube Data API を用いて動画検索を行い、オススメ動画をシェ
 * その他使用技術
   * YouTube Data API
   * 非同期通信（投稿へのコメント・いいね、ユーザーのフォロー）
+  * LINE/twitterの記事シェアボタン
+  * 無限スクロール(jScroll)
   * GitHub
 
 ![ER](https://user-images.githubusercontent.com/60719889/119190379-3a4ff700-bab8-11eb-9e17-0d372b9f9e0d.png)
