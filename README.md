@@ -8,16 +8,16 @@ YouTube Data API を用いて動画検索を行い、オススメ動画をシェ
 
 ## 機能紹介
 ### ゲストログイン
-<strong>テストログイン</strong>を用意しておりますので、どなたでもご利用できる様にしております。
+<strong>テストログイン</strong>を用意しておりますので、どなたでもご利用できる様にしております。  
 <img src="https://user-images.githubusercontent.com/60719889/119719537-dbb5bf00-bea3-11eb-991a-43013378888c.png" width="640">
 ![ログイン2](https://user-images.githubusercontent.com/60719889/119720877-7b278180-bea5-11eb-93b3-9468c91c10ec.png)
 
 ### 記事一覧機能
-ログインすると記事一覧を<strong>自動スクロール</strong>でストレスフリーに閲覧できます。
+ログインすると記事一覧を<strong>自動スクロール</strong>でストレスフリーに閲覧できます。  
 ![ログイン_PC_2](https://user-images.githubusercontent.com/60719889/119719127-5e8a4a00-bea3-11eb-850c-5805877e161f.gif)
 
 ### 投稿機能
-YouTubeの動画を検索して自由に投稿ができます。
+YouTubeの動画を検索して自由に投稿ができます。  
 ![4](https://user-images.githubusercontent.com/60719889/119744363-ce5dfc00-bec6-11eb-8863-dc46682169a0.png)
 
 ① 検索窓から投稿したい動画を検索します。  
