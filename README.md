@@ -9,7 +9,8 @@ YouTube Data API を用いて動画検索を行い、オススメ動画をシェ
 ## トップページ
 
 1. <strong>テストログイン</strong>を用意しておりますので、どなたでもご利用できる様にしております。
-![top_1](https://github.com/gizaju10/images/blob/main/%E3%83%88%E3%83%83%E3%83%97.gif)
+![1](https://user-images.githubusercontent.com/60719889/119712352-765dd000-be9b-11eb-8129-a6ded62c1810.png)
+
 
 2. ログインすると記事一覧を<strong>自動スクロール</strong>でストレスフリーに閲覧できます。
 ![top_2](https://github.com/gizaju10/images/blob/main/%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3_PC.gif)
