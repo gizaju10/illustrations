@@ -50,6 +50,6 @@ YouTube Data API を用いて動画検索を行い、オススメ動画をシェ
 | タグ管理機能 | acts-as-taggable-on | 記事に対してタグの追加、削除 |
 | 記事シェア機能 | - | twitter/LINEに記事をシェアできるボタン |
 | YouTube検索機能 | google-api-client | YouTubeの動画検索機能(YouTube Data API)|
-| いいね機能 | - | 記事にいいねができる(Ajax)、いいねを消す(Ajax) |
+| いいね機能 | - | 記事にいいねができる(Ajax)、いいねを削除(Ajax) |
 | コメント機能 | - | コメントを投稿(Ajax)、削除(Ajax)、編集(一部Ajax) |
 | お問い合わせ機能 | - | 未ログイン時でも管理者に問い合わせができる、モーダルウィンドウで表示(jQuery) |
