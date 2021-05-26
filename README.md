@@ -10,7 +10,7 @@ YouTube Data API を用いて動画検索を行い、オススメ動画をシェ
 ### ゲストログイン
 
 1. <strong>テストログイン</strong>を用意しておりますので、どなたでもご利用できる様にしております。
-![1](https://user-images.githubusercontent.com/60719889/119712352-765dd000-be9b-11eb-8129-a6ded62c1810.png)
+2. <img src="https://user-images.githubusercontent.com/60719889/119712352-765dd000-be9b-11eb-8129-a6ded62c1810.png" width="640">
 
 ### 投稿機能
 
@@ -42,7 +42,7 @@ YouTube Data API を用いて動画検索を行い、オススメ動画をシェ
 * その他使用技術
   * YouTube Data API
   * 非同期通信（投稿へのコメント・いいね、ユーザーのフォロー）
-  * LINE/twitterの記事シェアボタン
+  * LINE/Twitterの記事シェアボタン
   * 無限スクロール(jScroll)
   * GitHub
 
@@ -54,13 +54,15 @@ YouTube Data API を用いて動画検索を行い、オススメ動画をシェ
 ## 機能一覧
 | 機能名 | gem | 説明 |
 | ---- | ---- | ---- |
-| ユーザー機能 | devise | 新規登録、登録内容変更、ログイン、ログアウト、ユーザー詳細の表示 |
+| ユーザー機能 | devise, kaminari | 新規登録、登録内容変更、ログイン、ログアウト、ユーザー一覧/詳細の表示 |
 | 管理者機能 | devise | id: 2 ユーザーにのみ全ユーザーのアカウント削除、全投稿の削除/編集、全投稿の削除/編集|
-| Oauth機能  | omniauth-google-oauth2 | Googleアカウント使用でユーザー機能の使用 |
+| Oauth機能  | omniauth-google-oauth2, kaminari | Googleアカウント使用でユーザー機能の使用 |
 | 記事投稿機能 | - | 新規投稿、編集、削除 |
+| 記事検索機能 | kaminari | 記事の関連キーワードから記事探せます |
 | 記事一覧機能 | kaminari | 無限スクロールのプラグインjScrollによる記事一覧を表示 |
 | タグ管理機能 | acts-as-taggable-on | 記事に対してタグの追加、削除 |
-| 記事シェア機能 | - | twitter/LINEに記事をシェアできるボタン |
+| タグ一覧機能 | acts-as-taggable-on, kaminari | タグ名をクリックする事でタグ毎の一覧をjScrollにて表示 |
+| 記事シェア機能 | - | LINE/Twitterに記事をシェアできるボタン |
 | YouTube検索機能 | google-api-client | YouTubeの動画検索機能(YouTube Data API)|
 | いいね機能 | - | 記事にいいねができる(Ajax)、いいねを削除(Ajax) |
 | コメント機能 | - | コメントを投稿(Ajax)、削除(Ajax)、編集(一部Ajax) |
