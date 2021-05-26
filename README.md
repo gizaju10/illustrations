@@ -14,10 +14,7 @@ YouTube Data API を用いて動画検索を行い、オススメ動画をシェ
 
 ### 投稿機能
 2. ログインすると記事一覧を<strong>自動スクロール</strong>でストレスフリーに閲覧できます。
-![ログイン_PC_2](https://user-images.githubusercontent.com/60719889/119718455-8cbb5a00-bea2-11eb-90aa-ad7804e9efc4.gif)
-
-
-
+![スマホ (1)](https://user-images.githubusercontent.com/60719889/119718972-313d9c00-bea3-11eb-9686-f74b8f22ba28.gif)
 
 
 
