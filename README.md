@@ -1,7 +1,7 @@
 [![gizaju10](https://circleci.com/gh/gizaju10/illustrations.svg?style=svg)](https://circleci.com/gh/gizaju10/illustrations)
 
 # IllustTube
-『IllustTube』は絵を描く全ての方へ向けたYouTUbe動画学習サービスです。 
+『IllustTube』は絵を描く全ての方へ向けたYouTUbe動画学習サービスです。  
 YouTube Data API を用いて動画検索を行い、オススメ動画をシェアすることができます。
 
 ###  [リンク]：( https://illusttube.work )
@@ -33,8 +33,14 @@ YouTube Data API を用いて動画検索を行い、オススメ動画をシェ
   * AWS（ECR,ECS(EC2),VPC,S3,Route53,ALB,RDS(PostgreSQL 12.5),ACM）
   * CircleCI(CIのみ)
   * Nginx/Puma
+* テスト
+  * Rspec (単体・結合）
+  * CircleCIにてDocker-composeよりコンテナを構築し、自動テスト
+* その他使用技術
+  * YouTube Data API
+  * 非同期通信（投稿へのコメント・いいね、ユーザーのフォロー）
+  * GitHub
 
-## ER図
 ![ER](https://user-images.githubusercontent.com/60719889/119190379-3a4ff700-bab8-11eb-9e17-0d372b9f9e0d.png)
 
 ## インフラ構成図
