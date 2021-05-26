@@ -10,7 +10,7 @@ YouTube Data API を用いて動画検索を行い、オススメ動画をシェ
 ### ゲストログイン
 
 1. <strong>テストログイン</strong>を用意しておりますので、どなたでもご利用できる様にしております。
-2. <img src="https://user-images.githubusercontent.com/60719889/119712352-765dd000-be9b-11eb-8129-a6ded62c1810.png" width="640">
+<img src="https://user-images.githubusercontent.com/60719889/119719537-dbb5bf00-bea3-11eb-991a-43013378888c.png" width="640">
 
 ### 投稿機能
 2. ログインすると記事一覧を<strong>自動スクロール</strong>でストレスフリーに閲覧できます。
