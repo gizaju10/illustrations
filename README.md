@@ -114,5 +114,15 @@ CSS グリッドレイアウトにより、スマートフォンからでも快�
 ![qws](https://user-images.githubusercontent.com/60719889/119190394-420f9b80-bab8-11eb-83bb-229f30a1c327.png)
 
 # 今後実装したい機能
-* Rspecの更なる充実
-* 自動デプロイ機能
+## MVCモデル
+* 通知機能の拡張(フォロワーに対して投稿等を実施した場合に通知)
+* 投稿機能の一時的保存(下書き)機能
+* コメント返信機能
+* ユーザー削除を物理削除から論理削除へ変更
+
+## その他
+* Rspecの更なる充実(特にJavaScriptを含む統合テスト)
+* jQueryに代替するフレームワークやライブラリの使用(Vue.js, React等)
+* 自動デプロイ機能をCircleCI Orbsまたは、Capistranoで実装
+* Amazon ECS クラスターの起動タイプをEC2 → Fargateへ変更
+* AWS ECS, RDSの冗長化
