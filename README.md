@@ -1,7 +1,7 @@
 [![gizaju10](https://circleci.com/gh/gizaju10/illustrations.svg?style=svg)](https://circleci.com/gh/gizaju10/illustrations)
 
 # IllustTube
-『IllustTube』は絵を描く全ての方へ向けたYouTUbe動画学習サービスです。  
+<strong>『IllustTube』</strong>は絵を描く全ての方へ向けたYouTUbe動画学習サービスです。  
 YouTube Data API を用いて動画検索を行い、オススメ動画をシェアすることができます。
 
 ###  [リンク]：( https://illusttube.work )
@@ -10,33 +10,52 @@ YouTube Data API を用いて動画検索を行い、オススメ動画をシェ
 
 # 機能紹介
 ## ゲストログイン
-<strong>テストログイン</strong>を用意しておりますので、どなたでもご利用できる様にしております。  
+<strong>『テストログイン』</strong>を用意しておりますので、どなたでもご利用できる様にしております。  
 <img src="https://user-images.githubusercontent.com/60719889/119719537-dbb5bf00-bea3-11eb-991a-43013378888c.png" width="640">
+
 ![ログイン2](https://user-images.githubusercontent.com/60719889/119720877-7b278180-bea5-11eb-93b3-9468c91c10ec.png)
+<br>
+<br>
+<br>
 
 ## 記事一覧機能
 ログインすると記事一覧を<strong>自動スクロール</strong>でストレスフリーに閲覧できます。  
 ![ログイン_PC_2](https://user-images.githubusercontent.com/60719889/119719127-5e8a4a00-bea3-11eb-850c-5805877e161f.gif)
+<br>
+<br>
+<br>
 
 ## 投稿機能
 YouTubeの動画を検索して自由に投稿ができます。  
 ![4](https://user-images.githubusercontent.com/60719889/119744363-ce5dfc00-bec6-11eb-8863-dc46682169a0.png)
+<br>
+<br>
+<br>
 
 ① 検索窓から投稿したい動画を検索します。  
-② <strong>この動画を投稿する</strong>から投稿したい動画を選択します。  
+② <strong>『この動画を投稿する』</strong>から投稿したい動画を選択します。  
 <img src="https://user-images.githubusercontent.com/60719889/119724050-2ab22300-bea9-11eb-9801-343d1f93734f.png" width="640">
+<br>
+<br>
+<br>
 
 ③ 投稿する内容を記述します。  
-④ <strong>投稿する</strong>を押すことで投稿が完了します。  
+④ <strong>『投稿する』</strong>を押すことで投稿が完了します。  
 <img src="https://user-images.githubusercontent.com/60719889/119724099-3aca0280-bea9-11eb-95dd-eab00602b227.png" width="640">
+<br>
+<br>
+<br>
 
 ## スマホからも快適
 CSS グリッドレイアウトにより、スマートフォンからでも快適にご利用ができます。
 ![スマホ (1)](https://user-images.githubusercontent.com/60719889/119718972-313d9c00-bea3-11eb-9686-f74b8f22ba28.gif)
+<br>
+<br>
+<br>
 
-※ その他にもコメント機能やいいね機能等がAjax(非同期通信)で快適に利用できたり、  
+その他にもコメント機能やいいね機能等がAjax(非同期通信)で快適に利用できたり、  
 直感的に使用できることを第一にUI/UXを気を付け開発しました。  
-詳細は、下記<strong>機能一覧</strong>にてご確認下さい。
+※ 詳細は、下記<strong>機能一覧</strong>にてご確認下さい。
 
 # 機能一覧
 | 機能名 | gem | 説明 |
