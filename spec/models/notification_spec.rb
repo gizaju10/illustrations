@@ -7,7 +7,7 @@ describe Notification do
 
     context 'User（visitor）モデルとの関係' do
       let(:target) { :visitor }
-      it '多:1' do
+      it 'User（visitor）との関連付けはbelongs_toであること' do
         expect(association.macro).to eq :belongs_to
       end
       it '結合するモデルのクラス：User' do
@@ -17,7 +17,7 @@ describe Notification do
 
     context 'User（visited）モデルとの関係' do
       let(:target) { :visited }
-      it '多:1' do
+      it 'User（visited）との関連付けはbelongs_toであること' do
         expect(association.macro).to eq :belongs_to
       end
       it '結合するモデルのクラス：User' do
@@ -27,7 +27,7 @@ describe Notification do
 
     context 'Postモデルとの関係' do
       let(:target) { :post }
-      it '多:1' do
+      it 'Postとの関連付けはbelongs_toであること' do
         expect(association.macro).to eq :belongs_to
       end
       it '結合するモデルのクラス名：Post' do
@@ -37,7 +37,7 @@ describe Notification do
 
     context 'Commentモデルとの関係' do
       let(:target) { :comment }
-      it '多:1' do
+      it 'Commentとの関連付けはbelongs_toであること' do
         expect(association.macro).to eq :belongs_to
       end
       it '結合するモデルのクラス名：Comment' do
