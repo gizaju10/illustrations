@@ -1,12 +1,20 @@
 [![gizaju10](https://circleci.com/gh/gizaju10/illustrations.svg?style=svg)](https://circleci.com/gh/gizaju10/illustrations)
 
 # IllustTube
-<strong>『IllustTube』</strong>は絵を描く全ての方へ向けたYouTUbe動画学習サービスです。  
+<strong>『IllustTube』</strong>は絵を描く全ての方へ向けたYouTube動画学習サービスです。  
 YouTube Data API を用いて動画検索を行い、オススメ動画をシェアすることができます。
 
 ###  [リンク]：( https://illusttube.work )
 
 # 制作背景
+私は、高等学校卒業後、２年間専門学校に通いました。学科は、マンガです。  
+マンガ学科では、漫画家になる為の技術を学びました。
+しかし、学んだ知識や技術はYouTubeなどで個人が有益な情報を発信する現在では、独学でも簡単に得れる内容でした。
+YouTubeの発展した時代だからこそ、独学者を対象にした学習をサポートするWebアプリとして開発しました。
+
+### 目的のターゲット層
+* イラストに携わる知識や技術等を独学で学びたい方向け(全年齢対象)
+* イラストを描く仲間を増やしたい(独学者で同じ分野に興味がある仲間を探しやすい)
 
 # 機能紹介
 ## ゲストログイン
