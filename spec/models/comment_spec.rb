@@ -29,26 +29,26 @@ RSpec.describe Comment, type: :model do
         expect(comment.errors).to be_added(:content, :too_long, count: 140)
       end
   end
+
+  describe "各モデルとのアソシエーション" do
+    let(:association) do
+      described_class.reflect_on_association(target)
+    end
+
+    context "Userモデルとのアソシエーション" do
+      let(:target) { :user }
+
+      it "Userとの関連付けはbelongs_toであること" do
+        expect(association.macro).to  eq :belongs_to
+      end
+    end
+
+    context "Postモデルとのアソシエーション" do
+      let(:target) { :post }
+
+      it "Postとの関連付けはbelongs_toであること" do
+        expect(association.macro).to  eq :belongs_to
+      end
+    end
+  end
 end
-
-# describe "各モデルとのアソシエーション" do
-#   let(:association) do
-#     described_class.reflect_on_association(target)
-#   end
-
-#   # context "Notificationモデルとのアソシエーション" do
-#   #   let(:target) { :notifications }
-
-#   #   it "Notificationとの関連付けはhas_manyであること" do
-#   #     expect(association.macro).to eq :has_many
-#   #   end
-
-#     it "Commentが削除されたらNotificationも削除されること" do
-#       comment = create(:comment)
-#       # notification = create(:notification, comment_id: comment.id, visitor_id: 1, visited_id: 1)
-#       notification = create(:notification, comment_id: comment.id)
-#       expect { comment.destroy }.to change(Comment, :count).by(-1)
-#     end
-#   end
-# end
-# end
