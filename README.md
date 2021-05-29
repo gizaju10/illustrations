@@ -98,7 +98,7 @@ CSS グリッドレイアウトにより、スマートフォンからでも快�
   * AWS（ECR,ECS(EC2),VPC,S3,Route53,ALB,RDS(PostgreSQL 12.5),ACM）
   * Nginx/Puma
 ### テスト
-  * Rspec (単体・結合）
+  * Rspec (単体・統合）
   * CircleCIにてDocker-composeよりコンテナを構築し、自動テスト
 ### その他使用技術
   * YouTube Data API
@@ -111,7 +111,7 @@ CSS グリッドレイアウトにより、スマートフォンからでも快�
 ![ER](https://user-images.githubusercontent.com/60719889/119190379-3a4ff700-bab8-11eb-9e17-0d372b9f9e0d.png)
 
 # インフラ構成図
-![qws](https://user-images.githubusercontent.com/60719889/119190394-420f9b80-bab8-11eb-83bb-229f30a1c327.png)
+![aws](https://user-images.githubusercontent.com/60719889/119190394-420f9b80-bab8-11eb-83bb-229f30a1c327.png)
 
 # 今後実装したい機能
 ## MVCモデル
