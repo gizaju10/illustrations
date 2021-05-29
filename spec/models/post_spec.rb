@@ -119,17 +119,6 @@ RSpec.describe Post, type: :model do
       end
       let(:post) { create(:post) }
   
-      context "Likeモデルとのアソシエーション" do
-        let(:target) { :likes }
-        it "Likeとの関連付けはhas_manyであること" do
-          expect(association.macro).to eq :has_many
-        end 
-        it "Postが削除されたらLikeも削除されること" do
-          like = create(:like, post_id: post.id)
-          expect { post.destroy }.to change(Like, :count).by(-1)
-        end
-      end
-  
       context "Commentsモデルとのアソシエーション" do
         let(:target) { :comments }
         it "Commentとの関連付けはhas_manyであること" do
@@ -142,9 +131,9 @@ RSpec.describe Post, type: :model do
         end
       end
 
-      context 'Like（likes）モデルとの関係' do
+      context 'Likesモデルとの関係' do
         let(:target) { :likes }
-        it '1:多' do
+        it 'Likeとの関連付けはhas_manyであること' do
           expect(association.macro).to eq :has_many
         end
         it '結合するモデルのクラス：Like' do
@@ -160,6 +149,9 @@ RSpec.describe Post, type: :model do
         let(:target) { :notifications }
         it "Notificationとの関連付けはhas_manyであること" do
           expect(association.macro).to eq :has_many
+        end
+        it '結合するモデルのクラス：Notification' do
+          expect(association.class_name).to eq 'Notification'
         end
         it "Postが削除されたらNotificationも削除されること" do
           notification = create(:notification, post_id: post.id, visitor_id: 1, visited_id: 1)
