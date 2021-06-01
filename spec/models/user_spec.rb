@@ -85,7 +85,7 @@ RSpec.describe User, type: :model do
 
     context 'Postモデルとの関係' do
       let(:target) { :posts }
-      it '1:多' do
+      it 'Postとの関連付けはhas_manyであること' do
         expect(association.macro).to eq :has_many
       end
       it '結合するモデルのクラス名：Post' do
@@ -95,7 +95,7 @@ RSpec.describe User, type: :model do
 
     context 'Likeモデルとの関係' do
       let(:target) { :likes }
-      it '1:多' do
+      it 'Likeとの関連付けはhas_manyであること' do
         expect(association.macro).to eq :has_many
       end
       it '結合するモデルのクラス名：Like' do
@@ -105,7 +105,7 @@ RSpec.describe User, type: :model do
 
     context 'Commentモデルとの関係' do
       let(:target) { :comments }
-      it '1:多' do
+      it 'Commentとの関連付けはhas_manyであること' do
         expect(association.macro).to eq :has_many
       end
       it '結合するモデルのクラス名：Like' do
@@ -115,7 +115,7 @@ RSpec.describe User, type: :model do
 
     context 'FollowRelationship（following_relationships）モデルとの関係' do
       let(:target) { :following_relationships }
-      it '1:多' do
+      it 'FollowRelationship（following_relationships）との関連付けはhas_manyであること' do
         expect(association.macro).to eq :has_many
       end
       it '結合するモデルのクラス：Relationship' do
@@ -125,7 +125,7 @@ RSpec.describe User, type: :model do
 
     context 'FollowRelationship（follower_relationships）モデルとの関係' do
       let(:target) { :follower_relationships }
-      it '1:多' do
+      it 'FollowRelationship（follower_relationships）との関連付けはhas_manyであること' do
         expect(association.macro).to eq :has_many
       end
       it '結合するモデルのクラス：Relationship' do
@@ -135,7 +135,7 @@ RSpec.describe User, type: :model do
 
     context 'SnsCredentialモデルとの関係' do
       let(:target) { :sns_credentials }
-      it '1:1' do
+      it 'SnsCredentialとの関連付けはhas_manyであること' do
         expect(association.macro).to eq :has_many
       end
       it '結合するモデルのクラス：SnsCredential' do

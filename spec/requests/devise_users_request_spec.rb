@@ -4,7 +4,6 @@ RSpec.describe "UserAuthentications", type: :request do
   let(:user) { create(:user) }
   let(:user_params) { attributes_for(:user) }
   let(:invalid_user_params) { attributes_for(:user, name: "") }
-  # let!(:inquiry) { create(:inquiry) }
 
   describe 'GET #edit' do
     subject { get edit_user_registration_path }
@@ -38,7 +37,6 @@ RSpec.describe "UserAuthentications", type: :request do
       it '認証メールが送信されること' do
         post user_registration_path, params: { user: user_params }
         expect(ActionMailer::Base.deliveries.size).to eq 1
-        # expect(ActionMailer::Base.deliveries.first.body.parts[1].body.raw_source).to match(%r!http\S+?/send_email/\w{30}\b!)
       end
 
       it 'createが成功すること' do
