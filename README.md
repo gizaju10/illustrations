@@ -89,6 +89,7 @@ CSS グリッドレイアウトにより、スマートフォンからでも快�
   * HTML/CSS
   * JavaScript
   * jQuery
+  * Bootstrap
 ### バックエンド
   * Ruby 3.0.1
   * Ruby on Rails 6.1.3.1
