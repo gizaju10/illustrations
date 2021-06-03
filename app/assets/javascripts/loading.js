@@ -7,9 +7,9 @@ $(document).on('turbolinks:load', function () {
       loader.fadeOut();
     });
 
-    //ページの読み込みが完了してなくても2秒後にアニメーションを非表示にする
+    //ページの読み込みが完了してなくても0.7秒後にアニメーションを非表示にする
     setTimeout(function () {
       loader.fadeOut();
-    }, 2000);
+    }, 700);
   });
 });
