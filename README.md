@@ -72,7 +72,7 @@ CSS グリッドレイアウトにより、スマートフォンからでも快�
 | ---- | ---- | ---- |
 | ユーザー機能 | devise, kaminari, actionmailer | 新規登録、登録内容変更、ログイン、ログアウト、ユーザー一覧/詳細の表示 |
 | 管理者機能 | devise | id: 2 ユーザーにのみ全ユーザーのアカウント削除、全投稿の削除/編集、全投稿の削除/編集|
-| Oauth機能  | omniauth-google 集、削除 |
+| Oauth機能  | omniauth-google-oauth2, kaminari | Googleアカウント使用でユーザー機能の使用 |
 | 記事検索機能 | kaminari | 記事の関連キーワードから記事探せます |
 | 記事一覧機能 | kaminari | 無限スクロールのプラグイン(jScroll)による記事一覧を表示 |
 | タグ管理機能 | acts-as-taggable-on | 記事に対してタグの追加、削除 |
