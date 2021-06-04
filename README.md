@@ -126,3 +126,7 @@ CSS グリッドレイアウトにより、スマートフォンからでも快�
 * 自動デプロイ機能をCircleCI Orbsまたは、Capistranoで実装
 * Amazon ECS クラスターの起動タイプをEC2 → Fargateへ変更
 * AWS ECS, RDSの冗長化
+
+# 転職活動をしています
+### Wantedly
+https://www.wantedly.com/id/teppeimimachi
