@@ -83,13 +83,17 @@
               <div class="nav-item underscore">
                 <a class="js-modal-open nav-link" href=""><i class="fas fa-envelope"></i> お問い合わせ</a>
               </div>
+              <center>
+                <footer>
+                  &copy;Teppei Mimachi 2021
+                </footer>
+              </center>
               <div class="modal js-modal">
                 <div class="modal__bg js-modal-close"></div>
                 <div class="modal__content">
                   <%= render "inquiry/index" %>
                   <a class="js-modal-close" href="">閉じる</a>
                 </div>
-
 
                 <%= render "shared/categories_etc" %>
 
@@ -99,16 +103,16 @@
               </div>
               <% else %>
               <!-- ログアウトしている場合 -->
-                          <li>
-              <%= link_to root_path, class: 'nav-link nav-item underscore', method: :get do %>
-              <i class="fas fa-sign-in-alt"></i> ユーザー登録
-              <% end %>
-            </li>
-            <li>
-              <%= link_to new_user_session_path, class: 'nav-link nav-item underscore', method: :get do %>
-              <i class="fas fa-sign-in-alt"></i> ログイン
-              <% end %>
-            </li>
+              <li>
+                <%= link_to root_path, class: 'nav-link nav-item underscore', method: :get do %>
+                <i class="fas fa-sign-in-alt"></i> ユーザー登録
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_user_session_path, class: 'nav-link nav-item underscore', method: :get do %>
+                <i class="fas fa-sign-in-alt"></i> ログイン
+                <% end %>
+              </li>
               <div class="spview">
                 <hr>
                 <center>
