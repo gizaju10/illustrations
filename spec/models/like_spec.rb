@@ -51,10 +51,10 @@ RSpec.describe Like, type: :model do
       end
     end
 
-    context "Tweetモデルとのアソシエーション" do
+    context "Postモデルとのアソシエーション" do
       let(:target) { :post }
 
-      it "Tweetとの関連付けはbelongs_toであること" do
+      it "Postとの関連付けはbelongs_toであること" do
         expect(association.macro).to  eq :belongs_to
       end
     end
