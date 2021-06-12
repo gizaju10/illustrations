@@ -1,5 +1,3 @@
-[![gizaju10](https://circleci.com/gh/gizaju10/illustrations.svg?style=svg)](https://circleci.com/gh/gizaju10/illustrations)
-
 # IllustTube
 <strong>『IllustTube』</strong>は絵を描く全ての方へ向けたYouTube動画学習サービスです。  
 YouTube Data API を用いて動画検索を行い、オススメ動画をシェアすることができます。
@@ -111,7 +109,7 @@ CSS グリッドレイアウトにより、スマートフォンからでも快�
 ![ER](https://user-images.githubusercontent.com/60719889/119190379-3a4ff700-bab8-11eb-9e17-0d372b9f9e0d.png)
 
 # インフラ構成図
-![aws](https://user-images.githubusercontent.com/60719889/119190394-420f9b80-bab8-11eb-83bb-229f30a1c327.png)
+![AWS最新](https://user-images.githubusercontent.com/60719889/121276334-7503bd00-c909-11eb-8278-32e38afdc63f.png)
 
 # 今後実装したい機能
 ## MVCモデル
