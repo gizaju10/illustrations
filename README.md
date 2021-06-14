@@ -120,6 +120,7 @@ CSS グリッドレイアウトにより、スマートフォンからでも快�
 
 ## その他
 * Rspecの更なる充実(特にJavaScriptを含む統合テスト)
+* Rubocop利用でコーディング規約をチェックする
 * jQueryに代替するフレームワークやライブラリの使用(Vue.js, React等)
 * 自動デプロイ機能をCircleCI Orbsまたは、Capistranoで実装
 * Amazon ECS クラスターの起動タイプをEC2 → Fargateへ変更
