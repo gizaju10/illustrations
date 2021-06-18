@@ -100,6 +100,7 @@ CSS グリッドレイアウトにより、スマートフォンからでも快�
   * CircleCIにてDocker-composeよりコンテナを構築し、自動テスト
 ### その他使用技術
   * YouTube Data API
+  * RoboCop静的コード解析
   * Ajax(非同期通信)（投稿へのコメント・いいね、ユーザーのフォロー）
   * LINE/Twitterの記事シェアボタン
   * 無限スクロール(jScroll)
@@ -120,7 +121,6 @@ CSS グリッドレイアウトにより、スマートフォンからでも快�
 
 ## その他
 * Rspecの更なる充実(特にJavaScriptを含む統合テスト)
-* Rubocop利用でコーディング規約をチェックする
 * jQueryに代替するフレームワークやライブラリの使用(Vue.js, React等)
 * 自動デプロイ機能をCircleCI Orbsまたは、Capistranoで実装
 * Amazon ECS クラスターの起動タイプをEC2 → Fargateへ変更
