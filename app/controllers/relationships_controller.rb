@@ -7,7 +7,7 @@ class RelationshipsController < ApplicationController
     @user.create_notification_follow!(current_user)
   end
 
-   def destroy
+  def destroy
     @user = User.find(params[:id])
     current_user.unfollow!(@user)
   end

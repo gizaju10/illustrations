@@ -7,7 +7,7 @@ unless Rails.env.test? # || unless Rails.env.development?
       region: 'ap-northeast-1'
     }
 
-    config.fog_directory  = ENV['AWS_S3']
+    config.fog_directory = ENV['AWS_S3']
     config.cache_storage = :fog
   end
 end

@@ -1,5 +1,4 @@
 class InquiryController < ApplicationController
-
   def index
     # 入力画面を表示
     @inquiry = Inquiry.new
@@ -24,11 +23,11 @@ class InquiryController < ApplicationController
     InquiryMailer.received_email(@inquiry).deliver
 
     # 完了画面を表示
-    flash[:notice] = "お問い合わせいただきありがとうございました。"
+    flash[:notice] = 'お問い合わせいただきありがとうございました。'
     if user_signed_in?
-      redirect_to("/posts")
+      redirect_to('/posts')
     else
-      redirect_to("/")
+      redirect_to('/')
     end
   end
 end

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @users = @user.posts.page(params[:page]).order(created_at: :desc).per(1)
     @user_counts = @user.liked_posts.includes(:user).count
-    @user_favorites = @user.liked_posts.includes(:taggings,:user).order("RANDOM()").limit(2)
+    @user_favorites = @user.liked_posts.includes(:taggings, :user).order('RANDOM()').limit(2)
   end
 
   # フォロー関連
@@ -26,9 +26,9 @@ class UsersController < ApplicationController
   end
 
   def hide
-    @user = User.find(params[:id]) #ユーザ毎の情報を得る
-    @user.destroy #ユーザ情報を削除（退会）
-        flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
-        redirect_to root_path
-    end
+    @user = User.find(params[:id]) # ユーザ毎の情報を得る
+    @user.destroy # ユーザ情報を削除（退会）
+    flash[:notice] = 'ありがとうございました。またのご利用を心よりお待ちしております。'
+    redirect_to root_path
+  end
 end

@@ -3,6 +3,6 @@ class InquiryMailer < ApplicationMailer
 
   def received_email(inquiry)
     @inquiry = inquiry
-    mail(:to => ENV['GOOGLE_MAIL'], :subject => 'お問い合わせがあります')
+    mail(to: ENV['GOOGLE_MAIL'], subject: 'お問い合わせがあります')
   end
 end

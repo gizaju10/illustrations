@@ -14,7 +14,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
 # Javascriptの利用
-Rails.application.config.assets.precompile += %w( 
-    application.js
-    devise.css
-)
+Rails.application.config.assets.precompile += %w[
+  application.js
+  devise.css
+]

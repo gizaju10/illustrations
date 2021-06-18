@@ -21,7 +21,7 @@ Rails.application.configure do
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
   # config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
-  
+
   # public以下を静的ファイルとして取り扱う
   config.public_file_server.enabled = true
 
@@ -35,7 +35,7 @@ Rails.application.configure do
   # サーバー側でコンパイルするかの有無
   config.assets.compile = false
 
-  config.assets.precompile += %w(*.js *.less *.css *.erb)
+  config.assets.precompile += %w[*.js *.less *.css *.erb]
 
   # assetファイル名にハッシュをつける
   config.assets.digest = true
@@ -63,7 +63,7 @@ Rails.application.configure do
   config.log_level = :debug
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -92,7 +92,7 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
+  if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
@@ -122,18 +122,17 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
-  #deviseが認証用のURLなどを生成するのに必要になる
-  config.action_mailer.default_url_options = {  :host => 'https://illusttube.work/' }
+  # deviseが認証用のURLなどを生成するのに必要になる
+  config.action_mailer.default_url_options = { host: 'https://illusttube.work/' }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                  587,
-    domain:               'gmail.com',
-    user_name:            ENV['GOOGLE_MAIL'],
-    password:             ENV['GOOGLE_PASSWORD'],
-    authentication:       'plain',
-    enable_starttls_auto:  true
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'gmail.com',
+    user_name: ENV['GOOGLE_MAIL'],
+    password: ENV['GOOGLE_PASSWORD'],
+    authentication: 'plain',
+    enable_starttls_auto: true
   }
-
 end

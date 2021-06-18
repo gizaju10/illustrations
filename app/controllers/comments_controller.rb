@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    #投稿に紐づいたコメントを作成
+    # 投稿に紐づいたコメントを作成
     @comment = @post.comments.build(comment_params)
     @comment.user_id = current_user.id
     @comment.save
@@ -21,10 +21,10 @@ class CommentsController < ApplicationController
     @comment = Comment.find_by(id: params[:id])
     @comment.content = params[:content]
     if @comment.save
-      flash[:notice] = "コメントを編集しました。"
+      flash[:notice] = 'コメントを編集しました。'
       redirect_to("/posts/#{@comment.post_id}")
     else
-      flash[:alert] = "コメントを編集できませんでした。"
+      flash[:alert] = 'コメントを編集できませんでした。'
       redirect_back(fallback_location: @post)
     end
   end
@@ -35,9 +35,10 @@ class CommentsController < ApplicationController
     @comment.destroy
     render :index
   end
-  
+
   private
-    def comment_params
-      params.require(:comment).permit(:content, :post_id, :user_id) #追加
-    end
+
+  def comment_params
+    params.require(:comment).permit(:content, :post_id, :user_id) # 追加
   end
+end

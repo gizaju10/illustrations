@@ -14,15 +14,15 @@ RSpec.describe '新規投稿', type: :system do
       visit new_post_path
       fill_in 'post_title', with: @post.title
       fill_in 'post_url', with: @post.url
-      check "post_category_list_知識"
-      check "post_occupation_list_漫画家"
-      check "post_target_list_初心者"
+      check 'post_category_list_知識'
+      check 'post_occupation_list_漫画家'
+      check 'post_target_list_初心者'
       fill_in 'post_content', with: @post.content
       expect  do
         click_on '投稿する'
       end.to change { Post.count }.by(1)
       # トップページに遷移し、投稿した情報が存在する
-    id = @post.id.to_i + 1
+      id = @post.id.to_i + 1
       expect(current_path).to eq "/posts/#{id}"
       expect(page).to have_content(@post.title)
     end
@@ -45,10 +45,10 @@ RSpec.describe '新規投稿', type: :system do
       # フォームが空のまま、投稿ボタンを押してもPostモデルのカウントが変わらない
       fill_in 'post_title', with: ''
       fill_in 'post_url', with: @post.url
-      check "post_category_list_知識"
-      check "post_occupation_list_漫画家"
-      check "post_target_list_初心者"
-      expect  do
+      check 'post_category_list_知識'
+      check 'post_occupation_list_漫画家'
+      check 'post_target_list_初心者'
+      expect do
         find('input[name="commit"]').click
       end.to change { Post.count }.by(0)
       # 新規投稿ページへ戻される
@@ -81,13 +81,13 @@ RSpec.describe '投稿内容の編集', type: :system do
         find('#post_url').value
       ).to eq @post1.url
       expect(
-        find("#post_category_list_知識").value
+        find('#post_category_list_知識').value
       ).to eq @post1.category_list.join(',')
       expect(
-        find("#post_occupation_list_漫画家").value
+        find('#post_occupation_list_漫画家').value
       ).to eq @post1.occupation_list.join(',')
       expect(
-        find("#post_target_list_初心者").value
+        find('#post_target_list_初心者').value
       ).to eq @post1.target_list.join(',')
 
       expect(
@@ -97,14 +97,14 @@ RSpec.describe '投稿内容の編集', type: :system do
       image_path = Rails.root.join('public/images/place_image.png')
       fill_in 'post_title', with: "#{@post1.title}+編集OK!"
       fill_in 'post_url', with: "#{@post1.url}+編集OK!"
-      
+
       # チェックボックスの変更も追加要
 
       fill_in 'post_content', with: "#{@post1.content}+編集OK!"
       # 編集してもPostモデルのカウントは変わらない
       expect  do
         find('input[name="commit"]').click
-      end.to change {Post.count}.by(0)
+      end.to change { Post.count }.by(0)
       # トップページには編集した内容の投稿が存在する
       expect(current_path).to eq "/posts/#{@post1.id}"
       expect(page).to have_content("#{@post1.title}+編集OK!")
@@ -142,17 +142,17 @@ RSpec.describe '投稿の削除', type: :system, js: true do
     it 'ログインしたユーザーは、自らの投稿を削除できる' do
       # 投稿1を投稿したユーザーでログインする
       @user.confirm
-      sign_in(@user)   
+      sign_in(@user)
       # 投稿1の詳細ページへ遷移する
       visit post_path(@post1)
       # 投稿を削除するとレコードの数が1減る
       expect do
         find_link('削除').click
-        expect(page.driver.browser.switch_to.alert.text).to eq "本当に削除しますか?"
+        expect(page.driver.browser.switch_to.alert.text).to eq '本当に削除しますか?'
         page.driver.browser.switch_to.alert.accept
       end.to change { Post.count }.by(0)
       # トップページに遷移する
-      expect(current_path).to eq "/posts"
+      expect(current_path).to eq '/posts'
       # トップページには投稿1の内容が存在しない
       expect(page).to have_no_content(@post1.title.to_s)
       # expect(page).to have_selector('.mini-slide-image')

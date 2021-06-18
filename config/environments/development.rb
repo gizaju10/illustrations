@@ -1,12 +1,12 @@
 Rails.application.configure do
   config.after_initialize do
-    Bullet.enable        = false #Bullet gemを有効
-    Bullet.alert         = true #ブラウザにJavaScriptアラートをポップアップ
-    Bullet.bullet_logger = true #Bulletログファイル（Rails.root/log/bullet.log）に記録
-    Bullet.console       = true #警告をブラウザーのconsole.logに記録
-  # Bullet.growl         = true
-    Bullet.rails_logger  = true #警告を直接Railsログに追加
-    Bullet.add_footer    = true #ページの左下に結果を表示
+    Bullet.enable        = false # Bullet gemを有効
+    Bullet.alert         = true # ブラウザにJavaScriptアラートをポップアップ
+    Bullet.bullet_logger = true # Bulletログファイル（Rails.root/log/bullet.log）に記録
+    Bullet.console       = true # 警告をブラウザーのconsole.logに記録
+    # Bullet.growl         = true
+    Bullet.rails_logger  = true # 警告を直接Railsログに追加
+    Bullet.add_footer    = true # ページの左下に結果を表示
   end
 
   # Settings specified here will take precedence over those in config/application.rb.
@@ -78,13 +78,13 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                  587,
-    domain:               'gmail.com',
-    user_name:            ENV['GOOGLE_MAIL'],
-    password:             ENV['GOOGLE_PASSWORD'],
-    authentication:       'plain',
-    enable_starttls_auto:  true
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'gmail.com',
+    user_name: ENV['GOOGLE_MAIL'],
+    password: ENV['GOOGLE_PASSWORD'],
+    authentication: 'plain',
+    enable_starttls_auto: true
   }
 
   # ホワイトリスト全体をクリア(nginx)

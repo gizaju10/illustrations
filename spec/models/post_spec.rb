@@ -14,7 +14,7 @@ RSpec.describe Post, type: :model do
     it 'titleが空の場合' do
       post = build(:post, title: nil)
       post.valid?
-      expect(post.errors[:title]).to include("タイトルの入力は必須です。")
+      expect(post.errors[:title]).to include('タイトルの入力は必須です。')
     end
 
     it 'titleが101文字以上の場合' do
@@ -27,7 +27,7 @@ RSpec.describe Post, type: :model do
     it 'urlが空の場合' do
       post = build(:post, url: nil)
       post.valid?
-      expect(post.errors[:url]).to include("入力は必須です。", "紹介したいYouTube動画のURLを入力して下さい。")
+      expect(post.errors[:url]).to include('入力は必須です。', '紹介したいYouTube動画のURLを入力して下さい。')
     end
 
     it 'urlが121文字以上の場合' do
@@ -40,7 +40,7 @@ RSpec.describe Post, type: :model do
     it 'contentが空の場合' do
       post = build(:post, content: nil)
       post.valid?
-      expect(post.errors[:content]).to include("紹介文の入力は必須です。")
+      expect(post.errors[:content]).to include('紹介文の入力は必須です。')
     end
 
     it 'contentが301文字以上の場合' do
@@ -53,79 +53,78 @@ RSpec.describe Post, type: :model do
     it 'category_listが空の場合' do
       post = build(:post, category_list: nil)
       post.valid?
-      expect(post.errors[:category_list]).to include("カテゴリーの選択は必須です。 ※複数選択可")
+      expect(post.errors[:category_list]).to include('カテゴリーの選択は必須です。 ※複数選択可')
     end
 
     it 'occupation_listが空の場合' do
       post = build(:post, occupation_list: nil)
       post.valid?
-      expect(post.errors[:occupation_list]).to include("対象職種の選択は必須です。 ※複数選択可")
+      expect(post.errors[:occupation_list]).to include('対象職種の選択は必須です。 ※複数選択可')
     end
 
     it 'target_listが空の場合' do
       post = build(:post, target_list: nil)
       post.valid?
-      expect(post.errors[:target_list]).to include("対象者の選択は必須です。 ※複数選択可")
+      expect(post.errors[:target_list]).to include('対象者の選択は必須です。 ※複数選択可')
     end
 
-
-    describe "#search" do
+    describe '#search' do
       # 各テストの前にPostを作成
       before do
         user = create(:user)
         @post = create(
           :post,
-          title: "漫画家志望向け",
-          content: "マンガの描き方の基本が分かります。",
+          title: '漫画家志望向け',
+          content: 'マンガの描き方の基本が分かります。'
         )
-  
+
         @other_post = create(
           :post,
-          title: "背景の描き方",
-          content: "雨の表現が上手いです。",
+          title: '背景の描き方',
+          content: '雨の表現が上手いです。'
         )
       end
-  
-      context "「漫画家志望」で検索した場合、曖昧検索できているか" do
-        it "@postを返すこと" do
-          expect(Post.search("マンガ")).to include(@post)
+
+      context '「漫画家志望」で検索した場合、曖昧検索できているか' do
+        it '@postを返すこと' do
+          expect(Post.search('マンガ')).to include(@post)
         end
-  
-        it "@other_postを返さないこと" do
-          expect(Post.search("マンガ")).to_not include(@other_post)
-        end
-      end
-  
-      context "「マンガの描き方」で検索した場合、一致検索できているか" do
-        it "@postを返すこと" do
-          expect(Post.search("マンガの描き方")).to include(@post)
-        end
-  
-        it "@other_postを返さないこと" do
-          expect(Post.search("マンガの描き方")).to_not include(@other_post)
+
+        it '@other_postを返さないこと' do
+          expect(Post.search('マンガ')).to_not include(@other_post)
         end
       end
-  
-      context "検索に一致しないものは表示されないこと" do
-        it "「雨空」で検索した場合、0件であること" do
-          expect(Post.search("雨空")).to be_empty
+
+      context '「マンガの描き方」で検索した場合、一致検索できているか' do
+        it '@postを返すこと' do
+          expect(Post.search('マンガの描き方')).to include(@post)
+        end
+
+        it '@other_postを返さないこと' do
+          expect(Post.search('マンガの描き方')).to_not include(@other_post)
+        end
+      end
+
+      context '検索に一致しないものは表示されないこと' do
+        it '「雨空」で検索した場合、0件であること' do
+          expect(Post.search('雨空')).to be_empty
         end
       end
     end
-  
-    describe "各モデルとのアソシエーション" do
+
+    describe '各モデルとのアソシエーション' do
       let(:association) do
         described_class.reflect_on_association(target)
       end
       let(:post) { create(:post) }
-  
-      context "Commentsモデルとのアソシエーション" do
+
+      context 'Commentsモデルとのアソシエーション' do
         let(:target) { :comments }
-        it "Commentとの関連付けはhas_manyであること" do
+        it 'Commentとの関連付けはhas_manyであること' do
           expect(association.macro).to eq :has_many
         end
-  
-        it "Postが削除されたらCommentも削除されること" do
+
+        it 'Postが削除されたらCommentも削除されること' do
           comment = create(:comment, post_id: post.id, user_id: user.id)
           expect { post.destroy }.to change(Comment, :count).by(-1)
         end
@@ -139,21 +138,21 @@ RSpec.describe Post, type: :model do
         it '結合するモデルのクラス：Like' do
           expect(association.class_name).to eq 'Like'
         end
-        it "Postが削除されたらLikeも削除されること" do
+        it 'Postが削除されたらLikeも削除されること' do
           like = create(:like, post_id: post.id, user_id: user.id)
           expect { like.destroy }.to change(Like, :count).by(-1)
         end
       end
-  
-      context "Notificationsモデルとのアソシエーション" do
+
+      context 'Notificationsモデルとのアソシエーション' do
         let(:target) { :notifications }
-        it "Notificationとの関連付けはhas_manyであること" do
+        it 'Notificationとの関連付けはhas_manyであること' do
           expect(association.macro).to eq :has_many
         end
         it '結合するモデルのクラス：Notification' do
           expect(association.class_name).to eq 'Notification'
         end
-        it "Postが削除されたらNotificationも削除されること" do
+        it 'Postが削除されたらNotificationも削除されること' do
           notification = create(:notification, post_id: post.id, visitor_id: 1, visited_id: 1)
           expect { post.destroy }.to change(Notification, :count).by(-1)
         end

@@ -1,69 +1,69 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.describe "Posts", type: :request do
+RSpec.describe 'Posts', type: :request do
   let(:user) { create(:user) }
   let!(:other_user) { create(:user) }
 
   let(:test_post) { create(:post, user: user) }
   let(:test_post2) { create(:post, user: other_user) }
 
-  describe "index" do
+  describe 'index' do
     before { get posts_path }
 
-    example "未ログインでリクエストが失敗すること" do
+    example '未ログインでリクエストが失敗すること' do
       expect(response).to have_http_status(302)
     end
   end
 
-  describe "show" do
+  describe 'show' do
     before { get post_path(test_post.id) }
 
-    example "未ログインでリクエストが成功すること" do
+    example '未ログインでリクエストが成功すること' do
       expect(response).to have_http_status(200)
     end
   end
 
-  describe "new" do
-    context "ログイン時" do
+  describe 'new' do
+    context 'ログイン時' do
       before do
         user.confirm
         sign_in user
         get new_post_path
       end
 
-      example "リクエストが成功すること" do
+      example 'リクエストが成功すること' do
         expect(response).to have_http_status(200)
       end
     end
 
-    context "非ログイン時" do
+    context '非ログイン時' do
       before { get new_post_path }
 
-      example "サインイン画面へリダイレクトされること" do
+      example 'サインイン画面へリダイレクトされること' do
         expect(response).to redirect_to new_user_session_path
       end
     end
   end
 
-  describe "create" do
-    context "ログイン時" do
+  describe 'create' do
+    context 'ログイン時' do
       # before { user.confirm sign_in user }
       before do
         user.confirm
         sign_in user
       end
 
-      example "正常に投稿を作成できること" do
+      example '正常に投稿を作成できること' do
         expect do
           post posts_path, params: { post: attributes_for(:post) }
         end.to change(Post, :count).by(1)
       end
     end
 
-    context "非ログイン時" do
+    context '非ログイン時' do
       before { get new_post_path }
 
-      example "サインイン画面へリダイレクトされること" do
+      example 'サインイン画面へリダイレクトされること' do
         expect(response).to redirect_to new_user_session_path
       end
     end
@@ -104,14 +104,14 @@ RSpec.describe "Posts", type: :request do
     end
   end
 
-  describe "destroy" do
-    context "ログイン時" do
-      context "投稿者本人の場合" do
-        before do 
+  describe 'destroy' do
+    context 'ログイン時' do
+      context '投稿者本人の場合' do
+        before do
           sign_in user
         end
 
-        example "投稿一覧ページにリダイレクトされること" do
+        example '投稿一覧ページにリダイレクトされること' do
           expect do
             delete post_path(test_post.id)
             expect(response).to redirect_to posts_path
@@ -119,14 +119,14 @@ RSpec.describe "Posts", type: :request do
         end
       end
 
-      context "本人でない場合" do
+      context '本人でない場合' do
         # before { sign_in other_user }
         before do
           user.confirm
           sign_in user
         end
 
-        example "削除されないこと" do
+        example '削除されないこと' do
           expect do
             delete post_path(test_post2.id)
           end.to change(Post, :count).by(0)

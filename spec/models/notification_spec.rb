@@ -2,7 +2,7 @@ require 'rails_helper'
 describe Notification do
   describe 'アソシエーション' do
     let(:association) do
-       described_class.reflect_on_association(target)
+      described_class.reflect_on_association(target)
     end
 
     context 'User（visitor）モデルとの関係' do

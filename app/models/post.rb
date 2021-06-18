@@ -1,15 +1,14 @@
 class Post < ApplicationRecord
-
   acts_as_taggable_on :categories, :occupations, :targets
   # acts_as_taggable
 
-  validates:title, {presence: true, length: {maximum: 100}} # 未入力NG, 最大文字数制限あり
-  VALID_YOUTUBE_URL = /(\Ahttps:\/\/www\.youtube\.com\/watch\?v=)+[\w]{11}/
-  validates:url, {presence: true, format: {with: VALID_YOUTUBE_URL}, length: {maximum: 120}} # 未入力NG, YouTubeのURL以外NG, 最大文字数を120文字
-  validates:content, {presence: true, length: {maximum: 300}} # 未入力NG, 最大文字数を300文字
-  validates:category_list, {presence: true}
-  validates:occupation_list, {presence: true}
-  validates:target_list, {presence: true}
+  validates :title, { presence: true, length: { maximum: 100 } } # 未入力NG, 最大文字数制限あり
+  VALID_YOUTUBE_URL = %r{(\Ahttps://www\.youtube\.com/watch\?v=)+\w{11}}
+  validates :url, { presence: true, format: { with: VALID_YOUTUBE_URL }, length: { maximum: 120 } } # 未入力NG, YouTubeのURL以外NG, 最大文字数を120文字
+  validates :content, { presence: true, length: { maximum: 300 } } # 未入力NG, 最大文字数を300文字
+  validates :category_list, { presence: true }
+  validates :occupation_list, { presence: true }
+  validates :target_list, { presence: true }
 
   belongs_to :user
   has_many :comments, dependent: :destroy # 追加 コメント 削除も仮追加
@@ -20,13 +19,15 @@ class Post < ApplicationRecord
 
   # 記事検索
   def self.search(search)
-    self.joins(:user).where(['title LIKE ? OR content LIKE ? OR users.name LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%"])
+    joins(:user).where(['title LIKE ? OR content LIKE ? OR users.name LIKE ?', "%#{search}%", "%#{search}%",
+                        "%#{search}%"])
   end
 
   # いいね通知
   def create_notification_like!(current_user)
     # すでに「いいね」されているか検索
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
+    temp = Notification.where(['visitor_id = ? and visited_id = ? and post_id = ? and action = ? ', current_user.id,
+                               user_id, id, 'like'])
     # いいねされていない場合のみ、通知レコードを作成
     if temp.blank?
       notification = current_user.active_notifications.new(
@@ -35,9 +36,7 @@ class Post < ApplicationRecord
         action: 'like'
       )
       # 自分の投稿に対するいいねの場合は、通知済みとする
-      if notification.visitor_id == notification.visited_id
-        notification.checked = true
-      end
+      notification.checked = true if notification.visitor_id == notification.visited_id
       notification.save if notification.valid?
     end
   end
@@ -61,12 +60,7 @@ class Post < ApplicationRecord
       action: 'comment'
     )
     # 自分の投稿に対するコメントの場合は、通知済みとする
-    if notification.visitor_id == notification.visited_id
-      notification.checked = true
-    end
+    notification.checked = true if notification.visitor_id == notification.visited_id
     notification.save if notification.valid?
   end
-
-
-
 end

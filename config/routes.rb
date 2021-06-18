@@ -2,35 +2,35 @@ Rails.application.routes.draw do
   get 'inquiry/index'
   get 'inquiry/confirm'
   get 'inquiry/thanks'
-  get "youtube/index"
-  get "youtube/search"
+  get 'youtube/index'
+  get 'youtube/search'
 
   devise_for :users, controllers: {
-    registrations: "users/registrations",
+    registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  resources :relationships, only: [:create, :destroy]
+  resources :relationships, only: %i[create destroy]
   resources :notifications, only: :index
 
-  resources :users, only: [:index, :show]
-  put "/users/:id/hide" => "users#hide", as: 'users_hide'
-  resources :posts, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
-    resources :comments, only: [:create, :update, :edit, :destroy, :update]
-    resources :likes, only: [:create, :destroy]
+  resources :users, only: %i[index show]
+  put '/users/:id/hide' => 'users#hide', as: 'users_hide'
+  resources :posts, only: %i[new index show create edit update destroy] do
+    resources :comments, only: %i[create update edit destroy update]
+    resources :likes, only: %i[create destroy]
   end
 
-  get "search" => "posts#search" # 記事検索機能
+  get 'search' => 'posts#search' # 記事検索機能
 
   resources :users do
     member do
-     get :following, :followers
+      get :following, :followers
     end
   end
 
   devise_scope :user do
-    root :to => "devise/registrations#new"
-    end
+    root to: 'devise/registrations#new'
+  end
 
   get   'inquiry'         => 'inquiry#index'     # 入力画面
   post  'inquiry/confirm' => 'inquiry#confirm'   # 確認画面

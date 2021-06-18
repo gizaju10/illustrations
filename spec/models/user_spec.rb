@@ -2,81 +2,80 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   context 'ユーザーを登録できる' do
-    it "ユーザー情報が全て入力されている場合" do
-      user = build(:user) 
+    it 'ユーザー情報が全て入力されている場合' do
+      user = build(:user)
       expect(user).to be_valid
     end
 
-    it "nameが8文字以下である場合" do
+    it 'nameが8文字以下である場合' do
       name = Faker::Name.initials(number: 8)
       user = build(:user, name: name)
       expect(user).to be_valid
     end
-    
-    it "passwordが6文字以上である場合" do
+
+    it 'passwordが6文字以上である場合' do
       password = Faker::Internet.password(min_length: 6, max_length: 6)
       user = build(:user, password: password, password_confirmation: password)
       expect(user).to be_valid
     end
 
-    it "パスワードが暗号化されているか" do 
+    it 'パスワードが暗号化されているか' do
       user = build(:user)
-      expect(user.password).to_not eq "password"
+      expect(user.password).to_not eq 'password'
     end
   end
-  
+
   context 'ユーザーを登録できない' do
-    it "nameが空の場合" do
+    it 'nameが空の場合' do
       user = build(:user, name: nil)
       user.valid?
-      expect(user.errors[:name]).to include("が入力されていません。")
+      expect(user.errors[:name]).to include('が入力されていません。')
     end
 
-    it "nameが9文字以上の場合" do
+    it 'nameが9文字以上の場合' do
       name = Faker::Name.initials(number: 9)
       user = build(:user, name: name)
       user.valid?
       expect(user.errors).to be_added(:name, :too_long, count: 8)
     end
 
-    it "emailが空の場合" do
+    it 'emailが空の場合' do
       user = build(:user, email: nil)
       user.valid?
-      expect(user.errors[:email]).to include("が入力されていません。")
+      expect(user.errors[:email]).to include('が入力されていません。')
     end
 
-    it "passwordが空の場合" do
+    it 'passwordが空の場合' do
       user = build(:user, password: nil)
       user.valid?
-      expect(user.errors[:password]).to include("が入力されていません。")
+      expect(user.errors[:password]).to include('が入力されていません。')
     end
 
-    it "passwordが5文字以下の場合" do
+    it 'passwordが5文字以下の場合' do
       password = Faker::Internet.password(min_length: 5, max_length: 5)
       user = build(:user, password: password, password_confirmation: password)
       user.valid?
       expect(user.errors).to be_added(:password, :too_short, count: 6)
     end
 
-    it "パスワードと確認が一致していない場合" do
-      user = build(:user, password_confirmation: "")
+    it 'パスワードと確認が一致していない場合' do
+      user = build(:user, password_confirmation: '')
       user.valid?
-      expect(user.errors).to be_added(:password_confirmation, :confirmation, attribute: "パスワード")
-    end
-    
-    it "メールアドレスが重複している場合" do 
-      user1 = create(:user,name: "taro", email: "taro@example.com")
-      expect(build(:user, name: "ziro", email: user1.email)).to_not be_valid
+      expect(user.errors).to be_added(:password_confirmation, :confirmation, attribute: 'パスワード')
     end
 
-    it "登録済みのemailアドレスがある場合" do
-      user = create(:user, email: "aaa@mail.com")
-      user2 = build(:user, email: "aaa@mail.com")
+    it 'メールアドレスが重複している場合' do
+      user1 = create(:user, name: 'taro', email: 'taro@example.com')
+      expect(build(:user, name: 'ziro', email: user1.email)).to_not be_valid
+    end
+
+    it '登録済みのemailアドレスがある場合' do
+      user = create(:user, email: 'aaa@mail.com')
+      user2 = build(:user, email: 'aaa@mail.com')
       user2.valid?
-      expect(user2.errors[:email]).to include("は既に使用されています。")
+      expect(user2.errors[:email]).to include('は既に使用されています。')
     end
   end
-
 
   describe 'アソシエーション' do
     let(:association) do
