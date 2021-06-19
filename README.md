@@ -129,3 +129,6 @@ CSS グリッドレイアウトにより、スマートフォンからでも快�
 # 転職活動をしています
 ### Wantedly
 https://www.wantedly.com/id/teppeimimachi
+
+### Qiita
+https://qiita.com/TeppeiMimachi
