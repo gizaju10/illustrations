@@ -1,3 +1,5 @@
+[![gizaju10](https://circleci.com/gh/gizaju10/illustrations.svg?style=svg)](https://circleci.com/gh/gizaju10/illustrations)
+
 # IllustTube
 <strong>『IllustTube』</strong>は絵を描く全ての方へ向けたYouTube動画学習サービスです。  
 YouTube Data API を用いて動画検索を行い、オススメ動画をシェアすることができます。
